@@ -70,7 +70,7 @@ replyType = `${global.setreply}`
 let thumbnya = fs.readFileSync('./media/thumb.jpeg')
 let thumbdoc = fs.readFileSync('./media/thumbnaildokumen.jpg')
 let fakee = fs.readFileSync('./media/fake.jpeg')
-
+betaapi = BetaBotz
 
 //=======================[ DATABASE ]=======================//
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
@@ -3286,7 +3286,7 @@ db.users[sender].limit -= 1 // -1 limit
 break
 
 
-case 'tiktok': case 'ttnowm': case 'tiktoknowm':    
+case 'tt': case 'tiktok': case 'ttnowm': case 'tiktoknowm':    
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis 
 try{   
 if (args.length < 1) return reply('Link?')
@@ -3299,7 +3299,7 @@ console.log('[ T I K T O K ] downloader')
 
 aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
 
-👤Autor: ${res.author}
+• Autor: ${res.author}
 ${res.title}`}, { quoted: m })          
 })
 } catch (err){
@@ -3318,7 +3318,7 @@ calip.downloader.tiktok(args[0]).then(res => {
 console.log('[ T I K T O K ] downloader')
 aqua.sendMessage(m.chat, { video: { url: res.watermak }, caption: `*------------[ TIKTOKNOWM ]------------*
 
-👤Autor: ${res.author}
+• Autor: ${res.author}
 ${res.title}` }, { quoted: m })          
 //aqua.sendMessage(from, {caption: "Nih", video: {url: ep}},{quoted: dev})
 })
@@ -3336,18 +3336,18 @@ reply (mess.wait)
 calip.downloader.tiktok(args[0]).then( async res => {
 console.log(res)
 console.log('[ T I K T O K ] downloader')
-aqua.sendMessage(from, { audio: {url: res.audio, mimetype: 'audio/mp4'}}, { quoted: m })
+aqua.sendMessage(from, { audio: {url: res.audio, mimetype: 'audio/mpeg'}}, { quoted: m })
 })
 }
 db.users[sender].limit -= 1 // -1 limit
  break
 
 
-/*
+
 case 'react': { 
 aqua.sendMessage(m.chat, reactionMessage)}
 break  
-*/
+
 
 
 case 'take':
@@ -3648,7 +3648,12 @@ for (let i = 0; i < developer.length; i++){
        aqua.sendMessage(m.chat, { contacts: xensz}, { quoted: m }).then((res) => aqua.sendMessage(m.chat, `*Developer Bot*`, { quoted: m }))
        break
 
-
+case 'hentai':{
+	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
+	aqua.sendMessage(from, {image: {url: `https://mogabisab.herokuapp.com/api/nsfw/hentai?apikey=${betaapi}`}})
+	}
+	break
+	
 
 case 'yuri': case 'kiss': case 'cum': case 'futanari': case 'hentai': 
 case 'eroyuri': case 'eron': case 'erok': case 'ero': case 'solo': 
@@ -3656,7 +3661,6 @@ case 'erokemo':  case 'fox_girl': case 'feet': case 'les': case 'feed': case 'bj
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
               let waifu = await fetchJson(`https://nekos.life/api/v2/img/${command}`)
               aqua.sendMessage(m.chat, { image: waifu, caption: `${q}` }, { quoted: m})
-              db.users[sender].limit -= 1 // -1 limit
 }
 break
 				
@@ -6788,10 +6792,10 @@ _*cek aja di bawah*_
 ◪ *SEWA KE GRUB*
 │ 
 ├ 7 Hari
-├ Rp. 10.000 Gopay/Dana
+├ Rp. 5.000 Gopay/Dana
 │
 ├ 30 Hari 
-├ Rp. 15.000 Gopay/Dana
+├ Rp. 10.000 Gopay/Dana
 │
 ├ Permanen 
 └ Rp. 20.000 Gopay/Dana 
@@ -6888,10 +6892,7 @@ case 'buyprem': {
 textTemplateButtons(m.chat, `
 Mau jadi premium? harus beli kak
 murah kok 5 Rebu dah jadi premium permanen,
-Keuntungan:
-• Limit Unlimited
-• Vitur Anime Terbuka
-• Dan lain-lain`, `Silahkan Klik Di Bawah Untuk Membeli`, btns)
+Keuntungan, Vitur Anime Terbuka, Dan lain-lain`, `Silahkan Klik Di Bawah Untuk Membeli`, btns)
 }
 break
 
