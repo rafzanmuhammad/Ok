@@ -1,0 +1,20 @@
+CARA RUN !!!!
+
+Command termux !!!
+
+pkg update && pkg upgrade
+pkg install nodejs
+pkg install ffmpeg
+pkg install imagemagick
+pkg install mc
+pkg install libwebp
+termux-setup-storage
+cd /sdcard 
+cd 
+cd namafile
+node .
+
+Lalu scan wajib Join Beta !!!
+
+MASIH ERROR? 
+CHAT https://wa.me/6282194424412
