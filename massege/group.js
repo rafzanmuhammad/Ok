@@ -6,6 +6,7 @@ const { color } = require("../lib/color");
 const { getBuffer, getRandom, getGroupAdmins} = require("../lib/myfunc");
 const chalk = require('chalk')
 const bg = "https://tinyurl.com/y23xrfhu"
+let thumbdoc = fs.readFileSync('./media/thumbnaildokumen.jpg')
 //require("../settings.js")
 
 let d = new Date
@@ -22,9 +23,9 @@ let d = new Date
 module.exports = async(aqua, anu) => {
 try{
 	
-let type1 = true
+let type1 = false
 let type2 = false
-
+let type3 = true
 
 let metadata = await aqua.groupMetadata(anu.id)
 const from = anu.id
@@ -77,6 +78,22 @@ var pp_grup = await aqua.profilePictureUrl(from, 'image')
 var pp_grup = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60";
 }
 
+let ppUser = await getBuffer(pp_user)
+let ppGc = await getBuffer(pp_grup)
+
+let gmbr = await getBuffer(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
+
+let options1 =
+{ mentionedJid: [mem],
+externalAdReply: {
+title: `         ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+description: 'Now Playing...',
+mediaType: 2,
+thumbnail: ppUser,
+mediaUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM',
+sourceUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM'
+}
+}
                   
 //Button In    
 let butIn = [{ buttonId: `intro`, buttonText: { displayText: "Omke" }, type: 1 }];         
@@ -127,6 +144,7 @@ var image3 = await new canvacord.Leaver()
         .setText("title", "good bye")
         .setText("message", `we will miss you friends`)
 }
+
 let foto = await getRandom(".png")
 image3.build()
     .then(async data => {
@@ -172,6 +190,33 @@ await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options)
 }
 }
 
+//sendButDoc
+const sendButDoc = async(id, text1, desc1, gam1, but = [], options, options1 = {}) => {	
+try{
+const asuu =['application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/zip', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+const mimitny = asuu[Math.floor(Math.random() * asuu.length)]                    
+const buttonMessage = {
+contextInfo: options,
+document: fs.readFileSync('./media/file.docx'),
+mimetype: mimitny, 
+title : "Footer text", 
+fileLength : 999999999, 
+pageCount: 1, 
+fileName : "𝗕𝗼𝘁 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽", 
+caption: text1,
+footer: desc1,
+buttons: but,
+headerType: "DOCUMENT"
+}
+
+return await aqua.sendMessage(id, buttonMessage,options1)
+} catch(err){
+console.log(err)
+let autoButton = Remove? butOut : butIn
+await aqua.sendButDoc(id, text1, desc1, gam1, autoButton, options)
+}
+} 
+
 
    
 //Group Update Console
@@ -181,10 +226,6 @@ console.log(color("[GRUP UPDATE]", "magenta"), color(`${pushname} telah keluar d
 console.log(color("[GRUP UPDATE]", "magenta"), color(`${pushname} telah bergabung di gc`,`green`), color(`${groupName}`,`magenta`))
 }
 
-let ppUser = await getBuffer(pp_user)
-let ppGc = await getBuffer(pp_grup)
-
-
 
 //Welcome ny
 if(Add && OneMem && NotMe){ 
@@ -192,14 +233,18 @@ if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
 WelcomeType2(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
-} 
+} else if(type3){
+sendButDoc(from, intro, copyright, ppUser, butIn, options1)
+}
 
 } else if(Remove && NotMe){      
 if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut,{ "mentionedJid": [mem]})
 } else if(type2){
 WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut,{ "mentionedJid": [mem]})
-} 
+} else if(type3){
+sendButDoc(from, outro, `Hm Kok Keluar ^_^`, ppUser, butOut, options1)
+}
 }
 
 
