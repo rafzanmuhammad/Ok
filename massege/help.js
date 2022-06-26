@@ -181,8 +181,6 @@ ${readmore}
  *⭔* ${prefix}dare
  *⭔* ${prefix}quotes
  *⭔* ${prefix}qrcode
- *⭔* ${prefix}wallpaper 
- *⭔* ${prefix}wallml
  *⭔* ${prefix}shortlink     
  *⭔* ${prefix}take
  *⭔* ${prefix}film 
@@ -190,7 +188,45 @@ ${readmore}
  *⭔* ${prefix}tts 
  
  
- ➲ *Tools*
+➲ *Random Wallpaper*
+ *⭔* ${prefix}wallpaper 
+ *⭔* ${prefix}wallml
+ *⭔* ${prefix}cyberspace 
+ *⭔* ${prefix}games 
+ *⭔* ${prefix}pubg 
+ *⭔* ${prefix}islamic 
+ *⭔* ${prefix}mountain
+ *⭔* ${prefix}programming 
+ *⭔* ${prefix}technology 
+ *⭔* ${prefix}tatasurya  
+ *⭔* ${prefix}hekel
+ *⭔* ${prefix}motor 
+ *⭔* ${prefix}mobil 
+ *⭔* ${prefix}aesthetic
+ *⭔* ${prefix}wallhp 
+ *⭔* ${prefix}anjing
+ *⭔* ${prefix}kucing 
+ *⭔* ${prefix}keneki 
+ *⭔* ${prefix}megumin 
+ *⭔* ${prefix}yotsuba 
+ *⭔* ${prefix}kartun
+ *⭔* ${prefix}chiho 
+ *⭔* ${prefix}tejina 
+ *⭔* ${prefix}yumeko 
+ *⭔* ${prefix}shinomiya 
+ *⭔* ${prefix}pentol
+ *⭔* ${prefix}toukachan 
+ *⭔* ${prefix}akira 
+ *⭔* ${prefix}itori 
+ *⭔* ${prefix}kurumi
+ *⭔* ${prefix}sagiri 
+ *⭔* ${prefix}eba 
+ *⭔* ${prefix}deidara 
+ *⭔* ${prefix}itachi 
+ *⭔* ${prefix}madara
+ 
+ 
+➲ *Tools*
  *⭔* ${prefix}getpp
  *⭔* ${prefix}chat
  *⭔* ${prefix}q
@@ -240,7 +276,27 @@ ${readmore}
  *⭔* ${prefix}shinobu
  *⭔* ${prefix}megumin
  *⭔* ${prefix}handhold
-
+ *⭔* ${prefix}zettai 
+ *⭔* ${prefix}thighs 
+ *⭔* ${prefix}panties 
+ *⭔* ${prefix}pussy 
+ *⭔* ${prefix}tentacles
+ *⭔* ${prefix}masturbasi 
+ *⭔* ${prefix}jahy 
+ *⭔* ${prefix}glases  
+ *⭔* ${prefix}foot 
+ *⭔* ${prefix}hentai 
+ *⭔* ${prefix}orgy 
+ *⭔* ${prefix}nekopoi 
+ *⭔* ${prefix}manga 
+ *⭔* ${prefix}ass 
+ *⭔* ${prefix}ahegao
+ *⭔* ${prefix}bdsm 
+ *⭔* ${prefix}cuckold 
+ *⭔* ${prefix}cum 
+ *⭔* ${prefix}femdom 
+ *⭔* ${prefix}ero
+ 
 
 ➲ *Islamic Menu*
  *⭔* ${prefix}iqra
@@ -852,9 +908,6 @@ return `➲ *Random Vitur*
  *❉* ${prefix}dare
  *❉* ${prefix}quotes
  *❉* ${prefix}qrcode
- *❉* ${prefix}wallpaper 
- *❉* ${prefix}wallml
- *❉* ${prefix}shortlink     
  *❉* ${prefix}take
  *❉* ${prefix}film 
  *❉* ${prefix}translate
@@ -862,7 +915,7 @@ return `➲ *Random Vitur*
 `}
 
  
- 
+
  exports.menu14 = (prefix) => {
 return ` ➲ *Tools*
 ────────────────────────
@@ -920,6 +973,26 @@ return `➲ *Random Anime*
  *❉* ${prefix}shinobu
  *❉* ${prefix}megumin
  *❉* ${prefix}handhold
+ *❉* ${prefix}zettai 
+ *❉* ${prefix}thighs 
+ *❉* ${prefix}panties 
+ *❉* ${prefix}pussy 
+ *❉* ${prefix}tentacles
+ *❉* ${prefix}masturbasi 
+ *❉* ${prefix}jahy 
+ *❉* ${prefix}glases  
+ *❉* ${prefix}foot 
+ *❉* ${prefix}hentai 
+ *❉* ${prefix}orgy 
+ *❉* ${prefix}nekopoi 
+ *❉* ${prefix}manga 
+ *❉* ${prefix}ass 
+ *❉* ${prefix}ahegao
+ *❉* ${prefix}bdsm 
+ *❉* ${prefix}cuckold 
+ *❉* ${prefix}cum 
+ *❉* ${prefix}femdom 
+ *❉* ${prefix}ero
 `}
 
 
@@ -1381,6 +1454,48 @@ return `➲ *Owner Menu*
  *❉* $
  *❉* > / x
  *❉* =>
+ `}
+ 
+ 
+ exports.menu28 = (prefix) => {
+return `➲ *Random Wallpaper*
+────────────────────────
+
+ *❉* ${prefix}wallpaper 
+ *❉* ${prefix}wallml
+ *❉* ${prefix}cyberspace 
+ *❉* ${prefix}games 
+ *❉* ${prefix}pubg 
+ *❉* ${prefix}islamic 
+ *❉* ${prefix}mountain
+ *❉* ${prefix}programming 
+ *❉* ${prefix}technology 
+ *❉* ${prefix}tatasurya  
+ *❉* ${prefix}hekel
+ *❉* ${prefix}motor 
+ *❉* ${prefix}mobil 
+ *❉* ${prefix}aesthetic
+ *❉* ${prefix}wallhp 
+ *❉* ${prefix}anjing
+ *❉* ${prefix}kucing 
+ *❉* ${prefix}keneki 
+ *❉* ${prefix}megumin 
+ *❉* ${prefix}yotsuba 
+ *❉* ${prefix}kartun
+ *❉* ${prefix}chiho 
+ *❉* ${prefix}tejina 
+ *❉* ${prefix}yumeko 
+ *❉* ${prefix}shinomiya 
+ *❉* ${prefix}pentol
+ *❉* ${prefix}toukachan 
+ *❉* ${prefix}akira 
+ *❉* ${prefix}itori 
+ *❉* ${prefix}kurumi
+ *❉* ${prefix}sagiri 
+ *❉* ${prefix}eba 
+ *❉* ${prefix}deidara 
+ *❉* ${prefix}itachi 
+ *❉* ${prefix}madara
  `}
  
  
