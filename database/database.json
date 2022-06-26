@@ -914,8 +914,8 @@
       "limit": 30
     },
     "6281391213247@s.whatsapp.net": {
-      "afkTime": 1651599200265,
-      "afkReason": "mau turu 13jam",
+      "afkTime": -1,
+      "afkReason": "",
       "limit": 30
     },
     "6285238020161@s.whatsapp.net": {
@@ -1054,7 +1054,7 @@
       "limit": 30
     },
     "6281261122806@s.whatsapp.net": {
-      "afkTime": 1655961467665,
+      "afkTime": -1,
       "afkReason": "",
       "limit": 30
     },
@@ -1321,7 +1321,7 @@
     "6283141969275@s.whatsapp.net": {
       "afkTime": -1,
       "afkReason": "",
-      "limit": 30
+      "limit": 27
     },
     "6285245551845@s.whatsapp.net": {
       "afkTime": -1,
@@ -14334,8 +14334,8 @@
       "limit": 30
     },
     "6288279801102@s.whatsapp.net": {
-      "afkTime": 1656147706491,
-      "afkReason": "mabok laot",
+      "afkTime": -1,
+      "afkReason": "",
       "limit": 30
     },
     "62895422148144@s.whatsapp.net": {
@@ -27257,6 +27257,21 @@
       "afkTime": -1,
       "afkReason": "",
       "limit": 29
+    },
+    "6281297255452@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": 30
+    },
+    "62882022804950@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": 21
+    },
+    "6281296274571@s.whatsapp.net": {
+      "afkTime": -1,
+      "afkReason": "",
+      "limit": 30
     }
   },
   "chats": {
@@ -34334,6 +34349,10 @@
       "wame": false
     },
     "6285894914187@s.whatsapp.net": {
+      "mute": false,
+      "wame": false
+    },
+    "62882022804950@s.whatsapp.net": {
       "mute": false,
       "wame": false
     }
