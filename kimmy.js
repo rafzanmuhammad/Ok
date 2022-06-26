@@ -70,7 +70,7 @@ replyType = `${global.setreply}`
 let thumbnya = fs.readFileSync('./media/thumb.jpeg')
 let thumbdoc = fs.readFileSync('./media/thumbnaildokumen.jpg')
 let fakee = fs.readFileSync('./media/fake.jpeg')
-betaapi = BetaBotz
+betaapi = "BetaBotz"
 
 //=======================[ DATABASE ]=======================//
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
@@ -111,7 +111,7 @@ let vote = db.others.vote = []
 
 module.exports = aqua = async (aqua, m, chatUpdate, store, baterai) => {
 try {
-let { menu, menu1, menu2, menu3, menu4, menu5, menu6, menu7, menu8, menu9, menu10, menu11, menu12, menu13 , menu14, menu15, menu16, menu17, menu18, menu19, menu20, menu21, menu22, menu23, menu24, menu25, menu26, menu27 } = require('./massege/help')
+let { menu, menu1, menu2, menu3, menu4, menu5, menu6, menu7, menu8, menu9, menu10, menu11, menu12, menu13 , menu14, menu15, menu16, menu17, menu18, menu19, menu20, menu21, menu22, menu23, menu24, menu25, menu26, menu27, menu28 } = require('./massege/help')
 var body = (m.mtype === 'conversation' && m.message.conversation) ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
 var budy = (typeof m.text == 'string' ? m.text : '')
 var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
@@ -1248,6 +1248,10 @@ case 'menu27':
 anu = menu27(prefix)
 aqua.sendButDoc(from, anu, `${global.footer}`, thumbdoc, mokk, options1, {quoted:m})
 break
+case 'menu28':
+anu = menu28(prefix)
+aqua.sendButDoc(from, anu, `${global.footer}`, thumbdoc, mokk, options1, {quoted:m})
+break
 
 
 
@@ -1748,7 +1752,7 @@ listMessage :{
 										"rowId": `${prefix}menu19`
 									},
 									{
-										"title": "[ 👥 ] GRUP FITUR",
+									 "title": "[ 👥 ] GRUP FITUR",
 										"description": "Menampilkan Fitur Grup",
 										"rowId": `${prefix}menu10`
 										},
@@ -1786,6 +1790,11 @@ listMessage :{
 										"title": "[ 📑 ] PRIMBON FITUR",
 										"description": "Menampilkan Primbon Fitur",
 										"rowId": `${prefix}menu25`
+										},
+										{
+										"title": "[ 🖼️ ] RANDOM WALLPAPER",
+										"description": "Menampilkan Random Wallpapers",
+										"rowId": `${prefix}menu28`
 										},
 										{
 										"title": "[ 💱 ] RANDOM STICKER",
@@ -3648,22 +3657,39 @@ for (let i = 0; i < developer.length; i++){
        aqua.sendMessage(m.chat, { contacts: xensz}, { quoted: m }).then((res) => aqua.sendMessage(m.chat, `*Developer Bot*`, { quoted: m }))
        break
 
-case 'hentai':{
-	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-	aqua.sendMessage(from, {image: {url: `https://mogabisab.herokuapp.com/api/nsfw/hentai?apikey=${betaapi}`}})
-	}
-	break
 	
+case 'zettai': case 'thighs': case 'panties': case 'pussy': case 'tentacles':
+case 'masturbasi': case 'jahy': case 'glases':  case 'foot': case 'hentai': 
+case 'orgy': case 'nekopoi': case 'manga': case 'ass': case 'ahegao':
+case 'bdsm': case 'cuckold': case 'cum': case 'femdom': case 'ero':{
+if (!isPremium && !mek.key.fromMe && !isCreator) return reply(mess.prem)
+aqua.sendMessage(from, {image: {url: `https://mogabisab.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}})
+}
+break
 
 case 'yuri': case 'kiss': case 'cum': case 'futanari': case 'hentai': 
 case 'eroyuri': case 'eron': case 'erok': case 'ero': case 'solo': 
 case 'erokemo':  case 'fox_girl': case 'feet': case 'les': case 'feed': case 'bj':{
-if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
+if (!isPremium && !mek.key.fromMe && !isCreator) return reply(mess.prem)
               let waifu = await fetchJson(`https://nekos.life/api/v2/img/${command}`)
               aqua.sendMessage(m.chat, { image: waifu, caption: `${q}` }, { quoted: m})
 }
 break
 				
+
+case 'cyberspace': case 'games': case 'pubg': case 'islamic': case 'mountain':
+case 'programming': case 'technology': case 'tatasurya':  case 'hekel': 
+case 'motor': case 'mobil': case 'aesthetic': case 'wallhp': case 'anjing':
+case 'kucing': case 'keneki': case 'megumin': case 'yotsuba': case 'kartun':
+case 'chiho': case 'tejina': case 'yumeko': case 'shinomiya': case 'pentol':
+case 'toukachan': case 'akira': case 'itori': case 'kurumi':
+case 'sagiri': case 'eba': case 'deidara': case 'itachi': case 'madara':{
+if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
+aqua.sendMessage(from, {image: {url: `https://mogabisab.herokuapp.com/api/wallpaper/${command}?apikey=${betaapi}`}})
+}
+db.users[sender].limit -= 1 // -1 limit
+break
+
 
           
 case 'sound1':case 'sound2':
