@@ -52,15 +52,15 @@ let d = new Date
 
 global.api = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
 
-const store = makeInMemoryStore({ logger: pino().child({ level: 'fatal', stream: 'store' }) })
+const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 
 async function startAqua() {
     let { version, isLatest } = await fetchLatestBaileysVersion()
     const aqua = aquaConnect({
-        logger: pino({ level: 'fatal' }),
+        logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
-     // browser: ["Kimtod", "Safari", "3.0"],        
-        browser: ['Takim Tod Multi Device','Safari','1.0.0'],
+        browser: ["Kimtod", "Safari", "3.0"],        
+        //browser: ['Takim Tod Multi Device','Safari','1.0.0'],
         auth: state,
         version
     })
