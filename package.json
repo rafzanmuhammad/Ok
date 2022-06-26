@@ -80,7 +80,6 @@
     "util": "^0.12.4",
     "wa-sticker-formatter": "^4.3.2",
     "xfarr-api": "^1.0.3",
-    "xpress": "^2.4.6",
     "yargs": "^17.2.1",
     "yt-search": "^2.10.2"
   },
