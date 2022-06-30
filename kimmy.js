@@ -42,6 +42,7 @@ const primbon = new Primbon()
 const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews, TribunNews, DailyNews, DetikNews, OkezoneNews, CNBCNews, KompasNews, SindoNews, TempoNews, IndozoneNews, AntaraNews, RepublikaNews, VivaNews, KontanNews, MerdekaNews, KomikuSearch, AniPlanetSearch, KomikFoxSearch, KomikStationSearch, MangakuSearch, KiryuuSearch, KissMangaSearch, KlikMangaSearch, PalingMurah, LayarKaca21, AminoApps, Mangatoon, WAModsSearch, Emojis, CoronaInfo, JalanTikusMeme,  Cerpen, Quotes, Couples, Darkjokes } = require("dhn-api");
 const ameClient = require("amethyste-api")
 const { BitlyClient } = require('bitly');
+const gcbt = ["120363041984430206@g.us"] //ID GC GRUB BOT "120363041984430206@g.us"  
 const ameApi = new ameClient("1f486b04b157f12adf0b1fe0bd83c92a28ce768683871d2a390e25614150d0c8fa404fd01b82a5ebf5b82cbfa22e365e611c8501225a93d5d1e87f9f420eb91b")
 const bitly = new BitlyClient('7d737131e678fc366699edead8bca146e69f6c78', {});
 const forward = { forwardingScore: 10000000, isForwarded: true, sendEphemeral: true}
@@ -155,6 +156,7 @@ const isAntiLink = isGroup ? antilink.includes(m.chat) : false
 const isAntiVirtex = isGroup ? antivirtex.includes(m.chat) : false      
 const isAntiWaMe = isGroup ? antiwame.includes(m.chat) : false      
 
+const isStop = isGroup ? gcbt.includes(from) : false
 const isAutoRead = botNumber ? autoreadd.includes(botNumber) : false 
 const isAutoKetik = botNumber ? autoketikk.includes(botNumber) : false 
 
@@ -2618,7 +2620,7 @@ break
 
 case 'loli': case 'milf': case 'husbu': case 'cosplay': case 'wallml':
 if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
-	reply(mess.wait)
+if(isStop) return ('khsus private chat bot')
 	if (args.length < 0) return reply(`Masukan Nama!! Contoh\n ${prefix + command} loli`)
 	let wipu = (await axios.get(`https://raw.githubusercontent.com/Arya-was/endak-tau/main/${command}.json`)).data
 let wipi = wipu[Math.floor(Math.random() * (wipu.length))]
@@ -3663,6 +3665,7 @@ case 'masturbasi': case 'jahy': case 'glases':  case 'foot': case 'hentai':
 case 'orgy': case 'nekopoi': case 'manga': case 'ass': case 'ahegao':
 case 'bdsm': case 'cuckold': case 'cum': case 'femdom': case 'ero':{
 if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
+if(isStop) return ('khsus private chat bot')
 aqua.sendMessage(from, {image: {url: `https://mogabisab.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}})
 }
 break
@@ -3670,6 +3673,7 @@ break
 case 'yuri': case 'kiss': case 'cum': case 'futanari': case 'hentai': 
 case 'eroyuri': case 'eron': case 'erok': case 'ero': case 'solo': 
 case 'erokemo':  case 'fox_girl': case 'feet': case 'les': case 'feed': case 'bj':{
+if(isStop) return ('khsus private chat bot')
 if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
               let waifu = await fetchJson(`https://nekos.life/api/v2/img/${command}`)
               aqua.sendMessage(m.chat, { image: waifu, caption: `${q}` }, { quoted: m})
