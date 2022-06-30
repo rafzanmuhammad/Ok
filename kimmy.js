@@ -3662,7 +3662,7 @@ case 'zettai': case 'thighs': case 'panties': case 'pussy': case 'tentacles':
 case 'masturbasi': case 'jahy': case 'glases':  case 'foot': case 'hentai': 
 case 'orgy': case 'nekopoi': case 'manga': case 'ass': case 'ahegao':
 case 'bdsm': case 'cuckold': case 'cum': case 'femdom': case 'ero':{
-if (!isPremium && !mek.key.fromMe && !isCreator) return reply(mess.prem)
+if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
 aqua.sendMessage(from, {image: {url: `https://mogabisab.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}})
 }
 break
@@ -3670,7 +3670,7 @@ break
 case 'yuri': case 'kiss': case 'cum': case 'futanari': case 'hentai': 
 case 'eroyuri': case 'eron': case 'erok': case 'ero': case 'solo': 
 case 'erokemo':  case 'fox_girl': case 'feet': case 'les': case 'feed': case 'bj':{
-if (!isPremium && !mek.key.fromMe && !isCreator) return reply(mess.prem)
+if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
               let waifu = await fetchJson(`https://nekos.life/api/v2/img/${command}`)
               aqua.sendMessage(m.chat, { image: waifu, caption: `${q}` }, { quoted: m})
 }
