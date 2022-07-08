@@ -59,8 +59,8 @@ async function startAqua() {
     const aqua = aquaConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
-        browser: ["Kimtod", "Safari", "3.0"],        
-        //browser: ['Takim Tod Multi Device','Safari','1.0.0'],
+       // browser: ["Kimtod", "Safari", "3.0"],        
+        browser: ['Takim Tod Multi Device','Safari','1.0.0'],
         auth: state,
         version
     })
