@@ -1366,13 +1366,14 @@ aqua.sendText(nomor, `*「 CHAT DARI 」*\n\nNama : @${sender.split('@')[0]}\n\n
 
  
 case 'reportbug': case 'report':
-if (!args[0]) return reply (`Masukan laporan bug dengan teks atau reply gambar screenshot dengan teks\nLaporan yang main-main tidak akan di tanggapi`)     
+if(!q) return reply (`Masukan laporan bug dengan teks atau reply gambar screenshot dengan teks\nLaporan yang main-main tidak akan di tanggapi`)     
+if(!args[0]) return reply (`Masukan laporan bug dengan teks atau reply gambar screenshot dengan teks\nLaporan yang main-main tidak akan di tanggapi`)     
 	if (isMedia && !m.message.videoMessage || isQuotedImage) {
 const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
- aqua.sendMessage(`628388024064@s.whatsapp.net`, {caption: `*「 REPORT ERORR DARI 」*\n\nNama: ${pushname}\nNomor: ${sender.split('@')[0]}\n\nINGFO CHAT :\n${args[0]}`, mentions:[sender], image: {url: bufff}})
+ aqua.sendMessage(`628388024064@s.whatsapp.net`, {caption: `*「 REPORT ERORR DARI 」*\n\nNama: ${pushname}\nNomor: ${sender.split('@')[0]}\n\nINGFO CHAT :\n${q}`, mentions:[sender], image: {url: bufff}})
   reply (`Sukses Lapor Kepada Owner Silahkan Tunggu Dalam Waktu 24 Jam\n\nJika Main - Main Dengan Fitur Ini Maka Anda Mendapatkan Block Nomor Selama 2 Hari `)
   } else {
-aqua.sendText(`628388024064@s.whatsapp.net`, `*「 REPORT ERORR DARI 」*\n\nNama: ${pushname}\nNomor: ${sender.split('@')[0]}\n\nINGFO CHAT :\n${args[0]}\n\n ketik .balas <no user> untuk membalas laporan user`, floc, { contextInfo: { mentionedJid: [sender] }})
+aqua.sendText(`628388024064@s.whatsapp.net`, `*「 REPORT ERORR DARI 」*\n\nNama: ${pushname}\nNomor: ${sender.split('@')[0]}\n\nINGFO CHAT :\n${q}\n\n ketik .balas <no user> untuk membalas laporan user`, floc, { contextInfo: { mentionedJid: [sender] }})
   reply (`Sukses Lapor Kepada Owner Silahkan Tunggu Dalam Waktu 24 Jam\n\nJika Main - Main Dengan Fitur Ini Maka Anda Mendapatkan Block Nomor Selama 2 Hari `)
  }
  break
@@ -1380,7 +1381,7 @@ aqua.sendText(`628388024064@s.whatsapp.net`, `*「 REPORT ERORR DARI 」*\n\nNam
  
 case 'balas':  
 if (!isOwner) return reply (mess.owner)
-if (!args[0]) return reply (`mau chat siapa?\nContoh: ${prefix + command} 628219442xxxx|oioioi`) 
+if (!q) return reply (`mau chat siapa?\nContoh: ${prefix + command} 628219442xxxx|oioioi`) 
 if (args[0].startsWith('08')) return reply ('Awali nomor dengan 62')
 	if (isMedia && !m.message.videoMessage || isQuotedImage) {
 const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
