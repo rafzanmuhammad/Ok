@@ -7035,7 +7035,7 @@ if (wsf) {
 await wsf.build()
 const sticBuffer = await wsf.get()
 if (sticBuffer) await aqua.sendMessage(from, { sticker: sticBuffer }, {
-quoted: dev,
+quoted: m,
 mimetype: 'image/webp',
 ephemeralExpiration: 86400
 })
