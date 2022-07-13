@@ -7018,12 +7018,34 @@ break
 
 default:
 
-/*
+if (isImage) {
+let WSF = require('wa-sticker-formatter')
+let wsf = false
+let mime = (m.msg || m).mimetype || ''
+if (/image/.test(mime)) {
+let img = await aqua.downloadAndSaveMediaMessage(quoted)
+wsf = new WSF.Sticker(img, {
+pack: global.packname,
+type: WSF.StickerTypes.FULL,
+author: global.author,
+crop: true,
+})
+}        
+if (wsf) {
+await wsf.build()
+const sticBuffer = await wsf.get()
+if (sticBuffer) await aqua.sendMessage(from, { sticker: sticBuffer }, {
+quoted: dev,
+mimetype: 'image/webp',
+ephemeralExpiration: 86400
+})
+}
+}
 
 if ((budy.startsWith('https://chat') || budy.startsWith('Buka tautan ini') || budy.startsWith('Undangan untuk')) && !isGroup) {
 reply (`*Untuk Memasukan Bot Ke Group*\n*Kamu Harus Sewa Bot Telebih Dahulu*\n_Silahkan Chat Owner_`)
 }
-*/          
+         
             
 if (budy.startsWith('=>')) {
     if (!isOwner) return reply(mess.owner)
