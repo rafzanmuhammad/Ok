@@ -1526,7 +1526,9 @@ var toks =`
 🕵️ Judul : ${res.title}
 👀 Viewers : ${h2k(res.views)} Kali 
 🌺 Duration : ${res.timestamp}
-👤 Channel : ${res.author.name}`
+👤 Channel : ${res.author.name}
+🎧 Audio : ${FileSize(audio[0].contentLength)} 
+🎬 Video : ${FileSize(format.contentLength)}``
 
 let aklo = [
 {"buttonId": `${prefix}ytmp3 ${res.url} `,"buttonText": {"displayText": `Audio`},"type": "RESPONSE"},
