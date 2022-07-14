@@ -3770,7 +3770,6 @@ if (!quoted) reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}` )
 break
 
 case 'setppgc':
-case 'setppgb':
 if (!isAdmins && !isOwner) return reply (mess.admin)
 if (!quoted) reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}` )               
                    if (isImage || isQuotedImage) {
@@ -3780,7 +3779,7 @@ if (!quoted) reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}` )
                        await aqua.query({
                          tag: 'iq',
                          attrs: {
-                           to: from,
+                           to: m.chat,
                            type:'set',
                            xmlns: 'w:profile:picture'
                          },
@@ -3795,7 +3794,7 @@ if (!quoted) reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}` )
                        fs.unlinkSync(media)
                        reply (`Sukses`)
                      } else {
-                       var data = await aqua.updateProfilePicture(from, { url: media })
+                       var data = await aqua.updateProfilePicture(m.chat, { url: media })
                       fs.unlinkSync(media)
                        reply (`ok`)
                      }
@@ -3803,8 +3802,8 @@ if (!quoted) reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}` )
                      reply (`Kirim/balas gambar dengan caption ${command} untuk mengubah foto profil grub`)
                    }
 break
- 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
  case 'bisakah':
 					bisakah = body.slice(1)
 					const bisa =['BISA','Tidak Bisa','Oh tentu saja bisa dong','Udah dari lahir dia bisa kaya gitu kak 🙉','Oh tentu saja tidak bisa','Wuih bisa bisa','Ga mao jawab ah lu wibu','Tentu saja bisa eh tapi boong awokawok ','Engga engga dia ga bisa','Enggaklah','Aku ga mao jawbab 🙂','Rahasia dong','Ulangi Tod gua ga paham','Mana gua tau anjir']
