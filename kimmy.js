@@ -3762,15 +3762,16 @@ if (!quoted) reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}` )
                      } else {
                        var data = await aqua.updateProfilePicture(botNumber, { url: media })
                       fs.unlinkSync(media)
-                       reply (`fe`)
+                       reply (`ok`)
                      }
                    } else {
                      reply (`Kirim/balas gambar dengan caption ${command} untuk mengubah foto profil bot`)
                    }
 break
 
+case 'setppgc':
 case 'setppgb':
-if (!isOwner) return reply (mess.owner)
+if (!isAdmins && !isOwner) return reply (mess.admin)
 if (!quoted) reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}` )               
                    if (isImage || isQuotedImage) {
                      var media = await aqua.downloadAndSaveMediaMessage(quoted)
@@ -3794,12 +3795,12 @@ if (!quoted) reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}` )
                        fs.unlinkSync(media)
                        reply (`Sukses`)
                      } else {
-                       var data = await aqua.updateProfilePicture(botNumber, { url: media })
+                       var data = await aqua.updateProfilePicture(from, { url: media })
                       fs.unlinkSync(media)
-                       reply (`fe`)
+                       reply (`ok`)
                      }
                    } else {
-                     reply (`Kirim/balas gambar dengan caption ${command} untuk mengubah foto profil bot`)
+                     reply (`Kirim/balas gambar dengan caption ${command} untuk mengubah foto profil grub`)
                    }
 break
  
