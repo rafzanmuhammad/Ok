@@ -1486,6 +1486,7 @@ aqua.sendButDoc(from, menunya, `${global.footer}`, thumbdoc, mok, options1, {quo
 break
 
 case 'play':{
+	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 if(!q) return reply ("Teksnya mana")
 let rus = await yts(q)
 if(rus.all.length == "0") return reply ("Video tidak bisa di download")
@@ -1534,58 +1535,12 @@ let aklo = [
 {"buttonId": `${prefix}ytmp3 ${res.url} `,"buttonText": {"displayText": `Audio`},"type": "RESPONSE"},
 {"buttonId": `${prefix}ytmp4 ${res.url}`,"buttonText": {"displayText": `Video`},"type": "RESPONSE"}
 ]
-aqua.sendButDoc(from, `*YOUTUBE DOWNLOADER*\n${toks}`, `${global.footer}`, fs.readFileSync('./media/thumbnaildokumen.jpg'), aklo, options2)
+aqua.sendButDoc(from, `*YOUTUBE DOWNLOADER*\n${toks}`, `${global.footer}`, fs.readFileSync('./media/thumbnaildokumen.jpg'), aklo, options2, {quoted:m})
 }
+db.users[sender].limit -= 1 // -1 limit
 break
 
 			
-case 'play': case 'ytplay': {
-if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-if (!text) return reply ( `Example : ${prefix + command} story wa anime`)
-let yts = require("yt-search")
-let search = await yts(text)
-let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
-    ngen = `
-🕵️ Title : ${anu.title}
-🥀 Ext : Search
-🍁 ID : ${anu.videoId}
-🌺 Duration : ${anu.timestamp}
-👀 Viewers : ${anu.views}
-💌 Upload At : ${anu.ago}
-🗣️ Author : ${anu.author.name}
-🧑‍💻 Channel : ${anu.author.url}
-?? Description : ${anu.description}`
-message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { upload:   aqua.waUploadToServer })
-template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-    templateMessage: {
-        hydratedTemplate: {
-            imageMessage: message.imageMessage,
-            hydratedContentText: ngen,
-            hydratedFooterText: `${global.footer}`,
-            hydratedButtons: [{
-urlButton: {
-    displayText: 'Link Video',
-    url: `${anu}`
-}
-            }, {
-quickReplyButton: {
-    displayText: 'Audio 128kbps',
-    id: `ytmp3 ${anu.url} 128kbps`
-    }
-},{quickReplyButton: {
-    displayText: 'Video 360p',
-    id: `ytmp4 ${anu.url} 360p`
-}
-            }]
-        }
-    }
-}), { userJid: m.chat, quoted: m })
-  aqua.relayMessage(m.chat, template.message, { messageId: template.key.id })
-            }
-            db.users[sender].limit -= 1 // -1 limit
-            break
-
-
 
 case 'cry':
 case 'kill':
