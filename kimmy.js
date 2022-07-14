@@ -14,7 +14,9 @@ const dbot = require('dbot-api');
 const xfar = require('xfarr-api');
 const hxz = require("hxz-api")
 const ms = require('ms')
+const yts = require("yt-search");
 const fetch = require('node-fetch')
+const ytdl = require('ytdl-core');
 const imageToBase64 = require('image-to-base64');
 const ffmpeg = require("fluent-ffmpeg");
 const { EmojiAPI } = require("emoji-api")
@@ -1483,7 +1485,58 @@ aqua.sendButDoc(from, menunya, `${global.footer}`, thumbdoc, mok, options1, {quo
  }
 break
 
+case 'play':{
+if(!q) return reply ("Teksnya mana")
+let rus = await yts(q)
+if(rus.all.length == "0") return reply ("Video tidak bisa di download")
+let data = await rus.all.filter(v => v.type == 'video')
 
+try{
+var res = data[0]
+var info = await ytdl.getInfo(res.url);
+} catch{
+var res = data[1]
+var info = await ytdl.getInfo(res.url);
+}
+
+let audio = ytdl.filterFormats(info.formats, 'audioonly');
+let format = ytdl.chooseFormat(info.formats, { quality: '18' });
+
+try{
+var thumbnya =`https://i.ytimg.com/vi/${res.videoId}/mqdefault.jpg`
+} catch(err) {
+var thumbnya =`https://i.ytimg.com/vi/${res.videoId}/sqdefault.jpg`
+}
+
+let inithumb = await getBuffer(thumbnya)
+let options2 =
+{ 
+externalAdReply: {
+title: `⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+body: `   ━━━━⬤──────────    click here to play music `,
+description: 'Now Playing...',
+mediaType: 2,
+thumbnail: inithumb,
+mediaUrl: res.url,
+sourceUrl: res.url
+}
+}
+  
+var toks =`
+🕵️ Judul : ${res.title}
+👀 Viewers : ${h2k(res.views)} Kali 
+🌺 Duration : ${res.timestamp}
+👤 Channel : ${res.author.name}`
+
+let aklo = [
+{"buttonId": `${prefix}ytmp3 ${res.url} `,"buttonText": {"displayText": `Audio`},"type": "RESPONSE"},
+{"buttonId": `${prefix}ytmp4 ${res.url}`,"buttonText": {"displayText": `Video`},"type": "RESPONSE"}
+]
+aqua.sendButDoc(from, `*YOUTUBE DOWNLOADER*\n${toks}`, `${global.footer}`, fs.readFileSync('./media/thumbnaildokumen.jpg'), aklo, options2)
+}
+break
+
+			
 case 'play': case 'ytplay': {
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 if (!text) return reply ( `Example : ${prefix + command} story wa anime`)
