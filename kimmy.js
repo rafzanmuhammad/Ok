@@ -7034,11 +7034,7 @@ crop: true,
 if (wsf) {
 await wsf.build()
 const sticBuffer = await wsf.get()
-if (sticBuffer) await aqua.sendMessage(from, { sticker: sticBuffer }, {
-quoted: m,
-mimetype: 'image/webp',
-ephemeralExpiration: 86400
-})
+if (sticBuffer) await aqua.sendMessage(from, { sticker: sticBuffer }, {mimetype: 'image/webp', ephemeralExpiration: 86400}, {quoted:m})
 }
 }
 
