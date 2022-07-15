@@ -23,8 +23,8 @@ let d = new Date
 module.exports = async(aqua, anu) => {
 try{
 	
-let type1 = true
-let type2 = false
+let type1 = false
+let type2 = true
 let type3 = false
 
 let metadata = await aqua.groupMetadata(anu.id)
@@ -81,7 +81,7 @@ var pp_grup = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-pict
 let ppUser = await getBuffer(pp_user)
 let ppGc = await getBuffer(pp_grup)
 
-let gmbr = await getBuffer(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
+let gmbr = `https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`
 
 let options1 =
 { mentionedJid: [mem],
@@ -232,7 +232,7 @@ if(Add && OneMem && NotMe){
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
-WelcomeType2(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
+WelcomeType2(from, intro, copyright, gmbr, butIn,{ "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, intro, copyright, ppUser, butIn, options1)
 }
@@ -241,7 +241,7 @@ sendButDoc(from, intro, copyright, ppUser, butIn, options1)
 if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut,{ "mentionedJid": [mem]})
 } else if(type2){
-WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut,{ "mentionedJid": [mem]})
+WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, gmbr, butOut,{ "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, outro, `Hm Kok Keluar ^_^`, ppUser, butOut, options1)
 }
