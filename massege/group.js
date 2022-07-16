@@ -24,8 +24,8 @@ module.exports = async(aqua, anu) => {
 try{
 	
 let type1 = false
-let type2 = true
-let type3 = false
+let type2 = false
+let type3 = true
 
 let metadata = await aqua.groupMetadata(anu.id)
 const from = anu.id
