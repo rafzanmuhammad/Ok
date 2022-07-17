@@ -832,11 +832,22 @@ for (let jid of user) global.db.users[jid].limit = limitUser
             scheduled: true,
             timezone: "Asia/Jakarta"
  })
-	
+cron.schedule('06 00 * * *', () => {
+aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
+cron.schedule('10 00 * * *', () => {
+aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
+cron.schedule('13 00 * * *', () => {
+aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
+cron.schedule('16 00 * * *', () => {
+aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
+cron.schedule('19 40 * * *', () => {
+aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
+cron.schedule('22 00 * * *', () => {
+aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
+cron.schedule('03 00 * * *', () => {
+aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
 
-
-
-        
+   
 // Respon Cmd with media
         if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.sticker)) {
         let hash = global.db.sticker[m.msg.fileSha256.toString('base64')]
