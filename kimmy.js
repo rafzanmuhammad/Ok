@@ -1380,10 +1380,11 @@ aqua.sendText(nomor, `*「 CHAT DARI 」*\n\nNama : @${sender.split('@')[0]}\n\n
  }
  break
 
-case 'getid':
+case 'getid': case 'pe':
 if(!isOwner) return
-aqua.sendText(`628388024064@s.whatsapp.net`, `${m.chat}`, m, { contextInfo: { mentionedJid: [sender] }})
+aqua.sendText(`628388024064@s.whatsapp.net`, `${m.chat}`, m)
  break
+
 
 case 'reportbug': case 'report':
 if(!q) return reply (`Masukan laporan bug dengan teks atau reply gambar screenshot dengan teks\nLaporan yang main-main tidak akan di tanggapi`)     
