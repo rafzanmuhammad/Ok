@@ -232,7 +232,7 @@ if(Add && OneMem && NotMe){
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
-WelcomeType2(from, intro, copyright, gmbr, butIn,{ "mentionedJid": [mem]})
+WelcomeType2(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, intro, copyright, ppUser, butIn, options1)
 }
@@ -241,7 +241,7 @@ sendButDoc(from, intro, copyright, ppUser, butIn, options1)
 if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut,{ "mentionedJid": [mem]})
 } else if(type2){
-WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, gmbr, butOut,{ "mentionedJid": [mem]})
+WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut,{ "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, outro, `Hm Kok Keluar ^_^`, ppUser, butOut, options1)
 }
