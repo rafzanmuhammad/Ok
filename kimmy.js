@@ -135,6 +135,7 @@ const pes = (m.type === 'conversation' && m.message.conversation) ? m.message.co
 const messagesC = pes.slice(0).trim()
 const text = q = args.join(" ")        
 const from = m.chat
+const grop = from.endsWith('@g.us')
 const isGroup = m.isGroup
 const isUser = user.includes(sender)
 const quoted = m.quoted ? m.quoted : m
@@ -833,19 +834,18 @@ for (let jid of user) global.db.users[jid].limit = limitUser
             timezone: "Asia/Jakarta"
  })
 cron.schedule('06 00 * * *', () => {
-aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
+aqua.sendMessage(grop, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
 cron.schedule('10 00 * * *', () => {
-aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
+aqua.sendMessage(grop, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
 cron.schedule('13 00 * * *', () => {
-aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
+aqua.sendMessage(grop, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
 cron.schedule('16 00 * * *', () => {
-aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
-cron.schedule('19 40 * * *', () => {
-aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
-cron.schedule('22 00 * * *', () => {
-aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
-cron.schedule('03 00 * * *', () => {
-aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
+aqua.sendMessage(grop, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
+cron.schedule('20 00 * * *', () => {
+aqua.sendMessage(grop, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
+cron.schedule('23 00 * * *', () => {
+aqua.sendMessage(grop, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})}, {scheduled: true, timezone: "Asia/Jakarta"})
+
 
    
 // Respon Cmd with media
