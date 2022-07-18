@@ -801,9 +801,9 @@ setTimeout( () => {
                   }
               }
 
-setTimeout (()=>{
-aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})})
-},300000)
+setTimeout ( ()=> {
+aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})
+}, 300000)
 
 
 	// Mute Chat
