@@ -7082,6 +7082,44 @@ break
 
 
 
+case 'inspect': {
+  if (!args[0]) return reply("Linknya?")
+  let linkRegex = args.join(" ")
+  let coded = linkRegex.split("https://chat.whatsapp.com/")[1]
+  if (!coded) return reply("Link Invalid")
+  ichi.query({
+  tag: "iq",
+  attrs: {
+  type: "get",
+  xmlns: "w:g2",
+  to: "@g.us"
+  },
+  content: [{ tag: "invite", attrs: { code: coded } }]
+  }).then(async(res) => { 
+  tekse = `     「 Group Link Inspector 」
+🆔 ID : ${res.content[0].attrs.id ? res.content[0].attrs.id : "undefined"}
+📛 Subject : ${res.content[0].attrs.subject ? res.content[0].attrs.subject : "undefined"}
+📛 Subject update by : ${res.content[0].attrs.s_o.split("@")[0] ? "@" + res.content[0].attrs.s_o.split("@")[0] : "undefined"}
+📛 Subject update at : ${res.content[0].attrs.s_t ? moment(res.content[0].attrs.s_t *1000).tz("Asia/Jakarta").format("DD-MM-YYYY, HH:mm:ss") : "undefined"}
+👦 Create by : ${res.content[0].attrs.creator ? "@" + res.content[0].attrs.creator.split("@")[0] : "undefined"}
+📆 Create at : ${res.content[0].attrs.creation ? moment(res.content[0].attrs.creation * 1000).tz("Asia/Jakarta").format("DD-MM-YYYY, HH:mm:ss") : "undefined"}
+👥 Total Members : ${res.content[0].attrs.size ? res.content[0].attrs.size : "undefined"} Members
+📋 Desc update by : ${res.content[0].content[0].attrs.participant ? "@" + res.content[0].content[0].attrs.participant.split("@")[0] : "undefined"}
+📋 Desc update at : ${res.content[0].content[0].attrs.t ? moment(res.content[0].content[0].attrs.t * 1000).tz("Asia/Jakarta").format("DD-MM-YYYY, HH:mm:ss") : "undefined"}
+📋 Desc id : ${res.content[0].content[0].attrs.id ? res.content[0].content[0].attrs.id : "undefined"}
+${readmore}📋 Description : ${res.content[0].content[0].content[0].content ? res.content[0].content[0].content[0].content.toString() : "No Description"}
+`
+  try {
+  pp = await aqua.profilePictureUrl(res.content[0].attrs.id + "@g.us", "image")
+  } catch {
+  pp = "https://tse2.mm.bing.net/th?id=OIP.n1C1oxOvYLLyDIavrBFoNQHaHa&pid=Api&P=0&w=153&h=153"
+  }
+  aqua.sendMessage(m.chat, { image: { url: pp }, caption: tekse, mentions: await parseMention(tekse) }, { quoted: m })
+  //ichi.sendFile(m.chat, pp, "", m, { caption: tekse, mentions: await ichi.parseMention(tekse) })
+  })
+  }
+  break
+
 
 
 
