@@ -7087,7 +7087,7 @@ case 'inspect': {
   let linkRegex = args.join(" ")
   let coded = linkRegex.split("https://chat.whatsapp.com/")[1]
   if (!coded) return reply("Link Invalid")
-  ichi.query({
+  aqua.query({
   tag: "iq",
   attrs: {
   type: "get",
