@@ -800,11 +800,11 @@ setTimeout( () => {
 					}, 0)         
                   }
               }
-
+/*
 setTimeout ( ()=> {
 aqua.sendMessage(from, {audio: {url: 'https://a.uguu.se/aTwJoZEM.mp3', mimetype: 'audio/mp4', ptt:true }})
-}, 300000)
-
+}, 3000000)
+*/
 
 	// Mute Chat
 if (db.chats[m.chat].mute && !isAdmins && !isOwner) {
