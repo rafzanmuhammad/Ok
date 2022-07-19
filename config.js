@@ -36,7 +36,7 @@ global.pengguna = 'TakimTzy'
 global.botnma = 'Aqua Bot - Md'
 
 global.grub1 = 'https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D'  //GRUB LU
-global.grub2 = 'https://chat.whatsapp.com/G78M55qPpAk03UCSBgkdN3'  //GRUB LU
+global.grub2 = '-'  //GRUB LU
 
 global.melcanz = 'melcantik'
 
