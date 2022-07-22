@@ -55,9 +55,7 @@ Selamat Datang Di ${groupName}
 » Nama: 
 » Umur:
 » Askot:
-Semoga Betah Kak ><
-
-`;
+Semoga Betah Kak ><`;
 
 const outro = `Selamat Tinggal @${memNumber}
 
