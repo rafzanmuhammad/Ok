@@ -2320,7 +2320,7 @@ aqua.sendMessage(m.chat, { image: imgny, caption: ini_txt }, { quoted: m })
 case 'por':{
  
         if (!q) return reply (`Example: ${prefix + command} jong`)
-        data = await fetchJson(`https://mogabisab.herokuapp.com/api/search/pornhub?query=${q}&apikey=BetaBotz`)
+        data = await fetchJson(`https://sewa4yeye.herokuapp.com/api/search/pornhub?query=${q}&apikey=BetaBotz`)
         dataa = data.result.results
         console.log(dataa)
         let ini_txt = '❉─────────────────────❉\n'
@@ -3748,7 +3748,7 @@ case 'orgy': case 'nekopoi': case 'manga': case 'ass': case 'ahegao':
 case 'bdsm': case 'cuckold': case 'cum': case 'femdom': case 'ero':{
 if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
 if(isStop) return ('khsus private chat bot')
-aqua.sendMessage(from, {image: {url: `https://mogabisab.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}})
+aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}})
 }
 break
 
@@ -3771,7 +3771,7 @@ case 'chiho': case 'tejina': case 'yumeko': case 'shinomiya': case 'pentol':
 case 'toukachan': case 'akira': case 'itori': case 'kurumi':
 case 'sagiri': case 'eba': case 'deidara': case 'itachi': case 'madara':{
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-aqua.sendMessage(from, {image: {url: `https://mogabisab.herokuapp.com/api/wallpaper/${command}?apikey=${betaapi}`}})
+aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/wallpaper/${command}?apikey=${betaapi}`}})
 }
 db.users[sender].limit -= 1 // -1 limit
 break
@@ -7113,8 +7113,8 @@ case 'inspect': {
 📋 Desc update by : ${res.content[0].content[0].attrs.participant ? "@" + res.content[0].content[0].attrs.participant.split("@")[0] : "undefined"}
 📋 Desc update at : ${res.content[0].content[0].attrs.t ? moment(res.content[0].content[0].attrs.t * 1000).tz("Asia/Jakarta").format("DD-MM-YYYY, HH:mm:ss") : "undefined"}
 📋 Desc id : ${res.content[0].content[0].attrs.id ? res.content[0].content[0].attrs.id : "undefined"}
-
-📋 Description : ${res.content[0].content[0].content[0].content ? res.content[0].content[0].content[0].content.toString() : "No Description"}
+📋 Description : 
+${res.content[0].content[0].content[0].content ? res.content[0].content[0].content[0].content.toString() : "No Description"}
 `
   try {
   pp = await aqua.profilePictureUrl(res.content[0].attrs.id + "@g.us", "image")
@@ -7134,6 +7134,22 @@ case 'inspect': {
 
 
 default:
+
+
+
+//if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply ( 'Link Invalid!'){
+if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
+reply (mess.wait)
+calip.downloader.tiktok(args[0]).then(res => {
+console.log(res)
+console.log('[ T I K T O K ] downloader')
+
+aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
+
+• Autor: ${res.author}
+${res.title}`}, { quoted: m })          
+})}
+
 
 if (isImage) {
 let WSF = require('wa-sticker-formatter')
