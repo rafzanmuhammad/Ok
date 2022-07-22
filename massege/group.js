@@ -230,8 +230,7 @@ WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]
 } else if(type2){
 WelcomeType2(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type3){
-sendButDoc(from, intro, `Descripsi Grup: 
-${desc}`, ppUser, butIn, options1)
+sendButDoc(from, intro, `Rules:/n${desc}`, ppUser, butIn, options1)
 }
 
 } else if(Remove && NotMe){      
