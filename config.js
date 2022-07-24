@@ -50,7 +50,7 @@ global.ganti2 = 'Github'
 global.accestken = 'Takimtod'
 global.ownernma = 'TakimTzy'
 global.packname = '\n            Created By'
-global.author = 'Aqua Bot - Md\ntakimtod\nI am Newbie, Dont Bully Me ><'
+global.author = 'Aqua Bot - Md\ntakimtod\nBot Wa Auto Sticker'
 
 global.sessionName = 'takim'
 
