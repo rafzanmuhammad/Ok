@@ -3518,8 +3518,9 @@ let igtv = budy.includes("https://www.instagram.com/tv/")
 let igstory = budy.includes("https://instagram.com/stories/")
 
 if(igreel){
-let results = await instagramdl(args[0])
-for (const { url } of results) await aqua.sendMedia(from, url, m, {caption: "*INSTAGRAM*"})
+let results = await instagramdl(q)
+for (const { url } of results) await aqua.sendMedia(from, url, m)
+console.log(results)
 /*
 Download.insta_reel(q).then(async (data) => {
 aqua.sendMessage(from, {caption: '*INSTAGRAM*', video: {url: data.url} }, {quoted: m})
