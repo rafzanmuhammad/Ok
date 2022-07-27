@@ -7143,7 +7143,7 @@ default:
 //if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply ( 'Link Invalid!'){
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
 reply (mess.wait)
-calip.downloader.tiktok(budy]).then(res => {
+calip.downloader.tiktok(budy).then(res => {
 console.log(res)
 aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
 
