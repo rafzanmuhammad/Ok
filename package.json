@@ -73,6 +73,7 @@
     "remove.bg": "^1.3.0",
     "request": "^2.88.2",
     "scrape-primbon": "^1.1.0",
+    "string-similarity": "^4.0.4",
     "tinyurl": "^1.1.7",
     "util": "^0.12.4",
     "wa-sticker-formatter": "^4.3.2",
