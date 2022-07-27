@@ -6765,7 +6765,7 @@ aqua.sendContact(m.chat, global.creator, m)
     
 
 case 'tes':
-reply(`On bang`)
+reply(`Bot Aktif Kakk`)
 break
 
 
@@ -6790,7 +6790,7 @@ ANDA DAPAT MENYEWA BOT INI KEDALAM GRUB SILAHKAN CHAT NO. OWNER DENGAN KETIK .ow
 
 case 'limit':
 case 'ceklimit': 
-reply(` Limit Kamu Saat ini : *${isPremium ? 'Unlimited' : `${global.db.users[sender].limit}`}*`)
+reply(` Limit Kamu Saat ini *${isPremium ? 'Unlimited' : `${global.db.users[sender].limit}`}*`)
 break
            
 
@@ -7142,7 +7142,6 @@ default:
 
 //if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply ( 'Link Invalid!'){
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
-reply (mess.wait)
 calip.downloader.tiktok(budy).then(res => {
 console.log(res)
 aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
