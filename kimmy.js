@@ -3664,7 +3664,7 @@ case 'bugpc': {
 if (!isOwner) return reply ('khsus owner')
 if (args.length < 1) return reply(`*Syntax Error!*\n\nUse : ${command} number|amount spam|timer\nExample : ${command} 62888|1|10s\n\n\ns = Second/Detik`)
 try {
-    ppuser = await aqua.profilePictureUrl(sender, 'image')
+    ppuser = await aqua.profilePictureUrl(m.quoted.sender, 'image')
 } catch (err) {
     ppuser = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
 }
