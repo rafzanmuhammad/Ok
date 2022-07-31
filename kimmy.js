@@ -2556,10 +2556,9 @@ if (isQuotedImage || isImage) {
 					reply ('wait')
 					await recognize(media, {lang: 'eng+ind', oem: 1, psm: 3})
 					.then(teks => {
-					reply (teks.trim())
-					fs.unlinkSync(media)
-					})
-					.catch(err => {
+                    console.log(teks)
+                     reply (teks.trim())
+					fs.unlinkSync(media)}).catch(err => {
 					reply (`${err}`)
 					fs.unlinkSync(media)
 					})
