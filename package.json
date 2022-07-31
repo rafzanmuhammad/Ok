@@ -52,6 +52,7 @@
     "human-readable": "^0.2.1",
     "hxz-api": "^1.0.1",
     "image-to-base64": "^2.2.0",
+    "javascript-obfuscator": "^4.0.0",
     "jimp": "^0.16.1",
     "jsdom": "^16.4.0",
     "link-preview-js": "^2.1.15",
@@ -83,9 +84,6 @@
     "yt-search": "^2.10.2",
     "ytdl-core": "^4.11.0"
   },
- "devDependencies": {
-  "javascript-obfuscator": "^4.0.0"
- },
   "directories": {
     "lib": "lib",
     "src": "src"
