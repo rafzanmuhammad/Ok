@@ -3403,7 +3403,7 @@ aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TI
 ${res.title}`}, { quoted: m })          
 })
 } catch (err){
-return reply (`${err}`)
+return reply ('Link Erorr, Video Tidak di Temukan!!')
 }
 db.users[sender].limit -= 1 // -1 limit
 break
@@ -5310,6 +5310,7 @@ break
 
 
 case 'smeme': case 'stickermeme': case 'stickmeme': {
+	try{
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 db.users[sender].limit -= 1 // -1 limit
 if (!text) return reply(`Kirim/Reply Foto Dengan Caption ${prefix + command} *teks*`)
@@ -5323,6 +5324,9 @@ mem = await TelegraPh(mee)
 meme = `https://api.memegen.link/images/custom/-/${arg}.png?background=${mem}`
 memek = await aqua.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: global.author })
 await fs.unlinkSync(memek)
+} catch (err){
+return reply ('Erorr, Jangan Memakai Emoji atau Tanda Baca')
+}
 }
 break
 
@@ -7318,7 +7322,7 @@ aqua.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 
       
 } catch (err) {
-m.reply(util.format(err))
+reply(util.format(err))
 }
 }
 
