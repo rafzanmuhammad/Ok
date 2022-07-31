@@ -34,7 +34,6 @@ const matematik = require('mathjs')
 const request = require('request');
 const jimp = require("jimp");
 const UglifyJS = require("uglify-js");
-const JavaScriptObfuscator = require('javascript-obfuscator');
 const moment = require('moment-timezone')
 const { JSDOM } = require('jsdom')
 const maker = require('mumaker')
@@ -2552,22 +2551,26 @@ reply ("Reply Imagenya")
 }
 break
 
-case 'obfus':{
-if(q){
-//await setReply("Loading...")
-let obfuscationResult = JavaScriptObfuscator.obfuscate(q);
-reply(obfuscationResult.getObfuscatedCode());
-} else if(isQuotedTeks){
-//await setReply("Loading...")
-let obfuscationResult = JavaScriptObfuscator.obfuscate(m.quoted.text);
-reply(obfuscationResult.getObfuscatedCode());
-} else reply ("Masukan code java script")
-}
-break
+case 'obsuf': case 'deobfus':{
+
+  function beautifyJavaScript (source) {
+    const beautify = require('js-beautify').js_beautify
+    return beautify(source, {indent_size: 2})
+   }
+   
+  if(q){
+    let teks = await beautifyJavaScript(q)
+    reply (teks)
+  } else if(isQuotedTeks){
+    let teks = await beautifyJavaScript(m.quoted.text)
+    reply (teks)
+  } else reply ("Masukan code java script")
+  }
+  break
 
 case 'packer':{
 if(q){
-let esult  = await UglifyJS.minify(q)
+let result  = await UglifyJS.minify(q)
  reply(result.code)
 } else if(isQuotedTeks){
   console.log(isQuotedTeks)
@@ -3946,7 +3949,7 @@ case 'kapankah':
 
 case 'apakah':
 apakah = body.slice(1)
-					const apa =['iya dong jelas itu','YNTKTS','Tidak lah','Oh tentu saja tidak','Ya mana saya tau kok tanya saya','Rahasia dong','ga usah di tanya emang udah kaya gitu dia','Au ah mending mandi','Bentar aku lagi berak','Knpa emang kamu suka sama dia yak 🙀','Haha mna mungkin 😎']
+					const apa =['iya dong jelas itu','YNTKTS','Tidak lah','Oh tentu saja tidak','Ya mana saya tau kok tanya saya','Rahasia dong','ga usah di tanya emang udah kaya gitu dia','Au ah mending mandi','Bentar aku lagi berak','Knpa emang kamu suka sama dia yak ??','Haha mna mungkin 😎']
 					const kah = apa[Math.floor(Math.random() * apa.length)]
 					aqua.sendMessage(m.chat, { text: kah }, { quoted: m })
 					break
