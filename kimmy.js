@@ -33,6 +33,8 @@ const cheerio = require('cheerio')
 const matematik = require('mathjs')
 const request = require('request');
 const jimp = require("jimp");
+const UglifyJS = require("uglify-js");
+const JavaScriptObfuscator = require('javascript-obfuscator');
 const moment = require('moment-timezone')
 const { JSDOM } = require('jsdom')
 const maker = require('mumaker')
@@ -2550,22 +2552,31 @@ reply ("Reply Imagenya")
 }
 break
 
-case 'ocr': 
-if (isQuotedImage || isImage) {
-					let media = await aqua.downloadAndSaveMediaMessage(quoted)
-					reply ('wait')
-					await recognize(media, {lang: 'eng+ind', oem: 1, psm: 3})
-					.then(teks => {
-                    console.log(teks)
-                     reply (teks.trim())
-					fs.unlinkSync(media)}).catch(err => {
-					reply (`${err}`)
-					fs.unlinkSync(media)
-					})
-					} else {
-					reply (`kirim gambar bertulisan english dengan caption ${prefix + command}`)
-					}
-					break
+case 'obfus':{
+if(q){
+//await setReply("Loading...")
+let obfuscationResult = JavaScriptObfuscator.obfuscate(q);
+reply(obfuscationResult.getObfuscatedCode());
+} else if(isQuotedTeks){
+//await setReply("Loading...")
+let obfuscationResult = JavaScriptObfuscator.obfuscate(m.quoted.text);
+reply(obfuscationResult.getObfuscatedCode());
+} else reply ("Masukan code java script")
+}
+break
+
+case 'packer':{
+if(q){
+let esult  = await UglifyJS.minify(q)
+ reply(result.code)
+} else if(isQuotedTeks){
+  console.log(isQuotedTeks)
+let result  = await UglifyJS.minify(m.quoted.text)
+ reply(result.code)
+} else reply ("Masukan code java script atau reply file.js")
+}
+break
+
 
 case 'brainly':{
  const { Brainly } = require("brainly-scraper-v2");
