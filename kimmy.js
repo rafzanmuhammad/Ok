@@ -2528,6 +2528,26 @@ sendStickerUrl(from, wifegerakx)
 db.users[sender].limit -= 1 // -1 limit
 break   
 
+case 'resize':
+if (isQuotedImage || isImage) {
+if(!q) return reply (`Masukan ukuran panjangxlebar, contoh ${prefix+command} 300x300`)
+reply (mess.wait)
+let panjang = q.split('x')[0] 
+let lebar = q.split('x')[1] 
+let media = await aqua.downloadAndSaveMediaMessage(quoted)
+let ran = getRandom('.jpeg')
+exec(`ffmpeg -i ${media} -vf scale=${panjang}:${lebar}  ${ran}`, async (err) => {
+fs.unlinkSync(media)
+if (err) return reply (`Err: ${err}`)
+let buffer453 = fs.readFileSync(ran)
+await aqua.sendMessage(from, {mimetype: 'image/jpeg', image: buffer453, caption: `Nih ${q}`}, { quoted: m })
+fs.unlinkSync(ran)
+})
+} else {
+reply ("Reply Imagenya")
+}
+break
+
 
 case 'brainly':{
  const { Brainly } = require("brainly-scraper-v2");
