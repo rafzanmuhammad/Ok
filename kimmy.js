@@ -453,8 +453,8 @@ try {
 }
 ppumser = await getBuffer(ppuser)
 if(replyType === "web"){
-//aqua.sendMessage(from, { text: teks, contextInfo: { externalAdReply: { title: `${pushname}`, body: `${ucapanWaktu}`, thumbnailUrl: '', thumbnail: thumbnya, mediaType:"2", previewType: "VIDEO", mediaUrl: "https://youtu.be/nLEYHaaB6x0"}}}, {quoted:m})
-aqua.sendMessageV2(from, { text: teks, contextInfo: { externalAdReply:{ title: `${pushname}`,body: `${ucapanWaktu}, previewType:"PHOTO",thumbnail: thumbnya, sourceUrl:`https://youtube.com/watch?v=TOmXzkWuCWk`}}},{quoted: })
+aqua.sendMessage(from, { text: teks, contextInfo: { externalAdReply: { title: `${pushname}`, body: `${ucapanWaktu}`, previewType:"PHOTO", thumbnail: ppumser, mediaUrl: `${global.grub1}`}}}, {quoted:m})
+//aqua.sendMessageV2(from, { text: teks, contextInfo: { externalAdReply:{ title: `${pushname}`,body: `${ucapanWaktu}, previewType:"PHOTO",thumbnail: thumbnya, sourceUrl:`https://youtube.com/watch?v=TOmXzkWuCWk`}}},{quoted: })
 
 //aqua.sendMessage(m.chat, { text: teks, contextInfo:{ "externalAdReply": { "title": `Hallo ${pushname} ${ucapanWaktu}`, "body": `Jangan Lupa Sewa Bot :v`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": ppumser,  "sourceUrl": `${global.web}`}}}, { quoted: m})
 } else if(replyType === "web2"){
