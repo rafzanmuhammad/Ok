@@ -49,7 +49,7 @@ const ameApi = new ameClient("1f486b04b157f12adf0b1fe0bd83c92a28ce768683871d2a39
 const bitly = new BitlyClient('7d737131e678fc366699edead8bca146e69f6c78', {});
 const forward = { forwardingScore: 10000000, isForwarded: true, sendEphemeral: true}
 const { youtubeSearch, mediafiredl,  lyricsv2,  lyrics, facebookdl, facebookdlv2, tiktokdl, tiktokdlv2, twitterdl, twitterdlv2, getZodiac, liputan6, googleIt, wallpaperv2,  googleImage,  jadwalTVNow,  gempa,  stickerTelegram, stickerLine, latinToAksara, aksaraToLatin, asmaulhusna, asmaulhusnajson, alquran, jadwalsholat, listJadwalSholat, gempaNow, instagramdl } = require('@bochilteam/scraper')
-const stringSimilarity = require("string-similarity");
+
 
 //=======================[ LIB ]=======================//
 const { pShadow,pRomantic,pSmoke,pBurnPapper,pNaruto,pLoveMsg,pMsgGrass,pGlitch,pDoubleHeart,pCoffeCup,pLoveText,pButterfly } = require('./lib/photooxy')
@@ -65,7 +65,6 @@ const { tiktokDownloader, instaDownloader, zippyDownloader, mediafireDownloader 
 const { h2k, FileSize, smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, pickRandom, short } = require('./lib/myfunc')
 const { Nothing,Failed,Succes,addAutoClear,autoClearChat,checkAutoClear, checkDataName, createDataId, getDataId, addDataId, removeDataId, checkDataId, checkClaim, getClaim, expiredClaim, addUserClaim, getHit, cmdAdd, expiredCmd } = require("./lib/db");
 const { virtex } = require('./lib/virtex.js')
-const { Nothing, Succes } = require("./lib/totalcmd");
 
 //=======================[ SETTINGS ]=======================//
 Qoted = `${global.qoted}`
@@ -87,8 +86,6 @@ const audionye = JSON.parse(fs.readFileSync('./database/vn.json'))
 const setiker = JSON.parse(fs.readFileSync('./database/stick.json'))
 const user = JSON.parse(fs.readFileSync('./database/user.json'))
 const totaluser = `${JSON.parse(fs.readFileSync('./database/user.json')).length.toLocaleString()}`
-const dash = JSON.parse(fs.readFileSync('./database/dashboard.json'))
-const allcommand = JSON.parse(fs.readFileSync('./database/allcommand.json'));
 
 
 global.db = JSON.parse(fs.readFileSync('./database/database.json'))
@@ -707,15 +704,7 @@ if (sender.startsWith('6282238671268')) {
 return
 } 
  
-const toFirstCase = (str) =>{
- let first = str.split(" ")              // Memenggal nama menggunakan spasi
-.map(nama => 
-nama.charAt(0).toUpperCase() + 
-nama.slice(1))                 // Ganti huruf besar kata-kata pertama
-.join(" ");
 
-return first
- }
 
 //AUTO RESPON VN
 for (let anju of audionye){
@@ -1166,10 +1155,7 @@ let mok = [{"buttonId": `${prefix}infobot`,"buttonText": {"displayText": `🐥 I
 
 
 let copyy = [{ index: 1, urlButton: { displayText: `Salin Link`, url: `${global.grub1}`}}]
- 
- 
-if(isCmd) Succes(toFirstCase(command), dash, allcommand)
-
+   
 switch(command) {
         	
 //=======================[ CASE CASE ]=======================//       
@@ -7152,11 +7138,7 @@ ${res.content[0].content[0].content[0].content ? res.content[0].content[0].conte
 
 default:
 
-if (isCmd) {
-await Nothing(toFirstCase(command), dash, allcommand)
-let matches = await stringSimilarity.findBestMatch(toFirstCase(command), allcommand)
-reply (`Perintah *${prefix+command}* tidak ditemukan\nMungkin yang kamu maksud adalah *${prefix+matches.bestMatch.target.toLowerCase()}*`)
-} 
+
 
 //if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply ( 'Link Invalid!'){
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
@@ -7189,10 +7171,11 @@ if (sticBuffer) await aqua.sendMessage(from, { sticker: sticBuffer }, {mimetype:
 }
 }
 
+/*
 if ((budy.startsWith('https://chat') || budy.startsWith('Buka tautan ini') || budy.startsWith('Undangan untuk')) && !isGroup) {
 reply (`*Untuk Memasukan Bot Ke Group*\n*Kamu Harus Sewa Bot Telebih Dahulu*\n_Silahkan Chat Owner_`)
 }
-         
+ */        
             
 if (budy.startsWith('=>')) {
     if (!isOwner) return reply(mess.owner)
