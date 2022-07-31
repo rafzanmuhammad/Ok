@@ -65,6 +65,8 @@ const { tiktokDownloader, instaDownloader, zippyDownloader, mediafireDownloader 
 const { h2k, FileSize, smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, pickRandom, short } = require('./lib/myfunc')
 const { Nothing,Failed,Succes,addAutoClear,autoClearChat,checkAutoClear, checkDataName, createDataId, getDataId, addDataId, removeDataId, checkDataId, checkClaim, getClaim, expiredClaim, addUserClaim, getHit, cmdAdd, expiredCmd } = require("./lib/db");
 const { virtex } = require('./lib/virtex.js')
+const { recognize } = require('./lib/ocr')
+
 
 //=======================[ SETTINGS ]=======================//
 Qoted = `${global.qoted}`
@@ -2548,6 +2550,23 @@ reply ("Reply Imagenya")
 }
 break
 
+case 'ocr': 
+if (isQuotedImage || isImage) {
+					let media = await aqua.downloadAndSaveMediaMessage(quoted)
+					reply ('wait')
+					await recognize(media, {lang: 'eng+ind', oem: 1, psm: 3})
+					.then(teks => {
+					reply (teks.trim())
+					fs.unlinkSync(media)
+					})
+					.catch(err => {
+					reply (`${err}`)
+					fs.unlinkSync(media)
+					})
+					} else {
+					reply (`kirim gambar bertulisan english dengan caption ${prefix + command}`)
+					}
+					break
 
 case 'brainly':{
  const { Brainly } = require("brainly-scraper-v2");
