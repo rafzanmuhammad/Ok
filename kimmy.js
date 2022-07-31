@@ -5585,8 +5585,7 @@ description: 'Now Playing...',
 mediaType: 2,
 thumbnail: await (await fetch('https://telegra.ph/file/5ad51566ce5ae7ac710b7.jpg')).buffer(),
 mediaUrl: `${q}`
-}
-{ audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
+}, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }}}, { quoted: m })
             }
             break
             
