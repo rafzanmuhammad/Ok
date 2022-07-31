@@ -33,7 +33,6 @@ const cheerio = require('cheerio')
 const matematik = require('mathjs')
 const request = require('request');
 const jimp = require("jimp");
-const UglifyJS = require("uglify-js");
 const moment = require('moment-timezone')
 const { JSDOM } = require('jsdom')
 const maker = require('mumaker')
@@ -2166,7 +2165,7 @@ if (!isAdmins && !isOwner) return reply (mess.admin)
 
 
 case 'tagme':  {  
-      mentions(`@${sender.split("@")[0]}`, [sender], true)
+       aqua.sendMessage(from, { text: `@${sender.split("@")[0]}`, mentions: [sender] })
   }
     break
 
@@ -2568,7 +2567,9 @@ case 'obsuf': case 'deobfus':{
   }
   break
 
+
 case 'packer':{
+var UglifyJS = require("uglify-js");
 if(q){
 let result  = await UglifyJS.minify(q)
  reply(result.code)
@@ -3949,7 +3950,7 @@ case 'kapankah':
 
 case 'apakah':
 apakah = body.slice(1)
-					const apa =['iya dong jelas itu','YNTKTS','Tidak lah','Oh tentu saja tidak','Ya mana saya tau kok tanya saya','Rahasia dong','ga usah di tanya emang udah kaya gitu dia','Au ah mending mandi','Bentar aku lagi berak','Knpa emang kamu suka sama dia yak ??','Haha mna mungkin 😎']
+					const apa =['iya dong jelas itu','YNTKTS','Tidak lah','Oh tentu saja tidak','Ya mana saya tau kok tanya saya','Rahasia dong','ga usah di tanya emang udah kaya gitu dia','Au ah mending mandi','Bentar aku lagi berak','Knpa emang kamu suka sama dia yak 🙀','Haha mna mungkin 😎']
 					const kah = apa[Math.floor(Math.random() * apa.length)]
 					aqua.sendMessage(m.chat, { text: kah }, { quoted: m })
 					break
