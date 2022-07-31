@@ -5577,8 +5577,16 @@ if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFM
 let quality = args[1] ? args[1] : '128kbps'
 let media = await yta(text, quality)
 if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
-aqua.sendImage(m.chat, media.thumb, `➟ Title : ${media.title}\n➟ File Size : ${media.filesizeF}\n➟ Url : ${isUrl(text)}\n➟ Ext : MP3\n➟ Resolusi : ${args[1] || '128kbps'}`, m)
-aqua.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
+aqua.sendMessage(m.chat, {contextInfo: {
+externalAdReply: {
+title: 'play music', 
+body: 'Now Playing...',
+description: 'Now Playing...',
+mediaType: 2,
+thumbnail: await (await fetch('https://telegra.ph/file/5ad51566ce5ae7ac710b7.jpg')).buffer(),
+mediaUrl: `${q}`
+}
+{ audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
             
