@@ -89,6 +89,8 @@ const setiker = JSON.parse(fs.readFileSync('./database/stick.json'))
 const user = JSON.parse(fs.readFileSync('./database/user.json'))
 const totaluser = `${JSON.parse(fs.readFileSync('./database/user.json')).length.toLocaleString()}`
 
+const dash = JSON.parse(fs.readFileSync('./database/dashboard.json'))
+const allcommand = JSON.parse(fs.readFileSync('./database/allcommand.json'));
 
 global.db = JSON.parse(fs.readFileSync('./database/database.json'))
 if (global.db) global.db = {
