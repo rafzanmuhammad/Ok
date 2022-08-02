@@ -63,7 +63,7 @@ const translate = require('./lib/translate')
 const {TelegraPh} = require('./lib/uploader')
 const { tiktokDownloader, instaDownloader, zippyDownloader, mediafireDownloader } = require('./lib/downloader')
 const { h2k, FileSize, smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, pickRandom, short } = require('./lib/myfunc')
-const { Nothing,Failed,Succes,addAutoClear,autoClearChat,checkAutoClear, checkDataName, createDataId, getDataId, addDataId, removeDataId, checkDataId, checkClaim, getClaim, expiredClaim, addUserClaim, getHit, cmdAdd, expiredCmd } = require("./lib/db");
+const { Nothing, Succes } = require("./lib/totalcmd");
 const { virtex } = require('./lib/virtex.js')
 const { recognize } = require('./lib/ocr')
 
@@ -117,9 +117,15 @@ let vote = db.others.vote = []
 module.exports = aqua = async (aqua, m, chatUpdate, store, baterai) => {
 try {
 let { menu, menu1, menu2, menu3, menu4, menu5, menu6, menu7, menu8, menu9, menu10, menu11, menu12, menu13 , menu14, menu15, menu16, menu17, menu18, menu19, menu20, menu21, menu22, menu23, menu24, menu25, menu26, menu27, menu28 } = require('./massege/help')
+
 var body = (m.mtype === 'conversation' && m.message.conversation) ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
+//const body = (m.type === 'conversation') ? m.message.conversation : (m.type == 'imageMessage') ? m.message.imageMessage.caption : (m.type == 'videoMessage') ? m.message.videoMessage.caption : (m.type == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.type == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.type == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.type == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.type === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId ) : ''
+
 var budy = (typeof m.text == 'string' ? m.text : '')
-var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
+//const budy = (m.type === 'conversation') ? m.message.conversation : (m.type === 'extendedTextMessage') ? m.message.extendedTextMessage.text : ''
+
+//var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
+var prefix = /^[#+,.=''!¦|/\\©^]/.test(body) ? body.match(/^[#+,.=''!¦|/\\©^]/gi) : '.'
 
 const { isBaileys } = m
 const sender = m.sender
@@ -708,6 +714,16 @@ return
 } 
  
 
+const toFirstCase = (str) =>{
+ let first = str.split(" ")              // Memenggal nama menggunakan spasi
+.map(nama => 
+nama.charAt(0).toUpperCase() + 
+nama.slice(1))                 // Ganti huruf besar kata-kata pertama
+.join(" ");
+
+return first
+ }
+
 
 //AUTO RESPON VN
 for (let anju of audionye){
@@ -1158,7 +1174,9 @@ let mok = [{"buttonId": `${prefix}infobot`,"buttonText": {"displayText": `🐥 I
 
 
 let copyy = [{ index: 1, urlButton: { displayText: `Salin Link`, url: `${global.grub1}`}}]
-   
+  
+if(isCmd) Succes(toFirstCase(command), dash, allcommand)
+
 switch(command) {
         	
 //=======================[ CASE CASE ]=======================//       
@@ -7205,9 +7223,14 @@ ${res.content[0].content[0].content[0].content ? res.content[0].content[0].conte
 
 default:
 
+if (isCmd) {
+await Nothing(toFirstCase(command), dash, allcommand)
+ let matches = await stringSimilarity.findBestMatch(toFirstCase(command), allcommand)
+reply (`Command *${prefix+command}* tidak ditemukan\nMungkin yang kamu maksud adalah *${prefix+matches.bestMatch.target.toLowerCase()}*`)
+} 
 
 
-//if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply ( 'Link Invalid!'){
+//Auto Download Video Tiktok
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
 calip.downloader.tiktok(budy).then(res => {
 console.log(res)
@@ -7218,6 +7241,7 @@ ${res.title}`}, { quoted: m })
 })}
 
 
+//Auto Sticker
 if (isImage) {
 let WSF = require('wa-sticker-formatter')
 let wsf = false
