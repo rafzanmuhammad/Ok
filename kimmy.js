@@ -49,7 +49,7 @@ const ameApi = new ameClient("1f486b04b157f12adf0b1fe0bd83c92a28ce768683871d2a39
 const bitly = new BitlyClient('7d737131e678fc366699edead8bca146e69f6c78', {});
 const forward = { forwardingScore: 10000000, isForwarded: true, sendEphemeral: true}
 const { youtubeSearch, mediafiredl,  lyricsv2,  lyrics, facebookdl, facebookdlv2, tiktokdl, tiktokdlv2, twitterdl, twitterdlv2, getZodiac, liputan6, googleIt, wallpaperv2,  googleImage,  jadwalTVNow,  gempa,  stickerTelegram, stickerLine, latinToAksara, aksaraToLatin, asmaulhusna, asmaulhusnajson, alquran, jadwalsholat, listJadwalSholat, gempaNow, instagramdl } = require('@bochilteam/scraper')
-
+const stringSimilarity = require("string-similarity");
 
 //=======================[ LIB ]=======================//
 const { pShadow,pRomantic,pSmoke,pBurnPapper,pNaruto,pLoveMsg,pMsgGrass,pGlitch,pDoubleHeart,pCoffeCup,pLoveText,pButterfly } = require('./lib/photooxy')
