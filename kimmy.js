@@ -89,8 +89,10 @@ const setiker = JSON.parse(fs.readFileSync('./database/stick.json'))
 const user = JSON.parse(fs.readFileSync('./database/user.json'))
 const totaluser = `${JSON.parse(fs.readFileSync('./database/user.json')).length.toLocaleString()}`
 
+/*
 const dash = JSON.parse(fs.readFileSync('./database/dashboard.json'))
 const allcommand = JSON.parse(fs.readFileSync('./database/allcommand.json'));
+*/
 
 global.db = JSON.parse(fs.readFileSync('./database/database.json'))
 if (global.db) global.db = {
@@ -1177,7 +1179,9 @@ let mok = [{"buttonId": `${prefix}infobot`,"buttonText": {"displayText": `🐥 I
 
 let copyy = [{ index: 1, urlButton: { displayText: `Salin Link`, url: `${global.grub1}`}}]
   
+  /*
 if(isCmd) Succes(toFirstCase(command), dash, allcommand)
+*/
 
 switch(command) {
         	
@@ -7224,12 +7228,13 @@ ${res.content[0].content[0].content[0].content ? res.content[0].content[0].conte
 
 
 default:
-
+/*
 if (isCmd) {
 await Nothing(toFirstCase(command), dash, allcommand)
  let matches = await stringSimilarity.findBestMatch(toFirstCase(command), allcommand)
 reply (`Command *${prefix+command}* tidak ditemukan\nMungkin yang kamu maksud adalah *${prefix+matches.bestMatch.target.toLowerCase()}*`)
 } 
+*/
 
 
 //Auto Download Video Tiktok
