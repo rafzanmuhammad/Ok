@@ -153,7 +153,12 @@ const isUser = user.includes(sender)
 const quoted = m.quoted ? m.quoted : m
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
-	
+const numberQuery = q.replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
+const mentionByReply = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.participant || "" : ""
+const mentionByTag = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.mentionedJid : []
+const Input = mentionByTag[0]? mentionByTag[0] : mentionByReply ? mentionByReply : q? numberQuery : false
+
+
 	
 //=======================[ GROUPS ]=======================//        
 // const groupMetadata = isGroup ? await aqua.groupMetadata(m.chat).catch(e => {}) : ''
@@ -5008,7 +5013,16 @@ if (args[0] === 'enable') {
 }
             }
             break
-            
+  
+case  'dell':
+if(!mentionByReply) return reply ("Reply pesan")
+if (mentionByReply == botNumber) {
+aqua.sendMessage(from, { delete: { remoteJid: from, fromMe: true, id: m.quoted.id, participant: mentionByReply } })
+} else if(mentionByReply !== botNumber && isBotAdmins){
+aqua.sendMessage(from, { delete: { remoteJid: from, fromMe: false, id: m.quoted.id, participant: mentionByReply } })
+} 
+break
+          
 
 case 'delete': case 'del': {
 if (!m.quoted) throw false
