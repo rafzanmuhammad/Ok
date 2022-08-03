@@ -5015,6 +5015,7 @@ if (args[0] === 'enable') {
             break
   
 case  'dell':
+if (!isAdmins && !isOwner) return reply(`Khusus Admin`)
 if(!isQuotedReply) return reply ("Reply pesan")
 if (isQuotedReply == botNumber) {
 aqua.sendMessage(from, { delete: { remoteJid: from, fromMe: true, id: m.quoted.id, participant: isQuotedReply } })
