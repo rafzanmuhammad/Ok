@@ -2961,10 +2961,18 @@ db.users[sender].limit -= 1 // -1 limit
 break
 
 case 'quotes':
-if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 var data = await fetchJson(`https://megayaa.herokuapp.com/api/randomquote`)
-reply (data.result.quotes+'\n\n-- '+data.result.author)
-db.users[sender].limit -= 1 // -1 limit
+ reply (data.result.quotes+'\n\n-- '+data.result.author)
+break
+
+case 'qquotes':
+var data = await fetchJson(`https://megayaa.herokuapp.com/api/randomquote`)
+ let buttons = [
+        { buttonId: `${command}`, buttonText: { displayText: 'Next' }, type: 1 }
+    ]
+ aqua.sendButtonText(m.chat, buttons, data.result.quotes, '>'+data.result.author, m)
+
+//reply (data.result.quotes+'\n\n-- '+data.result.author)
 break
 
 case 'lirik':{
