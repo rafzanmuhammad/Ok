@@ -43,6 +43,7 @@
     "emoji-api": "^2.0.1",
     "fake-useragent": "^1.0.1",
     "fb-downloads": "^1.0.7",
+    "fb-video-downloader": "^1.0.3",
     "figlet": "^1.5.2",
     "file-type": "^16.5.3",
     "fs": "0.0.1-security",
