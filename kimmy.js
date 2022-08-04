@@ -2960,17 +2960,14 @@ reply ( 'Format salah, hanya 0-9 dan Simbol -, +, *, /, ×, ÷, π, e, (, ) yang
 db.users[sender].limit -= 1 // -1 limit
 break
 
-case 'quotes':
-var data = await fetchJson(`https://megayaa.herokuapp.com/api/randomquote`)
- reply (data.result.quotes+'\n\n-- '+data.result.author)
-break
 
-case 'qquotes':
+
+case 'quotes':
 var data = await fetchJson(`https://megayaa.herokuapp.com/api/randomquote`)
  let buttons = [
         { buttonId: `${command}`, buttonText: { displayText: 'Next' }, type: 1 }
     ]
- aqua.sendButtonText(m.chat, buttons, data.result.quotes, '>'+data.result.author, m)
+ aqua.sendButtonText(m.chat, buttons, data.result.quotes, '> '+data.result.author, m)
 
 //reply (data.result.quotes+'\n\n-- '+data.result.author)
 break
