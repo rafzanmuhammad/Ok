@@ -3419,7 +3419,6 @@ db.users[sender].limit -= 1 // -1 limit
 break
 
 
-
 case 'tt': case 'tiktok': case 'ttnowm': case 'tiktoknowm':    
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis 
 try{   
@@ -3870,7 +3869,12 @@ aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/wallpa
 db.users[sender].limit -= 1 // -1 limit
 break
 
-
+case 'elaina':{
+if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
+aqua.sendMessage(from, {image: {url: 'https://sewa4yeye.herokuapp.com/api/wallpaper/elaina?apikey=BetaBotz'}}, {quoted:m})
+ }
+ db.users[sender].limit -= 1 // -1 limit
+break
           
 case 'sound1':case 'sound2':
 case 'sound3':case 'sound4':case 'sound5':case 'sound6':
