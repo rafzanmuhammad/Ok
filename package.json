@@ -1,4 +1,4 @@
-
+{
   "name": "kimtodd",
   "version": "1.2.3",
   "description": "WhatsApp Using Lib Baileys Multi Device",
@@ -96,5 +96,4 @@
     "url": "https://github.com/DikaArdnt/Hisoka-Morou/issues"
   },
   "homepage": "https://github.com/DikaArdnt/Hisoka-Morou#readme"
-}
 }
