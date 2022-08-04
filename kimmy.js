@@ -6929,7 +6929,7 @@ let buttons = [
         { buttonId: 'qris', buttonText: { displayText: 'Kode Qris' }, type: 1 }
     ]
 
-var kyt = `
+kyt = `
 ◪ *S E W A  B O T*
 │ 
 ├ 7 Hari
@@ -6963,12 +6963,14 @@ var kyt = `
 : Vitur Gacha Hent i Sepuasnya :v
 `
 
-await aqua.sendButtonText(m.chat, buttons, kyt, `${globla.footer}`, ftroli)
+ aqua.sendButtonText(m.chat, buttons, kyt, `${globla.footer}`, ftroli)
 }  
 break 
 
-case 'qris':
+
+case 'qris':{
 reply ('Belom Punya, Langsung Chat Owner Aja Untuk Info Lebih Lanjut')
+}
 break
 
 
@@ -7349,7 +7351,7 @@ aqua.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 
       
 } catch (err) {
-reply(util.format(err))
+m.reply(util.format(err))
 }
 }
 
