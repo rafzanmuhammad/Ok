@@ -6861,7 +6861,7 @@ reply(respon)
             break
             
 
-case 'owner': {
+case 'pemilik': case 'owner': {
 aqua.sendContact(m.chat, global.pemilik, m)
             }
             break
@@ -6918,16 +6918,18 @@ reply(`
 break 
 
 
+    
+
 case 'sewa':
 case 'sewalonte':
 case 'sewabbot': case 'sewabot': {
-let tkm = [{
-urlButton: {
-    displayText: `Buy`,
-    url: `${global.web}`
-}
-            }]
-kimt = `
+
+let buttons = [
+        { buttonId: 'pemilik', buttonText: { displayText: 'Owner' }, type: 1 },
+        { buttonId: 'qris', buttonText: { displayText: 'Kode Qris' }, type: 1 }
+    ]
+
+var kyt = `
 ◪ *S E W A  B O T*
 │ 
 ├ 7 Hari
@@ -6960,10 +6962,14 @@ kimt = `
 : Vitur Gacha Foto Anime Terbuka
 : Vitur Gacha Hent i Sepuasnya :v
 `
-aqua.send5ButImg(m.chat, kimt, `${global.footer}`, thumbnya, tkm)
-}
+
+await aqua.sendButtonText(m.chat, buttons, kyt, `${globla.footer}`, ftroli)
+}  
 break 
 
+case 'qris':
+reply ('Belom Punya, Langsung Chat Owner Aja Untuk Info Lebih Lanjut')
+break
 
 
 case 'masukgcc': {
