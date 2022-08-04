@@ -3834,7 +3834,10 @@ case 'orgy': case 'nekopoi': case 'manga': case 'ass': case 'ahegao':
 case 'bdsm': case 'cuckold': case 'cum': case 'femdom': case 'ero':{
 if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
 if(isStop) return ('khsus private chat bot')
-aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}})
+var but = [{buttonId: `${command}`, buttonText: { displayText: "Next" }, type: 1 }]
+aqua.sendMessage(from, { caption: `Random Anime ${q}`, image: { url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: m })
+
+//aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}})
 }
 break
 
@@ -6908,7 +6911,6 @@ reply(`
 ≻ Dika Ardnt  [BASE]
 ≻ Dittazz
 ≻ Takimtod
-≻ KahfzXzyy
 ≻ Xyann && Iyann
 ≻ Para Creator Bot
 ≻ Dan Penyedia Modul lainnya
@@ -6921,74 +6923,47 @@ case 'sewalonte':
 case 'sewabbot': case 'sewabot': {
 let tkm = [{
 urlButton: {
-    displayText: `${global.ganti}`,
+    displayText: `Buy`,
     url: `${global.web}`
-}
- }, {
-quickReplyButton: {
-    displayText: `1`,
-    id: 'masukgcc'
-}
-}, {
-quickReplyButton: {
-    displayText: `2`,
-    id: 'jadibot'
-}
-}, {
-quickReplyButton: {
-    displayText: `3`,
-    id: 'jasarun'
 }
             }]
 kimt = `
-1. *SEWA KE GRUB*
-2. *JADI BOT*
-3. *JASA RUN BOT*
+◪ *S E W A  B O T*
+│ 
+├ 7 Hari
+├ Rp. 3.000 Gopay/Dana
+│
+├ 30 Hari 
+├ Rp. 8.000 Gopay/Dana
+│
+├ Permanen 
+└ Rp. 10.000 Gopay/Dana 
 
+ *KEUNTUNGAN*
+ : Bisa Buat Sticker/attp
+ : Welcome Otomatis
+ : Bisa Download Video tt, yt, ig
+ : Fast Respon
+ : On 24 Jam
+ : Antivirtex
+ : Antilink
+ : Lainnya Cek Di Bot
+
+
+◪ *USER PREMIUM/VIP*
+│ 
+├ 99999999 Hari
+└ Rp. 5.000 Gopay/Dana
+
+*KEUNTUNGAN*
+: Limit Unlimited
+: Vitur Gacha Foto Anime Terbuka
+: Vitur Gacha Hent i Sepuasnya :v
 `
-aqua.send5ButImg(m.chat, kimt, `Silahkan Pilih Salah Satu`, thumbnya, tkm)
+aqua.send5ButImg(m.chat, kimt, `${global footer}`, thumbnya, tkm)
 }
 break 
 
-
-case 'jadibot': {
-	let btns = [{
-urlButton: {
-    displayText: `Chat Owner`,
-    url: `${global.web}`
-}
-            }, {
-quickReplyButton: {
-    displayText: `Payment`,
-    id: `${prefix}payment`
-}
-            }]
-	textTemplateButtons(m.chat, `*───────────────────────*
-◪ *J A D I   B O T*
-│ 
-├ 7 Hari
-├ Rp. 10,000 Gopay/Dana
-│
-├ 30 Hari 
-├ Rp. 20,000 Gopay/Dana
-│
-├ Permanen 
-└ Rp. 35,000 Gopay/Dana 
-
-
- *KEUNTUNGAN*
- : Langsung Scan
- : Langsung Jadi Owner Bot
- : Bisa Sewain Ke Grub Lain
- : Pakai Nomor Sendiri
- : Bot Multi Device
- : Tampilan Keren
- : Welcome Otomatis
- : Lainnya Cek Di Bot
-
-`, `${global.footer}`, btns)
-}
-break
 
 
 case 'masukgcc': {
