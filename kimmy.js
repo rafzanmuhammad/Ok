@@ -14,6 +14,7 @@ const dbot = require('dbot-api');
 const xfar = require('xfarr-api');
 const hxz = require("hxz-api")
 const toMs = require('ms')
+const fbdlm = require("fb-downloads");
 const yts = require("yt-search");
 const fetch = require('node-fetch')
 const ytdl = require('ytdl-core');
@@ -3419,6 +3420,22 @@ aqua.sendMessage(m.chat, { image : { url : res }, caption: teks }, { quoted : m 
 db.users[sender].limit -= 1 // -1 limit
 break
 
+case 'fb':{
+	if (args.length < 1) return reply('Link?')
+if (!args[0]) return reply (`linkny?`)
+	reply (mess.wait)
+ fbdlm.getVideoUrl(args[0]).then(res => {
+ console.log(res);
+ /*object: {
+    sd: "https://video-mxp1-1.xx.fbcdn.net/v/t42.1790-2/173146224_513475892983670_3402119856878466716_n.mp4?_nc_cat=109&ccb=1-3&_nc_sid=985c63&efg=eyJybHIiOjUxMSwicmxhIjoxMDI1LCJ2ZW5jb2RlX3RhZyI6InN2ZV9zZCJ9&_nc_ohc=lDBJX2D_07kAX94kfWA&rl=511&vabr=284&_nc_ht=video-mxp1-1.xx&oh=c2b28244715229891040fd74b2f2f869&oe=6087F3D0",
+    
+    hd: "https://scontent-mxp1-1.xx.fbcdn.net/v/t66.36240-6/10000000_3866505630102943_4884150572227376903_n.mp4?_nc_cat=110&ccb=1-3&_nc_sid=985c63&efg=eyJ2ZW5jb2RlX3RhZyI6Im9lcF9oZCJ9&_nc_ohc=EKMemjHPdrQAX_o0KsS&_nc_ht=scontent-mxp1-1.xx&oh=c2058c81be8d5e754fff76f13b8001a9&oe=60AD2D08"
+ }*/
+ console.log(videolink.sd);//link SD
+ console.log(videolink.hd);//link HD
+aqua.sendMessage(m.chat, { video: { url: videolink.hd }, caption: 'nih'}, {quoted:m})
+})}
+break
 
 case 'tt': case 'tiktok': case 'ttnowm': case 'tiktoknowm':    
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis 
