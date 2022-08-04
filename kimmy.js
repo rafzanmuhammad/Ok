@@ -6960,7 +6960,7 @@ kimt = `
 : Vitur Gacha Foto Anime Terbuka
 : Vitur Gacha Hent i Sepuasnya :v
 `
-aqua.send5ButImg(m.chat, kimt, `${global footer}`, thumbnya, tkm)
+aqua.send5ButImg(m.chat, kimt, `${global.footer}`, thumbnya, tkm)
 }
 break 
 
