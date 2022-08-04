@@ -6963,7 +6963,7 @@ kyt = `
 : Vitur Gacha Hent i Sepuasnya :v
 `
 
- aqua.sendButtonText(m.chat, buttons, kyt, `${globla.footer}`, ftroli)
+ aqua.sendButtonText(m.chat, buttons, kyt, `${global.footer}`, ftroli)
 }  
 break 
 
