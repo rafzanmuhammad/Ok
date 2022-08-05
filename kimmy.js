@@ -14,6 +14,7 @@ const dbot = require('dbot-api');
 const xfar = require('xfarr-api');
 const hxz = require("hxz-api")
 const toMs = require('ms')
+const yts = require("yt-search");
 const fetch = require('node-fetch')
 const ytdl = require('ytdl-core');
 const imageToBase64 = require('image-to-base64');
@@ -3870,8 +3871,9 @@ db.users[sender].limit -= 1 // -1 limit
 break
 
 case 'elaina':{
+	reply (mess.wait)
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-aqua.sendMessage(from, {image: {url: 'https://sewa4yeye.herokuapp.com/api/wallpaper/elaina?apikey=BetaBotz'}}, {quoted:m})
+aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/wallpaper/elaina?apikey=BetaBotz`}}, {quoted:m})
  }
  db.users[sender].limit -= 1 // -1 limit
 break
