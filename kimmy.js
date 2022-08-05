@@ -6979,8 +6979,8 @@ kyt = `
 break 
 
 
-case 'qris':{
-reply ('Belom Punya, Langsung Chat Owner Aja Untuk Info Lebih Lanjut')
+case 'qr': case 'qris':{
+aqua.sendMessage(from, {caption: 'Nih qris allpayment nya kak, tinggal scan nih🤸', image: {url: 'https://telegra.ph/file/3fb1413aead7ef2a4dea1.jpg'}}, {quoted:m})
 }
 break
 
