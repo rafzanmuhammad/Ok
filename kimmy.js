@@ -6980,7 +6980,7 @@ break
 
 
 case 'qr': case 'qris':{
-aqua.sendMessage(from, {caption: 'Nih qris allpayment nya kak, tinggal scan nih🤸', image: {url: 'https://telegra.ph/file/3fb1413aead7ef2a4dea1.jpg'}}, {quoted:m})
+aqua.sendMessage(from, {caption: `Nih qris allpayment nya kak, tinggal scan nih🤸, scannya di apk dana atau gopay trus masukin nominal mau donasi berapa🐦, makasih`, image: {url: 'https://telegra.ph/file/3fb1413aead7ef2a4dea1.jpg'}}, {quoted:m})
 }
 break
 
