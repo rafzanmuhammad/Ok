@@ -5643,7 +5643,7 @@ title: 'play music',
 body: 'Now Playing...',
 description: 'Now Playing...',
 mediaType: 2,
-thumbnail: `${q}`,
+thumbnail: await (await fetch('https://telegra.ph/file/80df304e7d54441e0eefe.jpg')).buffer(),
 mediaUrl: `${q}`
 }}}, { quoted: m })
             }
