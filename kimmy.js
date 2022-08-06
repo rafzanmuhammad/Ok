@@ -680,6 +680,7 @@ let setting = global.db.settings[botNumber]
         }
 	
 
+
 //Auto Ketik
 if (isAutoKetik) {
 aqua.sendPresenceUpdate('composing', m.chat)
@@ -718,9 +719,6 @@ return
 if (sender.startsWith('212')) {
 return
 }
-if (sender.startsWith('6282238671268')) {
-return
-} 
  
 
 const toFirstCase = (str) =>{
@@ -754,7 +752,7 @@ aqua.sendMessage(from, {sticker: buffer}, {quoted:m })
 
 /*
 	//Auto Reachh
- let regex =["ping","anj","kon","Anj","Kon","Lah","Oi","tod","F","menu","tes","Tes","bilek","Banh","cum","kntl","anjing","mmk","Bang","Wibu","Pantek","pepek","hentai"]
+ let regex =["ping","anj","kon","Anj","Kon","Lah","Oi","tod", "menu","tes","Tes","bilek","Banh","cum","kntl","anjing","mmk","Bang","Wibu","Pantek","pepek","hentai"]
 for (let i of regex){
 if ( budy.includes(i)){ 
 /////addSpam("NotCase",senderNumber, "10s", AntiSpam)
@@ -1448,27 +1446,10 @@ const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
  aqua.sendMessage(nomorr, {caption: `*「 CHAT DARI OWNER BOT 」*\n\nNama: @${sender.split('@')[0]}\n\nINGFO CHAT :\n${orgg}`, mentions:[sender], image: {url: bufff}})
   } else {
   var nomor = args[0]
-aqua.sendText(nomor + '@s.whatsapp.net', `Terima kasih telah mengajukan laporan erorr\n\nKami mengerti bahwa saat ini Anda tidak dapat menggunakan vitur tersebut dan kami sedang bekerja dengan giat untuk memperbaiki, Terima kasih untuk kesabaran Anda`, floc, { contextInfo: { mentionedJid: [sender] }})
+aqua.sendText(nomor + '@s.whatsapp.net', `${q}`, floc, { contextInfo: { mentionedJid: [sender] }})
  }
  break
  
-case 'balasp':  
-if (!isOwner) return reply (mess.owner)
-if (!args[0]) return reply (`mau chat siapa?\nContoh: ${prefix + command} 628219442xxxx|oioioi`) 
-if (args[0].startsWith('08')) return reply ('Awali nomor dengan 62')
-	if (isMedia && !m.message.videoMessage || isQuotedImage) {
-const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
-  var nomorr = q.split("|")[0].replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
-  var orgg = q.split("|")[1];
- aqua.sendMessage(nomorr, {caption: `*「 CHAT DARI OWNER BOT 」*\n\nNama: @${sender.split('@')[0]}\n\nINGFO CHAT :\n${orgg}`, mentions:[sender], image: {url: bufff}})
-  } else {
-  var nomor = args[0]
-aqua.sendText(nomor + '@s.whatsapp.net', `Hallo User Premium, Syaa Nomor Aqua Bot Md, Silahkan ketik .menu untuk memulai bot.\nTerima kasih telah menggunakan bot ini`, floc, { contextInfo: { mentionedJid: [sender] }})
- }
- break
- 
-
-
 
 
 case 'jpeg': case 'jpg': case 'get':{
@@ -6980,7 +6961,7 @@ break
 
 
 case 'qr': case 'qris':{
-aqua.sendMessage(from, {caption: `Nih qris allpayment nya kak, tinggal scan nih🤸, scannya di apk dana atau gopay trus masukin nominal mau donasi berapa🐦, makasih`, image: {url: 'https://telegra.ph/file/3fb1413aead7ef2a4dea1.jpg'}}, {quoted:m})
+aqua.sendMessage(from, {caption: `Nih qris allpayment nya kak, tinggal scan nih🤸, scannya di apk dana atau gopay trus masukin nominal berapa🐦, makasih`, image: {url: 'https://telegra.ph/file/3fb1413aead7ef2a4dea1.jpg'}}, {quoted:m})
 }
 break
 
