@@ -3318,6 +3318,7 @@ if (args.length < 1) return reply('Masukin id grub')
 let mem = [];
 await groupMembers.map( i => mem.push(i.id) )
 await aqua.groupParticipantsUpdate(q, mem, 'add')
+await sleep(5000)
 reply ("Sukses")
 }
 break
