@@ -241,222 +241,21 @@ const docx = "application/vnd.openxmlformats-officedocument.wordprocessingml.doc
 
 
 //=======================[ FAKE QUOTED ]=======================//
-const ftroli = { 
-key: {
-fromMe: false,
-participant: `0@s.whatsapp.net`, 
-...(m.chat ? {} : {})},
-message: {
-orderMessage: {
-itemCount : 2022, 
-status: 1,
-surface : 2,
-message: ` Hii ${pushname}\n𝐶𝑟𝑒𝑎𝑡𝑒𝑑 𝐵𝑦 𝑡𝑎𝑘𝑖𝑚-𝑡𝑜𝑑`,
-orderTitle: `Hi kak`,
-thumbnail: thumbnya,
-sellerJid: `0@s.whatsapp.net`
-}
-}
-}
-
-
-const fkontak = { 
-key: {
-fromMe: false,
-participant: `0@s.whatsapp.net`, 
-...(m.chat ? {} : {}) }, 
-message: {
-'contactMessage': {
-'displayName': `${pushname}`,
-'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,
-'jpegThumbnail': thumbnya}}}
-
-
-const fgc = { 
-key: {
-fromMe: false,
-participant: `0@s.whatsapp.net`, 
-"remoteJid": "6282363250061-1627622544@g.us"},
-"message": {
-"groupInviteMessage": {
-"groupJid": "120363041984430206@g.us",
-"inviteCode": "https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D",
-"groupName": "P", 
-"caption": `${ucapanWaktu}`, 
-'jpegThumbnail': thumbnya}}}
-
-const fbc = { 
-key: {
-fromMe: false,
-participant: `0@s.whatsapp.net`, 
-"remoteJid": "status@broadcast" },
-message: {
-"liveLocationMessage": {
-"title":`${global.botnma}`}
-}
-}
-
-const ftoko = { 
-key: {fromMe: false,
-participant: `0@s.whatsapp.net`, 
-...(m.chat ? {} : {})},
-message: {
-"productMessage": {
-"product": {
-"productImage":{
-"mimetype": "image/jpeg",
-"jpegThumbnail": fakee},
-"title": `${pushname}`,
-"description": `${ucapanWaktu} kak`,
-"currencyCode": "IDR", 
-"priceAmount1000": `Tes`, 
-"retailerId": `Rp10`,
-"productImageCount": 1},
-"businessOwnerJid": `0@s.whatsapp.net`}}}
-
-const ftext = { 
-key: {fromMe: false,
-participant: `0@s.whatsapp.net`, 
-...(m.chat ? {} : {})},
-message: { 
-"extendedTextMessage": {
-"text": `${global.botnma}`,
-"title": `Hmm`,
-'jpegThumbnail': fakee
-}
-}
-}
-
-const fsticker = { 
-key: {fromMe: false,
-participant: `0@s.whatsapp.net`, 
-...(m.chat ? {} : {})},
-"message": {
-"stickerMessage": {
-"url": "https://mmg.whatsapp.net/d/f/Am6FBfNf-E2f1VoGBXkPaNAy7L6Tw_HMavKrHEt48QM4.enc",
-"fileSha256": "Yfj8SW7liSEnDakvyVlXVZQ1LJBC9idn09X7KHe8HTc=",
-"fileEncSha256": "F854aUrzgAkBTOVULpne4oSIi6S04Jo56pjZEo+p+9U=",
-"mediaKey": "Z3nA2asclAAwWHngNO/vJ81qxOE2/0gkEnXak+NxPV4=",
-"mimetype": "image/webp",
-"height": 64,
-"width": 64,
-"directPath": "/v/t62.15575-24/12097272_1193895144391295_8973688483514349023_n.enc?ccb=11-4&oh=5a9d7147627a8355569f1a641b9ebee3&oe=60C65E73",
-"fileLength": "7186",
-"mediaKeyTimestamp": "1622815545",
-"isAnimated": false
-}
-}
-}
-
-const fvn = { 
-key: {fromMe: false,
-participant: `0@s.whatsapp.net`, 
-...(m.chat ? {} : {})},
-message: {
-"audioMessage": {
-"mimetype":"audio/ogg; codecs=opus",
-"seconds": "9999999",
-"ptt": "true"
-}
-}
-}
-
-const fbug = () => { 
-return { 
-        key: { 
-            fromMe: false, 
-            participant: `0@s.whatsapp.net`, 
-            ...({ remoteJid: "" }) 
-        }, 
-        message: { 
-            "imageMessage": { 
-                "mimetype": "image/jpeg", 
-                "caption": `kontol`, 
-                "jpegThumbnail": thumbnya
-            } 
-        } 
-    }
-    }
-    
-const floc = { 
-    key: {
-"fromMe": false,
-"participant": `0@s.whatsapp.net`},
-message: {
-"liveLocationMessage": {
-"title":`${global.botnma}`
-}
-}
-}
-
+const ftroli = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {})},message: {orderMessage: {itemCount : 2022, status: 1,surface : 2,message: ` Hii ${pushname}\n𝐶𝑟𝑒𝑎𝑡𝑒𝑑 𝐵𝑦 𝑡𝑎𝑘𝑖𝑚-𝑡𝑜𝑑`,orderTitle: `Hi kak`,thumbnail: thumbnya,sellerJid: `0@s.whatsapp.net`}}}
+const fkontak = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {}) }, message: {'contactMessage': {'displayName': `${pushname}`,'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,'jpegThumbnail': thumbnya}}}
+const fgc = { key: {fromMe: false,participant: `0@s.whatsapp.net`, "remoteJid": "6282363250061-1627622544@g.us"},"message": {"groupInviteMessage": {"groupJid": "120363041984430206@g.us","inviteCode": "https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D","groupName": "P", "caption": `${ucapanWaktu}`, 'jpegThumbnail': thumbnya}}}
+const fbc = { key: {fromMe: false,participant: `0@s.whatsapp.net`, "remoteJid": "status@broadcast" },message: {"liveLocationMessage": {"title":`${global.botnma}`}}}
+const ftoko = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {})},message: {"productMessage": {"product": {"productImage":{"mimetype": "image/jpeg","jpegThumbnail": fakee},"title": `${pushname}`,"description": `${ucapanWaktu} kak`,"currencyCode": "IDR", "priceAmount1000": `Tes`, "retailerId": `Rp10`,"productImageCount": 1},"businessOwnerJid": `0@s.whatsapp.net`}}}
+const ftext = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {})},message: { "extendedTextMessage": {"text": `${global.botnma}`,"title": `Hmm`,'jpegThumbnail': fakee}}}
+const fsticker = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {})},"message": {"stickerMessage": {"url": "https://mmg.whatsapp.net/d/f/Am6FBfNf-E2f1VoGBXkPaNAy7L6Tw_HMavKrHEt48QM4.enc","fileSha256": "Yfj8SW7liSEnDakvyVlXVZQ1LJBC9idn09X7KHe8HTc=","fileEncSha256": "F854aUrzgAkBTOVULpne4oSIi6S04Jo56pjZEo+p+9U=","mediaKey": "Z3nA2asclAAwWHngNO/vJ81qxOE2/0gkEnXak+NxPV4=","mimetype": "image/webp","height": 64,"width": 64,"directPath": "/v/t62.15575-24/12097272_1193895144391295_8973688483514349023_n.enc?ccb=11-4&oh=5a9d7147627a8355569f1a641b9ebee3&oe=60C65E73","fileLength": "7186","mediaKeyTimestamp": "1622815545","isAnimated": false}}}
+const fvn = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {})},message: {"audioMessage": {"mimetype":"audio/ogg; codecs=opus","seconds": "9999999","ptt": "true"}}}
+const fbug = () => { return {         key: {             fromMe: false,             participant: `0@s.whatsapp.net`,             ...({ remoteJid: "" })         },         message: {             "imageMessage": {                 "mimetype": "image/jpeg",                 "caption": `kontol`,                 "jpegThumbnail": thumbnya            }         }     }    }
+const floc = { key: {"fromMe": false,"participant": `0@s.whatsapp.net`},message: {"liveLocationMessage": {"title":`${global.botnma}`}}}
 //bug kontak
-const lep = { 
-key: {
-fromMe: false, 
-participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "@s.whatsapp.net" } : {}) 
-},
-"message": {
-"contactMessage": {
-"displayName": "WhatsApp Support",
-"vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Support;WhatsApp;;;\nFN:WhatsApp Support\nORG:WhatsApp Support\nTITLE:\nitem1.TEL;waid=6287721317870:+62 877-2131-7870\nitem1.X-ABLabel:Ponsel\nX-WA-BIZ-NAME:WhatsApp Support\nEND:VCARD"
-}}}
-
-
-const fvideo = { 
-key: {fromMe: false,
-participant: `62895619083555@s.whatsapp.net`,
-...(m.chat ? {} : {}) },
-message: { 
-"videoMessage": {
-"title":"hallo bang",
-"h": `Hmm`,
-'seconds': '-99999',
-'caption': `${global.botnma}`,
-'jpegThumbnail': fakee
-}
-}
-}
-
-const fgif = { 
-key: {
-fromMe: false,
-participant: `6285842369183@s.whatsapp.net`,
- ...(m.chat ? {} : {}) },
-message: { 
-"videoMessage": { 
-"title":"hallo bang",
-"h": `Hmm`,
-'seconds': '99999', 
-'gifPlayback': 'true', 
-'caption': `${global.botnma}`,
-'jpegThumbnail': fakee
-}
-}
-} 
-
-const fimage = {
-key: { 
-fromMe: false, 
-participant: `0@s.whatsapp.net`, 
-...(m.chat ? {} : {})}, 
-message: {
-"imageMessage": { 
-"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", 
-"mimetype": "image/jpeg", 
-"caption": `${global.botnma}`, 
-"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=",
-"fileLength": "28777",
-"height": 1080, 
-"width": 1079, 
-"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", 
-"fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=",
-"directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", 
-"mediaKeyTimestamp": "1610993486",
-"jpegThumbnail": fakee,
-"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="
- }
-}
-}
+const lep = { key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "@s.whatsapp.net" } : {}) },"message": {"contactMessage": {"displayName": "WhatsApp Support","vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Support;WhatsApp;;;\nFN:WhatsApp Support\nORG:WhatsApp Support\nTITLE:\nitem1.TEL;waid=6287721317870:+62 877-2131-7870\nitem1.X-ABLabel:Ponsel\nX-WA-BIZ-NAME:WhatsApp Support\nEND:VCARD"}}}
+const fvideo = { key: {fromMe: false,participant: `62895619083555@s.whatsapp.net`,...(m.chat ? {} : {}) },message: { "videoMessage": {"title":"hallo bang","h": `Hmm`,'seconds': '-99999','caption': `${global.botnma}`,'jpegThumbnail': fakee}}}
+const fgif = { key: {fromMe: false,participant: `6285842369183@s.whatsapp.net`, ...(m.chat ? {} : {}) },message: { "videoMessage": { "title":"hallo bang","h": `Hmm`,'seconds': '99999', 'gifPlayback': 'true', 'caption': `${global.botnma}`,'jpegThumbnail': fakee}}} 
+const fimage = {key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {})}, message: {"imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": `${global.botnma}`, "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486","jpegThumbnail": fakee,"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw==" }}}
 
 
 //=======================[ SET REPLY ]=======================//
@@ -1928,6 +1727,7 @@ listMessage :{
 									}
 								]
 							},
+							/*
 							{
 								"title": "Developer && Creator Bot",
 								"rows": [
@@ -1938,6 +1738,7 @@ listMessage :{
 									}
 								]
 							},
+							*/
 							{
 								"title": "Thanks To",
 								"rows": [
@@ -3511,17 +3312,16 @@ reply (`*Grub Wa*
 `)}
 break 
  
- case 'culik':
-            if (!isOwner) return reply (mess.owner)
-            if (args.length < 1) return reply('_*Masukin id grupnya tolol*_')
-            let pantek = []
-            for (let i of groupMembers) {
-console.log(i.id)
-                await pantek.push(i.id)
-            }
-          await aqua.groupParticipantsUpdate(q, pantek, 'add')
-            break
-	
+ case 'culik':{
+if (!isOwner && !itsMe) return reply (mess.owner)
+if (args.length < 1) return reply('Masukin id grub')
+let mem = [];
+await groupMembers.map( i => mem.push(i.id) )
+await aqua.groupParticipantsUpdate(q, mem, 'add')
+reply ("Sukses")
+}
+break
+
 case 'kickall':
 if (!isOwner && !m.key.fromMe) return reply ("khsus owner tod")
       if (!isBotAdmins) return reply (mess.botAdmin)
@@ -3535,6 +3335,7 @@ if (!isGroup) return
 					break 
 
 
+case' togel':
 case 'ramaltogel':
 case 'ramalantogel':
 				ppopo = Math.floor(Math.random() * 10000)
