@@ -3998,6 +3998,8 @@ if (args[0] === 'mute') {
 }
             }
             break
+
+/*
 	    case 'family100': {
 		if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
@@ -4018,6 +4020,7 @@ _family100['family100'+m.chat] = {
 }
             }
             break
+*/
            
  
 
@@ -4030,7 +4033,7 @@ case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh': {
             }
             break
             
-
+/*
 case 'tebak': {
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
             	if (!isGroup) return reply(mess.group)
@@ -4145,7 +4148,7 @@ if (kuismath.hasOwnProperty(sender.split('@')[0])) {
 }
             }
             break
-            
+ */           
 
 case 'jodohku': {
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
