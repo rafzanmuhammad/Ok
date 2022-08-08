@@ -204,7 +204,10 @@ require('./massege/group.js')(aqua, anu)
            else if (reason === DisconnectReason.restartRequired) { console.log("Restart Required, Restarting..."); startAqua(); }
            else if (reason === DisconnectReason.timedOut) { console.log("Connection TimedOut, Reconnecting..."); startAqua(); }
            else { console.log(`Unknown DisconnectReason: ${reason}|${connection}`) }            
-        }
+        } else if (connection === 'open') {
+success(`1`,`[tersambung cuy] Connected`) 
+aqua.sendText(`628388024064@s.whatsapp.net`, `Tersambung bang`, m)
+}
         console.log('Connected...', update)
     })
 
