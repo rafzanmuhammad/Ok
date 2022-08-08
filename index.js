@@ -60,7 +60,8 @@ async function startAqua() {
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
        // browser: ["Kimtod", "Safari", "3.0"],        
-        browser: ['Takim Tod Multi Device','Safari','1.0.0'],
+       // browser: ['Takim Tod Multi Device','Safari','1.0.0'],
+        browser: ['Takim Tod','IOS','4.1.0'],
         auth: state,
         version
     })
@@ -205,8 +206,8 @@ require('./massege/group.js')(aqua, anu)
            else if (reason === DisconnectReason.timedOut) { console.log("Connection TimedOut, Reconnecting..."); startAqua(); }
            else { console.log(`Unknown DisconnectReason: ${reason}|${connection}`) }            
         } else if (connection === 'open') {
-aqua.sendText(`628388024064@s.whatsapp.net`, `Tersambung bang`)
-}
+           aqua.sendText(`628388024064@s.whatsapp.net`, `Tersambung bang`)
+    }
         console.log('Connected...', update)
     })
 
