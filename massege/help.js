@@ -319,9 +319,6 @@ ${readmore}
  *⭔* ${prefix}jadian
  *⭔* ${prefix}delttt
  *⭔* ${prefix}tictactoe
- *⭔* ${prefix}family100
- *⭔* ${prefix}tebak [option]
- *⭔* ${prefix}math [mode]
  *⭔* ${prefix}suitpvp [@tag]
 
 
@@ -1024,9 +1021,6 @@ return `➲ *Fun Menu*
  *❉* ${prefix}jadian
  *❉* ${prefix}delttt
  *❉* ${prefix}tictactoe
- *❉* ${prefix}family100
- *❉* ${prefix}tebak [option]
- *❉* ${prefix}math [mode]
  *❉* ${prefix}suitpvp [@tag]
 `}
 
