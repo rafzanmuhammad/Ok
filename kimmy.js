@@ -1481,10 +1481,9 @@ case 'dare':
 		reply (`${der}`) 
 		break
 
-case 'men':
+case 'men':{
 anu = menu(global, m, prefix, pushname, isPremium)
-let fiturnya = fitur(prefix)
-let teks = `💬 *「 MENU 」* `
+
 aqua.sendMessageV2(from, { contextInfo: { forward,
 externalAdReply: {
 showAdAttribution: true, 
