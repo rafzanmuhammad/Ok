@@ -2642,9 +2642,11 @@ if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit)
         exec(`ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ranw}`, (err) => {
   fs.unlinkSync(ranp)
   if (err) return reply(`emror bang ${err}`)
-  aqua.sendMessage(from, {sticker: fs.readFileSync(ranw)}, {quoted: m})
-      fs.unlinkSync(ranw)
-  })
+  let encmedia = await aqua.sendImageAsSticker(m.chat, fs.readFileSync(ranw), m, { packname: global.packname, author: global.author })
+//  aqua.sendMessage(from, {sticker: fs.readFileSync(ranw)}, {quoted: m})
+   //   fs.unlinkSync(ranw)
+      fs.unlinkSync(encmedia)
+       })
         }) 
         }
         db.users[sender].limit -= 1 // -1 limit
@@ -5261,6 +5263,7 @@ case 'emojimix': {
 	    break
             
 case 'toimage': case 'toimg': {
+	try {
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
 if (!quoted) return reply ('Reply Image')
@@ -5275,6 +5278,9 @@ exec(`ffmpeg -i ${media} ${ran}`, (err) => {
     aqua.sendMessage(m.chat, { image: buffer }, { quoted: m })
     fs.unlinkSync(ran)
 })
+  } catch (err){
+return reply ('Error, harus stiker, bukan gif')
+}    
             }
             break
 	        
@@ -5414,6 +5420,7 @@ aqua.sendMessage(m.chat, buttonMessage, { quoted: m })
 	    
 	    
 case 'ytmp3': case 'ytaudio': {
+	try {
 		if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
 let { yta } = require('./lib/y2mate')
@@ -5432,19 +5439,26 @@ mediaType: 2,
 thumbnail: await (await fetch('https://telegra.ph/file/80df304e7d54441e0eefe.jpg')).buffer(),
 mediaUrl: `${q}`
 }}}, { quoted: m })
+  } catch (err){
+return reply ('Error, Audio tidak ditemukan☹️')
+}    
             }
             break
             
 case 'ytmp4': case 'ytvideo': {
+try {
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
 let { ytv } = require('./lib/y2mate')
 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
-let quality = args[1] ? args[1] : '720p'
+let quality = args[1] ? args[1] : '360p'
 let media = await ytv(text, quality)
 if (media.filesize >= 400000) return reply('File Melebihi Batas '+util.format(media))
 aqua.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `➟ Title : ${media.title}\n➟ File Size : ${media.filesizeF}\n➟ Url : ${isUrl(text)}\n➟ Ext : MP3\n➟ Resolusi : ${args[1] || '360p'}` }, { quoted: m })
-            }
+  } catch (err){
+return reply ('Error, Video tidak ditemukan☹️')
+}    
+      }
             break
 	    
 case 'getmusic': {
