@@ -1491,7 +1491,7 @@ title: `Halo 👋 \n`,
 body: `© Bot WhatsApp ⁰⁵`,
 //description: 'Fuck',
 mediaType: 1,  
-renderLargerThumbnail : true,
+//renderLargerThumbnail : true,
 thumbnail: thumbnya,
 mediaUrl: `https://www.instagram.com/`,
 sourceUrl: `https:// `,
@@ -6917,6 +6917,14 @@ aqua.send5ButImg(m.chat, kemtod, `${week} ${date}`, thumbnya, btns)
 break 
 
 case 'buyprem': {
+reply (`
+Mau jadi premium? harus beli kak
+murah kok 5 Rebu dah jadi premium permanen,
+Keuntungan, Vitur Anime Terbuka, Dan lain-lain`)
+}
+break
+/*
+case 'buyprem': {
 	let btns = [{ urlButton: { displayText: `Beli Premium`, url: `https://wa.me/628388024064?text=Bang+mau+beli+premium`}}]          
 
 textTemplateButtons(m.chat, `
@@ -6925,6 +6933,7 @@ murah kok 5 Rebu dah jadi premium permanen,
 Keuntungan, Vitur Anime Terbuka, Dan lain-lain`, `Silahkan Klik Di Bawah Untuk Membeli`, btns)
 }
 break
+*/
 
 case 'listvn':
 {
