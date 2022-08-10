@@ -2642,10 +2642,9 @@ if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit)
         exec(`ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ranw}`, (err) => {
   fs.unlinkSync(ranp)
   if (err) return reply(`emror bang ${err}`)
-  let encmedia = await aqua.sendImageAsSticker(m.chat, fs.readFileSync(ranw), m, { packname: global.packname, author: global.author })
-//  aqua.sendMessage(from, {sticker: fs.readFileSync(ranw)}, {quoted: m})
-   //   fs.unlinkSync(ranw)
-      fs.unlinkSync(encmedia)
+  aqua.sendMessage(from, {sticker: fs.readFileSync(ranw)}, {quoted: m})
+     fs.unlinkSync(ranw)
+      
        })
         }) 
         }
@@ -4492,7 +4491,7 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 
 *${prefix}hapusvote* - untuk menghapus vote`
             let buttonsUpvote = [
-              {buttonId: `${prefix}upvote`, buttonText: {displayText: '𝚄𝙿𝚅𝙾𝚃𝙴'}, type: 1},
+              {buttonId: `${prefix}upvote`, buttonText: {displayText: '𝚄??𝚅𝙾𝚃𝙴'}, type: 1},
               {buttonId: `${prefix}devote`, buttonText: {displayText: '𝙳𝙴𝚅𝙾𝚃𝙴'}, type: 1}
             ]
 
