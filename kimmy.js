@@ -1492,9 +1492,9 @@ body: `© Bot WhatsApp ⁰⁵`,
 //description: 'Fuck',
 mediaType: 1,  
 renderLargerThumbnail : true,
-thumbnail: its,
+thumbnail: thumbnya,
 mediaUrl: `https://www.instagram.com/`,
-sourceUrl: thumbnya,
+sourceUrl: `https:// `,
 }
 }, text: anu})                                          
 }
