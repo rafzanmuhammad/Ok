@@ -1481,22 +1481,22 @@ case 'dare':
 		reply (`${der}`) 
 		break
 
-case 'men':{
-anu = menu(global, m, prefix, pushname, isPremium)
-
-aqua.sendMessageV2(from, { contextInfo: { forward,
+case 'menu': case 'help': case '?': {
+anu = menu(global, m, prefix, pushname, isPremium)
+
+aqua.sendMessageV2(from, { contextInfo: { mentionedJid: [sender],
 externalAdReply: {
-showAdAttribution: true, 
-title: `Halo 👋 \n`,
-body: `© Bot WhatsApp ⁰⁵`,
-//description: 'Fuck',
-mediaType: 1,  
-//renderLargerThumbnail : true,
-thumbnail: thumbnya,
+showAdAttribution: true,
+title: `                  ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+body: `                        ━━━━⬤──────────    `,
+//description: 'Now Playing...',
+mediaType: 1,
+renderLargerThumbnail: true,
+thumbnail: thumbdoc,
 mediaUrl: `https://www.instagram.com/`,
-sourceUrl: `https:// `,
+sourceUrl: `https://wa.me/628388024064?text=lah`
 }
-}, text: anu})                                          
+}, text: anu})
 }
 break
 
