@@ -1481,6 +1481,25 @@ case 'dare':
 		reply (`${der}`) 
 		break
 
+case 'men':
+anu = menu(global, m, prefix, pushname, isPremium)
+let fiturnya = fitur(prefix)
+let teks = `💬 *「 MENU 」* `
+aqua.sendMessageV2(from, { contextInfo: { forward,
+externalAdReply: {
+showAdAttribution: true, 
+title: `Halo 👋 \n`,
+body: `© Bot WhatsApp ⁰⁵`,
+//description: 'Fuck',
+mediaType: 1,  
+renderLargerThumbnail : true,
+thumbnail: its,
+mediaUrl: `https://www.instagram.com/`,
+sourceUrl: thumbnya,
+}
+}, text: anu})                                          
+}
+break
 
 
 case 'list': case 'menu': case 'help': case '?': {
