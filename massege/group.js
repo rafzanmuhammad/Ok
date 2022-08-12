@@ -77,13 +77,15 @@ var pp_grup = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-pict
 
 //let gmbr = await getBuffer(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
 
+let ppUserr = await getBuffer(pp_user)
+
 let options1 =
 { mentionedJid: [mem],
 externalAdReply: {
 title: `         ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
 description: 'Now Playing...',
 mediaType: 2,
-thumbnail: ppUser,
+thumbnail: ppUserr,
 mediaUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM',
 sourceUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM'
 }
