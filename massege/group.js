@@ -249,7 +249,7 @@ sourceUrl: `https://wa.me/628388024064?text=lah`
 }
 }, text: intro})
 } else if(type5){
-aqua.sendMessage(from, {image: {url: ppUser},caption: intro})
+aqua.sendMessage(from, {image: ppUser,caption: intro}, { "mentionedJid": [mem]})
 }
 
 
@@ -275,7 +275,7 @@ sourceUrl: `https://wa.me/628388024064?text=lah`
 }
 }, text: outro})
 } else if(type5){
-aqua.sendMessage(from, {image: {url: ppUser},caption: outro})
+aqua.sendMessage(from, {image: ppUser,caption: outro}, { "mentionedJid": [mem]})
 }
 }
 
