@@ -25,8 +25,8 @@ try{
 	
 let type1 = false
 let type2 = false
-let type3 = true
-
+let type3 = false
+let type4 = true
 let metadata = await aqua.groupMetadata(anu.id)
 const from = anu.id
 const memb = metadata.participants.length
@@ -232,7 +232,22 @@ WelcomeType2(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]
 } else if(type3){
 sendButDoc(from, intro, `Rules:
 ${desc}`, ppUser, butIn, options1)
+} else if(type4){
+aqua.sendMessageV2(from, { contextInfo: { mentionedJid: [m],
+externalAdReply: {
+showAdAttribution: true,
+title: `                  ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+body: `                        ━━━━⬤──────────    `,
+//description: 'Now Playing...',
+mediaType: 1,
+renderLargerThumbnail: true,
+thumbnail: ppUser,
+mediaUrl: `https://www.instagram.com/`,
+sourceUrl: `https://wa.me/628388024064?text=lah`
 }
+}, text: intro})
+}
+
 
 } else if(Remove && NotMe){      
 if(type1){
@@ -241,6 +256,20 @@ WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut,{ "mentione
 WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut,{ "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, outro, `Hm Kok Keluar ^_^`, ppUser, butOut, options1)
+} else if(type4){
+aqua.sendMessageV2(from, { contextInfo: { mentionedJid: [mem],
+externalAdReply: {
+showAdAttribution: true,
+title: `                  ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+body: `                        ━━━━⬤──────────    `,
+//description: 'Now Playing...',
+mediaType: 1,
+renderLargerThumbnail: true,
+thumbnail: ppUser,
+mediaUrl: `https://www.instagram.com/`,
+sourceUrl: `https://wa.me/628388024064?text=lah`
+}
+}, text: outro})
 }
 }
 
