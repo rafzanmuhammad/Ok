@@ -249,7 +249,7 @@ sourceUrl: `https://wa.me/628388024064?text=lah`
 }
 
 
-} else if(Remove && NotMe){      
+} else if(Remove && NotMe && OneMem){      
 if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut,{ "mentionedJid": [mem]})
 } else if(type2){
