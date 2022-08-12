@@ -233,7 +233,7 @@ WelcomeType2(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]
 sendButDoc(from, intro, `Rules:
 ${desc}`, ppUser, butIn, options1)
 } else if(type4){
-aqua.sendMessageV2(from, { contextInfo: { mentionedJid: [m],
+aqua.sendMessageV2(from, { contextInfo: { mentionedJid: [mem],
 externalAdReply: {
 showAdAttribution: true,
 title: `                  ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
