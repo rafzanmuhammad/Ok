@@ -224,7 +224,7 @@ console.log(color("[GRUP UPDATE]", "magenta"), color(`${pushname} telah bergabun
 
 
 //Welcome ny
-if(Add && NotMe){ 
+if(Add){ 
 let ppUser = await getBuffer(pp_user)
 let ppGc = await getBuffer(pp_grup)
 if(type1){
@@ -251,7 +251,7 @@ sourceUrl: `https://wa.me/628388024064?text=lah`
 }
 
 
-} else if(Remove && NotMe){ 
+} else if(Remove){ 
 let ppUser = await getBuffer(pp_user)
 let ppGc = await getBuffer(pp_grup)     
 if(type1){
