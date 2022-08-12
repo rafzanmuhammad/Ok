@@ -224,7 +224,7 @@ console.log(color("[GRUP UPDATE]", "magenta"), color(`${pushname} telah bergabun
 
 
 //Welcome ny
-if(Add && OneMem && NotMe){ 
+if(Add && NotMe){ 
 let ppUser = await getBuffer(pp_user)
 let ppGc = await getBuffer(pp_grup)
 if(type1){
