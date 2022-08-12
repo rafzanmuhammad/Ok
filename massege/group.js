@@ -63,7 +63,6 @@ Sisa Peserta Grub ${memb}
 `
 
 try {
-if(mem.includes(botNumber)) { return }
 var pp_user = await aqua.profilePictureUrl(mem, 'image')
 } catch (e) {
 var pp_user = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
@@ -77,7 +76,8 @@ var pp_grup = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-pict
 
 //let gmbr = await getBuffer(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
 
-let ppUserr = await getBuffer(pp_user)
+let ppUser = await getBuffer(pp_user)
+let ppGc = await getBuffer(pp_grup)
 
 let options1 =
 { mentionedJid: [mem],
@@ -225,8 +225,6 @@ console.log(color("[GRUP UPDATE]", "magenta"), color(`${pushname} telah bergabun
 
 //Welcome ny
 if(Add){ 
-let ppUser = await getBuffer(pp_user)
-let ppGc = await getBuffer(pp_grup)
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
@@ -252,8 +250,6 @@ sourceUrl: `https://wa.me/628388024064?text=lah`
 
 
 } else if(Remove){ 
-let ppUser = await getBuffer(pp_user)
-let ppGc = await getBuffer(pp_grup)     
 if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut,{ "mentionedJid": [mem]})
 } else if(type2){
