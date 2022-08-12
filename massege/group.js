@@ -57,7 +57,10 @@ Selamat Datang Di ${groupName}
 » Nama: 
 » Umur:
 » Askot:
-Semoga Betah Kak ><`;
+Semoga Betah Kak ><
+
+Rules:
+${desc}`;
 
 const outro = `Selamat Tinggal @${memNumber}
 
@@ -249,7 +252,7 @@ sourceUrl: `https://wa.me/628388024064?text=lah`
 }
 }, text: intro})
 } else if(type5){
-aqua.sendMessage(from, {image: ppUser,caption: intro}, { "mentionedJid": [mem]})
+aqua.sendMessage(from, {image: ppUser,caption: intro}, {contextInfo:{ "mentionedJid": [mem]}})
 }
 
 
@@ -275,7 +278,7 @@ sourceUrl: `https://wa.me/628388024064?text=lah`
 }
 }, text: outro})
 } else if(type5){
-aqua.sendMessage(from, {image: ppUser,caption: outro}, { "mentionedJid": [mem]})
+aqua.sendMessage(from, {image: ppUser,caption: outro}, {contextInfo:{ "mentionedJid": [mem]}})
 }
 }
 
