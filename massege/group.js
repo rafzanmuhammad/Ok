@@ -85,7 +85,7 @@ externalAdReply: {
 title: `         ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
 description: 'Now Playing...',
 mediaType: 2,
-thumbnail: ppUserr,
+thumbnail: ppUser,
 mediaUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM',
 sourceUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM'
 }
