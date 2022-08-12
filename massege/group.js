@@ -26,7 +26,9 @@ try{
 let type1 = false
 let type2 = false
 let type3 = false
-let type4 = true
+let type4 = false
+let type5 = true
+
 let metadata = await aqua.groupMetadata(anu.id)
 const from = anu.id
 const memb = metadata.participants.length
@@ -246,6 +248,8 @@ mediaUrl: `https://www.instagram.com/`,
 sourceUrl: `https://wa.me/628388024064?text=lah`
 }
 }, text: intro})
+} else if(type5){
+aqua.sendMessage(from, {image: {url: ppUser},caption: intro})
 }
 
 
@@ -270,6 +274,8 @@ mediaUrl: `https://www.instagram.com/`,
 sourceUrl: `https://wa.me/628388024064?text=lah`
 }
 }, text: outro})
+} else if(type5){
+aqua.sendMessage(from, {image: {url: ppUser},caption: outro})
 }
 }
 
