@@ -4244,7 +4244,7 @@ case 'add': {
                if (!isBotAdmins) return reply (mess.botAdmin)
 if (!isAdmins && !isOwner) return reply (mess.admin)
 let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await aqua.groupParticipantsUpdate(m.chat, [users], 'add').then((res) =>console.log(res) reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+		await aqua.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 }
 	break
 	
