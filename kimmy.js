@@ -4239,16 +4239,12 @@ let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender :
 	
 
 case 'add': {
-	try{
 		if (args[0] == '08') return reply('Awali nomor dengan 62 atau reply pesan user')
 		if (!isGroup) return reply(mess.group)
                if (!isBotAdmins) return reply (mess.botAdmin)
 if (!isAdmins && !isOwner) return reply (mess.admin)
 let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await aqua.groupParticipantsUpdate(m.chat, [users], 'add')
-} catch (err) { 
-return reply(`Maap tidak bisa di add, nomor target di private`)            
-}
+		await aqua.groupParticipantsUpdate(m.chat, [users], 'add').then((res) =>console.log(res) reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 }
 	break
 	
