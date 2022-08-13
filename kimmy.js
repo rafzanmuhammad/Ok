@@ -1320,7 +1320,7 @@ aqua.sendButDoc(from, menunya, `${global.footer}`, thumbdoc, mok, options1, {quo
 break
 
 
-case 'playmusic': case 'playmusik': case 'play1':{
+case 'play': case 'playmusic': case 'playmusik': case 'play1':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 if(!q) return reply ("Teksnya mana")
 let rus = await yts(q)
@@ -1352,7 +1352,7 @@ var toks =`
 🌺 Duration : ${res.timestamp}
 👤 Channel : ${res.author.name}
 🎧 Audio : ${FileSize(audio[0].contentLength)} 
-`
+📎 Link : ${res.url}`
 aqua.sendMessage(from, {image: inithumb, caption: toks}, {quoted: m})
 
 let { yta } = require('./lib/y2mate')
@@ -1363,8 +1363,8 @@ if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(me
 aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` ,
 contextInfo: {
 externalAdReply: {
-title: `                  ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
-body: `                        ━━━━⬤──────────    `,
+title: `               ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+body: `                    ━━━━⬤──────────    `,
 mediaType: 2,
 renderLargerThumbnail: true,
 thumbnail: inithumb,
@@ -1376,7 +1376,7 @@ db.users[sender].limit -= 1 // -1 limit
 break
 
 
-case 'play':{
+case 'play1':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 if(!q) return reply ("Teksnya mana")
 let rus = await yts(q)
