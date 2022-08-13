@@ -1319,6 +1319,57 @@ aqua.sendButDoc(from, menunya, `${global.footer}`, thumbdoc, mok, options1, {quo
  }
 break
 
+
+case 'playmusic': case 'playmusik': case 'play1':{
+	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
+if(!q) return reply ("Teksnya mana")
+let rus = await yts(q)
+if(rus.all.length == "0") return reply ("Video tidak bisa di download")
+let data = await rus.all.filter(v => v.type == 'video')
+
+try{
+var res = data[0]
+var info = await ytdl.getInfo(res.url);
+} catch{
+var res = data[1]
+var info = await ytdl.getInfo(res.url);
+}
+
+let audio = ytdl.filterFormats(info.formats, 'audioonly');
+let format = ytdl.chooseFormat(info.formats, { quality: '18' });
+
+try{
+var thumbnya =`https://i.ytimg.com/vi/${res.videoId}/mqdefault.jpg`
+} catch(err) {
+var thumbnya =`https://i.ytimg.com/vi/${res.videoId}/sqdefault.jpg`
+}
+
+let inithumb = await getBuffer(thumbnya)
+
+var toks =`
+🕵️ Judul : ${res.title}
+👀 Viewers : ${h2k(res.views)} Kali 
+🌺 Duration : ${res.timestamp}
+👤 Channel : ${res.author.name}
+🎧 Audio : ${FileSize(audio[0].contentLength)} 
+`
+aqua.sendMessage(from, {image: {url: inithumb, caption: toks}, {quoted: m})
+
+aqua.sendMessage(m.chat, {audio: { url: res.url }, mimetype: 'audio/mpeg', fileName: `${res.title}.mp3` ,
+contextInfo: {
+externalAdReply: {
+title: 'play music', 
+body: 'Now Playing...',
+description: 'Now Playing...',
+mediaType: 2,
+thumbnail: await (await fetch('https://telegra.ph/file/5ad51566ce5ae7ac710b7.jpg')).buffer(),
+mediaUrl: `${q}`
+}}}, { quoted: m })
+}
+db.users[sender].limit -= 1 // -1 limit
+break
+
+
 case 'play':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 if(!q) return reply ("Teksnya mana")
