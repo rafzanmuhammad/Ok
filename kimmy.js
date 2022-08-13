@@ -1353,7 +1353,7 @@ var toks =`
 👤 Channel : ${res.author.name}
 🎧 Audio : ${FileSize(audio[0].contentLength)} 
 `
-aqua.sendMessage(from, {image: {url: inithumb, caption: toks}, {quoted: m})
+aqua.sendMessage(from, {image: {url: inithumb, caption: toks}}, {quoted: m})
 
 aqua.sendMessage(m.chat, {audio: { url: res.url }, mimetype: 'audio/mpeg', fileName: `${res.title}.mp3` ,
 contextInfo: {
