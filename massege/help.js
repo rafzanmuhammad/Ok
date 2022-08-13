@@ -25,8 +25,8 @@ exports.menu = (global, m, prefix, pushname, isPremium) => {
 return `*────── [ Aqua Bot - Md ] ──────*
 
     *${ucapanWaktu} ${pushname}*, 
-Saya adalah bot WhatsApp auto sticker, 
-jadi setiap kamu mengirim gambar/image 
+Saya adalah bot WhatsApp auto stiker, 
+jadi setiap kamu mengirim gambar 
 akan langsung jadi sticker 🐥
 
  Status : ${isPremium ? 'Premium' : 'Gratisan'}
