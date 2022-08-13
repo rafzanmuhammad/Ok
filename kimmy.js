@@ -5483,7 +5483,7 @@ break
         images = n[Math.floor(Math.random() * n.length)].url
 aqua.sendMessage(from, {image: {url: images}, caption: `*-------「 GIMAGE SEARCH 」-------*
 🤠 *Query* : ${text}
-🔗 *Media Url* : ${images}`}, {quoted: m})
+🔗 *Media Url* : ${images}`, {quoted: m})
         }
         break
 	    
