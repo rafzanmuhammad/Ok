@@ -1353,17 +1353,18 @@ var toks =`
 👤 Channel : ${res.author.name}
 🎧 Audio : ${FileSize(audio[0].contentLength)} 
 `
-aqua.sendMessage(from, {image: {url: inithumb, caption: toks}}, {quoted: m})
+aqua.sendMessage(from, {image: inithumb, caption: toks}, {quoted: m})
 
 aqua.sendMessage(m.chat, {audio: { url: res.url }, mimetype: 'audio/mpeg', fileName: `${res.title}.mp3` ,
 contextInfo: {
 externalAdReply: {
-title: 'play music', 
-body: 'Now Playing...',
-description: 'Now Playing...',
+title: `                  ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+body: `                        ━━━━⬤──────────    `,
 mediaType: 2,
-thumbnail: await (await fetch('https://telegra.ph/file/5ad51566ce5ae7ac710b7.jpg')).buffer(),
-mediaUrl: `${q}`
+renderLargerThumbnail: true,
+thumbnail: inithumb,
+mediaUrl: res.url,
+sourceUrl: res.url
 }}}, { quoted: m })
 }
 db.users[sender].limit -= 1 // -1 limit
