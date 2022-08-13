@@ -2827,9 +2827,9 @@ var data = await fetchJson(`https://megayaa.herokuapp.com/api/randomquote`)
  let buttons = [
         { buttonId: `${command}`, buttonText: { displayText: 'Next' }, type: 1 }
     ]
- aqua.sendButtonText(m.chat, buttons, data.result.quotes, '> '+data.result.author, m)
+// aqua.sendButtonText(m.chat, buttons, data.result.quotes, '> '+data.result.author, m)
 
-//reply (data.result.quotes+'\n\n-- '+data.result.author)
+reply (data.result.quotes+'\n\n-- '+data.result.author)
 break
 
 case 'lirik':{
@@ -3391,27 +3391,25 @@ reply (`*Grub Wa*
 break 
  
  case 'culik':{
-if (!isOwner && !itsMe) return reply (mess.owner)
+if (!isOwner) return reply (mess.owner)
 if (args.length < 1) return reply('Masukin id grub')
 let mem = [];
 await groupMembers.map( i => mem.push(i.id) )
 await aqua.groupParticipantsUpdate(q, mem, 'add')
-await sleep(5000)
-reply ("Sukses")
+//reply ("Sukses")
 }
 break
 
-case 'kickall':
-if (!isOwner && !m.key.fromMe) return reply ("khsus owner tod")
-      if (!isBotAdmins) return reply (mess.botAdmin)
-if (!isGroup) return
-			        members_id = []
-					for (let mem of participants) {
-						await sleep(1000)
-						members_id.push(mem.jid)
-					}
-					await aqua.groupParticipantsUpdate(from, members_id, 'remove')
-					break 
+
+case 'kickall':{
+if (!isOwner) return reply (mess.owner)
+if (!isGroup) return reply ("khsus di dlm grub")
+let mem = [];
+await groupMembers.map( i => mem.push(i.id) )
+await aqua.groupParticipantsUpdate(from, mem, 'remove')
+//reply ("Sukses")
+}
+break
 
 
 case' togel':
@@ -3460,6 +3458,7 @@ break
 
 
 case 'igdl': case 'instagram': case 'ig':{
+	try{
 reply (mess.wait)
 if (!q) return reply ('Linknya?')
 let igreel = budy.includes("https://www.instagram.com/reel/")
@@ -3492,6 +3491,9 @@ let { instagramdl, instagramdlv2 } = require('@bochilteam/scraper')
 let results = await instagramdl(args[0]).catch(async _ => await instagramdlv2(args[0]))
 for (const { url } of results) await aqua.sendMedia(from, url, m)
 console.log(results)
+}
+} catch (err){
+return reply ('Maaf Sedang error coba lagi nanti')
 }
 }
 db.users[sender].limit -= 1 // -1 limit
@@ -3700,10 +3702,9 @@ case 'orgy': case 'nekopoi': case 'manga': case 'ass': case 'ahegao':
 case 'bdsm': case 'cuckold': case 'cum': case 'femdom': case 'ero':{
 if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
 if(isStop) return ('khsus private chat bot')
-var but = [{buttonId: `${command}`, buttonText: { displayText: "Next" }, type: 1 }]
-aqua.sendMessage(from, { caption: `Random Anime ${q}`, image: { url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: m })
-
-//aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}})
+//var but = [{buttonId: `${command}`, buttonText: { displayText: "Next" }, type: 1 }]
+//aqua.sendMessage(from, { caption: `Random Anime ${q}`, image: { url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: m })
+aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}})
 }
 break
 
@@ -3799,8 +3800,11 @@ if (!quoted) reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}` )
                    }
 break
 
+case 'setppgb':
 case 'setppgc':
 if (!isAdmins && !isOwner) return reply (mess.admin)
+if (!isGroup) return reply(mess.group)
+ if (!isBotAdmins) return reply (mess.botAdmin)
 if (!quoted) reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}` )               
                    if (isImage || isQuotedImage) {
                      var media = await aqua.downloadAndSaveMediaMessage(quoted)
@@ -5477,20 +5481,9 @@ break
         gis(text, async (error, result) => {
         n = result
         images = n[Math.floor(Math.random() * n.length)].url
-        let buttons = [
-    {buttonId: `gimage ${text}`, buttonText: {displayText: 'Next Image'}, type: 1}
-]
-let buttonMessage = {
-    image: { url: images },
-    caption: `*-------「 GIMAGE SEARCH 」-------*
+aqua.sendMessage(from, {image: {url: images}, caption: `*-------「 GIMAGE SEARCH 」-------*
 🤠 *Query* : ${text}
-🔗 *Media Url* : ${images}`,
-    footer: aqua.user.name,
-    buttons: buttons,
-    headerType: 4
-}
-aqua.sendMessage(m.chat, buttonMessage, { quoted: m })
-        })
+🔗 *Media Url* : ${images}`}, {quoted: m})
         }
         break
 	    
@@ -5730,6 +5723,11 @@ case 'ppcouple': case 'ppcp': {
 	anu = await fetchJson(`https://leyscoders-api.herokuapp.com/api/ppcouple?apikey=IkyOgiwara`)
 buff1 = await getBuffer(anu.result.male)
 buff2 = await getBuffer(anu.result.female)
+
+aqua.sendMessage(from, {image: {url: buff1 },caption: `Cowoknya`}, {quoted: m})
+aqua.sendMessage(from, {image: {url: buff2 },caption: `Cewekknya`}, {quoted: m})
+
+/*
 let buttons = [
     {buttonId: `ppcp`, buttonText: {displayText: 'Next'}, type: 1}
 ]
@@ -5751,6 +5749,7 @@ let buttonMessagee = {
     headerType: 4
 }
 aqua.sendMessage(m.chat, buttonMessagee, { quoted: m })
+*/
 }
 break
             
