@@ -1355,7 +1355,12 @@ var toks =`
 `
 aqua.sendMessage(from, {image: inithumb, caption: toks}, {quoted: m})
 
-aqua.sendMessage(m.chat, {audio: { url: res.url }, mimetype: 'audio/mpeg', fileName: `${res.title}.mp3` ,
+let { yta } = require('./lib/y2mate')
+let quality = '128kbps'
+let media = await yta(res.url, quality)
+if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
+
+aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` ,
 contextInfo: {
 externalAdReply: {
 title: `                  ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
