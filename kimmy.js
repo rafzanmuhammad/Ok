@@ -4901,11 +4901,11 @@ case 'del2':
 if (!isGroup) return reply(mess.group)
   if (!isBotAdmins) return reply (mess.botAdmin)
 if (!isAdmins && !isOwner) return reply (mess.admin)
-if(!mentionByReply) return reply ("Reply pesan")
-if (mentionByReply == botNumber) {
-aqua.sendMessage(from, { delete: { remoteJid: from, fromMe: true, id: m.quoted.id, participant: mentionByReply } })
-} else if(mentionByReply !== botNumber && isBotAdmins){
-aqua.sendMessage(from, { delete: { remoteJid: from, fromMe: false, id: m.quoted.id, participant: mentionByReply } })
+if(!isQuotedReply) return reply ("Reply pesan")
+if (isQuotedReply == botNumber) {
+aqua.sendMessage(from, { delete: { remoteJid: from, fromMe: true, id: m.quoted.id, participant: isQuotedReply } })
+} else if(isQuotedReply !== botNumber && isBotAdmins){
+aqua.sendMessage(from, { delete: { remoteJid: from, fromMe: false, id: m.quoted.id, participant: isQuotedReply } })
 } 
 break
 
