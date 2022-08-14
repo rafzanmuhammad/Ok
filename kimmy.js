@@ -4901,7 +4901,7 @@ case 'del2':
 if (!isGroup) return reply(mess.group)
   if (!isBotAdmins) return reply (mess.botAdmin)
 if (!isAdmins && !isOwner) return reply (mess.admin)
-if(!mentionByReply) return reply ("Reply pesan")
+//if(!mentionByReply) return reply ("Reply pesan")
 if (mentionByReply == botNumber) {
 xdev.sendMessage(from, { delete: { remoteJid: from, fromMe: true, id: m.quoted.id, participant: mentionByReply } })
 } else if(mentionByReply !== botNumber && isBotGroupAdmins){
@@ -4915,8 +4915,9 @@ if (!isGroup) return reply(mess.group)
   if (!isBotAdmins) return reply (mess.botAdmin)
 if (!isAdmins && !isOwner) return reply (mess.admin)
 if(!isQuotedReply) return reply ("Reply pesan")
-if (!m.quoted) throw false
-aqua.sendMessage(from, { delete: { remoteJid: from, fromMe: false, id: m.quoted.id, participant: m.quoted.sender } })
+//if (!m.quoted) throw false
+let pah = isQuotedReply ? isQuotedReply : q.replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
+aqua.sendMessage(from, { delete: { remoteJid: from, fromMe: false, id: m.quoted.id, participant: pah } })
 break
           
 
