@@ -252,7 +252,8 @@ sourceUrl: `https://wa.me/628388024064?text=lah`
 }
 }, text: intro})
 } else if(type5){
-aqua.sendMessage(from, {image: ppUser,caption: intro}, {contextInfo:{ "mentionedJid": [mem]}})
+aqua.sendMessage(from, {caption: intro, mentions:[mem], image: ppUser})
+//aqua.sendMessage(from, {image: ppUser,caption: intro}, {contextInfo:{ "mentionedJid": [mem]}})
 }
 
 
@@ -278,7 +279,8 @@ sourceUrl: `https://wa.me/628388024064?text=lah`
 }
 }, text: outro})
 } else if(type5){
-aqua.sendMessage(from, {image: ppUser,caption: outro}, {contextInfo:{ "mentionedJid": [mem]}})
+aqua.sendMessage(from, {caption: outro, mentions:[mem], image: ppUser})
+//aqua.sendMessage(from, {image: ppUser,caption: outro}, {contextInfo:{ "mentionedJid": [mem]}})
 }
 }
 
