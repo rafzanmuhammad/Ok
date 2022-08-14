@@ -3705,7 +3705,7 @@ if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
 if(isStop) return ('khsus private chat bot')
 //var but = [{buttonId: `${command}`, buttonText: { displayText: "Next" }, type: 1 }]
 //aqua.sendMessage(from, { caption: `Random Anime ${q}`, image: { url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: m })
-aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}})
+aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}}, {quoted:m})
 }
 break
 
@@ -5724,8 +5724,8 @@ case 'ppcouple': case 'ppcp': {
 buff1 = await getBuffer(anu.result.male)
 buff2 = await getBuffer(anu.result.female)
 
-aqua.sendMessage(from, {image: {url: buff1 },caption: `Cowoknya`}, {quoted: m})
-aqua.sendMessage(from, {image: {url: buff2 },caption: `Cewekknya`}, {quoted: m})
+aqua.sendMessage(from, {image: buff1, caption: `Cowoknya`}, {quoted: m})
+aqua.sendMessage(from, {image: buff2, caption: `Cewekknya`}, {quoted: m})
 
 /*
 let buttons = [
