@@ -4896,16 +4896,27 @@ if (args[0] === 'enable') {
 }
             }
             break
+
+case 'del2':
+if (!isGroup) return reply ('Kusus group')
+if (!isGroupAdmins) return reply (mess.only.admin)
+if (!isBotGroupAdmins) return reply (mess.only.Badmin)
+if(!mentionByReply) return reply ("Reply pesan")
+if (mentionByReply == botNumber) {
+xdev.sendMessage(from, { delete: { remoteJid: from, fromMe: true, id: m.quoted.id, participant: mentionByReply } })
+} else if(mentionByReply !== botNumber && isBotGroupAdmins){
+xdev.sendMessage(from, { delete: { remoteJid: from, fromMe: false, id: m.quoted.id, participant: mentionByReply } })
+} 
+break
+
   
 case  'dell':
-if (!isAdmins && !isOwner) return reply(`Khusus Admin`)
+if (!isGroup) return reply(mess.group)
+  if (!isBotAdmins) return reply (mess.botAdmin)
+if (!isAdmins && !isOwner) return reply (mess.admin)
 if(!isQuotedReply) return reply ("Reply pesan")
 if (!m.quoted) throw false
-if (m.quoted == botNumber) {
-aqua.sendMessage(from, { delete: { remoteJid: from, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
-} else if(m.quoted !== botNumber && isBotAdmins){
 aqua.sendMessage(from, { delete: { remoteJid: from, fromMe: false, id: m.quoted.id, participant: m.quoted.sender } })
-} 
 break
           
 
