@@ -4898,9 +4898,9 @@ if (args[0] === 'enable') {
             break
 
 case 'del2':
-if (!isGroup) return reply ('Kusus group')
-if (!isGroupAdmins) return reply (mess.only.admin)
-if (!isBotGroupAdmins) return reply (mess.only.Badmin)
+if (!isGroup) return reply(mess.group)
+  if (!isBotAdmins) return reply (mess.botAdmin)
+if (!isAdmins && !isOwner) return reply (mess.admin)
 if(!mentionByReply) return reply ("Reply pesan")
 if (mentionByReply == botNumber) {
 xdev.sendMessage(from, { delete: { remoteJid: from, fromMe: true, id: m.quoted.id, participant: mentionByReply } })
