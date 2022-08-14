@@ -6975,10 +6975,10 @@ aqua.send5ButImg(m.chat, kemtod, `${week} ${date}`, thumbnya, btns)
 break 
 
 case 'buyprem': {
-reply (`
-Mau jadi premium? harus beli kak
+aqua.sendMessage(from, { text: `Mau jadi premium? harus beli kak
 murah kok 5 Rebu dah jadi premium permanen,
-Keuntungan, Vitur Anime Terbuka, Dan lain-lain`)
+Keuntungan, Vitur Anime Terbuka, Dan lain-lain.
+Chat Owner : @628388024064`, mentions: [`628388024064@s.whatsapp.net`] }, {quoted:m})
 }
 break
 /*
