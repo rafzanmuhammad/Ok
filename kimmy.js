@@ -1553,7 +1553,8 @@ mediaType: 1,
 renderLargerThumbnail: true,
 thumbnail: thumbdoc,
 mediaUrl: `https://www.instagram.com/`,
-sourceUrl: `https://wa.me/628388024064?text=lah`
+sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
+//sourceUrl: `https://wa.me/628388024064?text=lah`
 }
 }, text: anu})
 }
@@ -7161,11 +7162,11 @@ if (sticBuffer) await aqua.sendMessage(from, { sticker: sticBuffer }, {mimetype:
 }
 }
 
-/*
+
 if ((budy.startsWith('https://chat') || budy.startsWith('Buka tautan ini') || budy.startsWith('Undangan untuk')) && !isGroup) {
 reply (`*Untuk Memasukan Bot Ke Group*\n*Kamu Harus Sewa Bot Telebih Dahulu*\n_Silahkan Chat Owner_`)
 }
- */        
+      
             
 if (budy.startsWith('=>')) {
     if (!isOwner) return reply(mess.owner)
