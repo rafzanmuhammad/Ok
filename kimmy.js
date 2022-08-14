@@ -5482,6 +5482,7 @@ break
         n = result
         images = n[Math.floor(Math.random() * n.length)].url
 aqua.sendMessage(from, {image: {url: images}, caption: `Nih`}, {quoted: m})
+        })
         }
         break
 	    
