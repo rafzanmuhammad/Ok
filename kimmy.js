@@ -5490,24 +5490,11 @@ aqua.sendMessage(from, {image: {url: images}, caption: `Nih`}, {quoted: m})
 case 'ytmp3': case 'ytaudio': {
 	try {
 		if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-		db.users[sender].limit -= 1 // -1 limit
 let { yta } = require('./lib/y2mate')
 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
-if(!q) return setReply("Masukan link youtube")
-if(q.includes("https://youtu.be/")){
-var videoId = q.replace('https://youtu.be/', '')
-} else if(q.includes("https://youtube.com/watch?v=")){
-var videoId = q.split('=')[1]
-} else if(q.includes("https://youtube.com/shorts/")){
-var videoId = q.replace('https://youtube.com/shorts/', '')
-}  else {
-return reply ("Link salah")
-}
-
- let linkk =`https://youtube.com/watch?v=${videoId}`
 
 let quality = args[1] ? args[1] : '128kbps'
-let media = await yta(linkk, quality)
+let media = await yta(text, quality)
 if (media.filesize >= 200000) return reply('File Melebihi Batas '+util.format(media))
 
 aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` ,
@@ -5524,36 +5511,25 @@ mediaUrl: `${q}`
 return reply ('Error, Audio tidak ditemukan☹️')
 }    
             }
+            db.users[sender].limit -= 1 // -1 limit
             break
             
 case 'ytmp4': case 'ytvideo': {
 try {
-            	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-		db.users[sender].limit -= 1 // -1 limit
+          	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 if(!q) return setReply("Masukan link youtube")
 let { ytv } = require('./lib/y2mate')
 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
 
-if(q.includes("https://youtu.be/")){
-var videoId = q.replace('https://youtu.be/', '')
-} else if(q.includes("https://youtube.com/watch?v=")){
-var videoId = q.split('=')[1]
-} else if(q.includes("https://youtube.com/shorts/")){
-var videoId = q.replace('https://youtube.com/shorts/', '')
-}  else {
-return reply ("Link salah")
-}
-
- let linkk =`https://youtube.com/watch?v=${videoId}`
-
 let quality = args[1] ? args[1] : '360p'
-let media = await ytv(linkk, quality)
+let media = await ytv(text, quality)
 if (media.filesize >= 400000) return reply('File Melebihi Batas '+util.format(media))
 aqua.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `➟ Title : ${media.title}\n➟ File Size : ${media.filesizeF}\n➟ Url : ${isUrl(text)}\n➟ Ext : MP3\n➟ Resolusi : ${args[1] || '360p'}` }, { quoted: m })
   } catch (err){
 return reply ('Error, Video tidak ditemukan☹️')
 }    
       }
+      db.users[sender].limit -= 1 // -1 limit
             break
 	    
 case 'getmusic': {
