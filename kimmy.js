@@ -1541,7 +1541,12 @@ case 'dare':
 case 'menu': case 'help': case '?': {
 anu = menu(global, m, prefix, pushname, isPremium)
 
-
+try {
+    ppuser = await aqua.profilePictureUrl(sender, 'image')
+} catch (err) {
+    ppuser = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
+}
+ppumser = await getBuffer(ppuser)
 
 aqua.sendMessageV2(from, { contextInfo: { mentionedJid: [sender],
 externalAdReply: {
@@ -1551,7 +1556,7 @@ body: `                        ━━━━⬤──────────    
 //description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
-thumbnail: thumbdoc,
+thumbnail: ppumser,
 mediaUrl: `https://www.instagram.com/`,
 sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 //sourceUrl: `https://wa.me/628388024064?text=lah`
@@ -3455,14 +3460,16 @@ let igtv = budy.includes("https://www.instagram.com/tv/")
 let igstory = budy.includes("https://instagram.com/stories/")
 
 if(igreel){
+	/*
 let results = await instagramdl(q)
 for (const { url } of results) await aqua.sendMedia2(from, url, m, {caption: "*INSTAGRAM DOWNLOAD*"})
-/*
+*/
+
 Download.insta_reel(q).then(async (data) => {
 aqua.sendMessage(from, {caption: '*INSTAGRAM*', video: {url: data.url} }, {quoted: m})
 console.log(data)
 console.log(data.url)
-})*/
+})
 } else if(igtv){
 Download.insta_post(q).then(async (data) => {
 aqua.sendMessage(from, {caption: data.title, video: {url: data.post1.url} }, {quoted: m})
@@ -4032,7 +4039,7 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
 case 'sc': {
 reply(`
 👾 Script Ori : https://github.com/DikaArdnt/Hisoka-Morou
-🌐 Penyusun Script : Takimtod && KahfzXzyy
+🌐 Penyusun Script : Takimtod
 `)
             }
             break
@@ -5492,7 +5499,7 @@ case 'ytmp3': case 'ytaudio': {
 		if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 let { yta } = require('./lib/y2mate')
 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
-
+reply (mess.wait)
 let quality = args[1] ? args[1] : '128kbps'
 let media = await yta(text, quality)
 if (media.filesize >= 200000) return reply('File Melebihi Batas '+util.format(media))
@@ -5516,11 +5523,10 @@ return reply ('Error, Audio tidak ditemukan☹️')
             
 case 'ytmp4': case 'ytvideo': {
 try {
-          	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-if(!q) return setReply("Masukan link youtube")
+if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 let { ytv } = require('./lib/y2mate')
 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
-
+reply (mess.wait)
 let quality = args[1] ? args[1] : '360p'
 let media = await ytv(text, quality)
 if (media.filesize >= 400000) return reply('File Melebihi Batas '+util.format(media))
