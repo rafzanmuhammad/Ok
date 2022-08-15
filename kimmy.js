@@ -1541,12 +1541,6 @@ case 'dare':
 case 'menu': case 'help': case '?': {
 anu = menu(global, m, prefix, pushname, isPremium)
 
-try {
-    ppuser = await aqua.profilePictureUrl(sender, 'image')
-} catch (err) {
-    ppuser = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
-}
-ppumser = await getBuffer(ppuser)
 
 aqua.sendMessageV2(from, { contextInfo: { mentionedJid: [sender],
 externalAdReply: {
@@ -1554,9 +1548,9 @@ showAdAttribution: true,
 title: `                  ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
 body: `                        ━━━━⬤──────────    `,
 //description: 'Now Playing...',
-mediaType: 2,
+mediaType: 1,
 renderLargerThumbnail: true,
-thumbnail: ppumser,
+thumbnail: thumbdoc,
 mediaUrl: `https://www.instagram.com/`,
 sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 //sourceUrl: `https://wa.me/628388024064?text=lah`
