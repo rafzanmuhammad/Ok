@@ -3318,8 +3318,8 @@ reply (mess.wait)
 calip.downloader.tiktok(args[0]).then( async res => {
 console.log(res)
 console.log('[ T I K T O K ] downloader')
-aqua.sendMessage(m.chat, {document: {url: res.audio, mimetype: 'audio/mpeg', fileName: `${res.title}.mp3`}}, { quoted : m })
-//aqua.sendMessage(from, { audio: {url: res.audio, mimetype: 'audio/mpeg'}}, { quoted: m })
+//aqua.sendMessage(m.chat, {document: {url: res.audio, mimetype: 'audio/mpeg', fileName: `Tiktok Musik.mp3`}}, { quoted : m })
+aqua.sendMessage(from, { audio: {url: res.audio, mimetype: 'audio/mpeg'}}, { quoted: m })
 })
 }
 db.users[sender].limit -= 1 // -1 limit
@@ -5493,8 +5493,21 @@ case 'ytmp3': case 'ytaudio': {
 		db.users[sender].limit -= 1 // -1 limit
 let { yta } = require('./lib/y2mate')
 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
+
+if(q.includes("https://youtu.be/")){
+var videoId = q.replace('https://youtu.be/', '')
+} else if(q.includes("https://youtube.com/watch?v=")){
+var videoId = q.split('=')[1]
+} else if(q.includes("https://youtube.com/shorts/")){
+var videoId = q.replace('https://youtube.com/shorts/', '')
+}  else {
+return reply ("Link salah")
+}
+
+ let linkk =`https://youtube.com/watch?v=${videoId}`
+
 let quality = args[1] ? args[1] : '128kbps'
-let media = await yta(text, quality)
+let media = await yta(linkk, quality)
 if (media.filesize >= 200000) return reply('File Melebihi Batas '+util.format(media))
 
 aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` ,
@@ -5519,8 +5532,21 @@ try {
 		db.users[sender].limit -= 1 // -1 limit
 let { ytv } = require('./lib/y2mate')
 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
+
+if(q.includes("https://youtu.be/")){
+var videoId = q.replace('https://youtu.be/', '')
+} else if(q.includes("https://youtube.com/watch?v=")){
+var videoId = q.split('=')[1]
+} else if(q.includes("https://youtube.com/shorts/")){
+var videoId = q.replace('https://youtube.com/shorts/', '')
+}  else {
+return reply ("Link salah")
+}
+
+ let linkk =`https://youtube.com/watch?v=${videoId}`
+
 let quality = args[1] ? args[1] : '360p'
-let media = await ytv(text, quality)
+let media = await ytv(linkk, quality)
 if (media.filesize >= 400000) return reply('File Melebihi Batas '+util.format(media))
 aqua.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `➟ Title : ${media.title}\n➟ File Size : ${media.filesizeF}\n➟ Url : ${isUrl(text)}\n➟ Ext : MP3\n➟ Resolusi : ${args[1] || '360p'}` }, { quoted: m })
   } catch (err){
