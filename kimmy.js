@@ -549,9 +549,9 @@ aqua.sendMessage(from, {sticker: buffer}, {quoted:m })
 }
 }
 
-/*
+
 	//Auto Reachh
- let regex =["ping","anj","kon","Anj","Kon","Lah","Oi","tod", "menu","tes","Tes","bilek","Banh","cum","kntl","anjing","mmk","Bang","Wibu","Pantek","pepek","hentai"]
+ let regex =["ping","anj","kon","Anj","Kon","Lah","Oi","tes","Tes","bilek","Banh","cum","kntl","anjing","mmk","Bang","Wibu","Pantek","pepek","hentai"]
 for (let i of regex){
 if ( budy.includes(i)){ 
 /////addSpam("NotCase",senderNumber, "10s", AntiSpam)
@@ -560,7 +560,7 @@ const emk = emot[Math.floor(Math.random() * emot.length)]
 aqua.sendMessage(from, { react: { text: emk, key: m.key } })	
 }
 }
-*/
+
     
 //AUTO UPDET BIO ( RUNTIME BIO )
 if (db.settings[botNumber].autobio) {
@@ -1321,7 +1321,7 @@ break
 
 
 case 'play': case 'playmusic': case 'playmusik': case 'play1':{
-	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
+if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 if(!q) return reply ("Teksnya mana")
 let rus = await yts(q)
 if(rus.all.length == "0") return reply ("Video tidak bisa di download")
@@ -2113,19 +2113,6 @@ let lajh = `*STALK FREE FIRE*
 
 • Nick : ${i.result}
 • Id : ${args[0]}`
-reply (lajh)
-}
-break
-
-case 'stalkff':{
-if (!args[0])  return reply ('Nama tiktok lu mana')
-i = await calip.search.ttstalk(args[0])
-console.log(i)
-let lajh = `*STALK TIKTOK*
-
-• Nama : ${args[0]}
-• gatau : ${i.result}
-`
 reply (lajh)
 }
 break
@@ -3331,7 +3318,8 @@ reply (mess.wait)
 calip.downloader.tiktok(args[0]).then( async res => {
 console.log(res)
 console.log('[ T I K T O K ] downloader')
-aqua.sendMessage(from, { audio: {url: res.audio, mimetype: 'audio/mpeg'}}, { quoted: m })
+aqua.sendMessage(m.chat, {document: {url: res.audio, mimetype: 'audio/mpeg', fileName: `${res.title}.mp3`}}, { quoted : m })
+//aqua.sendMessage(from, { audio: {url: res.audio, mimetype: 'audio/mpeg'}}, { quoted: m })
 })
 }
 db.users[sender].limit -= 1 // -1 limit
@@ -5507,7 +5495,7 @@ let { yta } = require('./lib/y2mate')
 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
 let quality = args[1] ? args[1] : '128kbps'
 let media = await yta(text, quality)
-if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
+if (media.filesize >= 200000) return reply('File Melebihi Batas '+util.format(media))
 
 aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` ,
 contextInfo: {
@@ -7165,7 +7153,7 @@ type: WSF.StickerTypes.FULL,
 author: global.author,
 crop: true,
 })
-}        
+}  
 if (wsf) {
 await wsf.build()
 const sticBuffer = await wsf.get()
