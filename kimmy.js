@@ -5493,7 +5493,7 @@ case 'ytmp3': case 'ytaudio': {
 		db.users[sender].limit -= 1 // -1 limit
 let { yta } = require('./lib/y2mate')
 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
-
+if(!q) return setReply("Masukan link youtube")
 if(q.includes("https://youtu.be/")){
 var videoId = q.replace('https://youtu.be/', '')
 } else if(q.includes("https://youtube.com/watch?v=")){
@@ -5530,6 +5530,7 @@ case 'ytmp4': case 'ytvideo': {
 try {
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
+if(!q) return setReply("Masukan link youtube")
 let { ytv } = require('./lib/y2mate')
 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
 
