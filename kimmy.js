@@ -1326,8 +1326,8 @@ case 'play': case 'playmusic': case 'playmusik': case 'play1':{
                 if (!text) throw `Example : ${prefix + command} story wa anime`
                 reply (mess.wait)
                 let yts = require("yt-search")
-                let search = await yts(text)
-                let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
+                let anu = await yts(text)
+           //     let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
                              
 try{
 var thumbnya =`https://i.ytimg.com/vi/${anu.videoId}/mqdefault.jpg`
