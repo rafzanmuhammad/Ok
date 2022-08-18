@@ -1324,10 +1324,20 @@ break
 case 'play': case 'playmusic': case 'playmusik': case 'play1':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
                 if (!text) throw `Example : ${prefix + command} story wa anime`
+                reply (mess.wait)
                 let yts = require("yt-search")
                 let search = await yts(text)
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
                              
+try{
+var thumbnya =`https://i.ytimg.com/vi/${anu.videoId}/mqdefault.jpg`
+} catch(err) {
+var thumbnya =`https://i.ytimg.com/vi/${anu.videoId}/sqdefault.jpg`
+}
+
+let inithumb = await getBuffer(thumbnya)
+
+
 var toks =`
 ⭔ Title : ${anu.title}
 ⭔ Ext : Search
@@ -1339,7 +1349,7 @@ var toks =`
 ⭔ Channel : ${anu.author.url}
 ⭔ Description : ${anu.description}
 ⭔ Url : ${anu.url}`
-aqua.sendMessage(from, {image: thumbnya, caption: toks}, {quoted: m})
+aqua.sendMessage(from, {image: inithumb, caption: toks}, {quoted: m})
 
 let { yta } = require('./lib/y2mate')
 let quality = '128kbps'
@@ -1353,7 +1363,7 @@ title: `               ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`,
 body: `                    ━━━━⬤──────────    `,
 mediaType: 2,
 renderLargerThumbnail: true,
-thumbnail: thumbnya,
+thumbnail: inithumb,
 mediaUrl: anu.url,
 sourceUrl: anu.url
 }}}, { quoted: m })
