@@ -1320,6 +1320,47 @@ aqua.sendButDoc(from, menunya, `${global.footer}`, thumbdoc, mok, options1, {quo
 break
 
 
+
+case 'play': case 'playmusic': case 'playmusik': case 'play1':{
+	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
+                if (!text) throw `Example : ${prefix + command} story wa anime`
+                let yts = require("yt-search")
+                let search = await yts(text)
+                let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
+                             
+var toks =`
+⭔ Title : ${anu.title}
+⭔ Ext : Search
+⭔ ID : ${anu.videoId}
+⭔ Duration : ${anu.timestamp}
+⭔ Viewers : ${anu.views}
+⭔ Upload At : ${anu.ago}
+⭔ Author : ${anu.author.name}
+⭔ Channel : ${anu.author.url}
+⭔ Description : ${anu.description}
+⭔ Url : ${anu.url}`
+aqua.sendMessage(from, {image: thumbnya, caption: toks}, {quoted: m})
+
+let { yta } = require('./lib/y2mate')
+let quality = '128kbps'
+let media = await yta(anu.url, quality)
+if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
+
+aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` ,
+contextInfo: {
+externalAdReply: {
+title: `               ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+body: `                    ━━━━⬤──────────    `,
+mediaType: 2,
+renderLargerThumbnail: true,
+thumbnail: thumbnya,
+mediaUrl: anu.url,
+sourceUrl: anu.url
+}}}, { quoted: m })
+            }
+            db.users[sender].limit -= 1 // -1 limit
+            break
+
 case 'play': case 'playmusic': case 'playmusik': case 'play1':{
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 if(!q) return reply ("Teksnya mana")
@@ -4866,6 +4907,7 @@ reply(`Sukses`)
   
      
 case 'linkgroup': case 'linkgc': {
+if (!isBotAdmins) return reply (mess.botAdmin)
 if (!isGroup) return reply(mess.group)
 let response = await aqua.groupInviteCode(m.chat)
 aqua.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nLink Group : ${groupMetadata.subject}`, m, { detectLink: true })
