@@ -48,7 +48,7 @@ const gcbt = ["120363041984430206@g.us"] //ID GC GRUB BOT "120363041984430206@g.
 const ameApi = new ameClient("1f486b04b157f12adf0b1fe0bd83c92a28ce768683871d2a390e25614150d0c8fa404fd01b82a5ebf5b82cbfa22e365e611c8501225a93d5d1e87f9f420eb91b")
 const bitly = new BitlyClient('7d737131e678fc366699edead8bca146e69f6c78', {});
 const forward = { forwardingScore: 10000000, isForwarded: true, sendEphemeral: true}
-const { youtubeSearch, mediafiredl,  lyricsv2,  lyrics, facebookdl, facebookdlv2, tiktokdl, tiktokdlv2, twitterdl, twitterdlv2, getZodiac, liputan6, googleIt, wallpaperv2,  googleImage,  jadwalTVNow,  gempa,  stickerTelegram, stickerLine, latinToAksara, aksaraToLatin, asmaulhusna, asmaulhusnajson, alquran, jadwalsholat, listJadwalSholat, gempaNow, instagramdl } = require('@bochilteam/scraper')
+const { youtubeSearch, mediafiredl,  lyricsv2,  lyrics, facebookdl, facebookdlv2, tiktokdl, tiktokdlv2, twitterdl, twitterdlv2, getZodiac, liputan6, googleIt, wallpaperv2,  googleImage,  jadwalTVNow,  gempa,  stickerTelegram, stickerLine, latinToAksara, aksaraToLatin, asmaulhusna, asmaulhusnajson, alquran, jadwalsholat, listJadwalSholat, gempaNow, instagramdl, instagramdlv3 } = require('@bochilteam/scraper')
 const stringSimilarity = require("string-similarity");
 
 //=======================[ LIB ]=======================//
@@ -3505,16 +3505,19 @@ let igtv = budy.includes("https://www.instagram.com/tv/")
 let igstory = budy.includes("https://instagram.com/stories/")
 
 if(igreel){
-	/*
-let results = await instagramdl(q)
+	
+let results = await instagramdlv3(q)
 for (const { url } of results) await aqua.sendMedia2(from, url, m, {caption: "*INSTAGRAM DOWNLOAD*"})
-*/
+console.log(results)
 
+/*
 Download.insta_reel(q).then(async (data) => {
 aqua.sendMessage(from, {caption: '*INSTAGRAM*', video: {url: data.url} }, {quoted: m})
 console.log(data)
 console.log(data.url)
 })
+*/
+
 } else if(igtv){
 Download.insta_post(q).then(async (data) => {
 aqua.sendMessage(from, {caption: data.title, video: {url: data.post1.url} }, {quoted: m})
