@@ -1327,7 +1327,7 @@ case 'play': case 'playmusic': case 'playmusik': case 'play1':{
                 reply (mess.wait)
                 let yts = require("yt-search")
                 let search = await yts(text)
-               let anu = search[Math.floor(Math.random() * search.length)]
+               let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
                              
 try{
 var thumbnya =`https://i.ytimg.com/vi/${anu.videoId}/mqdefault.jpg`
@@ -1340,8 +1340,10 @@ let inithumb = await getBuffer(thumbnya)
 
 var toks =`
 ⭔ Title : ${anu.title}
+⭔ Ext : Search
+⭔ ID : ${anu.videoId}
 ⭔ Duration : ${anu.timestamp}
-⭔ Viewers : ${h2k(res.views)} Kali 
+⭔ Viewers : ${anu.views}
 ⭔ Upload At : ${anu.ago}
 ⭔ Author : ${anu.author.name}
 ⭔ Channel : ${anu.author.url}
