@@ -24,11 +24,11 @@ let d = new Date
 module.exports = async(aqua, anu) => {
 try{
 	
-let type1 = false
+let type1 = true
 let type2 = false
 let type3 = false
 let type4 = false
-let type5 = true
+let type5 = false
 
 let metadata = await aqua.groupMetadata(anu.id)
 const from = anu.id
