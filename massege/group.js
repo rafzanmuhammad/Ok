@@ -3,9 +3,9 @@ const moment = require("moment-timezone");
 const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
 const fs = require("fs");
 const { color } = require("../lib/color");
-const canvacord = require("canvacord");
 const { getBuffer, getRandom, getGroupAdmins} = require("../lib/myfunc");
 const chalk = require('chalk')
+const canvacord = require("canvacord");
 const bg = "https://tinyurl.com/y23xrfhu"
 let thumbdoc = fs.readFileSync('./media/thumbnaildokumen.jpg')
 //require("../settings.js")
@@ -24,11 +24,11 @@ let d = new Date
 module.exports = async(aqua, anu) => {
 try{
 	
-let type1 = true
+let type1 = false
 let type2 = false
 let type3 = false
 let type4 = false
-let type5 = false
+let type5 = true
 
 let metadata = await aqua.groupMetadata(anu.id)
 const from = anu.id
@@ -151,7 +151,7 @@ image3.build()
     .then(async data => {
        await canvacord.write(data,foto);
           let gambar = await fs.readFileSync(foto)
-
+/*
 let buttonMessage = {
     contextInfo:options,
     image:gambar,
@@ -160,15 +160,20 @@ let buttonMessage = {
     buttons: but,
     headerType: 4
 }
+
 await aqua.sendMessage(from, buttonMessage)
+*/
+
 await fs.unlinkSync(foto)
 });
   
 } catch(err){
 console.log(err)
+/*
 let autoButton = Remove? butOut : butIn
 await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options)
 }
+*/
 }
 
 
