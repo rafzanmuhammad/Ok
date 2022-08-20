@@ -1327,7 +1327,7 @@ case 'play': case 'playmusic': case 'playmusik': case 'play1':{
                 reply (mess.wait)
                 let yts = require("yt-search")
                 let search = await yts(text)
-               let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
+               let anu = search[Math.floor(Math.random() * search.length)]
                              
 try{
 var thumbnya =`https://i.ytimg.com/vi/${anu.videoId}/mqdefault.jpg`
@@ -1340,10 +1340,8 @@ let inithumb = await getBuffer(thumbnya)
 
 var toks =`
 ⭔ Title : ${anu.title}
-⭔ Ext : Search
-⭔ ID : ${anu.videoId}
 ⭔ Duration : ${anu.timestamp}
-⭔ Viewers : ${anu.views}
+⭔ Viewers : ${h2k(res.views)} Kali 
 ⭔ Upload At : ${anu.ago}
 ⭔ Author : ${anu.author.name}
 ⭔ Channel : ${anu.author.url}
@@ -1361,7 +1359,7 @@ contextInfo: {
 externalAdReply: {
 title: `               ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
 body: `                    ━━━━⬤──────────    `,
-mediaType: 2,
+mediaType: 1,
 renderLargerThumbnail: true,
 thumbnail: inithumb,
 mediaUrl: anu.url,
@@ -3365,11 +3363,12 @@ case 'tiktokaudio': case 'tiktokmp3': case 'tiktokmusik':{
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis 
 if (args.length < 0) return reply ('Link?')
 reply (mess.wait)
-calip.downloader.tiktok(args[0]).then( async res => {
+Download.tiktok(args[0]).then( async res => {
 console.log(res)
 console.log('[ T I K T O K ] downloader')
+
 //aqua.sendMessage(m.chat, {document: {url: res.audio, mimetype: 'audio/mpeg', fileName: `Tiktok Musik.mp3`}}, { quoted : m })
-aqua.sendMessage(from, { audio: {url: res.audio, mimetype: 'audio/mpeg'}}, { quoted: m })
+aqua.sendMessage(from, { audio: {url: res.server1.music, mimetype: 'audio/mpeg'}}, { quoted: m })
 })
 }
 db.users[sender].limit -= 1 // -1 limit
