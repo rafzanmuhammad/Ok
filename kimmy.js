@@ -4938,7 +4938,7 @@ if (args[0] === 'enable') {
             }
             break
 
-case 'del2':
+case 'dell':
 if (!isGroup) return reply(mess.group)
   if (!isBotAdmins) return reply (mess.botAdmin)
 if (!isAdmins && !isOwner) return reply (mess.admin)
@@ -4951,15 +4951,7 @@ aqua.sendMessage(from, { delete: { remoteJid: from, fromMe: false, id: m.quoted.
 break
 
   
-case  'dell':
-if (!isGroup) return reply(mess.group)
- if (!isBotAdmins) return reply (mess.botAdmin)
-if (!isAdmins && !isOwner) return reply (mess.admin)
-if(!isQuotedReply) return reply ("Reply pesan")
-aqua.sendMessage(from, { delete: { remoteJid: from, fromMe: false, id: m.quoted.id, participant: isQuotedReply } })
-break
           
-
 case 'delete': case 'del': {
 if (!m.quoted) throw false
 let { chat, fromMe, id, isBaileys } = m.quoted
