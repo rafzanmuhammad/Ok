@@ -34,6 +34,16 @@ const PhoneNumber = require('awesome-phonenumber')
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, isUrl, getRandom, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep } = require('./lib/myfunc')
 const forward = { forwardingScore: 10000000, isForwarded: true, sendEphemeral: true}
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://aqua:JEuf6Bc#aVQFyW9@cluster0.b4kpf6s.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
+
 let baterai = {
     baterai: 0,
     cas: false
