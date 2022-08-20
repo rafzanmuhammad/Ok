@@ -89,13 +89,6 @@ akan langsung jadi sticker 🐥
 ├ ${prefix}pinterest                     
 ╰❒
 
-╭─❒ 「  *Anonymous Menu* 」
-├ ${prefix}start
-├ ${prefix}next
-├ ${prefix}keluar
-├ ${prefix}sendkontak
-╰❒
-
 ╭─❒ 「  *Jadwal Tv* 」
 ├ ${prefix}jadwalbola
 ├ ${prefix}jadwaltv
