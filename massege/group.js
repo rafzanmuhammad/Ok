@@ -3,6 +3,7 @@ const moment = require("moment-timezone");
 const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
 const fs = require("fs");
 const { color } = require("../lib/color");
+const canvacord = require("canvacord");
 const { getBuffer, getRandom, getGroupAdmins} = require("../lib/myfunc");
 const chalk = require('chalk')
 const bg = "https://tinyurl.com/y23xrfhu"
@@ -23,11 +24,11 @@ let d = new Date
 module.exports = async(aqua, anu) => {
 try{
 	
-let type1 = false
+let type1 = true
 let type2 = false
 let type3 = false
 let type4 = false
-let type5 = true
+let type5 = false
 
 let metadata = await aqua.groupMetadata(anu.id)
 const from = anu.id
@@ -106,8 +107,7 @@ let butOut= [{ buttonId: `y`, buttonText: { displayText: "Good Bye" },type: 1 }]
  
 const WelcomeType1 = async(id, text1, desc1, gam1, gam2, but = [], options = {}) => {	
 try{
-const canvacord = require("canvacord");
- 
+
 if (Add) {
 var image3 = await new canvacord.Welcomer()
         .setUsername(pushname)
