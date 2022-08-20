@@ -3365,25 +3365,12 @@ case 'tiktokaudio': case 'tiktokmp3': case 'tiktokmusik':{
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis 
 if (args.length < 0) return reply ('Link?')
 reply (mess.wait)
-calip.downloader.tiktok(args[0]).then( async res => {
+Download.tiktok(args[0]).then( async res => {
 console.log(res)
 console.log('[ T I K T O K ] downloader')
 
-let ep = res.watermak                    
-let nana = await getBuffer(ep)
-let ran = getRandom('.mp3')
-let ron = getRandom('.mp4')
-fs.writeFileSync(ron, nana)
-exec(`ffmpeg -i ${ron} -vn ${ran}`, (err) => {
-fs.unlinkSync(ron)
-if (err) return reply (`Err: ${err}`)
-let buffer453 = fs.readFileSync(ran)
-aqua.sendMessage(from, { audio: buffer453, mimetype: 'audio/mp4'}, { quoted: m })
-fs.unlinkSync(ran)
-})
-
 //aqua.sendMessage(m.chat, {document: {url: res.audio, mimetype: 'audio/mpeg', fileName: `Tiktok Musik.mp3`}}, { quoted : m })
-//aqua.sendMessage(from, { audio: {url: res.server1.music, mimetype: 'audio/mp4'}}, { quoted: m })
+aqua.sendMessage(from, { audio: {url: res.server1.music, mimetype: 'audio/mp4'}}, { quoted: m })
 })
 }
 db.users[sender].limit -= 1 // -1 limit
