@@ -1589,7 +1589,7 @@ case 'dare':
 		const der = dare[Math.floor(Math.random() * dare.length)]
 		reply (`${der}`) 
 		break
-
+/*
 case 'menu': case 'help': case '?': {
 anu = menu(global, m, prefix, pushname, isPremium)
 
@@ -1610,7 +1610,7 @@ sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }, text: anu})
 }
 break
-
+*/
 
 case 'list': case 'menu': case 'help': case '?': {
 anu = menu(global, m, prefix, pushname, isPremium)
@@ -1666,8 +1666,9 @@ listMessage :{
 
 *BOT-INFO*
 女 : Library                     : _Baileys MD_
-女 : Creator                    : Takimtod
-女 : Runtime                   : ${runtime(process.uptime())}
+女 : Creator                    : takim ᙆ   ᷦ⁩
+女 : Device                     : Realme C31
+女 : Ram                        : ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
 
 *TIME-INFO*
 女 : Hari                          : ${week} ${weton}
@@ -3716,7 +3717,6 @@ case 'developer':
 let developer = [
             { "nama": "T A K I M", "nomor": "628388024064" },
             { "nama": "D I K A", "nomor": "6288292024190" },
-            { "nama": "K A H F Z", "nomor": "6283127014833" },
             ]
 let xensz = []
 for (let i = 0; i < developer.length; i++){
@@ -3748,9 +3748,9 @@ case 'orgy': case 'nekopoi': case 'manga': case 'ass': case 'ahegao':
 case 'bdsm': case 'cuckold': case 'cum': case 'femdom': case 'ero':{
 if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
 if(isStop) return ('khsus private chat bot')
-//var but = [{buttonId: `${command}`, buttonText: { displayText: "Next" }, type: 1 }]
-//aqua.sendMessage(from, { caption: `Random Anime ${q}`, image: { url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: m })
-aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}}, {quoted:m})
+var but = [{buttonId: `${command}`, buttonText: { displayText: "Next" }, type: 1 }]
+aqua.sendMessage(from, { caption: `Random Anime ${q}`, image: { url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: m })
+//aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}}, {quoted:m})
 }
 break
 
