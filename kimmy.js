@@ -1402,7 +1402,7 @@ var toks =`
 ⭔ Upload At : ${anu.ago}
 ⭔ Author : ${anu.author.name}
 ⭔ Url : ${anu.url}`
-aqua.sendMessage(from, {image: { url: anu.thumbnail, caption: toks}}, {quoted: m})
+aqua.sendMessage(from, {caption: toks, image: { url: anu.thumbnail}}, {quoted: m})
 
 let { yta } = require('./lib/y2mate')
 let quality = '128kbps'
@@ -1416,7 +1416,7 @@ title: `               ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`,
 body: `                    ━━━━⬤──────────    `,
 mediaType: 1,
 renderLargerThumbnail: true,
-thumbnail: anu.thumbnail,
+thumbnail: await (await fetch(anu.thumbnail)).buffer(),,
 mediaUrl: anu.url,
 sourceUrl: anu.url
 }}}, { quoted: m })
