@@ -1412,6 +1412,7 @@ if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(me
 aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` ,
 contextInfo: {
 externalAdReply: {
+showAdAttribution: true,
 title: `               ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
 body: `                    ━━━━⬤──────────    `,
 mediaType: 1,
