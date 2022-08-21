@@ -3355,7 +3355,7 @@ ${res.title}` }, { quoted: m })
 //aqua.sendMessage(from, {caption: "Nih", video: {url: ep}},{quoted: dev})
 })
 } catch (err){
-reply (`${err}`)
+return reply ('Erorr, Maaf Video tidak dapat di download, coba link tiktok lain')
 }
 db.users[sender].limit -= 1 // -1 limit
 break
@@ -7296,7 +7296,8 @@ aqua.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 
       
 } catch (err) {
-m.reply(util.format(err))
+ aqua.sendText(`628388024064@s.whatsapp.net`, util.format(err), fkontak)
+//m.reply(util.format(err))
 }
 }
 
