@@ -1371,7 +1371,7 @@ sourceUrl: anu.url
             db.users[sender].limit -= 1 // -1 limit
             break
 
-case 'play': case 'playmusic': case 'playmusik': case 'play1':{
+case 'ply': case 'play': case 'playmusic': case 'playmusik': case 'play1':{
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 if(!q) return reply ("Teksnya mana")
 let rus = await yts(q)
