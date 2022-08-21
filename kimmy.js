@@ -345,7 +345,8 @@ let options1 =
 externalAdReply: {
 title: `                    ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
 description: 'Now Playing...',
-mediaType: 2,
+mediaType: 1,
+renderLargerThumbnail: true,
 thumbnail: thumbdoc, 
 mediaUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM',
 sourceUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM'
@@ -1319,64 +1320,68 @@ aqua.sendButDoc(from, menunya, `${global.footer}`, thumbdoc, mok, options1, {quo
  }
 break
 
-/*
-     case "music":
-      case "play":
-      case "song":
-      case "ytplay":
-        {
-          if (q === "help") {
-            await m.reply(
-              `*❗Command:*   YouTube Video/audio\n*🍀Aliases* ${command}\n*🧩Category:* Downloader\n*🛠️Usage:* ${
-                prefix + command
-              } link/query\n\n*📚Description:* Downloads video/audio from given Query  and sends in current chat.`
-            );
-            return;
-          }
-          if (!q) return m.reply(`Use ${prefix + command} Back in Black`);
-          let yts = require("yt-search");
-          let search = await yts(q);
-          let anu = search.videos[0];
-          //let ytvc = await hx.youtube(anu.url)
-          let thumb = await getBuffer(search.videos[0].thumbnail);
-          let buttons = [
-            {
-              buttonId: `${prefix}ytmp4 ${anu.url}`,
-              buttonText: {
-                displayText: "► Video",
-              },
-              type: 1,
-            },
-            {
-              buttonId: `${prefix}ytmp3 ${anu.url}`,
-              buttonText: {
-                displayText: "♫ Audio",
-              },
-              type: 1,
-            },
-          ];
-          let buttonMessage = {
-            image: {
-              url: anu.thumbnail,
-            },
-            caption: `  𝒁𝒆𝒓𝒐 𝑻𝒘𝒐 𝒀𝑻 𝑷𝒍𝒂𝒚✨
-*Title:* ${anu.title}
-*Duration:* ${anu.timestamp}
-*Viewers:* ${anu.views}
-*Uploaded:* ${anu.ago}
-*Author:* ${anu.author.name}
-*Url* : ${anu.url}`,
-            footer: LangG.footer,
-            buttons: buttons,
-            headerType: 4,
-          };
-          Void.sendMessage(m.chat, buttonMessage, {
-            quoted: m,
-          });
-        }
-         break;
-         */
+case 'yta':
+			case 'song': {
+				if (q === 'help') {
+					return reply(`*❗Command:* ${command}\n*🧩Category:* Search\n*🛠️Usage:* ${prefix + command} back in black\n\n*📚Description:* Sends song in Whatsapp `)
+				}
 
+				if (!args.join(" ")) return reply (`Example : ${prefix + command} Back in black`)
+
+				let yts = require("yt-search")
+
+				let search = await yts(args.join(" "))
+
+				listSerch = []
+
+				teskd = `\n📂Result From *${args.join(" ")}*.\n\n*Select any Song🎵*`
+
+				for (let i of search.all) {
+
+					listSerch.push({
+
+						title: i.title,
+						rowId: `${prefix}ytmp3 ${i.url}`,
+						description: `Author : ${i.author.name} / ${i.timestamp}`
+					})
+
+				}
+
+				const sections = [
+
+					{
+
+						title: "Total Search🔍" + search.all.length,
+
+						rows: listSerch
+
+					}
+
+				]
+
+				const listMessage = {
+
+					text: teskd,
+
+					footer: `${global.footer}`,
+
+					title: `*📂Youtube Search*`,
+
+					buttonText: "FOUND",
+
+					mentions: await aqua.parseMention(teskd),
+
+					sections
+
+				}
+
+				aqua.sendMessage(from, listMessage, {
+					quoted: m
+				})
+
+			}
+
+				break      
 
 case 'play': case 'playmusic': case 'playmusik':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
@@ -1667,7 +1672,7 @@ listMessage :{
 *BOT-INFO*
 女 : Library                     : _Baileys MD_
 女 : Creator                    : takim ᙆ   ᷦ⁩
-女 : Device                     : Realme C31
+女 : Device                     : Realme
 女 : Ram                        : ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
 
 *TIME-INFO*
