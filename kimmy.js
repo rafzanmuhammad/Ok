@@ -1369,7 +1369,7 @@ case 'yta':
 
 					buttonText: "FOUND",
 
-					mentions: await aqua.parseMention(teskd),
+					//mentions: await aqua.parseMention(teskd),
 
 					sections
 
