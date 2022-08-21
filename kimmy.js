@@ -1320,7 +1320,7 @@ aqua.sendButDoc(from, menunya, `${global.footer}`, thumbdoc, mok, options1, {quo
  }
 break
 
-case 'yta':
+case 'playmusik': case 'play':
 			case 'song': {
 				if (q === 'help') {
 					return reply(`*❗Command:* ${command}\n*🧩Category:* Search\n*🛠️Usage:* ${prefix + command} back in black\n\n*📚Description:* Sends song in Whatsapp `)
@@ -1334,7 +1334,7 @@ case 'yta':
 
 				listSerch = []
 
-				teskd = `\n📂Result From *${args.join(" ")}*.\n\n*Select any Song🎵*`
+				teskd = `\n📂 Result From *${args.join(" ")}*.\n\n`
 
 				for (let i of search.all) {
 
@@ -1365,9 +1365,9 @@ case 'yta':
 
 					footer: `${global.footer}`,
 
-					title: `*📂Youtube Search*`,
+					title: `*📂 YOUTUBE SEARCH*`,
 
-					buttonText: "FOUND",
+					buttonText: "Select Music",
 
 					//mentions: await aqua.parseMention(teskd),
 
