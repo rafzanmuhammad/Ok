@@ -1319,16 +1319,73 @@ aqua.sendButDoc(from, menunya, `${global.footer}`, thumbdoc, mok, options1, {quo
  }
 break
 
+/*
+     case "music":
+      case "play":
+      case "song":
+      case "ytplay":
+        {
+          if (q === "help") {
+            await m.reply(
+              `*❗Command:*   YouTube Video/audio\n*🍀Aliases* ${command}\n*🧩Category:* Downloader\n*🛠️Usage:* ${
+                prefix + command
+              } link/query\n\n*📚Description:* Downloads video/audio from given Query  and sends in current chat.`
+            );
+            return;
+          }
+          if (!q) return m.reply(`Use ${prefix + command} Back in Black`);
+          let yts = require("yt-search");
+          let search = await yts(q);
+          let anu = search.videos[0];
+          //let ytvc = await hx.youtube(anu.url)
+          let thumb = await getBuffer(search.videos[0].thumbnail);
+          let buttons = [
+            {
+              buttonId: `${prefix}ytmp4 ${anu.url}`,
+              buttonText: {
+                displayText: "► Video",
+              },
+              type: 1,
+            },
+            {
+              buttonId: `${prefix}ytmp3 ${anu.url}`,
+              buttonText: {
+                displayText: "♫ Audio",
+              },
+              type: 1,
+            },
+          ];
+          let buttonMessage = {
+            image: {
+              url: anu.thumbnail,
+            },
+            caption: `  𝒁𝒆𝒓𝒐 𝑻𝒘𝒐 𝒀𝑻 𝑷𝒍𝒂𝒚✨
+*Title:* ${anu.title}
+*Duration:* ${anu.timestamp}
+*Viewers:* ${anu.views}
+*Uploaded:* ${anu.ago}
+*Author:* ${anu.author.name}
+*Url* : ${anu.url}`,
+            footer: LangG.footer,
+            buttons: buttons,
+            headerType: 4,
+          };
+          Void.sendMessage(m.chat, buttonMessage, {
+            quoted: m,
+          });
+        }
+         break;
+         */
 
 
-case 'play': case 'playmusic': case 'playmusik': case 'play1':{
+case 'play': case 'playmusic': case 'playmusik':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
                 if (!text) throw `Example : ${prefix + command} story wa anime`
                 reply (mess.wait)
                 let yts = require("yt-search")
                 let search = await yts(text)
-               let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
-                             
+               let anu = search.videos[0];
+/*                             
 try{
 var thumbnya =`https://i.ytimg.com/vi/${anu.videoId}/mqdefault.jpg`
 } catch(err) {
@@ -1336,20 +1393,16 @@ var thumbnya =`https://i.ytimg.com/vi/${anu.videoId}/sqdefault.jpg`
 }
 
 let inithumb = await getBuffer(thumbnya)
-
+*/
 
 var toks =`
 ⭔ Title : ${anu.title}
-⭔ Ext : Search
-⭔ ID : ${anu.videoId}
 ⭔ Duration : ${anu.timestamp}
 ⭔ Viewers : ${anu.views}
 ⭔ Upload At : ${anu.ago}
 ⭔ Author : ${anu.author.name}
-⭔ Channel : ${anu.author.url}
-⭔ Description : ${anu.description}
 ⭔ Url : ${anu.url}`
-aqua.sendMessage(from, {image: inithumb, caption: toks}, {quoted: m})
+aqua.sendMessage(from, {image: { url: anu.thumbnail, caption: toks}}, {quoted: m})
 
 let { yta } = require('./lib/y2mate')
 let quality = '128kbps'
@@ -1363,7 +1416,7 @@ title: `               ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`,
 body: `                    ━━━━⬤──────────    `,
 mediaType: 1,
 renderLargerThumbnail: true,
-thumbnail: inithumb,
+thumbnail: anu.thumbnail,
 mediaUrl: anu.url,
 sourceUrl: anu.url
 }}}, { quoted: m })
@@ -1372,114 +1425,6 @@ sourceUrl: anu.url
             break
 
 
-case 'play12':{
-	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-                if (!text) throw `Example : ${prefix + command} story wa anime`
-                reply (mess.wait)
-                let yts = require("yt-search")
-                let rus = await yts(q)
-if(rus.all.length == "0") return reply ("Video tidak bisa di download")
-let anu = await rus.all.filter(v => v.type == 'video')
-
-        //        let search = await yts(text)
-          //     let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
-                             
-try{
-var thumbnya =`https://i.ytimg.com/vi/${anu.videoId}/mqdefault.jpg`
-} catch(err) {
-var thumbnya =`https://i.ytimg.com/vi/${anu.videoId}/sqdefault.jpg`
-}
-
-let inithumb = await getBuffer(thumbnya)
-
-
-var toks =`
-⭔ Title : ${anu.title}
-⭔ Ext : Search
-⭔ ID : ${anu.videoId}
-⭔ Duration : ${anu.timestamp}
-⭔ Viewers : ${anu.views}
-⭔ Upload At : ${anu.ago}
-⭔ Author : ${anu.author.name}
-⭔ Channel : ${anu.author.url}
-⭔ Description : ${anu.description}
-⭔ Url : ${anu.url}`
-aqua.sendMessage(from, {image: inithumb, caption: toks}, {quoted: m})
-
-let { yta } = require('./lib/y2mate')
-let quality = '128kbps'
-let media = await yta(anu.url, quality)
-if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
-
-aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` ,
-contextInfo: {
-externalAdReply: {
-title: `               ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
-body: `                    ━━━━⬤──────────    `,
-mediaType: 1,
-renderLargerThumbnail: true,
-thumbnail: inithumb,
-mediaUrl: anu.url,
-sourceUrl: anu.url
-}}}, { quoted: m })
-            }
-            db.users[sender].limit -= 1 // -1 limit
-            break
-
-case 'ply': case 'play': case 'playmusic': case 'playmusik': case 'play1':{
-if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-if(!q) return reply ("Teksnya mana")
-let rus = await yts(q)
-if(rus.all.length == "0") return reply ("Video tidak bisa di download")
-let data = await rus.all.filter(v => v.type == 'video')
-
-try{
-var res = data[0]
-var info = await ytdl.getInfo(res.url);
-} catch{
-var res = data[1]
-var info = await ytdl.getInfo(res.url);
-}
-
-let audio = ytdl.filterFormats(info.formats, 'audioonly');
-let format = ytdl.chooseFormat(info.formats, { quality: '18' });
-
-try{
-var thumbnya =`https://i.ytimg.com/vi/${res.videoId}/mqdefault.jpg`
-} catch(err) {
-var thumbnya =`https://i.ytimg.com/vi/${res.videoId}/sqdefault.jpg`
-}
-
-let inithumb = await getBuffer(thumbnya)
-
-var toks =`
-🕵️ Judul : ${res.title}
-👀 Viewers : ${h2k(res.views)} Kali 
-🌺 Duration : ${res.timestamp}
-👤 Channel : ${res.author.name}
-🎧 Audio : ${FileSize(audio[0].contentLength)} 
-📎 Link : ${res.url}`
-aqua.sendMessage(from, {image: inithumb, caption: toks}, {quoted: m})
-
-let { yta } = require('./lib/y2mate')
-let quality = '128kbps'
-let media = await yta(res.url, quality)
-if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
-
-aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` ,
-contextInfo: {
-externalAdReply: {
-title: `               ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
-body: `                    ━━━━⬤──────────    `,
-mediaType: 2,
-renderLargerThumbnail: true,
-thumbnail: inithumb,
-mediaUrl: res.url,
-sourceUrl: res.url
-}}}, { quoted: m })
-}
-db.users[sender].limit -= 1 // -1 limit
-break
 
 
 case 'play1':{
