@@ -7302,7 +7302,7 @@ aqua.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 
       
 } catch (err) {
- aqua.sendText(`628388024064@s.whatsapp.net`, util.format(err), fkontak)
+ aqua.sendText(`628388024064@s.whatsapp.net`, util.format(err), m)
 //m.reply(util.format(err))
 }
 }
