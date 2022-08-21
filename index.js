@@ -97,9 +97,12 @@ async function startAqua() {
 
 
  
-    aqua.ws.on('CB:call', async (json) => {
-   const callerId = json.content[0].attrs['call-creator']
+    //anti call+block
+     aqua.ws.on('CB:call', async (json) => {
+     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
+    let pa7rick = await aqua.sendContact(callerId, global.owner)
+    aqua.sendMessage(callerId, { text: `Sistem Blokir Otomatis!\nJangan Panggil Bot!\nSilakan Tanya Atau Hubungi Pemiliknya Untuk Membuka Blokir Anda!`}, { quoted : pa7rick })
     await sleep(4000)
     await aqua.updateBlockStatus(callerId, "block")
     }
