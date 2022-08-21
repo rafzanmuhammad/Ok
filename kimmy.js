@@ -1416,7 +1416,7 @@ title: `               ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`,
 body: `                    ━━━━⬤──────────    `,
 mediaType: 1,
 renderLargerThumbnail: true,
-thumbnail: await (await fetch(anu.thumbnail)).buffer(),,
+thumbnail: await (await fetch(anu.thumbnail)).buffer(),
 mediaUrl: anu.url,
 sourceUrl: anu.url
 }}}, { quoted: m })
