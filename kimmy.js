@@ -1320,7 +1320,7 @@ aqua.sendButDoc(from, menunya, `${global.footer}`, thumbdoc, mok, options1, {quo
  }
 break
 
-case 'playmusik':
+
 			case 'song': {
 				if (q === 'help') {
 					return reply(`*❗Command:* ${command}\n*🧩Category:* Search\n*🛠️Usage:* ${prefix + command} back in black\n\n*📚Description:* Sends song in Whatsapp `)
@@ -1594,7 +1594,7 @@ case 'dare':
 		const der = dare[Math.floor(Math.random() * dare.length)]
 		reply (`${der}`) 
 		break
-/*
+
 case 'menu': case 'help': case '?': {
 anu = menu(global, m, prefix, pushname, isPremium)
 
@@ -1615,7 +1615,7 @@ sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }, text: anu})
 }
 break
-*/
+
 
 case 'list': case 'menu': case 'help': case '?': {
 anu = menu(global, m, prefix, pushname, isPremium)
