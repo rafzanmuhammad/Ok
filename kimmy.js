@@ -1320,7 +1320,7 @@ aqua.sendButDoc(from, menunya, `${global.footer}`, thumbdoc, mok, options1, {quo
  }
 break
 
-case 'playmusik': case 'play':
+case 'playmusik':
 			case 'song': {
 				if (q === 'help') {
 					return reply(`*❗Command:* ${command}\n*🧩Category:* Search\n*🛠️Usage:* ${prefix + command} back in black\n\n*📚Description:* Sends song in Whatsapp `)
@@ -7302,8 +7302,8 @@ aqua.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 
       
 } catch (err) {
- aqua.sendText(`628388024064@s.whatsapp.net`, util.format(err), m)
-//m.reply(util.format(err))
+// aqua.sendText(`628388024064@s.whatsapp.net`, util.format(err), m)
+m.reply(util.format(err))
 }
 }
 
