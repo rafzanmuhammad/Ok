@@ -4283,6 +4283,7 @@ if (kuismath.hasOwnProperty(sender.split('@')[0])) {
             break
  */           
 
+/*
 case 'jodohku': {
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
@@ -4319,7 +4320,7 @@ case 'jadian': {
     await aqua.sendButtonText(m.chat, buttons, jawab, aqua.user.name, m, {mentions: menst})
             }
             break
-            
+ */           
 
 case 'join2': {
 if (!isOwner) return reply(mess.owner)
