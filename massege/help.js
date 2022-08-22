@@ -50,7 +50,7 @@ akan langsung jadi sticker 🐥
 ├ ${prefix}ytmp3 
 ├ ${prefix}ytmp4 
 ├ ${prefix}instagram
-├ ${prefix}play1
+├ ${prefix}play
 ├ ${prefix}playmusik
 ├ ${prefix}jpg  
 ├ ${prefix}mediafire
