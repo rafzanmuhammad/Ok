@@ -4949,7 +4949,7 @@ if (args[0] === 'enable') {
             }
             break
 
-case 'dell':
+case 'delll':
 if (!isGroup) return reply(mess.group)
   if (!isBotAdmins) return reply (mess.botAdmin)
 if (!isAdmins && !isOwner) return reply (mess.admin)
