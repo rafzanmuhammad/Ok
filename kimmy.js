@@ -1210,7 +1210,8 @@ const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
   } else {
   var nomor = q.split("|")[0].replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
   var org = q.split("|")[1];
-aqua.sendText(nomor, `*「 CHAT DARI 」*\n\nNama : @${sender.split('@')[0]}\n\nINGFO CHAT :\n${org}`, floc, { contextInfo: { mentionedJid: [sender] }})
+ aqua.sendMessage(nomor, { text: `*「 CHAT DARI 」*\n\nNama : @${sender.split('@')[0]}\n\nINGFO CHAT :\n${org}`, mentions: [sender] }, {quoted: floc})
+//aqua.sendText(nomor, `*「 CHAT DARI 」*\n\nNama : @${sender.split('@')[0]}\n\nINGFO CHAT :\n${org}`, floc, { contextInfo: { mentionedJid: [sender] }})
   reply (`Sukses Cuy`)
  }
  break
