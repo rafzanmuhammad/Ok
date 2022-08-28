@@ -4833,11 +4833,6 @@ case 'autoketik':
        break;
 
 
-case 'yahh':{
-aqua.sendButMessage(from, `Peh ganti nomor`, `y`, [
-  {buttonId: `${prefix}t`, buttonText: { displayText: 'Off' },type: 1}])
-}
-break
 
 case 'antivirtex':
 	        if (!isGroup) return reply(`Khusus Grup`)
