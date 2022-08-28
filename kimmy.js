@@ -5552,7 +5552,7 @@ reply (mess.wait)
 let quality = args[1] ? args[1] : '128kbps'
 let media = await yta(text, quality)
 if (media.filesize >= 200000) return reply('File Melebihi Batas '+util.format(media))
-
+/*
 aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` ,
 contextInfo: {
 externalAdReply: {
@@ -5563,6 +5563,9 @@ mediaType: 2,
 thumbnail: await (await fetch('https://telegra.ph/file/80df304e7d54441e0eefe.jpg')).buffer(),
 mediaUrl: `${q}`
 }}}, { quoted: m })
+*/
+aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`} , { quoted: m })
+
   } catch (err){
 return reply ('Error, Audio tidak ditemukan☹️')
 }    
