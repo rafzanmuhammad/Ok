@@ -1413,7 +1413,7 @@ let { yta } = require('./lib/y2mate')
 let quality = '128kbps'
 let media = await yta(anu.url, quality)
 if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
-
+/*
 aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` ,
 contextInfo: {
 externalAdReply: {
@@ -1426,6 +1426,8 @@ thumbnail: await (await fetch(anu.thumbnail)).buffer(),
 mediaUrl: anu.url,
 sourceUrl: anu.url
 }}}, { quoted: m })
+*/
+aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`} , { quoted: m })
             }
             db.users[sender].limit -= 1 // -1 limit
             break
