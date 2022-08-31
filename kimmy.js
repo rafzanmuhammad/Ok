@@ -5384,6 +5384,7 @@ throw reply (`Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Vide
                         
 
 case 'emojimix': {
+	try{
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 	        if (!text) throw `Example : ${prefix + command} 🤣+🤔`
 		let [emoji1, emoji2] = text.split`+`
@@ -5392,6 +5393,9 @@ case 'emojimix': {
 		    let encmedia = await aqua.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
 		    await fs.unlinkSync(encmedia)
 		}
+		  } catch (err){
+return reply ('Emoji tidak di temukan, silahkan pilih emoji lain')
+}    
 	    }
 	db.users[sender].limit -= 1 // -1 limit
 	    break
@@ -7187,7 +7191,8 @@ reply (`Command *${prefix+command}* tidak ditemukan\nMungkin yang kamu maksud ad
 } 
 */
 
-
+if (budy.includes('62)){
+	
 //Auto Download Video Tiktok
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
 calip.downloader.tiktok(budy).then(res => {
