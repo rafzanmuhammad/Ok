@@ -7191,7 +7191,7 @@ reply (`Command *${prefix+command}* tidak ditemukan\nMungkin yang kamu maksud ad
 } 
 */
 
-if (budy.includes('62)){
+
 	
 //Auto Download Video Tiktok
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
