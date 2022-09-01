@@ -621,7 +621,7 @@ reply("Simi ga tau mau ngomong apa")
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
 if (isQuotedTag || isQuotedReply) {
 if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined)
-let usersss = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : botNumber +'@s.whatsapp.net'
+usersss = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : botNumber +'@s.whatsapp.net'
 try{
 aqua.sendPresenceUpdate('composing', from) 
 
