@@ -158,7 +158,7 @@ const isMedia = /image|video|sticker|audio/.test(mime)
 const numberQuery = q.replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
 //const mentionByReply = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.participant || "" : ""
 //const mentionByTag = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.mentionedJid : []
-const usess = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : botNumber +'@s.whatsapp.net'
+const usess = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : botNumber
 	
 //=======================[ GROUPS ]=======================//        
 // const groupMetadata = isGroup ? await aqua.groupMetadata(m.chat).catch(e => {}) : ''
@@ -620,10 +620,11 @@ reply("Simi ga tau mau ngomong apa")
 //AUTO RESPON SIMI BY DECODE DENPA 
 //if (chatBot === false && autorespon === true && !isGroup && !isCmd && !command && !dev.key.fromMe) { 
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
-	if (Respon){
-if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined)
+
+
 if (usess) {
 try{
+if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined)
 aqua.sendPresenceUpdate('composing', from) 
 const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
  let yakuk = await parsePhoneNumber("+"+senderNumber)
@@ -642,7 +643,7 @@ console.log(err)
 reply("Simi ga tau mau ngomong apa")
 }
 }  
-} 
+
 
    
 //AUTO UPDET BIO ( RUNTIME BIO )
