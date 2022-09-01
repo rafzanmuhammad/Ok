@@ -567,6 +567,7 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 }
 }
 
+/*
  //AUTO RESPON SIMI VIA REPLY/TAG BOT
 
 //if (Input == botNumber && isGroup && !isCmd && !isAudio || mentionByReplySticker == botNumber && isSticker && !isCmd) {
@@ -612,7 +613,22 @@ console.log(err)
 reply("Simi ga tau mau ngomong apa")
 }
 }
-  
+*/
+
+//AUTO RESPON SIMI BY DECODE DENPA 
+//if (chatBot === false && autorespon === true && !isGroup && !isCmd && !command && !dev.key.fromMe) { 
+if (Input == botNumber & isQuotedTag && isQuotedReply) {
+	try{
+aqua.sendPresenceUpdate('composing', from) 
+simi = await fetchJson(`https://api.simsimi.net/v2/?text=${cmd}&lc=id`)
+sami = simi.success
+aqua.sendMessage(from,{text: samj},{quoted: m})  
+//xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
+} catch (err){
+console.log(err)
+reply("Simi ga tau mau ngomong apa")
+}
+}   
 
    
 //AUTO UPDET BIO ( RUNTIME BIO )
