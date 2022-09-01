@@ -617,7 +617,7 @@ reply("Simi ga tau mau ngomong apa")
 
 //AUTO RESPON SIMI BY DECODE DENPA 
 //if (chatBot === false && autorespon === true && !isGroup && !isCmd && !command && !dev.key.fromMe) { 
-if (Input == botNumber & isQuotedTag && isQuotedReply) {
+if (botNumber & isQuotedTag && isQuotedReply) {
 	try{
 aqua.sendPresenceUpdate('composing', from) 
 
