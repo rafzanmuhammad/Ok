@@ -620,7 +620,15 @@ reply("Simi ga tau mau ngomong apa")
 if (Input == botNumber & isQuotedTag && isQuotedReply) {
 	try{
 aqua.sendPresenceUpdate('composing', from) 
-simi = await fetchJson(`https://api.simsimi.net/v2/?text=${cmd}&lc=id`)
+
+const senderNumber = sender.split("@")[0] 
+const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
+ let yakuk = await parsePhoneNumber("+"+senderNumber)
+ let idnya = yakuk.country
+  console.log(idnya)
+let kata = body.replace(`@${botNumber.split("@")[0]}`, "")
+
+let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${kata}&lc=${idnya.toLowerCase()}`, {methods: "GET"})
 sami = simi.success
 aqua.sendMessage(from,{text: samj},{quoted: m})  
 //xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
