@@ -569,7 +569,8 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 
  //AUTO RESPON SIMI VIA REPLY/TAG BOT
 
-if (Input == botNumber && isGroup && !isCmd && !isAudio || mentionByReplySticker == botNumber && isSticker && !isCmd) {
+//if (Input == botNumber && isGroup && !isCmd && !isAudio || mentionByReplySticker == botNumber && isSticker && !isCmd) {
+	if (Input == botNumber && command && !isAudio || mentionByReplySticker == botNumber && isSticker && !isCmd) {
 try{	
 await sleep(2000)
 aqua.sendPresenceUpdate('composing', from) 
