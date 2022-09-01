@@ -149,6 +149,7 @@ const text = q = args.join(" ")
 const from = m.chat
 const grop = from.endsWith('@g.us')
 const isGroup = m.isGroup
+const senderNumber = sender.split("@")[0] 
 const isUser = user.includes(sender)
 const quoted = m.quoted ? m.quoted : m
 const mime = (quoted.msg || quoted).mimetype || ''
@@ -618,11 +619,21 @@ reply("Simi ga tau mau ngomong apa")
 //AUTO RESPON SIMI BY DECODE DENPA 
 //if (chatBot === false && autorespon === true && !isGroup && !isCmd && !command && !dev.key.fromMe) { 
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
-	if (budy.includes(botNumber)) {
+if (isQuotedTag || isQuotedReply) {
+if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined)
+//let userss = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : botNumber +'@s.whatsapp.net'
+reply (mess.wait)
+let ghost = users 
 try{
 aqua.sendPresenceUpdate('composing', from) 
 
-let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${command}&lc=id`, {methods: "GET"})
+const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
+ let yakuk = await parsePhoneNumber("+"+senderNumber)
+ let idnya = yakuk.country
+  console.log(idnya)
+let kata = body.replace(`@${botNumber.split("@")[0]}`, "")
+
+let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${kata}&lc=id`, {methods: "GET"})
 let sami = simi.success
 console.log(sami)
 aqua.sendMessage(from,{text: sami},{quoted: m})  
@@ -3733,9 +3744,6 @@ db.users[sender].limit -= 1 // -1 limit
 break	
 
 
-case 'makasih': case 'thanks':
-reply (`*sama - sama kak ${pushname}*`)
-break
 
 case 'bugpc': {
 if (!isOwner) return reply ('khsus owner')
@@ -7262,8 +7270,10 @@ reply (`Command *${prefix+command}* tidak ditemukan\nMungkin yang kamu maksud ad
 } 
 */
 
+if (budy.includes('makasih') || budy.includes('mksih') || budy.includes('mksi') ) {
+reply (`*sama - sama kak ${pushname}*`)
+}
 
-	
 //Auto Download Video Tiktok
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
 calip.downloader.tiktok(budy).then(res => {
