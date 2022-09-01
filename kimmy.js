@@ -231,6 +231,11 @@ const isQuotedProd = m.mtype === 'extendedTextMessage' && content.includes('prod
 const isQuotedReply = m.mtype === 'extendedTextMessage' && content.includes('Message')
 const isviewOnce = isQuotedTeks ? content.includes('viewOnceMessage') ? true : false : false
 
+const isReplySticker = m.type === 'stickerMessage' && content.includes('stickerMessage')
+const isQuotedReplySticker = m.type === 'stickerMessage' && content.includes('extendedTextMessage')
+const mentionByReplySticker = m.type == "stickerMessage" && m.message.stickerMessage.contextInfo != null ? m.message.stickerMessage.contextInfo.participant || "" : ""
+
+
 
 //=======================[ TYPE DOKUMEN ]=======================// 
 const pptx = "application/vnd.openxmlformats-officedocument.presentationml.presentation"
@@ -562,7 +567,53 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 }
 }
 
-    
+ //AUTO RESPON SIMI VIA REPLY/TAG BOT
+
+if (Input == botNumber && isGroup && !isCmd && !isAudio || mentionByReplySticker == botNumber && isSticker && !isCmd) {
+try{	
+await sleep(2000)
+aqua.sendPresenceUpdate('composing', from) 
+
+if(isQuotedReplySticker || isReplySticker ){
+await sleep(2000)
+let namastc = await pickRandom(setiker)
+console.log(namastc)
+let buffer = fs.readFileSync(`./temp/stick/${namastc}.webp`)
+aqua.sendMessage(from, {sticker: buffer}, {quoted:m })
+} else{
+
+let jawab = ["Afa iyah 🗿","Oh","Aku ga ngerti om 🐦","Boong","🗿","🐦","Oh gitu 🐦"]        
+let teks1 = pickRandom(jawab)
+let teks2 = body
+let hasil = [`${teks1}`,`${teks2}`]
+let random = pickRandom(hasil)
+  
+const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
+ let yakuk = await parsePhoneNumber("+"+senderNumber)
+ let idnya = yakuk.country
+  console.log(idnya)
+let kata = body.replace(`@${botNumber.split("@")[0]}`, "")
+
+let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${kata}&lc=${idnya.toLowerCase()}`, {methods: "GET"})
+let sami = simi.success  
+
+ if(sami.startsWith("Aku tidak mengerti")){
+var teksnya = random
+} else {
+var teksnya = sami
+}
+   await sleep(2000)
+aqua.sendMessage(from,{text: teksnya},{quoted: m})  
+//setReply(`${teksnya}`)
+}
+} catch (err){
+console.log(err)
+reply("Simi ga tau mau ngomong apa")
+}
+}
+  
+
+   
 //AUTO UPDET BIO ( RUNTIME BIO )
 if (db.settings[botNumber].autobio) {
 	    let setting = global.db.settings[botNumber]
