@@ -622,8 +622,6 @@ reply("Simi ga tau mau ngomong apa")
 if (isQuotedTag || isQuotedReply) {
 if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined)
 //let userss = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : botNumber +'@s.whatsapp.net'
-reply (mess.wait)
-let ghost = users 
 try{
 aqua.sendPresenceUpdate('composing', from) 
 
@@ -7287,6 +7285,7 @@ ${res.title}`}, { quoted: m })
 
 //Auto Sticker
 if (isImage) {
+	try{
 let WSF = require('wa-sticker-formatter')
 let wsf = false
 let mime = (m.msg || m).mimetype || ''
@@ -7303,6 +7302,9 @@ if (wsf) {
 await wsf.build()
 const sticBuffer = await wsf.get()
 if (sticBuffer) await aqua.sendMessage(from, { sticker: sticBuffer }, {mimetype: 'image/webp', ephemeralExpiration: 86400}, {quoted:m})
+}
+} catch (err){
+return 
 }
 }
 
