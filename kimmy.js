@@ -617,7 +617,7 @@ reply("Simi ga tau mau ngomong apa")
 
 //AUTO RESPON SIMI BY DECODE DENPA 
 //if (chatBot === false && autorespon === true && !isGroup && !isCmd && !command && !dev.key.fromMe) { 
-if (Input == botNumber & isQuotedTag && isQuotedReply && command && cmd) {
+if (Input == botNumber & isQuotedTag && isQuotedReply) {
 	try{
 aqua.sendPresenceUpdate('composing', from) 
 
@@ -628,7 +628,7 @@ const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
   console.log(idnya)
 let kata = body.includes(`@${botNumber.split("@")[0]}`, "")
 
-let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${command}&lc=${idnya.toLowerCase()}`, {methods: "GET"})
+let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${command}&lc=${id}`, {methods: "GET"})
 let sami = simi.success
 console.log(sami)
 aqua.sendMessage(from,{text: sami},{quoted: m})  
