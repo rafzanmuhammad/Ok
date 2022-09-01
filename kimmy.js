@@ -622,7 +622,7 @@ reply("Simi ga tau mau ngomong apa")
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
 
 
-if (usess && !isGroup && !isCmd && !command) {
+if (usess && !isGroup && !isCmd && !isSticker) {
 try{
 //if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined)
 aqua.sendPresenceUpdate('composing', from) 
