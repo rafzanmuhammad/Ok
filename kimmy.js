@@ -630,7 +630,7 @@ const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
   console.log(idnya)
 let kataa = body.replace(`@${botNumber.split("@")[0]}`, "")
 
-let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${kataa}&lc=id`, {methods: "GET"})
+let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${kataa}&lc=${idnya.toLowerCase()}`, {methods: "GET"})
 let sami = simi.success
 console.log(sami)
 reply(sami)
