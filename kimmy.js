@@ -76,6 +76,7 @@ let thumbnya = fs.readFileSync('./media/thumb.jpeg')
 let thumbdoc = fs.readFileSync('./media/thumbnaildokumen.jpg')
 let fakee = fs.readFileSync('./media/fake.jpeg')
 betaapi = "BetaBotz"
+Respon = true
 
 //=======================[ DATABASE ]=======================//
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
@@ -155,10 +156,8 @@ const quoted = m.quoted ? m.quoted : m
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
 const numberQuery = q.replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
-const mentionByReply = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.participant || "" : ""
-const mentionByTag = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.mentionedJid : []
-const Input = mentionByTag[0]? mentionByTag[0] : mentionByReply ? mentionByReply : q? numberQuery : false
-
+//const mentionByReply = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.participant || "" : ""
+//const mentionByTag = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.mentionedJid : []
 
 	
 //=======================[ GROUPS ]=======================//        
@@ -235,6 +234,8 @@ const isviewOnce = isQuotedTeks ? content.includes('viewOnceMessage') ? true : f
 const isReplySticker = m.type === 'stickerMessage' && content.includes('stickerMessage')
 const isQuotedReplySticker = m.type === 'stickerMessage' && content.includes('extendedTextMessage')
 const mentionByReplySticker = m.type == "stickerMessage" && m.message.stickerMessage.contextInfo != null ? m.message.stickerMessage.contextInfo.participant || "" : ""
+
+const Input = isQuotedTag[0]? isQuotedTag[0] : isQuotedReply ? isQuotedReply : q? numberQuery : false
 
 
 
@@ -619,9 +620,10 @@ reply("Simi ga tau mau ngomong apa")
 //AUTO RESPON SIMI BY DECODE DENPA 
 //if (chatBot === false && autorespon === true && !isGroup && !isCmd && !command && !dev.key.fromMe) { 
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
-if (isQuotedReply == botNumber) {
+	if (Respon){
 if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined)
-usess = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : botNumber +'@s.whatsapp.net'
+const usess = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : botNumber +'@s.whatsapp.net'
+if (usess) {
 try{
 aqua.sendPresenceUpdate('composing', from) 
 const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
@@ -640,7 +642,8 @@ reply(sami)
 console.log(err)
 reply("Simi ga tau mau ngomong apa")
 }
-}   
+}  
+} 
 
    
 //AUTO UPDET BIO ( RUNTIME BIO )
