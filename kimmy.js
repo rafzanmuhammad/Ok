@@ -619,7 +619,7 @@ reply("Simi ga tau mau ngomong apa")
 //AUTO RESPON SIMI BY DECODE DENPA 
 //if (chatBot === false && autorespon === true && !isGroup && !isCmd && !command && !dev.key.fromMe) { 
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
-if (isQuotedTag || isQuotedReply) {
+if (isQuotedReply) {
 if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined)
 usess = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : botNumber +'@s.whatsapp.net'
 try{
@@ -632,7 +632,7 @@ let kataa = body.replace(`@${botNumber.split("@")[0]}`, "")
 
 let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${kataa}&lc=id`, {methods: "GET"})
 let sami = simi.success
-console.log(simi)
+console.log(sami)
 reply(sami)
 //aqua.sendMessage(from,{text: sami},{quoted: m})  
 //xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
