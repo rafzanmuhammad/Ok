@@ -622,7 +622,7 @@ reply("Simi ga tau mau ngomong apa")
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
 
 
-if (usess && !isGroup && !isCmd && !command) {
+if (usess && !isGroup && !isCmd && !isUrl && !isSticker) {
 try{
 //if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined)
 aqua.sendPresenceUpdate('composing', from) 
@@ -3626,7 +3626,7 @@ console.log(data.url)
 })
 } else {
 let { instagramdl, instagramdlv2 } = require('@bochilteam/scraper')
-let results = await instagramdl(args[0]).catch(async _ => await instagramdlv2(args[0]))
+let results = await instagramdl(args[0]).catch(async _ => await instagramdlv3(args[0]))
 for (const { url } of results) await aqua.sendMedia(from, url, m)
 console.log(results)
 }
