@@ -629,8 +629,9 @@ const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
 let kata = body.replace(`@${botNumber.split("@")[0]}`, "")
 
 let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${kata}&lc=${idnya.toLowerCase()}`, {methods: "GET"})
-sami = simi.success
-aqua.sendMessage(from,{text: samj},{quoted: m})  
+let sami = simi.success
+console.log(sami)
+aqua.sendMessage(from,{text: sami},{quoted: m})  
 //xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
 } catch (err){
 console.log(err)
