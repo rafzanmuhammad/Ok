@@ -621,7 +621,7 @@ reply("Simi ga tau mau ngomong apa")
 //if (chatBot === false && autorespon === true && !isGroup && !isCmd && !command && !dev.key.fromMe) { 
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
 
-
+/*
 if (usess) {
 try{
 //if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined)
@@ -643,7 +643,7 @@ console.log(err)
 reply("Simi ga tau mau ngomong apa")
 }
 }  
-
+*/
 
    
 //AUTO UPDET BIO ( RUNTIME BIO )
