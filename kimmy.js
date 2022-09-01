@@ -628,11 +628,11 @@ const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
  let yakuk = await parsePhoneNumber("+"+senderNumber)
  let idnya = yakuk.country
   console.log(idnya)
-let kata = body.replace(`@${botNumber.split("@")[0]}`, "")
+let kataa = body.replace(`@${botNumber.split("@")[0]}`, "")
 
-let simi = await fetchJson(`https://api.simsimi.net/v2/?text=usess&lc=${idnya.toLowerCase()}`, {methods: "GET"})
+let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${kataa}&lc=id`, {methods: "GET"})
 let sami = simi.success
-console.log(sami)
+console.log(simi)
 reply(sami)
 //aqua.sendMessage(from,{text: sami},{quoted: m})  
 //xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
