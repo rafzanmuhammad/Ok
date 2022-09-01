@@ -158,7 +158,7 @@ const isMedia = /image|video|sticker|audio/.test(mime)
 const numberQuery = q.replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
 //const mentionByReply = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.participant || "" : ""
 //const mentionByTag = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.mentionedJid : []
-
+const usess = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : botNumber +'@s.whatsapp.net'
 	
 //=======================[ GROUPS ]=======================//        
 // const groupMetadata = isGroup ? await aqua.groupMetadata(m.chat).catch(e => {}) : ''
@@ -622,7 +622,6 @@ reply("Simi ga tau mau ngomong apa")
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
 	if (Respon){
 if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined)
-const usess = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : botNumber +'@s.whatsapp.net'
 if (usess) {
 try{
 aqua.sendPresenceUpdate('composing', from) 
