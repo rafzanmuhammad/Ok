@@ -3618,7 +3618,7 @@ console.log(data)
 console.log(data.url)
 })
 } else {
-let results = await instagramdlv3(args[0]))
+let results = await instagramdlv3(args[0])
 for (const { url } of results) await aqua.sendMedia2(from, url, m)
 console.log(results)
 }
@@ -7099,6 +7099,7 @@ aqua.send5ButImg(m.chat, kemtod, `${week} ${date}`, thumbnya, btns)
 }
 break 
 
+/*
 case 'buyprem': {
 aqua.sendMessage(from, { text: `Mau jadi premium? harus beli kak
 murah kok 5 Rebu dah jadi premium permanen,
@@ -7106,7 +7107,8 @@ Keuntungan, Vitur Anime Terbuka, Dan lain-lain.
 Chat Owner : @628388024064`, mentions: [`628388024064@s.whatsapp.net`] }, {quoted:m})
 }
 break
-/*
+*/
+
 case 'buyprem': {
 	let btns = [{ urlButton: { displayText: `Beli Premium`, url: `https://wa.me/628388024064?text=Bang+mau+beli+premium`}}]          
 
@@ -7116,7 +7118,7 @@ murah kok 5 Rebu dah jadi premium permanen,
 Keuntungan, Vitur Anime Terbuka, Dan lain-lain`, `Silahkan Klik Di Bawah Untuk Membeli`, btns)
 }
 break
-*/
+
 
 case 'listvn':
 {
