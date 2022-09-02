@@ -7124,8 +7124,8 @@ Keuntungan, Vitur Anime Terbuka, Dan lain-lain.
 Chat Owner : @628388024064`, mentions: [`628388024064@s.whatsapp.net`] }, {quoted:m})
 }
 break
-/*
-case 'buyprem': {
+
+case 'lahhhhj': case 'buyprem': {
 	let btns = [{ urlButton: { displayText: `Beli Premium`, url: `https://wa.me/628388024064?text=Bang+mau+beli+premium`}}]          
 
 textTemplateButtons(m.chat, `
@@ -7134,7 +7134,7 @@ murah kok 5 Rebu dah jadi premium permanen,
 Keuntungan, Vitur Anime Terbuka, Dan lain-lain`, `Silahkan Klik Di Bawah Untuk Membeli`, btns)
 }
 break
-*/
+
 
 case 'listvn':
 {
