@@ -2265,7 +2265,7 @@ break
 case 'cuaca':{
 if (!args[0])  return reply ('Nama wilayah nya kak mana')
 calip.search.cuaca(args[0]).then(res => {
-(//console.log(res))
+//console.log(res)
 reply(`*---------[ Data Berhasil Diperoleh ]---------*
 
 • Wilayah: ${args[0]}
