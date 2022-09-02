@@ -3592,7 +3592,8 @@ break
 
 
 case 'igdl': case 'instagram': case 'ig':{
-	try{
+try{
+ if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 reply (mess.wait)
 if (!q) return reply ('Linknya?')
 let igreel = budy.includes("https://www.instagram.com/reel/")
@@ -3639,15 +3640,18 @@ db.users[sender].limit -= 1 // -1 limit
 break
 
 
-case 'fbbdl':{
-	try{
+case 'facebook': case 'fbdl': case 'fb': {
+try{
+ if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
+if (!q) return reply ('Linknya?')
 reply(mess.wait)
-let results = await aiovideodl(args[0]).catch(async _ => await savefrom(args[0]))
-for (const { url } of results) await aqua.sendMedia(from, url, m)
+let res = await savefrom(args[0])) 
+aqua.sendMessage(from, {video: {url: res.url[0].url}})
 } catch (err){
 return reply (err)
 }
 }
+db.users[sender].limit -= 1 // -1 limit
 break
 
 case 'stalkig': case 'igstalk':{
@@ -3846,7 +3850,7 @@ case 'masturbasi': case 'jahy': case 'glases':  case 'foot': case 'hentai':
 case 'orgy': case 'nekopoi': case 'manga': case 'ass': case 'ahegao':
 case 'bdsm': case 'cuckold': case 'cum': case 'femdom': case 'ero':{
 if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
-if(isStop) return ('khsus private chat bot')
+if(isStop) return reply ('khsus private chat bot')
 var but = [{buttonId: `${command}`, buttonText: { displayText: "Next" }, type: 1 }]
 aqua.sendMessage(from, { caption: `Random Anime ${q}`, image: { url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: m })
 //aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}}, {quoted:m})
@@ -3856,7 +3860,7 @@ break
 case 'yuri': case 'kiss': case 'cum': case 'futanari': case 'hentai': 
 case 'eroyuri': case 'eron': case 'erok': case 'ero': case 'solo': 
 case 'erokemo':  case 'fox_girl': case 'feet': case 'les': case 'feed': case 'bj':{
-if(isStop) return ('khsus private chat bot')
+if(isStop) return reply ('khsus private chat bot')
 if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
               let waifu = await fetchJson(`https://nekos.life/api/v2/img/${command}`)
               aqua.sendMessage(m.chat, { image: waifu, caption: `${q}` }, { quoted: m})
@@ -5397,28 +5401,6 @@ return reply ('Erorr, Jangan Memakai Emoji atau Tanda Baca')
 break
 
 
-case 'facebook': case 'fbdl': case 'fb': 
-try{
-let {MessageType} = require('@adiwajshing/baileys')
-if (!args[0]) return reply ('Putting *URL* Facebook..')
-if (!args[0].includes("facebook")) return reply (`Url is wrong..\n\n*Example:*\n${prefix}fb https://www.facebook.com/juankcortavarriaoficial/videos/218237676749570/`)
-let res = await fetch(`https://masgimenz.my.id/facebook/?url=` + args[0])
-	//if (res.status !== 200) throw `Coba Lagi`
-let json = await res.json()
-	//if (!json.result) throw `Media tidak ditemukan atau postingan mungkin diprivate`
-let url = json.videoUrl
-reply (mess.wait)
-if (url) await aqua.sendMedia2 (from, url, m, {caption: "*FACEBOOK*"})
-	//if (url) await conn.sendMessage(m.chat, url, MessageType.video, {mimetype: 'video/mp4', quoted: m, caption: wm})
-else reply ('Link download tidak ditemukan')
-} catch (e){
-    let res = await fetch(`https://api.neoxr.eu.org/api/fb?url=${args[0]}&apikey=obSw1DxesD`)
-    let json = await res.json()
-    if (!json.status) reply ( json)
-    await reply (mess.wait)
-    await aqua.sendMedia2 (from, json.data[1].url, m, {caption: "*FACEBOOK*"})
-}
-break
 
 case 'attp':
  try {
