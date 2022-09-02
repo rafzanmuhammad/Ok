@@ -3645,10 +3645,10 @@ try{
  if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 if (!q) return reply ('Linknya?')
 reply(mess.wait)
-let res = await savefrom(args[0])) 
-aqua.sendMessage(from, {video: {url: res.url[0].url}})
+let res = await savefrom(args[0])
+aqua.sendMessage(from, {caption: "*FACEBOOK DOWNLOAD*", video: {url: res.url[0].url}}, {quoted: m})
 } catch (err){
-return reply (err)
+return reply ("sedang erorr coba lagi nanti")
 }
 }
 db.users[sender].limit -= 1 // -1 limit
