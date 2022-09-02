@@ -5927,7 +5927,7 @@ if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit)
 	textpro("https://textpro.me/pornhub-style-logo-online-generator-free-977.html", [
     `${teks1}`,`${teks2}`])
   .then((data) => aqua.sendMessage(m.chat, { image: { url: data }, caption: `Nih Hasil Dari: text` }, { quoted: m }))
-  .catch((err) => //console.log(err));
+//  .catch((err) => //console.log(err));
    break
 
 
