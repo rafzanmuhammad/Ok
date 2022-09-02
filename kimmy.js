@@ -3562,12 +3562,12 @@ let fotony = budy.includes("https://pin.it/")
 
 if(fotony){
 calip.downloader.pindl(q).then(res => {
-(//console.log(res))
+//console.log(res)
 aqua.sendMessage(from, {image:{url: res.result}}, {quoted:m})
 })
 } else {
 calip.downloader.pindl(q).then(res => {
-(//console.log(res))
+//console.log(res)
 aqua.sendMessage(from, {video:{url: res.result}}, {quoted:m})
 })
 }
