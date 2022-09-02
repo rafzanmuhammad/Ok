@@ -3643,7 +3643,7 @@ case 'fbbdl':{
 reply(mess.wait)
 let { instagramdl, instagramdlv2, instagramdlv3, instagramStory, aiovideodl, savefrom, snapsave } = require('@bochilteam/scraper')
 let resf = await aiovideodl(args[0]).catch(async _ => await savefrom(args[0]))
-for (const { url } of resf ) await aqua.sendMedia(from, url, m)
+await aqua.sendMedia(from, resf.url, m)
 }
 break
 
