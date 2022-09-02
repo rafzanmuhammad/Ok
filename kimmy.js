@@ -3601,36 +3601,26 @@ let igtv = budy.includes("https://www.instagram.com/tv/")
 let igstory = budy.includes("https://instagram.com/stories/")
 
 if(igreel){
-	
 let results = await instagramdlv3(q)
 for (const { url } of results) await aqua.sendMedia2(from, url, m, {caption: "*INSTAGRAM DOWNLOAD*"})
-//console.log(results)
-
-/*
-Download.insta_reel(q).then(async (data) => {
-aqua.sendMessage(from, {caption: '*INSTAGRAM*', video: {url: data.url} }, {quoted: m})
-//console.log(data)
-//console.log(data.url)
-})
-*/
+console.log(results)
 
 } else if(igtv){
 Download.insta_post(q).then(async (data) => {
 aqua.sendMessage(from, {caption: data.title, video: {url: data.post1.url} }, {quoted: m})
-//console.log(data)
-//console.log(data.url)
+console.log(data)
+console.log(data.url)
 })
 } else if(igstory){
 Download.insta_story(q).then(async (data) => {
-//aqua.sendMessage(from, {caption: `Nih`, video: {url: data.data} }, {quoted: m})
-//console.log(data)
-//console.log(data.url)
+aqua.sendMessage(from, {caption: `Nih`, video: {url: data.data} }, {quoted: m})
+console.log(data)
+console.log(data.url)
 })
 } else {
-let { instagramdl, instagramdlv2 } = require('@bochilteam/scraper')
-let results = await instagramdl(args[0]).catch(async _ => await instagramdlv3(args[0]))
-for (const { url } of results) await aqua.sendMedia(from, url, m)
-//console.log(results)
+let results = await instagramdlv3(args[0]))
+for (const { url } of results) await aqua.sendMedia2(from, url, m)
+console.log(results)
 }
 } catch (err){
 return reply ('Maaf Sedang error coba lagi nanti')
