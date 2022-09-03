@@ -1742,7 +1742,7 @@ mediaType: 1,
 renderLargerThumbnail: true,
 thumbnail: thumbdoc,
 mediaUrl: "https://www.youtube.com/watch?v=JJwLesqqcmM",
-sourceUrl: "https://www.youtube.com/watch?v=JJwLesqqcmM"
+sourceUrl: `${global.grub}`
 }
 }
 aqua.sendButDoc(from, anu, `Ketika anda menemukan error silahkan ketik .report <kendala anda>, kami akan segera fix yang error tersebut, terimakasih telah menggunakan bot ini!!\nSupport by WhatsApp.com`, thumbdoc, mok, options1, {quoted:m})
