@@ -692,12 +692,6 @@ akan langsung jadi sticker 🐥
 ├ > / x
 ├ =>
 ╰❒
-
-Jika menemukan *ERROR* silahkan lapor ke owner
-dengan cara .report <laporan anda>.
-Jangan lupa donasi agak owner semangat ngebot😁
-Sekian dan terima gaji
-
 `
 }
 
