@@ -31,7 +31,6 @@ akan langsung jadi sticker 🐥
 
  Status : ${isPremium ? 'Premium' : 'Gratisan'}
  Limit : ${isPremium ? 'Unlimited' : `${global.db.users[m.sender].limit}`}
- Nomor : @${m.sender.split("@")[0]}
 
 
 ╭─❒ 「  *Main Menu* 」
