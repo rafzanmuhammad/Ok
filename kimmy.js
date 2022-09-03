@@ -2484,6 +2484,7 @@ var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-
 await aqua.sendMessage(m.chat, { image: { url: ppimg }}, { quoted: m })
 break 
 
+/*
 case 'getpp':
 if (!isGroup) return 
 try {
@@ -2494,9 +2495,9 @@ try {
 
 await aqua.sendMessage(m.chat, { image: { url: ppuser }}, { quoted: m })
 break 
+*/
 
-
-case 'getppp':{
+case 'getpp':{
 if (!isGroup) return reply ("Digunakan Khsus Dalam Group")
 if(isQuotedReply){ 
 try {
@@ -2506,8 +2507,10 @@ try {
 }
 await aqua.sendMessage(m.chat, { image: { url: ppuser }}, { quoted: m })
 } else if(isQuotedTag){
+	let userss = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+let ghosst = userss
 	try {
-    ppuser = await aqua.profilePictureUrl(isQuotedTag, 'image')
+    ppuser = await aqua.profilePictureUrl(ghosst, 'image')
 } catch (err) {
     ppuser = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
 }
