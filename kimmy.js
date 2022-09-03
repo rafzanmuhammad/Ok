@@ -2499,6 +2499,7 @@ break
 
 case 'getpp':{
 if (!isGroup) return reply ("Digunakan Khsus Dalam Group")
+/*
 if(isQuotedReply){ 
 try {
     ppuser = await aqua.profilePictureUrl(m.quoted.sender, 'image')
@@ -2506,8 +2507,11 @@ try {
     ppuser = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
 }
 await aqua.sendMessage(m.chat, { image: { url: ppuser }}, { quoted: m })
-} else if(isQuotedTag){
-	let userss = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+} else
+*/
+ if(isQuotedTag || isQuotedReply ){
+if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined) return reply ('Reply targetnya kak atau Tag')
+let userss = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 let ghosst = userss
 	try {
     ppuser = await aqua.profilePictureUrl(ghosst, 'image')
