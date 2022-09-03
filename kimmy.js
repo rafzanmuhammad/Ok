@@ -1685,7 +1685,7 @@ case 'dare':
 		const der = dare[Math.floor(Math.random() * dare.length)]
 		reply (`${der}`) 
 		break
-
+/*
 case 'menu': case 'help': case '?': {
 anu = menu(global, m, prefix, pushname, isPremium)
 
@@ -1706,7 +1706,7 @@ sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }, text: anu})
 }
 break
-
+*/
 
 case 'list': case 'menu': case 'help': case '?': {
 anu = menu(global, m, prefix, pushname, isPremium)
