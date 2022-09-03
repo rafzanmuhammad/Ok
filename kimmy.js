@@ -2484,40 +2484,6 @@ var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-
 await aqua.sendMessage(m.chat, { image: { url: ppimg }}, { quoted: m })
 break 
 
-case 'getppp':
-if (isGroup) { 
-if(mentionByTag){
-console.log(mentionByTag[0])
-try {
-var ppimg = await aqua.profilePictureUrl(mentionByTag[0],"image")
-} catch (err) {
-console.log(err)
-var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-}
-await aqua.sendMessage(from, { caption: "Nih", image: { url: ppimg }}, { quoted: m })
-
-} else if (mentionByReply){
-try {
-var ppimg = await aqua.profilePictureUrl(mentionByReply, 'image')
-} catch (err) {
-console.log(err)
-var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-}
-await aqua.sendMessage(from, { contextInfo: { forwardingScore: 2, isForwarded: true },caption: "Nih", image: { url: ppimg }}, { quoted: m })
-} 
-} else if(!isGroup){
-try {
-var ppimg = await aqua.profilePictureUrl(from, 'image')
-} catch (err) {
-console.log(err)
-var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-}
-await aqua.sendMessage(from, {caption: "Nih",  image: { url: ppimg }}, { quoted: m })
-}
-
-break
-
-
 case 'getpp':
 if (!isGroup) return 
 try {
@@ -2527,6 +2493,27 @@ try {
 }
 
 await aqua.sendMessage(m.chat, { image: { url: ppuser }}, { quoted: m })
+break 
+
+
+case 'getppp':{
+if (!isGroup) return reply ("Digunakan Khsus Dalam Group")
+if(isQuotedReply){ 
+try {
+    ppuser = await aqua.profilePictureUrl(m.quoted.sender, 'image')
+} catch (err) {
+    ppuser = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
+}
+await aqua.sendMessage(m.chat, { image: { url: ppuser }}, { quoted: m })
+} else if(isQuotedTag){
+	try {
+    ppuser = await aqua.profilePictureUrl(isQuotedTag, 'image')
+} catch (err) {
+    ppuser = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
+}
+await aqua.sendMessage(m.chat, { image: { url: ppuser }}, { quoted: m })
+}
+}
 break 
 
     
