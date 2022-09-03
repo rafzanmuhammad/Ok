@@ -191,7 +191,7 @@ await aqua.sendMessage(from, buttonMessage)
 } catch(err){
 console.log(err)
 let autoButton = Remove? butOut : butIn
-await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options)
+await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options1)
 }
 }
 
