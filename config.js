@@ -58,7 +58,7 @@ global.prefa = ['','!','.','🐦','🐤','🗿','#','/']
 global.sp = '⭔' 
 global.apibg = 'qhWucnuLruQzVASYoFxwkzGn'
 global.qoted = 'fkontak'
-global.setmenu = 'list'
+global.setmenu = 'dokumen'
 global.setreply = 'web'
 
 global.mess = {
