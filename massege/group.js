@@ -90,7 +90,7 @@ title: `Group Bot Official 念`,
 //description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
-thumbnail: ppGc,
+thumbnail: ppUser,
 mediaUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM',
 sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }
