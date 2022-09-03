@@ -5612,7 +5612,7 @@ aqua.sendMessage(from, {image: {url: images}, caption: `Nih`}, {quoted: m})
         break
 	    
 	    
-case 'ytmp3': case 'ytaudio': {
+case 'ytmp33': case 'ytmp3': case 'ytaudio': {
 	try {
 		if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 let { yta } = require('./lib/y2mate')
@@ -5642,7 +5642,7 @@ return reply ('Error, Audio tidak ditemukan☹️')
             db.users[sender].limit -= 1 // -1 limit
             break
             
-case 'ytmp4': case 'ytvideo': {
+case 'ytmp4': case 'ytmp44': case 'ytvideo': {
 try {
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 let { ytv } = require('./lib/y2mate')
