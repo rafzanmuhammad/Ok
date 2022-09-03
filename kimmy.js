@@ -70,7 +70,8 @@ const { recognize } = require('./lib/ocr')
 
 //=======================[ SETTINGS ]=======================//
 Qoted = `${global.qoted}`
-modelmenu = `${global.setmenu}`
+modelmenu = "dokumen"
+//modelmenu = `${global.setmenu}`
 replyType = `${global.setreply}`
 let thumbnya = fs.readFileSync('./media/thumb.jpeg')
 let thumbnyaa = fs.readFileSync('./media/thumb.jpg')
