@@ -88,12 +88,13 @@ let ppGc = await getBuffer(pp_grup)
 let options1 =
 { mentionedJid: [mem],
 externalAdReply: {
-title: `         ⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
-description: 'Now Playing...',
-mediaType: 2,
+title: `Group Bot Official 念`, 
+//description: 'Now Playing...',
+mediaType: 1,
+renderLargerThumbnail: true,
 thumbnail: ppUser,
 mediaUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM',
-sourceUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM'
+sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }
 }
                   
