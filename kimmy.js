@@ -2988,6 +2988,14 @@ reply (data.result.quotes+'\n\n-- '+data.result.author)
 break
 
 
+case 'chord':{
+	reply (mess.wait)
+ if (args.length == 0) return reply (`Example: ${prefix + command} sayang`)
+ await fetchJson(`https://sewa4yeye.herokuapp.com/api/search/chordlagu?lagu=${args[0]}&apikey=BetaBotz`)
+.then(res => { reply(res.result.result)})} 
+  break
+                
+
 case 'lirik':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 if (args.length < 0) return reply(`Kirim perintah ${command} judul lagu`)
