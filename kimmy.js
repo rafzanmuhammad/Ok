@@ -157,8 +157,8 @@ const quoted = m.quoted ? m.quoted : m
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
 const numberQuery = q.replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
-//const mentionByReply = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.participant || "" : ""
-//const mentionByTag = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.mentionedJid : []
+const mentionByReply = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.participant || "" : ""
+const mentionByTag = m.type == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.mentionedJid : []
 const usess = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : botNumber
 	
 //=======================[ GROUPS ]=======================//        
@@ -2483,6 +2483,40 @@ var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-
 }
 await aqua.sendMessage(m.chat, { image: { url: ppimg }}, { quoted: m })
 break 
+
+case 'getppp':
+if (isGroup) { 
+if(mentionByTag){
+console.log(mentionByTag[0])
+try {
+var ppimg = await aqua.profilePictureUrl(mentionByTag[0],"image")
+} catch (err) {
+console.log(err)
+var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+}
+await aqua.sendMessage(from, { caption: "Nih", image: { url: ppimg }}, { quoted: m })
+
+} else if (mentionByReply){
+try {
+var ppimg = await aqua.profilePictureUrl(mentionByReply, 'image')
+} catch (err) {
+console.log(err)
+var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+}
+await aqua.sendMessage(from, { contextInfo: { forwardingScore: 2, isForwarded: true },caption: "Nih", image: { url: ppimg }}, { quoted: m })
+} 
+} else if(!isGroup){
+try {
+var ppimg = await aqua.profilePictureUrl(from, 'image')
+} catch (err) {
+console.log(err)
+var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+}
+await aqua.sendMessage(from, {caption: "Nih",  image: { url: ppimg }}, { quoted: m })
+}
+
+break
+
 
 case 'getpp':
 if (!isGroup) return 
