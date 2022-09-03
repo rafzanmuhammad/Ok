@@ -1733,16 +1733,16 @@ const asuu =['https://www.youtube.com/watch?v=JJwLesqqcmM', 'https://instagram.c
 const fek = asuu[Math.floor(Math.random() * asuu.length)]
                     
 let options1 =
-{ mentionedJid: [sender],
+{ mentionedJid: [m.sender],
 externalAdReply: {
-title: `⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+title: `Hai 👋 ${ucapanWaktu}`, 
 //body: `   ━━━━⬤──────────    click here to play music `,
 //description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
 thumbnail: thumbdoc,
-mediaUrl: "https://www.youtube.com/watch?v=JJwLesqqcmM",
-sourceUrl: `${global.grub}`
+mediaUrl: `https://www.instagram.com/`,
+sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }
 }
 aqua.sendButDoc(from, anu, `Ketika anda menemukan error silahkan ketik .report <kendala anda>, kami akan segera fix yang error tersebut, terimakasih telah menggunakan bot ini!!\nSupport by WhatsApp.com`, thumbdoc, mok, options1, {quoted:m})
