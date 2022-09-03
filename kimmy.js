@@ -2499,17 +2499,7 @@ break
 
 case 'getpp':{
 if (!isGroup) return reply ("Digunakan Khsus Dalam Group")
-/*
-if(isQuotedReply){ 
-try {
-    ppuser = await aqua.profilePictureUrl(m.quoted.sender, 'image')
-} catch (err) {
-    ppuser = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
-}
-await aqua.sendMessage(m.chat, { image: { url: ppuser }}, { quoted: m })
-} else
-*/
- if(isQuotedTag || isQuotedReply ){
+if(isQuotedTag || isQuotedReply ){
 if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined) return reply ('Reply targetnya kak atau Tag')
 let userss = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 let ghosst = userss
@@ -2996,6 +2986,23 @@ var data = await fetchJson(`https://megayaa.herokuapp.com/api/randomquote`)
 
 reply (data.result.quotes+'\n\n-- '+data.result.author)
 break
+
+
+case 'lirik':{
+	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
+if (args.length < 0) return reply(`Kirim perintah ${command} judul lagu`)
+reply (mess.wait)
+lyricsv2 (q).then(res => {
+reply (`Judul: ${res.title}
+Author: ${res.author}
+Link: ${res.link}
+
+Lirik:
+ ${res.lyrics}`)}).catch(() => reply(`Judul lagu tidak ditemukan`))
+}
+db.users[sender].limit -= 1 // -1 limit
+break
+
 
 case 'lirik':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
