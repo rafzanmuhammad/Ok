@@ -72,7 +72,7 @@ const { recognize } = require('./lib/ocr')
 Qoted = `${global.qoted}`
 modelmenu = `${global.setmenu}`
 replyType = `${global.setreply}`
-let thumbnya = fs.readFileSync('./media/thumb.jpeg')
+let thumbnya = fs.readFileSync('./media/thumb.jpg')
 let thumbdoc = fs.readFileSync('./media/thumbnaildokumen.jpg')
 let fakee = fs.readFileSync('./media/fake.jpeg')
 betaapi = "BetaBotz"
@@ -1057,8 +1057,8 @@ let hhhhh = [
 })                    
  */
  
-let mok = [{"buttonId": `${prefix}infobot`,"buttonText": {"displayText": `🐥 INFO BOT`},"type": "RESPONSE"},
-                   {"buttonId": `${prefix}sewabbot`,"buttonText": {"displayText": `🛒 SEWA BOT`},"type": "RESPONSE"}]
+let mok = [{"buttonId": `${prefix}owner`,"buttonText": {"displayText": `🐥 Owner`},"type": "RESPONSE"},
+                   {"buttonId": `${prefix}sewabbot`,"buttonText": {"displayText": `🛒 Sewa Bot`},"type": "RESPONSE"}]
   
   let mokk = [{"buttonId": `${prefix}ok`,"buttonText": {"displayText": `OK`},"type": 1}]
   
@@ -1697,7 +1697,7 @@ body: `                        ━━━━⬤──────────    
 //description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
-thumbnail: thumbdoc,
+thumbnail: thumbnya,
 mediaUrl: `https://www.instagram.com/`,
 sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 //sourceUrl: `https://wa.me/628388024064?text=lah`
@@ -1735,12 +1735,12 @@ const fek = asuu[Math.floor(Math.random() * asuu.length)]
 let options1 =
 { mentionedJid: [m.sender],
 externalAdReply: {
-title: `Hai 👋 ${ucapanWaktu}`, 
+title: `Hai 👋`, 
 //body: `   ━━━━⬤──────────    click here to play music `,
 //description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
-thumbnail: thumbdoc,
+thumbnail: thumbnya,
 mediaUrl: `https://www.instagram.com/`,
 sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }
@@ -6951,17 +6951,16 @@ kyt = `
 ├ Rp. 3.000 Gopay/Dana
 │
 ├ 30 Hari 
-├ Rp. 8.000 Gopay/Dana
+├ Rp.5.000 Gopay/Dana
 │
 ├ Permanen 
-└ Rp. 10.000 Gopay/Dana 
+└ Rp. 8.000 Gopay/Dana 
 
  *KEUNTUNGAN*
  : Bisa Buat Sticker/attp
  : Welcome Otomatis
- : Bisa Download Video tt, yt, ig
+ : Bisa Download Video tt, yt, ig, fb
  : Fast Respon
- : On 24 Jam
  : Antivirtex
  : Antilink
  : Lainnya Cek Di Bot
