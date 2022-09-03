@@ -176,7 +176,7 @@ await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options)
 }
 
 
-const WelcomeType2 = async(id, text1, desc1, gam1, but = [], options = {}) => {	
+const WelcomeType2 = async(id, text1, desc1, gam1, but = [], options, options1 = {}) => {	
 try{        
 let buttonMessage = {
     contextInfo:options,
