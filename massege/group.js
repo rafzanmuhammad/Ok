@@ -25,8 +25,8 @@ module.exports = async(aqua, anu) => {
 try{
 	
 let type1 = false
-let type2 = true
-let type3 = false
+let type2 = false
+let type3 = true
 let type4 = false
 let type5 = false
 
@@ -237,7 +237,7 @@ if(Add){
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
-WelcomeType2(from, intro, copyright, ppUser, ppGc, butIn, options1)
+WelcomeType2(from, intro, copyright, ppUser, ppGc, butIn, { "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, intro, `Rules:
 ${desc}`, ppUser, butIn, options1)
@@ -265,7 +265,7 @@ aqua.sendMessage(from, {caption: intro, mentions:[mem], image: ppUser})
 if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
-WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, options1)
+WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, outro, `Hm Kok Keluar ^_^`, ppUser, butOut, options1)
 } else if(type4){
