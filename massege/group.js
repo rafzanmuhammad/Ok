@@ -59,9 +59,7 @@ Selamat Datang Di ${groupName}
 » Umur:
 » Askot:
 Semoga Betah Kak ><
-
-Rules:
-${desc}`;
+`;
 
 const outro = `Selamat Tinggal @${memNumber}
 
@@ -209,7 +207,7 @@ mimetype: mimitny,
 title : "Footer text", 
 fileLength : 999999999, 
 pageCount: 1, 
-fileName : "𝗕𝗼𝘁 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽", 
+fileName : "Aqua Bot - Md", 
 caption: text1,
 footer: desc1,
 buttons: but,
