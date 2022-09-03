@@ -72,7 +72,8 @@ const { recognize } = require('./lib/ocr')
 Qoted = `${global.qoted}`
 modelmenu = `${global.setmenu}`
 replyType = `${global.setreply}`
-let thumbnya = fs.readFileSync('./media/thumb.jpg')
+let thumbnya = fs.readFileSync('./media/thumb.jpeg')
+let thumbnyaa = fs.readFileSync('./media/thumb.jpg')
 let thumbdoc = fs.readFileSync('./media/thumbnaildokumen.jpg')
 let fakee = fs.readFileSync('./media/fake.jpeg')
 betaapi = "BetaBotz"
@@ -1697,7 +1698,7 @@ body: `                        ━━━━⬤──────────    
 //description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
-thumbnail: thumbnya,
+thumbnail: thumbnyaa,
 mediaUrl: `https://www.instagram.com/`,
 sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 //sourceUrl: `https://wa.me/628388024064?text=lah`
@@ -1740,7 +1741,7 @@ title: `Hai 👋`,
 //description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
-thumbnail: thumbnya,
+thumbnail: thumbnyaa,
 mediaUrl: `https://www.instagram.com/`,
 sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }
