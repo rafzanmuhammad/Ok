@@ -3463,8 +3463,7 @@ break
 case 'tt': case 'tiktok': case 'ttnowm': case 'tiktoknowm':    
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis 
 try{   
-if (args.length < 1) return reply('Link?')
-if (!args[0]) return reply (`linkny?`)
+if (args.length < 1) return reply(`Link?\nContoh: ${prefix + command} https://vm.tiktok.com/ZSRfArwXH/`)
 reply (mess.wait)
 arg = args.join(' ')
 calip.downloader.tiktok(args[0]).then(res => {
