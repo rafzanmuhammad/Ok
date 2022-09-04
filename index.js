@@ -134,11 +134,51 @@ async function startAqua() {
             console.log(err)
         }
     })
-
+/*
     aqua.ev.on('group-participants.update', async (anu) => {
 require('./massege/group.js')(aqua, anu)       
     })
+	*/
 	
+	aqua.ev.on('group-participants.update', async (anu) => {
+    console.log(anu)
+    try {
+    let metadata = await aqua.groupMetadata(anu.id)
+    let participants = anu.participants
+    for (let num of participants) {
+    
+    // Get Pp Group And User
+    try {
+    ppuser = await aqua.profilePictureUrl(num, 'image')
+    } catch {
+    ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+    }
+    try {
+    ppgroup = await aqua.profilePictureUrl(anu.id, 'image')
+    } catch {
+    ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+    }
+    let nama = await aqua.getName(num)
+    memb = metadata.participants.length
+    
+    kon = await getBuffer(`https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${encodeURIComponent(nama)}&namaGb=${encodeURIComponent(metadata.subject)}&pepeGb=${encodeURIComponent(ppgroup)}&totalMem=${encodeURIComponent(memb)}&pepeUser=${encodeURIComponent(ppuser)}&bege=https://telegra.ph/file/38dfc6649ab96b7dc7d41.jpg&apikey=BetaBotz`)
+    tol = await getBuffer(`https://sewa4yeye.herokuapp.com/api/canvas/goodbye?nama=${encodeURIComponent(nama)}&namaGb=${encodeURIComponent(metadata.subject)}&pepeGb=${encodeURIComponent(ppgroup)}&totalMem=${encodeURIComponent(memb)}&pepeUser=${encodeURIComponent(ppuser)}&bege=https://telegra.ph/file/38dfc6649ab96b7dc7d41.jpg&apikey=BetaBotz`)
+
+    if (anu.action == 'add') {
+    tekswell = `Hai Kak @${num.split('@')[0]} 👋\nSelamat Datang Di Grup ${metadata.subject}\n\n`
+    let btnwel = [{buttonId: 'welc', buttonText: {displayText: 'Welcome Kak 👋'}, type: 1},]
+    aqua.sendMessage(anu.id, { image: kon, contextInfo: { mentionedJid: [num] }, caption: tekswell, footer: `tes welcome`, buttons: btnwel})
+    } else if (anu.action == 'remove') {
+    teksbye = `Sayonaraa @${num.split("@")[0]} 👋\nKeluar Dari Grup ${metadata.subject}\n\n`
+    let btnbye = [{buttonId: 'lunga', buttonText: {displayText: 'Goodbye Kak 👋'}, type: 1},]
+    aqua.sendMessage(anu.id, { image: tol, contextInfo: { mentionedJid: [num] }, caption: teksbye, footer: `Tes Welcome`, buttons: btnbye})
+    }
+    }
+    } catch (err) {
+    console.log(err)
+    }
+    })
+
     // Setting
     aqua.decodeJid = (jid) => {
         if (!jid) return jid
