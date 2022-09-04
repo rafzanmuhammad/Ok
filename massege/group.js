@@ -3,7 +3,7 @@ const moment = require("moment-timezone");
 const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
 const fs = require("fs");
 const { color } = require("../lib/color");
-const { getBuffer, getRandom, getGroupAdmins} = require("../lib/myfunc");
+const { getGroupAdmins, h2k, FileSize, smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, pickRandom, short } = require('.../lib/myfunc')
 const chalk = require('chalk')
 const canvacord = require("canvacord");
 const bg = "https://tinyurl.com/y23xrfhu"
@@ -78,7 +78,7 @@ var pp_grup = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-pict
 }
 
 
-//let gmbr = await getBuffer(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
+let gmbr = await fetchJson(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
 
 let ppUser = await getBuffer(pp_user)
 let ppGc = await getBuffer(pp_grup)
@@ -90,7 +90,7 @@ title: `Group Bot Official 念`,
 //description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
-thumbnail: ppUser,
+thumbnail: gmbr,
 mediaUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM',
 sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }
