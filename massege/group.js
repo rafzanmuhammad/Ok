@@ -244,7 +244,7 @@ if(Add){
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
-aqua.sendMessage(from, { caption: intro, image: {url: welcom}, buttons: butIn, footer: 'tes welcome' })
+aqua.sendMessage(from, { caption: intro, image: {url: `${welcom}`}, buttons: butIn, footer: 'tes welcome' })
 
 //WelcomeType2(from, intro, copyright, gmbr, butIn, { "mentionedJid": [mem]})
 } else if(type3){
@@ -276,7 +276,7 @@ if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
 
-aqua.sendMessage(from, { caption: outro, image: {url: welcom}, buttons: butOut, footer: 'tes welcome' })
+aqua.sendMessage(from, { caption: outro, image: {url: `${welcom}`}, buttons: butOut, footer: 'tes welcome' })
 
 //aqua.sendMessage(from, {image: {url: welcom}, caption: outro, mentions:[mem]})
 
