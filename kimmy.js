@@ -1281,11 +1281,33 @@ console.log(err)
 }
 break  
   
+case 'menfes':{
+if (args.length < 1) return m.reply(' Contoh Penggunaan nomor|pesan 
+Example: menfes 6285803583481|Halo ')
+num = q.split('|')[0]+'@s.whatsapp net'
+pesan = q.split('|')[1]
+var nomor = m.sender
+let buttons = [
+{buttonId: `menu`, buttonText: {displayText: 'Menu'}, type: 1}
+]
+let kata = `Hai Kamu Ada Yang Ngirim Pesan Rahasia Ni Ke Kamu Bisa Jadi Dia Pacar/Sahabat Kamu Lhoo Mau Tau Pesan Nya? Scroll Ke Bawah Yaa
 
-case 'chat':   
-if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)    
+----------------------------->
+
+Pesan Rahasia 💌 : ${pesan} 
+
+---------------------------->
+
+Kalau Fitur Eror Lapor Saya Di wa me/6285803583481`
+
+ham.sendMessage(num, buttons, kata, footer: `Simple Fitur Menfess By Lann`, { quoted: m })
+}
+break
+
+case 'menfess': case 'chat':   
+if (args.length < 1) return m.reply(`Contoh Penggunaan nomor|pesan\nContoh: ${prefix + command} 628388024064|Halo`)
 if (args[0].startsWith('08')) return reply ('Awali nomor dengan 62')
-	if (isMedia && !m.message.videoMessage || isQuotedImage) {
+if (isMedia && !m.message.videoMessage || isQuotedImage) {
 const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
   var nomorr = q.split("|")[0].replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
   var orgg = q.split("|")[1];
@@ -1295,7 +1317,6 @@ const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
   var nomor = q.split("|")[0].replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
   var org = q.split("|")[1];
  aqua.sendMessage(nomor, { text: `*「 CHAT DARI 」*\n\nNama : @${sender.split('@')[0]}\n\nINGFO CHAT :\n${org}`, mentions: [sender] }, {quoted: floc})
-//aqua.sendText(nomor, `*「 CHAT DARI 」*\n\nNama : @${sender.split('@')[0]}\n\nINGFO CHAT :\n${org}`, floc, { contextInfo: { mentionedJid: [sender] }})
   reply (`Sukses Cuy`)
  }
  break
@@ -2201,7 +2222,10 @@ if (!isAdmins && !isOwner) return reply (mess.admin)
             }
             break
 
-
+case 'tagmark': case 'tagwa':{
+ aqua.sendMessage(from, { text: `@0`,  mentions: [`0@s.whatsapp.net`] })
+}
+break
 case 'tagme':  {  
        aqua.sendMessage(from, { text: `@${sender.split("@")[0]}`, mentions: [sender] })
   }
@@ -4716,7 +4740,7 @@ reply(teks)
 *${prefix}hapusvote* - untuk menghapus vote`
 let buttonsVote = [
   {buttonId: `${prefix}upvote`, buttonText: {displayText: '𝚄𝙿𝚅𝙾𝚃𝙴'}, type: 1},
-  {buttonId: `${prefix}devote`, buttonText: {displayText: '𝙳𝙴𝚅??𝚃𝙴'}, type: 1}
+  {buttonId: `${prefix}devote`, buttonText: {displayText: '𝙳??𝚅??𝚃𝙴'}, type: 1}
 ]
 
             let buttonMessageVote = {
@@ -5056,7 +5080,6 @@ reply(`Sukses`)
 
 
   
-     
 case 'linkgroup': case 'linkgc': {
 if (!isBotAdmins) return reply (mess.botAdmin)
 if (!isGroup) return reply(mess.group)
