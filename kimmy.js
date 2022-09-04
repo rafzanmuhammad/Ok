@@ -624,10 +624,9 @@ reply("Simi ga tau mau ngomong apa")
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
 
 if (isQuotedTag || isQuotedReply) {
-if (!isGroup && !isCmd && !isUrl && !isSticker) {
-if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined) return reply ('Reply targetnya kak atau Tag')
+if (!isGroup && !isCmd) {
+if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined) return
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-reply (mess.wait)
 let ghost = users 
 
 aqua.sendPresenceUpdate('composing', from) 
