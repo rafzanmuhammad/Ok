@@ -246,7 +246,7 @@ let buttonMessage = {
     buttons: butIn,
     headerType: 4
 }
-aqua.sendMessage(m.chat, buttonMessage)})
+aqua.sendMessage(from, buttonMessage)})
 
 
 //WelcomeType2(from, intro, copyright, gmbr, butIn, { "mentionedJid": [mem]})
