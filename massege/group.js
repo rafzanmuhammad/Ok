@@ -240,7 +240,7 @@ if(Add){
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
-WelcomeType2(from, intro, copyright, gmbr, ppGx, butIn, { "mentionedJid": [mem]})
+WelcomeType2(from, intro, copyright, gmbr, ppGc, butIn, { "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, intro, `Rules:
 ${desc}`, ppUser, butIn, options1)
