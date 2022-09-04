@@ -238,7 +238,7 @@ if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
 	
- aqua.sendMessage(from, { caption: intro, image: {url: `https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${encodeURI(groupName)}&pepeGb=${ppGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz`}, buttons: butIn, footer: 'tes welcome' })
+ aqua.sendMessage(from, { caption: intro, image: {url: `https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${encodeURI(pushname)}&namaGb=${encodeURI(groupName)}&pepeGb=${ppGc}&totalMem=${encodeURI(allmem)}&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz`}, buttons: butIn, footer: 'tes welcome' })
 
 //aqua.sendMessage(from, { caption: intro, image: {url: `${welcom}`}, buttons: butIn, footer: 'tes welcome' })
 //WelcomeType2(from, intro, copyright, gmbr, butIn, { "mentionedJid": [mem]})
@@ -271,7 +271,7 @@ if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
 
-aqua.sendMessage(from, { caption: outro, image: {url: `https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${encodeURI(groupName)}&pepeGb=${ppGc}&totalMem=251&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz` }, buttons: butIn, footer: 'tes welcome' })
+aqua.sendMessage(from, { caption: outro, image: {url: `https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${encodeURI(pushname)}&namaGb=${encodeURI(groupName)}&pepeGb=${ppGc}&totalMem=${encodeURI(allmem)}&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz` }, buttons: butIn, footer: 'tes welcome' })
 
 //aqua.sendMessage(from, { caption: outro, image: {url: "https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz" ` `${welcom}`}, buttons: butOut, footer: 'tes welcome' })
 //aqua.sendMessage(from, {image: {url: welcom}, caption: outro, mentions:[mem]})
