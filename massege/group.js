@@ -77,11 +77,13 @@ var pp_grup = await aqua.profilePictureUrl(from, 'image')
 var pp_grup = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60";
 }
 
-
-let gmbr = await fetchJson(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
-
 let ppUser = await getBuffer(pp_user)
 let ppGc = await getBuffer(pp_grup)
+let ppGGc = await getBuffer(pp_grup)
+
+
+let gmbr = await fetchJson(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
+
 
 let options1 =
 { mentionedJid: [mem],
