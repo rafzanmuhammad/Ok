@@ -214,14 +214,14 @@ mediaUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM',
 sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }
 }
+const floc = { key: {"fromMe": false,"participant": `0@s.whatsapp.net`},message: {"liveLocationMessage": {"title":`Haii`}}}
 
     if (anu.action == 'add') {  
-    aqua.sendButDoc(anu.id, intro, `Rules:
-${desc}`, kon, btnwel, options1)  
-//    aqua.sendMessage(anu.id, { image: kon, contextInfo: { mentionedJid: [num] }, caption: intro, footer: `${desc}`, buttons: btnwel})
+ //   aqua.sendButDoc(anu.id, intro, `Rules:\n${desc}`, kon, btnwel, options1)  
+    aqua.sendMessage(anu.id, { image: kon, contextInfo: { mentionedJid: [num] }, caption: intro, footer: `${desc}`, buttons: btnwel}, {quoted: floc})
     } else if (anu.action == 'remove') {  
-    aqua.sendButDoc(anu.id, outro, `Hm Kok Keluar ^_^`, tol, btnbye, options2)
-  //  aqua.sendMessage(anu.id, { image: tol, contextInfo: { mentionedJid: [num] }, caption: outro, footer: `Kok Out 🐦`, buttons: btnbye})
+ //   aqua.sendButDoc(anu.id, outro, `Hm Kok Keluar ^_^`, tol, btnbye, options2)
+    aqua.sendMessage(anu.id, { image: tol, contextInfo: { mentionedJid: [num] }, caption: outro, footer: `Kok Out 🐦`, buttons: btnbye}, {quoted: floc})
     }
     }
     } catch (err) {
