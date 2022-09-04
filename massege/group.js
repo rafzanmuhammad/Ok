@@ -33,7 +33,6 @@ let type5 = false
 
 let metadata = await aqua.groupMetadata(anu.id)
 const from = anu.id
-const m.chat = from
 const memb = metadata.participants.length
 const botNumber = aqua.user.id 
 const groupMet = await aqua.groupMetadata(from)
