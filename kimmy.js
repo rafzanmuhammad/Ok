@@ -45,7 +45,7 @@ const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews, TribunNews,
 const ameClient = require("amethyste-api")
 const { BitlyClient } = require('bitly');
 const more = String.fromCharCode(8206)
-const readmore = more.repeat(4001)
+const { readmore } = more.repeat(4001)
 const gcbt = ["120363041984430206@g.us"] //ID GC GRUB BOT "120363041984430206@g.us"  
 const ameApi = new ameClient("1f486b04b157f12adf0b1fe0bd83c92a28ce768683871d2a390e25614150d0c8fa404fd01b82a5ebf5b82cbfa22e365e611c8501225a93d5d1e87f9f420eb91b")
 const bitly = new BitlyClient('7d737131e678fc366699edead8bca146e69f6c78', {});
@@ -1298,7 +1298,7 @@ const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
   var org = q.split("|")[1];
  aqua.sendMessage(nomor, { text: `*「 Pesan Rahasia 」*\n\nNama : Hai Ada Yang Ngirim Pesan Rahasia Ni Ke Kamu Bisa Jadi Dia Pacar/Sahabat Kamu Lhoo Mau Tau Pesan Nya? Baca Selengkapnya Yaa
 
------------------------------>${readmore}
+-----------------------------> ${readmore}
 
 Pesan Rahasia 💌 : ${org} 
 
