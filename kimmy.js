@@ -1281,30 +1281,8 @@ console.log(err)
 }
 break  
   
-case 'menfes':{
-if (args.length < 1) return m.reply(' Contoh Penggunaan nomor|pesan 
-Example: menfes 6285803583481|Halo ')
-num = q.split('|')[0]+'@s.whatsapp net'
-pesan = q.split('|')[1]
-var nomor = m.sender
-let buttons = [
-{buttonId: `menu`, buttonText: {displayText: 'Menu'}, type: 1}
-]
-let kata = `Hai Kamu Ada Yang Ngirim Pesan Rahasia Ni Ke Kamu Bisa Jadi Dia Pacar/Sahabat Kamu Lhoo Mau Tau Pesan Nya? Scroll Ke Bawah Yaa
 
------------------------------>
-
-Pesan Rahasia 💌 : ${pesan} 
-
----------------------------->
-
-Kalau Fitur Eror Lapor Saya Di wa me/6285803583481`
-
-ham.sendMessage(num, buttons, kata, footer: `Simple Fitur Menfess By Lann`, { quoted: m })
-}
-break
-
-case 'menfess': case 'chat':   
+case 'menfes': case 'menfess': case 'chat':   {
 if (args.length < 1) return m.reply(`Contoh Penggunaan nomor|pesan\nContoh: ${prefix + command} 628388024064|Halo`)
 if (args[0].startsWith('08')) return reply ('Awali nomor dengan 62')
 if (isMedia && !m.message.videoMessage || isQuotedImage) {
@@ -1318,6 +1296,7 @@ const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
   var org = q.split("|")[1];
  aqua.sendMessage(nomor, { text: `*「 CHAT DARI 」*\n\nNama : @${sender.split('@')[0]}\n\nINGFO CHAT :\n${org}`, mentions: [sender] }, {quoted: floc})
   reply (`Sukses Cuy`)
+ }
  }
  break
 
@@ -4740,7 +4719,7 @@ reply(teks)
 *${prefix}hapusvote* - untuk menghapus vote`
 let buttonsVote = [
   {buttonId: `${prefix}upvote`, buttonText: {displayText: '𝚄𝙿𝚅𝙾𝚃𝙴'}, type: 1},
-  {buttonId: `${prefix}devote`, buttonText: {displayText: '𝙳??𝚅??𝚃𝙴'}, type: 1}
+  {buttonId: `${prefix}devote`, buttonText: {displayText: '𝙳𝙴𝚅??𝚃𝙴'}, type: 1}
 ]
 
             let buttonMessageVote = {
