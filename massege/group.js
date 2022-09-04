@@ -179,34 +179,9 @@ await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options)
 }
 }
 
-const WelcomeType22 = async(id, text1, desc1, gam1, but = [], options, options1 = {}) => {	
-/*
-await getBuffer (`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBot`)
-.then(res => {
-*/ 
-
-let buttonMessage = {
-    image: gam1,
-    caption: text1,
-    footer: desc1,
-    buttons: but,
-    headerType: 4
-/* 
-let buttonMessage = {
-    image: res,
-    caption: `Cowok Nya`,
-    footer: `${global.footer}`,
-    buttons: mok,
-    headerType: 4
-}
-*/
-
-aqua.sendMessage(m.chat, buttonMessage)
-}
-
 
 const WelcomeType2 = async(id, text1, desc1, gam1, but = [], options, options1 = {}) => {	
-try{        
+
 let buttonMessage = {
     contextInfo:options,
     image: gam1,
@@ -215,13 +190,7 @@ let buttonMessage = {
     buttons: but,
     headerType: 4
 }
-await aqua.sendMessage(from, buttonMessage)
-        
-} catch(err){
-console.log(err)
-let autoButton = Remove? butOut : butIn
-await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options1)
-}
+await aqua.sendMessage(from, buttonMessage)     
 }
 
 //sendButDoc
@@ -266,7 +235,7 @@ if(Add){
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
-WelcomeType22(from, intro, copyright, gmbr, butIn, { "mentionedJid": [mem]})
+WelcomeType2(from, intro, copyright, gmbr, butIn, { "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, intro, `Rules:
 ${desc}`, ppUser, butIn, options1)
@@ -294,7 +263,7 @@ aqua.sendMessage(from, {caption: intro, mentions:[mem], image: ppUser})
 if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
-WelcomeType22(from, outro,  `Hm Kok Keluar ^_^`, gmbr, butOut, { "mentionedJid": [mem]})
+WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, gmbr, butOut, { "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, outro, `Hm Kok Keluar ^_^`, ppUser, butOut, options1)
 } else if(type4){
