@@ -83,8 +83,6 @@ let ppGc = await getBuffer(pp_grup)
 let ppGGc = await getBuffer(pp_grup)
 
 
-const welcom = await getBuffer(`https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${encodeURI(pushname)}&namaGb=${encodeURI(groupName)}&pepeGb=${ppGc}&totalMem=${encodeURI(allmem)}&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz`)
-
 
 let options1 =
 { mentionedJid: [mem],
@@ -234,11 +232,12 @@ if(Add){
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
-	
-// aqua.sendMessage(from, { caption: intro, welcom, buttons: butIn, footer: 'tes welcome' })
+welcom = await getBuffer(`https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${encodeURI(pushname)}&namaGb=${encodeURI(groupName)}&pepeGb=${ppGc}&totalMem=${encodeURI(allmem)}&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz`)
+aqua.sendButImage(from, intro, copyright, welcom, butIn, { "mentionedJid": [mem]})
 
+//aqua.sendMessage(from, { caption: intro, welcom, buttons: butIn, footer: 'tes welcome' })
 //aqua.sendMessage(from, { caption: intro, image: {url: `${welcom}`}, buttons: butIn, footer: 'tes welcome' })
-WelcomeType2(from, intro, copyright, welcom, butIn, { "mentionedJid": [mem]})
+//WelcomeType2(from, intro, copyright, welcom, butIn, { "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, intro, `Rules:
 ${desc}`, ppUser, butIn, options1)
@@ -267,12 +266,14 @@ aqua.sendMessage(from, {caption: intro, mentions:[mem], image: ppUser})
 if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
+welcom = await getBuffer(`https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${encodeURI(pushname)}&namaGb=${encodeURI(groupName)}&pepeGb=${ppGc}&totalMem=${encodeURI(allmem)}&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz`)
+aqua.sendButImage(from, outro, 'Kok keluarr', welcom, butOut, { "mentionedJid": [mem]})
+
 
 //aqua.sendMessage(from, { caption: outro, image: welcom, buttons: butIn, footer: 'tes welcome' })
-
 //aqua.sendMessage(from, { caption: outro, image: {url: "https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz" ` `${welcom}`}, buttons: butOut, footer: 'tes welcome' })
 //aqua.sendMessage(from, {image: {url: welcom}, caption: outro, mentions:[mem]})
-WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, welcom, butOut, { "mentionedJid": [mem]})
+//WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, welcom, butOut, { "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, outro, `Hm Kok Keluar ^_^`, ppUser, butOut, options1)
 } else if(type4){
