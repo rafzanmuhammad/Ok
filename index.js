@@ -218,10 +218,10 @@ const floc = { key: {"fromMe": false,"participant": `0@s.whatsapp.net`},message:
 
     if (anu.action == 'add') {  
  //   aqua.sendButDoc(anu.id, intro, `Rules:\n${desc}`, kon, btnwel, options1)  
-    aqua.sendMessage(anu.id, { image: kon, contextInfo: { mentionedJid: [num] }, caption: intro, footer: `${desc}`, buttons: btnwel}, {quoted: floc})
+    aqua.sendMessage(anu.id, { image: kon, contextInfo: { mentionedJid: [num] }, caption: intro, footer: `${desc}`, buttons: btnwel})
     } else if (anu.action == 'remove') {  
  //   aqua.sendButDoc(anu.id, outro, `Hm Kok Keluar ^_^`, tol, btnbye, options2)
-    aqua.sendMessage(anu.id, { image: tol, contextInfo: { mentionedJid: [num] }, caption: outro, footer: `Kok Out 🐦`, buttons: btnbye}, {quoted: floc})
+    aqua.sendMessage(anu.id, { image: tol, contextInfo: { mentionedJid: [num] }, caption: outro, footer: `Kok Out 🐦`, buttons: btnbye})
     }
     }
     } catch (err) {
