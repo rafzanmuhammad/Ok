@@ -109,10 +109,10 @@ let butOut= [{ buttonId: `y`, buttonText: { displayText: "Good Bye" },type: 1 }]
 
 let but5In = [           
                     { urlButton: { displayText: 'Group Bot', url: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D` }}, 
-                    { quickReplyButton: { displayText: 'Omke', id: `${prefix}oke`}}]
+                    { quickReplyButton: { displayText: 'Omke', id: `oke`}}]
 let but5Ot = [           
                     { urlButton: { displayText: 'Group Bot', url: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D` }}, 
-                    { quickReplyButton: { displayText: 'GoodByee', id: `${prefix}oke`}}]
+                    { quickReplyButton: { displayText: 'GoodByee', id: `oke`}}]
    
  
 const WelcomeType1 = async(id, text1, desc1, gam1, gam2, but = [], options = {}) => {	
