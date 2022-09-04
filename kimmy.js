@@ -1296,7 +1296,7 @@ const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
   } else {
   var nomor = q.split("|")[0].replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
   var org = q.split("|")[1];
- aqua.sendMessage(nomor, { text: `*「 Pesan Rahasia 」*\n\nNama : Hai Ada Yang Ngirim Pesan Rahasia Ni Ke Kamu Bisa Jadi Dia Pacar/Sahabat Kamu Lho
+ aqua.sendMessage(nomor, { text: `*「 Pesan Rahasia 」*\n\nHai Ada Yang Ngirim Pesan Rahasia Ni Ke Kamu Bisa Jadi Dia Pacar/Sahabat Kamu Lho
 
 ----------------------------->
 
