@@ -1291,7 +1291,13 @@ if (isMedia && !m.message.videoMessage || isQuotedImage) {
 const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
   var nomorr = q.split("|")[0].replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
   var orgg = q.split("|")[1];
- aqua.sendMessage(nomorr, {caption: `*「 CHAT DARI 」*\n\nNama: @${sender.split('@')[0]}\n\nINGFO CHAT :\n${orgg}`, mentions:[sender], image: {url: bufff}})
+ aqua.sendMessage(nomorr, {caption: `*「 Pesan Rahasia 」*\n\nHai Ada Yang Ngirim Pesan Rahasia Ni Ke Kamu Bisa Jadi Dia Pacar/Sahabat Kamu Lho
+
+----------------------------->
+
+Pesan Rahasia 💌 : ${org} 
+
+---------------------------->`, mentions:[sender], image: {url: bufff}})
   reply (`Sukses Cuy`)
   } else {
   var nomor = q.split("|")[0].replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
