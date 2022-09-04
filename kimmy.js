@@ -623,10 +623,13 @@ reply("Simi ga tau mau ngomong apa")
 //if (chatBot === false && autorespon === true && !isGroup && !isCmd && !command && !dev.key.fromMe) { 
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
 
+if (isQuotedTag || isQuotedReply) {
+if (!isGroup && !isCmd && !isUrl && !isSticker) {
+if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined) return reply ('Reply targetnya kak atau Tag')
+let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+reply (mess.wait)
+let ghost = users 
 
-if (usess && !isGroup && !isCmd && !isUrl && !isSticker) {
-try{
-//if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined)
 aqua.sendPresenceUpdate('composing', from) 
 const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
  let yakuk = await parsePhoneNumber("+"+senderNumber)
@@ -634,17 +637,14 @@ const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
   console.log(idnya)
 let kataa = body.replace(`@${botNumber.split("@")[0]}`, "")
 
-let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${kataa}&lc=id`, {methods: "GET"})
+let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${ghost}&lc=id`, {methods: "GET"})
 let sami = simi.success
 console.log(sami)
-reply(sami)
+reply(sami).catch(() => reply(`Simi Gatau mau ngomong apa`))
 //aqua.sendMessage(from,{text: sami},{quoted: m})  
 //xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
-} catch (err){
-console.log(err)
-reply("Simi ga tau mau ngomong apa")
-}
 }  
+}
 
 
    
