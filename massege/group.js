@@ -25,8 +25,8 @@ let d = new Date
 module.exports = async(aqua, anu) => {
 try{
 	
-let type1 = false
-let type2 = true
+let type1 = true
+let type2 = false
 let type3 = false
 let type4 = false
 let type5 = false
@@ -156,7 +156,7 @@ image3.build()
     .then(async data => {
        await canvacord.write(data,foto);
           let gambar = await fs.readFileSync(foto)
-/*
+
 let buttonMessage = {
     contextInfo:options,
     image:gambar,
@@ -167,17 +167,17 @@ let buttonMessage = {
 }
 
 await aqua.sendMessage(from, buttonMessage)
-*/
+
 
 await fs.unlinkSync(foto)
 });
   
 } catch(err){
 console.log(err)
-/*
+
 let autoButton = Remove? butOut : butIn
 await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options)
-*/
+
 }
 }
 
