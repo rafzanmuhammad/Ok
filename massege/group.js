@@ -240,7 +240,9 @@ if(Add){
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
-aqua.sendMessage(from, {caption: intro, image: {url: gmbr}}, butIn, { "mentionedJid": [mem]})
+aqua.send5ButImg(from, intro, 'perbaikan welcome', gmbr, butIn)
+
+//aqua.sendMessage(from, {caption: intro, image: {url: gmbr}}, butIn, { "mentionedJid": [mem]})
 //WelcomeType2(from, intro, copyright, gmbr, ppGc, butIn, { "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, intro, `Rules:
@@ -269,8 +271,9 @@ aqua.sendMessage(from, {caption: intro, mentions:[mem], image: ppUser})
 if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
-aqua.sendMessage(from, {caption: outro, image: {url: gmbr}}, butOut, { "mentionedJid": [mem]})
+aqua.send5ButImg(from, outro, 'perbaikan welcome', gmbr, butOut)
 
+//aqua.sendMessage(from, {caption: outro, image: {url: gmbr}}, butOut, { "mentionedJid": [mem]})
 //WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, gmbr, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, outro, `Hm Kok Keluar ^_^`, ppUser, butOut, options1)
