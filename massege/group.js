@@ -83,7 +83,7 @@ let ppGc = await getBuffer(pp_grup)
 let ppGGc = await getBuffer(pp_grup)
 
 
-let gmbr = await getBuffer(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
+let welcom = await getBuffer(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
 
 
 
@@ -274,7 +274,7 @@ if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
 
-await aqua.sendMessage(from, {image: {url: `https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`}, caption: outro, mentions:[mem]})
+aqua.sendMessage(from, {image: {url: welcom}, caption: outro, mentions:[mem]})
 
 //WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, gmbr, butOut, { "mentionedJid": [mem]})
 } else if(type3){
