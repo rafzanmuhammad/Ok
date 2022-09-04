@@ -201,8 +201,8 @@ let buttonMessage = {
 }
 */
 
-aqua.sendMessage(m.chat, buttonMessage, { quoted: m })
-
+aqua.sendMessage(m.chat, buttonMessage)
+}
 
 
 const WelcomeType2 = async(id, text1, desc1, gam1, but = [], options, options1 = {}) => {	
