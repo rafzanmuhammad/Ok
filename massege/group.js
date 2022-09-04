@@ -235,18 +235,7 @@ if(Add){
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
-	
-let ress = await getBuffer (`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
- 
-let buttonMessage = {
-    image: ress,
-    caption: intro,
-    footer: copyright,
-    buttons: butIn,
-    headerType: 4
-}
-aqua.sendMessage(from, buttonMessage)
-
+aqua.send5ButImg(m.chat, intro, copyright , gmbr, butin)
 
 //WelcomeType2(from, intro, copyright, gmbr, butIn, { "mentionedJid": [mem]})
 } else if(type3){
@@ -276,18 +265,7 @@ aqua.sendMessage(from, {caption: intro, mentions:[mem], image: ppUser})
 if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
-
-let ros = await getBuffer (`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
-
- 
-let buttonMessage = {
-    image: ros,
-    caption: outro,
-    footer: `Hm Kok Keluarr`,
-    buttons: butOut,
-    headerType: 4
-}
-aqua.sendMessage(m.chat, buttonMessage)
+aqua.send5ButImg(m.chat, outro, `Hm Kok Keluarr` , gmbr, butOut)
 
 //WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, gmbr, butOut, { "mentionedJid": [mem]})
 } else if(type3){
