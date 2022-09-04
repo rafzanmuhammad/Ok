@@ -3478,14 +3478,13 @@ break
 
 
 case 'tt': case 'tiktok': case 'ttnowm': case 'tiktoknowm':    
-if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis 
-try{   
+try{  
+if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis  
 if (args.length < 1) return reply(`Link?\nContoh: ${prefix + command} https://vm.tiktok.com/ZSRfArwXH/`)
 reply (mess.wait)
-arg = args.join(' ')
 calip.downloader.tiktok(args[0]).then(res => {
-console.log(res)
-console.log('[ T I K T O K ] downloader')
+//console.log(res)
+//console.log('[ T I K T O K ] downloader')
 
 aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
 
@@ -5512,7 +5511,7 @@ throw reply (`Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Vide
 case 'emojimix': {
 	try{
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-	        if (!text) throw `Example : ${prefix + command} 🤣+🤔`
+	        if (!text) throw `Salahh\nContoh : ${prefix + command} 🤣+🤔`
 		let [emoji1, emoji2] = text.split`+`
 		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
 		for (let res of anu.results) {
