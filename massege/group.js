@@ -236,7 +236,7 @@ WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]
 //aqua.sendButImage(from, intro, copyright, welcom, butIn, { "mentionedJid": [mem]})
 
 //aqua.sendMessage(from, { caption: intro, welcom, buttons: butIn, footer: 'tes welcome' })
-aqua.sendMessage(from, { caption: intro, image: {url: `https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${encodeURI(pushname)}&namaGb=${encodeURI(groupName)}&pepeGb=${ppGc}&totalMem=${encodeURI(allmem)}&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz`}, buttons: butIn, footer: 'tes welcome' })
+aqua.sendMessage(from, { caption: intro, image: {url: `https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${encodeURI(groupName)}&pepeGb=${ppGc}&totalMem=${encodeURI(allmem)}&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz`}, buttons: butIn, footer: 'tes welcome' })
 //WelcomeType2(from, intro, copyright, welcom, butIn, { "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, intro, `Rules:
@@ -272,7 +272,7 @@ WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mention
 
 //aqua.sendMessage(from, { caption: outro, image: welcom, buttons: butIn, footer: 'tes welcome' })
 //aqua.sendMessage(from, { caption: outro, image: {url: "https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz" ` `${welcom}`}, buttons: butOut, footer: 'tes welcome' })
-aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${encodeURI(pushname)}&namaGb=${encodeURI(groupName)}&pepeGb=${ppGc}&totalMem=${encodeURI(allmem)}&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz`}, caption: outro, mentions:[mem]})
+aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${encodeURI(groupName)}&pepeGb=${ppGc}&totalMem=${encodeURI(allmem)}&pepeUser=${ppUser}&bege=https://tinyurl.com/y23xrfhu&apikey=BetaBotz`}, caption: outro, mentions:[mem]})
 //WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, welcom, butOut, { "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, outro, `Hm Kok Keluar ^_^`, ppUser, butOut, options1)
