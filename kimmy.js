@@ -1287,6 +1287,7 @@ break
 case 'menfes': case 'menfess': case 'chat':   {
 if (args.length < 1) return m.reply(`Contoh Penggunaan nomor|pesan\nContoh: ${prefix + command} 628388024064|Halo`)
 if (args[0].startsWith('08')) return reply ('Awali nomor dengan 62')
+
 if (isMedia && !m.message.videoMessage || isQuotedImage) {
 const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
   var nomorr = q.split("|")[0].replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
@@ -1297,7 +1298,7 @@ const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
 
 Pesan Rahasia 💌 : ${orgg} 
 
----------------------------->`, mentions:[sender], image: {url: bufff}})
+---------------------------->`, image: {url: bufff}})
   reply (`Sukses Cuy`)
   } else {
   var nomor = q.split("|")[0].replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
