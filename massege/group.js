@@ -274,7 +274,7 @@ if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
 
-aqua.sendMessage(from, { caption: outro, image: { url: welcom }, buttons: butOut, footer: 'tes welcome' })
+aqua.sendMessage(from, { caption: outro, image: welcom, buttons: butOut, footer: 'tes welcome' })
 
 //aqua.sendMessage(from, {image: {url: welcom}, caption: outro, mentions:[mem]})
 
