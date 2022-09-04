@@ -2,6 +2,7 @@ const util = require('util')
 const moment = require("moment-timezone");
 const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
 const fs = require("fs");
+const fetch = require('node-fetch')
 const { color } = require("../lib/color");
 const { getGroupAdmins, h2k, FileSize, smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, pickRandom, short } = require('../lib/myfunc')
 const chalk = require('chalk')
@@ -82,7 +83,7 @@ let ppGc = await getBuffer(pp_grup)
 let ppGGc = await getBuffer(pp_grup)
 
 
-let gmbr = await fetchJson(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
+let gmbr = await getBuffer(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
 
 
 let options1 =
@@ -92,7 +93,7 @@ title: `Group Bot Official 念`,
 //description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
-thumbnail: gmbr,
+thumbnail: await (await fetch(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)).buffer(),
 mediaUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM',
 sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }
