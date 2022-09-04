@@ -83,7 +83,7 @@ let ppGc = await getBuffer(pp_grup)
 let ppGGc = await getBuffer(pp_grup)
 
 
-let welccom = await getBuffer(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
+const welccom = await getBuffer(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
 
 let welcom = `https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`
 
@@ -236,7 +236,7 @@ if(Add){
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
-aqua.sendMessage(from, { caption: intro, image: {url: `https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`}, buttons: butIn, footer: 'tes welcome' })
+aqua.sendMessage(from, { caption: intro, image: {url: `${welccom}`}, buttons: butIn, footer: 'tes welcome' })
 
 //WelcomeType2(from, intro, copyright, gmbr, butIn, { "mentionedJid": [mem]})
 } else if(type3){
@@ -268,7 +268,7 @@ if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
 
-aqua.sendMessage(from, { caption: outro, image: {url: `https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`}, buttons: butOut, footer: 'tes welcome' })
+aqua.sendMessage(from, { caption: outro, image: {url: `${welccom}`}, buttons: butOut, footer: 'tes welcome' })
 
 //aqua.sendMessage(from, {image: {url: welcom}, caption: outro, mentions:[mem]})
 
