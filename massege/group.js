@@ -266,13 +266,15 @@ sourceUrl: `https://wa.me/628388024064?text=lah`
 aqua.sendMessage(from, {caption: intro, mentions:[mem], image: ppUser})
 //aqua.sendMessage(from, {image: ppUser,caption: intro}, {contextInfo:{ "mentionedJid": [mem]}})
 }
-
+const fwelcom= { key: {"fromMe": false,"participant": `0@s.whatsapp.net`},message: {"liveLocationMessage": {"title":`Welcome 👋`}}}
+const fout = { key: {"fromMe": false,"participant": `0@s.whatsapp.net`},message: {"liveLocationMessage": {"title":`GoodByee 👋`}}}
 
 } else if(Remove){ 
 if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
-aqua.send5ButImg(from, outro, `Hm Kok Keluarr` , gmbr, but5Ot)
+
+aqua.sendMessage(from, {caption: outro, image: {url: `https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`}}, {quoted: fout}, { "mentionedJid": [mem]})
 
 //WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, gmbr, butOut, { "mentionedJid": [mem]})
 } else if(type3){
