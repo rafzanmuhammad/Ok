@@ -26,8 +26,8 @@ module.exports = async(aqua, anu) => {
 try{
 	
 let type1 = false
-let type2 = false
-let type3 = true
+let type2 = true
+let type3 = false
 let type4 = false
 let type5 = false
 
@@ -83,7 +83,7 @@ let ppGc = await getBuffer(pp_grup)
 let ppGGc = await getBuffer(pp_grup)
 
 
-let gmbr = await getBuffer(`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
+let gmbr = await getBuffer (`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
 
 
 let options1 =
@@ -93,7 +93,7 @@ title: `Group Bot Official 念`,
 //description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
-thumbnail: `https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`,
+thumbnail: ppUser,
 mediaUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM',
 sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }
@@ -240,7 +240,7 @@ if(Add){
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
-WelcomeType2(from, intro, copyright, ppUser, ppGc, butIn, { "mentionedJid": [mem]})
+WelcomeType2(from, intro, copyright, gmbr, ppGx, butIn, { "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, intro, `Rules:
 ${desc}`, ppUser, butIn, options1)
@@ -268,7 +268,7 @@ aqua.sendMessage(from, {caption: intro, mentions:[mem], image: ppUser})
 if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
-WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
+WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, gmbr, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type3){
 sendButDoc(from, outro, `Hm Kok Keluar ^_^`, ppUser, butOut, options1)
 } else if(type4){
