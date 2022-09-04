@@ -236,17 +236,16 @@ if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
 	
-getBuffer (`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
-.then(res => {
+let ress = await getBuffer (`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
  
 let buttonMessage = {
-    image: res,
+    image: ress,
     caption: intro,
     footer: copyright,
     buttons: butIn,
     headerType: 4
 }
-aqua.sendMessage(from, buttonMessage)})
+aqua.sendMessage(from, buttonMessage)
 
 
 //WelcomeType2(from, intro, copyright, gmbr, butIn, { "mentionedJid": [mem]})
@@ -278,17 +277,17 @@ if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
 
-getBuffer (`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
-.then(res => {
+let ros = await getBuffer (`https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`)
+
  
 let buttonMessage = {
-    image: res,
+    image: ros,
     caption: outro,
     footer: `Hm Kok Keluarr`,
     buttons: butOut,
     headerType: 4
 }
-aqua.sendMessage(m.chat, buttonMessage)})
+aqua.sendMessage(m.chat, buttonMessage)
 
 //WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, gmbr, butOut, { "mentionedJid": [mem]})
 } else if(type3){
