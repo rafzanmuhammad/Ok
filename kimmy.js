@@ -1295,7 +1295,7 @@ const bufff = await aqua.downloadAndSaveMediaMessage(quoted)
 
 ----------------------------->
 
-Pesan Rahasia 💌 : ${org} 
+Pesan Rahasia 💌 : ${orgg} 
 
 ---------------------------->`, mentions:[sender], image: {url: bufff}})
   reply (`Sukses Cuy`)
