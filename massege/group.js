@@ -108,14 +108,6 @@ let butIn = [{ buttonId: `intro`, buttonText: { displayText: "Omke" }, type: 1 }
 //Button out
 let butOut= [{ buttonId: `y`, buttonText: { displayText: "Good Bye" },type: 1 }];   
 
-
-let but5In = [           
-                    { urlButton: { displayText: 'Group Bot', url: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D` }}, 
-                    { quickReplyButton: { displayText: 'Omke', id: `oke`}}]
-let but5Ot = [           
-                    { urlButton: { displayText: 'Group Bot', url: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D` }}, 
-                    { quickReplyButton: { displayText: 'GoodByee', id: `oke`}}]
-   
  
 const WelcomeType1 = async(id, text1, desc1, gam1, gam2, but = [], options = {}) => {	
 try{
@@ -244,7 +236,7 @@ if(Add){
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
-aqua.sendMessage(from, { caption: intro, image: {url: `${welcom}`}, buttons: butIn, footer: 'tes welcome' })
+aqua.sendMessage(from, { caption: intro, image: {url: `https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`}, buttons: butIn, footer: 'tes welcome' })
 
 //WelcomeType2(from, intro, copyright, gmbr, butIn, { "mentionedJid": [mem]})
 } else if(type3){
@@ -276,7 +268,7 @@ if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
 
-aqua.sendMessage(from, { caption: outro, image: {url: `${welcom}`}, buttons: butOut, footer: 'tes welcome' })
+aqua.sendMessage(from, { caption: outro, image: {url: `https://mogabisab.herokuapp.com/api/canvas/welcome?nama=${pushname}&namaGb=${groupName}&pepeGb=${ppGGc}&totalMem=${allmem}&pepeUser=${ppUser}&bege=${bg}&apikey=BetaBotz`}, buttons: butOut, footer: 'tes welcome' })
 
 //aqua.sendMessage(from, {image: {url: welcom}, caption: outro, mentions:[mem]})
 
