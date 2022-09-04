@@ -160,18 +160,35 @@ require('./massege/group.js')(aqua, anu)
     }
     let nama = await aqua.getName(num)
     memb = metadata.participants.length
-    
+    const desc = metadata.desc
+    const groupName = metadata.subject  
+
+    const intro = `Halo @${num.split('@')[0]}
+Selamat Datang Di ${groupName} 
+
+*_JANGAN LUPA INTRO_*
+» Nama: 
+» Umur:
+» Askot:
+Semoga Betah Kak ><
+`;
+
+const outro = `Selamat Tinggal @${num.split('@')[0]}
+
+Sisa Peserta Grub ${memb}
+`
+
     kon = await getBuffer(`https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=${encodeURIComponent(nama)}&namaGb=${encodeURIComponent(metadata.subject)}&pepeGb=${encodeURIComponent(ppgroup)}&totalMem=${encodeURIComponent(memb)}&pepeUser=${encodeURIComponent(ppuser)}&bege=https://telegra.ph/file/38dfc6649ab96b7dc7d41.jpg&apikey=BetaBotz`)
     tol = await getBuffer(`https://sewa4yeye.herokuapp.com/api/canvas/goodbye?nama=${encodeURIComponent(nama)}&namaGb=${encodeURIComponent(metadata.subject)}&pepeGb=${encodeURIComponent(ppgroup)}&totalMem=${encodeURIComponent(memb)}&pepeUser=${encodeURIComponent(ppuser)}&bege=https://telegra.ph/file/38dfc6649ab96b7dc7d41.jpg&apikey=BetaBotz`)
 
     if (anu.action == 'add') {
-    tekswell = `Hai Kak @${num.split('@')[0]} 👋\nSelamat Datang Di Grup ${metadata.subject}\n\n`
-    let btnwel = [{buttonId: 'welc', buttonText: {displayText: 'Welcome Kak 👋'}, type: 1},]
-    aqua.sendMessage(anu.id, { image: kon, contextInfo: { mentionedJid: [num] }, caption: tekswell, footer: `tes welcome`, buttons: btnwel})
+   // tekswell = `Hai Kak @${num.split('@')[0]} 👋\nSelamat Datang Di Grup ${metadata.subject}\n\n`
+    let btnwel = [{buttonId: 'intro', buttonText: {displayText: 'Omkee'}, type: 1},]
+    aqua.sendMessage(anu.id, { image: kon, contextInfo: { mentionedJid: [num] }, caption: intro, footer: `${desc}`, buttons: btnwel})
     } else if (anu.action == 'remove') {
-    teksbye = `Sayonaraa @${num.split("@")[0]} 👋\nKeluar Dari Grup ${metadata.subject}\n\n`
-    let btnbye = [{buttonId: 'lunga', buttonText: {displayText: 'Goodbye Kak 👋'}, type: 1},]
-    aqua.sendMessage(anu.id, { image: tol, contextInfo: { mentionedJid: [num] }, caption: teksbye, footer: `Tes Welcome`, buttons: btnbye})
+  //  teksbye = `Sayonaraa @${num.split("@")[0]} 👋\nKeluar Dari Grup ${metadata.subject}\n\n`
+    let btnbye = [{buttonId: 'lunga', buttonText: {displayText: 'Goodbye 👋'}, type: 1},]
+    aqua.sendMessage(anu.id, { image: tol, contextInfo: { mentionedJid: [num] }, caption: outro, footer: `Kok Out 🐦`, buttons: btnbye})
     }
     }
     } catch (err) {
