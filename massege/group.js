@@ -33,6 +33,7 @@ let type5 = false
 
 let metadata = await aqua.groupMetadata(anu.id)
 const from = anu.id
+const m.chat = from
 const memb = metadata.participants.length
 const botNumber = aqua.user.id 
 const groupMet = await aqua.groupMetadata(from)
@@ -106,7 +107,14 @@ let butIn = [{ buttonId: `intro`, buttonText: { displayText: "Omke" }, type: 1 }
 //Button out
 let butOut= [{ buttonId: `y`, buttonText: { displayText: "Good Bye" },type: 1 }];   
 
- 
+
+let but5In = [           
+                    { urlButton: { displayText: 'Group Bot', url: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D` }}, 
+                    { quickReplyButton: { displayText: 'Omke', id: `${prefix}oke`}}]
+let but5Ot = [           
+                    { urlButton: { displayText: 'Group Bot', url: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D` }}, 
+                    { quickReplyButton: { displayText: 'GoodByee', id: `${prefix}oke`}}]
+   
  
 const WelcomeType1 = async(id, text1, desc1, gam1, gam2, but = [], options = {}) => {	
 try{
@@ -235,7 +243,7 @@ if(Add){
 if(type1){
 WelcomeType1(from, intro, copyright, ppUser, ppGc, butIn,{ "mentionedJid": [mem]})
 } else if(type2){
-aqua.send5ButImg(m.chat, intro, copyright , gmbr, butin)
+aqua.send5ButImg(from, intro, copyright , gmbr, but5In)
 
 //WelcomeType2(from, intro, copyright, gmbr, butIn, { "mentionedJid": [mem]})
 } else if(type3){
@@ -265,7 +273,7 @@ aqua.sendMessage(from, {caption: intro, mentions:[mem], image: ppUser})
 if(type1){
 WelcomeType1(from, outro,  `Hm Kok Keluar ^_^`, ppUser, ppGc, butOut, { "mentionedJid": [mem]})
 } else if(type2){
-aqua.send5ButImg(m.chat, outro, `Hm Kok Keluarr` , gmbr, butOut)
+aqua.send5ButImg(from, outro, `Hm Kok Keluarr` , gmbr, but5Ot)
 
 //WelcomeType2(from, outro,  `Hm Kok Keluar ^_^`, gmbr, butOut, { "mentionedJid": [mem]})
 } else if(type3){
