@@ -626,7 +626,7 @@ reply("Simi ga tau mau ngomong apa")
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
 
 if (isQuotedTag || isQuotedReply) {
-if (!isGroup && !isCmd) {
+if (!isGroup && !isCmd && !isUrl) {
 if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined) return
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 let ghost = users 
