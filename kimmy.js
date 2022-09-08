@@ -1750,8 +1750,8 @@ const fek = asuu[Math.floor(Math.random() * asuu.length)]
 let options1 =
 { mentionedJid: [m.sender],
 externalAdReply: {
-title: `Hai 👋`, 
-//body: `   ━━━━⬤──────────    click here to play music `,
+title: `Jangan Lupa Masuk Ke Grub Bot ☟︎︎︎`, 
+//body: `Klik Disini`,
 //description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
@@ -2531,7 +2531,7 @@ await aqua.sendMessage(m.chat, { image: { url: ppuser }}, { quoted: m })
 break 
 
     
-case 'grupwa': 
+case 'grubbwa': 
 if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
 if (!q) return reply(`Kirim perintah ${command} nama grup`)
 reply (mess.wait)
@@ -3572,7 +3572,7 @@ console.log(err)
 }
 break
 
-
+case 'grupwa': 
 case 'grubbot':
 case 'grubwa': {
 reply (`*Grub Wa*
@@ -7324,7 +7324,7 @@ reply (`*sama - sama kak ${pushname}*`)
 //Auto Download Video Tiktok
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
 calip.downloader.tiktok(budy).then(res => {
-console.log(res)
+//console.log(res)
 aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
 
 • Autor: ${res.author}
