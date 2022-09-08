@@ -43,17 +43,17 @@ akan langsung jadi sticker 🐥
 ╰❒
 
 ╭─❒ 「  *Downloader Menu* 」
-├ ${prefix}tiktoknowm
-├ ${prefix}tiktokwm
-├ ${prefix}tiktokmusik 
-├ ${prefix}ytmp3 
-├ ${prefix}ytmp4 
-├ ${prefix}instagram
-├ ${prefix}play
-├ ${prefix}playmusik
-├ ${prefix}jpg  
-├ ${prefix}mediafire
-├ ${prefix}pinterestdl
+├ ${prefix}tiktoknowm  _linktt_
+├ ${prefix}tiktokwm  _linktt_
+├ ${prefix}tiktokmusik _erorr_
+├ ${prefix}ytmp3  _linkyt_
+├ ${prefix}ytmp4  _linkyt_ 
+├ ${prefix}instagram  _linkig_
+├ ${prefix}play   _teks_
+├ ${prefix}playmusik  _teks_
+├ ${prefix}jpg  _link_ 
+├ ${prefix}mediafire  _link_
+├ ${prefix}pinterestdl  _link_
 ├ ${prefix}getmusic 
 ├ ${prefix}getvideo 
 ╰❒
