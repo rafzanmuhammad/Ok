@@ -1565,8 +1565,8 @@ case 'play': case 'playmusic': case 'playmusik':{
 let options2 =
 { 
 externalAdReply: {
-title: `⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
-body: `   ━━━━⬤──────────    click here to play music `,
+title: `𝐊𝐥𝐢𝐤 𝐇𝐞𝐫𝐞 ❦︎`, 
+//body: `   ━━━━⬤──────────    click here to play music `,
 description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
