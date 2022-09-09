@@ -1572,16 +1572,16 @@ mediaType: 1,
 renderLargerThumbnail: true,
 thumbnail: await (await fetch(anu.thumbnail)).buffer(),
 mediaUrl: anu.url,
-sourceUrl: anu.url
+sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }
 }
 var toks =`
-⭔ Title : ${anu.title}
-⭔ Duration : ${anu.timestamp}
-⭔ Viewers : ${anu.views}
-⭔ Upload At : ${anu.ago}
-⭔ Author : ${anu.author.name}
-⭔ Url : ${anu.url}`
+🕵️ Title : ${anu.title}
+⌛ Duration : ${anu.timestamp}
+👀 Viewers : ${h2k(anu.views)} Kali 
+🌺 Upload At : ${anu.ago}
+👤 Author : ${anu.author.name}
+📎 Link : ${anu.url}`
 
 let aklo = [
 {"buttonId": `${prefix}ytmp33 ${anu.url} `,"buttonText": {"displayText": `Audio`},"type": "RESPONSE"},
