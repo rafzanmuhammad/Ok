@@ -1498,7 +1498,7 @@ break
 
 				break      
 
-case 'play': case 'playmusic': case 'playmusik':{
+case 'lllll':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 if(!q) return reply ("Teksnya mana")
 let rus = await yts(q)
@@ -1561,16 +1561,20 @@ case 'play': case 'playmusic': case 'playmusik':{
                 let yts = require("yt-search")
                 let search = await yts(text)
                let anu = search.videos[0];
-/*                             
-try{
-var thumbnya =`https://i.ytimg.com/vi/${anu.videoId}/mqdefault.jpg`
-} catch(err) {
-var thumbnya =`https://i.ytimg.com/vi/${anu.videoId}/sqdefault.jpg`
+
+let options2 =
+{ 
+externalAdReply: {
+title: `⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+body: `   ━━━━⬤──────────    click here to play music `,
+description: 'Now Playing...',
+mediaType: 1,
+renderLargerThumbnail: true,
+thumbnail: await (await fetch(anu.thumbnail)).buffer(),
+mediaUrl: anu.url,
+sourceUrl: anu.url
 }
-
-let inithumb = await getBuffer(thumbnya)
-*/
-
+}
 var toks =`
 ⭔ Title : ${anu.title}
 ⭔ Duration : ${anu.timestamp}
@@ -1578,12 +1582,13 @@ var toks =`
 ⭔ Upload At : ${anu.ago}
 ⭔ Author : ${anu.author.name}
 ⭔ Url : ${anu.url}`
-aqua.sendMessage(from, {caption: toks, image: { url: anu.thumbnail}}, {quoted: m})
 
-let { yta } = require('./lib/y2mate')
-let quality = '128kbps'
-let media = await yta(anu.url, quality)
-if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
+let aklo = [
+{"buttonId": `${prefix}ytmp33 ${anu.url} `,"buttonText": {"displayText": `Audio`},"type": "RESPONSE"},
+{"buttonId": `${prefix}ytmp44 ${anu.url}`,"buttonText": {"displayText": `Video`},"type": "RESPONSE"}
+]
+aqua.sendButDoc(from, `*YOUTUBE DOWNLOADER*\n${toks}`, `${global.footer}`, fs.readFileSync('./media/thumbnaildokumen.jpg'), aklo, options2, {quoted:m})
+
 /*
 aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` ,
 contextInfo: {
@@ -1598,7 +1603,7 @@ mediaUrl: anu.url,
 sourceUrl: anu.url
 }}}, { quoted: m })
 */
-aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`} , { quoted: m })
+//aqua.sendMessage(m.chat, {audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3`} , { quoted: m })
             }
             db.users[sender].limit -= 1 // -1 limit
             break
