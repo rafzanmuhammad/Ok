@@ -689,7 +689,7 @@ akan langsung jadi sticker 🐥
 ├ =>
 ╰❒
 
-╭─❒ 「  *Bug Wea* 」
+╭─❒ 「  *Virus Wea* 」
 ├ ${prefix}bug1
 ├ ${prefix}bug2
 ├ ${prefix}bug3
@@ -702,6 +702,11 @@ akan langsung jadi sticker 🐥
 ├ ${prefix}buglokasi2
 ├ ${prefix}buggc
 ├ ${prefix}bugpc
+├ ${prefix}jadibug1
+├ ${prefix}jadibug2
+├ ${prefix}jadibug3
+├ ${prefix}jadibug4
+├ ${prefix}jadibug5
 ├ ${prefix}sendbug
 ├ ${prefix}troli
 ├ ${prefix}poll
