@@ -1742,6 +1742,24 @@ sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 break
 */
 
+case 'mennu': {
+var messa = await prepareWAMessageMedia({ image: fs.readFileSync('./media/thumb.jpg') }, { upload: aqua.waUploadToServer })
+var requestPaymentMessage = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+"requestPaymentMessage": {
+"currencyCodeIso4217": "IDR",
+"amount1000": "100",
+"requestPaymentimage": messa.imageMessage,
+"requestFrom": "@s.whatsapp.net",
+"noteMessage": {
+"extendedTextMessage": {
+"text": `
+tes menuu`,
+}
+}}}), { userJid: m.chat, quoted: m })
+aqua.relayMessage(m.chat, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
+}
+break
+
 case 'list': case 'menu': case 'help': case '?': {
 anu = menu(global, m, prefix, pushname, isPremium)
 
