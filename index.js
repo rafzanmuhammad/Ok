@@ -30,6 +30,7 @@ const path = require('path')
 const { color, bgcolor } = require("./lib/color")
 const  { Boom } = require('@hapi/boom')
 const figlet = require('figlet')
+const canvacord = require("canvacord");
 const PhoneNumber = require('awesome-phonenumber')
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, isUrl, getRandom, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep } = require('./lib/myfunc')
@@ -164,6 +165,7 @@ require('./massege/group.js')(aqua, anu)
     const groupName = metadata.subject
     let ppUser = await getBuffer(ppuser)
     let ppGc = await getBuffer(ppgroup)  
+const bg = "https://tinyurl.com/y23xrfhu"
  
 const intro = `Halo @${num.split('@')[0]}
 Selamat Datang Di ${groupName} 
@@ -216,12 +218,90 @@ sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }
 const floc = { key: {"fromMe": false,"participant": `0@s.whatsapp.net`},message: {"liveLocationMessage": {"title":`Haii`}}}
 
-    if (anu.action == 'add') {  
+const Remove = anu.action == 'remove'
+const Add = anu.action == 'add'
+
+const WelcomeType1 = async(id, text1, desc1, gam1, gam2, but = [], options = {}) => {	
+try{
+
+if (anu.action == 'add'){
+var image3 = await new canvacord.Welcomer()
+        .setUsername(nama)
+        .setDiscriminator('gatay')
+        .setMemberCount(memb)
+        .setGuildName(metadata.subject)
+        .setAvatar(gam1)
+        .setBackground(bg)  
+        .setColor("border", "#000000")
+        .setColor("username-box", "#000000d")
+        .setColor("discriminator-box", "#000000")
+        .setColor("message-box", "#000000")
+        .setColor("title", "#eb26dd")
+        .setColor("avatar", "#000000")
+        .setColor("background", "#000000")
+        .setText("member-count", `+ 1 member!`)
+        .setText("title", "welcome")
+        .setText("message", `welcome in ${metadata.subject}`)
+
+} else if (anu.action == 'remove') {  
+var image3 = await new canvacord.Leaver()
+        .setUsername(nama)
+        .setDiscriminator('enth')
+        .setMemberCount(memb)
+        .setGuildName(metadata.subject)
+        .setBackground(bg)  
+        .setAvatar(gam1)
+        .setColor("border", "#000000")
+        .setColor("username-box", "#000000d")
+        .setColor("discriminator-box", "#000000")
+        .setColor("message-box", "#000000")
+        .setColor("title", "#eb26dd")
+        .setColor("avatar", "#000000")
+        .setColor("background", "#000000")
+        .setText("member-count", `- 1 member!`)
+        .setText("title", "good bye")
+        .setText("message", `we will miss you friends`)
+}
+
+let foto = await getRandom(".png")
+image3.build()
+    .then(async data => {
+       await canvacord.write(data,foto);
+          let gambar = await fs.readFileSync(foto)
+
+let buttonMessage = {
+    contextInfo:options,
+    image:gambar,
+    caption: text1,
+    footer: desc1,
+    buttons: but,
+    headerType: 4
+}
+
+await aqua.sendMessage(from, buttonMessage)
+
+
+await fs.unlinkSync(foto)
+});
+  
+} catch(err){
+console.log(err)
+aqua.sendMessage(`628388024064@s.whatsapp.net`, {text: `${err}`})
+let autoButton = Remove? btnbye : btnwel
+await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options)
+
+}
+}
+
+
+    if (anu.action == 'add') {
+      WelcomeType1(anu.id, intro, 'Bot Wea', ppUser, ppGc, btnwel, {contextInfo: { mentionedJid: [num] }})  
  //   aqua.sendButDoc(anu.id, intro, `Rules:\n${desc}`, kon, btnwel, options1)  
-    aqua.sendMessage(anu.id, { image: kon, contextInfo: { mentionedJid: [num] }, caption: intro, footer: `${desc}`, buttons: btnwel})
+    //aqua.sendMessage(anu.id, { image: kon, contextInfo: { mentionedJid: [num] }, caption: intro, footer: `${desc}`, buttons: btnwel})
     } else if (anu.action == 'remove') {  
+    	WelcomeType1(anu.id, outro, 'Bot Wea', ppUser, ppGc, btnbye, {contextInfo: { mentionedJid: [num] }})  
  //   aqua.sendButDoc(anu.id, outro, `Hm Kok Keluar ^_^`, tol, btnbye, options2)
-    aqua.sendMessage(anu.id, { image: tol, contextInfo: { mentionedJid: [num] }, caption: outro, footer: `Kok Out 🐦`, buttons: btnbye})
+    //aqua.sendMessage(anu.id, { image: tol, contextInfo: { mentionedJid: [num] }, caption: outro, footer: `Kok Out 🐦`, buttons: btnbye})
     }
     }
     } catch (err) {
