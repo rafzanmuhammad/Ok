@@ -171,9 +171,9 @@ const intro = `Halo @${num.split('@')[0]}
 Selamat Datang Di ${groupName} 
 
 *_JANGAN LUPA INTRO_*
-» Nama: 
-» Umur:
-» Askot:
+Â» Nama: 
+Â» Umur:
+Â» Askot:
 Semoga Betah Kak ><
 `;
 
@@ -189,12 +189,12 @@ tol = await getBuffer(`https://sewa4yeye.herokuapp.com/api/canvas/goodbye?nama=$
 
 //button
 let btnwel = [{buttonId: 'intro', buttonText: {displayText: 'Omkee'}, type: 1},]
-let btnbye = [{buttonId: 'lunga', buttonText: {displayText: 'Goodbye 👋'}, type: 1},]
+let btnbye = [{buttonId: 'lunga', buttonText: {displayText: 'Goodbye ðŸ‘‹'}, type: 1},]
 
 let options1 =
 { mentionedJid: [num],
 externalAdReply: {
-title: `Group Bot Official 念`, 
+title: `Group Bot Official å¿µ`, 
 //description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
@@ -207,7 +207,7 @@ sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 let options2 =
 { mentionedJid: [num],
 externalAdReply: {
-title: `Group Bot Official 念`, 
+title: `Group Bot Official å¿µ`, 
 //description: 'Now Playing...',
 mediaType: 1,
 renderLargerThumbnail: true,
@@ -227,7 +227,7 @@ try{
 if (anu.action == 'add'){
 var image3 = await new canvacord.Welcomer()
         .setUsername(nama)
-        .setDiscriminator('gatay')
+        .setDiscriminator(memb)
         .setMemberCount(memb)
         .setGuildName(metadata.subject)
         .setAvatar(gam1)
@@ -240,13 +240,13 @@ var image3 = await new canvacord.Welcomer()
         .setColor("avatar", "#000000")
         .setColor("background", "#000000")
         .setText("member-count", `+ 1 member!`)
-        .setText("title", "welcome")
-        .setText("message", `welcome in ${metadata.subject}`)
+        .setText("title", "𝗪𝗘𝗟𝗖𝗢𝗠𝗘")
+        .setText("message", `𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗶𝗻 ${metadata.subject}`)
 
 } else if (anu.action == 'remove') {  
 var image3 = await new canvacord.Leaver()
         .setUsername(nama)
-        .setDiscriminator('enth')
+        .setDiscriminator(memb)
         .setMemberCount(memb)
         .setGuildName(metadata.subject)
         .setBackground(bg)  
@@ -259,8 +259,8 @@ var image3 = await new canvacord.Leaver()
         .setColor("avatar", "#000000")
         .setColor("background", "#000000")
         .setText("member-count", `- 1 member!`)
-        .setText("title", "good bye")
-        .setText("message", `we will miss you friends`)
+        .setText("title", "𝗚𝗢𝗢𝗗 𝗕𝗬𝗘")
+        .setText("message", `𝑾𝒆 𝒘𝒊𝒍𝒍 𝒎𝒊𝒔𝒔 𝒚𝒐𝒖 𝒇𝒓𝒊𝒆𝒏𝒅𝒔`)
 }
 
 let foto = await getRandom(".png")
@@ -293,15 +293,14 @@ await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options)
 }
 }
 
-
     if (anu.action == 'add') {
-      WelcomeType1(anu.id, intro, 'Bot Wea', ppUser, ppGc, btnwel, {contextInfo: { mentionedJid: [num] }})  
+      WelcomeType1(anu.id, intro, `Rules:\n${desc}`, ppUser, ppGc, btnwel, { "mentionedJid": [num]})
  //   aqua.sendButDoc(anu.id, intro, `Rules:\n${desc}`, kon, btnwel, options1)  
     //aqua.sendMessage(anu.id, { image: kon, contextInfo: { mentionedJid: [num] }, caption: intro, footer: `${desc}`, buttons: btnwel})
     } else if (anu.action == 'remove') {  
-    	WelcomeType1(anu.id, outro, 'Bot Wea', ppUser, ppGc, btnbye, {contextInfo: { mentionedJid: [num] }})  
+    	WelcomeType1(anu.id, outro, 'Bot Wea', ppUser, ppGc, btnbye, { "mentionedJid": [num]}) 
  //   aqua.sendButDoc(anu.id, outro, `Hm Kok Keluar ^_^`, tol, btnbye, options2)
-    //aqua.sendMessage(anu.id, { image: tol, contextInfo: { mentionedJid: [num] }, caption: outro, footer: `Kok Out 🐦`, buttons: btnbye})
+    //aqua.sendMessage(anu.id, { image: tol, contextInfo: { mentionedJid: [num] }, caption: outro, footer: `Kok Out ðŸ¦`, buttons: btnbye})
     }
     }
     } catch (err) {
@@ -458,7 +457,7 @@ mimetype: mimitny,
 title : "Footer text", 
 fileLength : 999999999, 
 pageCount: 1, 
-fileName : "𝗕𝗼𝘁 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽 𝗠𝘂𝗹𝘁𝗶 𝗗𝗲𝘃𝗶𝗰𝗲", 
+fileName : "ð—•ð—¼ð˜ ð—ªð—µð—®ð˜ð˜€ð—”ð—½ð—½ ð— ð˜‚ð—¹ð˜ð—¶ ð——ð—²ð˜ƒð—¶ð—°ð—²", 
 caption: text1,
 footer: desc1,
 buttons: but,
@@ -481,7 +480,7 @@ const tod = generateWAMessageFromContent(jid,
 "description": desc,
 "currencyCode": "IDR",
 "priceAmount1000": "20000",
-//"url": `Jangan lupa Join:\n• ${global.grub1}\n`,
+//"url": `Jangan lupa Join:\nâ€¢ ${global.grub1}\n`,
 "productImageCount": 1,
 "salePriceAmount1000": "0"
 },
@@ -497,7 +496,7 @@ let jancok = new Sticker(media, {
     pack: packname, // The pack name
     author: author, // The author name
     type: StickerTypes.FULL, // The sticker type
-    categories: ['🤩', '🎉'], // The sticker category
+    categories: ['ðŸ¤©', 'ðŸŽ‰'], // The sticker category
     id: '12345', // The sticker id
     quality: 50, // The quality of the output file
     background: '#FFFFFF00' // The sticker background color (only for full stickers)
