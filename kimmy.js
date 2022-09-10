@@ -4126,8 +4126,7 @@ case 'poll': {
 if (!isOwner) return
 var pollCreation = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 "pollCreationMessage": {
-"name": "Selamat Anda Mendapatkan Pilihan 🎉
-Silahkan Vote Pilihan Andaa",
+"name": "Silahkan Vote Pilihan Andaa",
 "options": [
 	{
 "optionName": "Kartu Axis 3GB, 10 Hari, Rp. 5.000"
