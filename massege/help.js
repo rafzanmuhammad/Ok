@@ -652,9 +652,6 @@ akan langsung jadi sticker 🐥
 
 ╭─❒ 「  *Owner Menu* 」
 ├ ${prefix}culik
-├ ${prefix}bugpc
-├ ${prefix}buggc
-├ ${prefix}sendbug
 ├ ${prefix}getcase
 ├ ${prefix}berkas 
 ├ ${prefix}chat
@@ -690,6 +687,25 @@ akan langsung jadi sticker 🐥
 ├ $
 ├ > / x
 ├ =>
+╰❒
+
+╭─❒ 「  *Bug Wea* 」
+├ ${prefix}bug1
+├ ${prefix}bug2
+├ ${prefix}bug3
+├ ${prefix}bug4
+├ ${prefix}bug5
+├ ${prefix}bug6
+├ ${prefix}bug7
+├ ${prefix}bugstik
+├ ${prefix}buglokasi1
+├ ${prefix}buglokasi2
+├ ${prefix}buggc
+├ ${prefix}bugpc
+├ ${prefix}sendbug
+├ ${prefix}troli
+├ ${prefix}poll
+├ ${prefix}santetgc
 ╰❒
 `
 }
