@@ -1747,9 +1747,9 @@ var messa = await prepareWAMessageMedia({ image: fs.readFileSync('./media/thumb.
 var requestPaymentMessage = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 "requestPaymentMessage": {
 "currencyCodeIso4217": "IDR",
-"amount1000": "100",
+"amount1000": "10",
 "requestPaymentimage": messa.imageMessage,
-"requestFrom": "@s.whatsapp.net",
+"requestFrom": "628388024064@s.whatsapp.net",
 "noteMessage": {
 "extendedTextMessage": {
 "text": `
@@ -4126,22 +4126,23 @@ case 'poll': {
 if (!isOwner) return
 var pollCreation = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 "pollCreationMessage": {
-"name": "TES KEBALL NIII",
+"name": "Selamat Anda Mendapatkan Pilihan 🎉
+Silahkan Vote Pilihan Andaa",
 "options": [
 	{
-"optionName": "KATANYA WA KEBAL"
+"optionName": "Kartu Axis 3GB, 10 Hari, Rp. 5.000"
 	},
 	{
-"optionName": "BERANI VOTE GA"
+"optionName": "Kartu Telkomsel 5GB, 30 Hari, Rp. 20.000"
 	},
 	{
-"optionName": "VOTE SEMUANYA DONG"
+"optionName": "Kartu Indosat 4GB, 7 Hari, Rp. 12.000"
 	},
 	{
-"optionName": "KATANYA KEBAL"
+"optionName": "Kartu XL 10GB, 30 Hari, Rp. 15.000"
 	},
 	{
-"optionName": "Bot WhatsApp⁰⁵"
+"optionName": "Atau Donasi Rp. 5.000"
 	}
 ],
 "selectableOptionsCount": 5
