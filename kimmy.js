@@ -7700,7 +7700,7 @@ aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TI
 })}
 
 //Auto Download Video FB
-if(budy.includes('https://www.facebook.com/'){
+if(budy.includes('https://www.facebook.com/')){
 try{
 let res = await savefrom(budy)
 aqua.sendMessage(from, {caption: "*FACEBOOK DOWNLOAD*", video: {url: res.url[0].url}}, {quoted: m})
@@ -7709,7 +7709,7 @@ aqua.sendMessage(from, {caption: "*FACEBOOK DOWNLOAD*", video: {url: res.url[0].
 }
 
 //Auto Download Video IG
-if(budy.includes("https://www.instagram.com/reel/") || budy.includes('https://www.instagram.com/p/'){
+if(budy.includes("https://www.instagram.com/reel/") || budy.includes('https://www.instagram.com/p/')){
 try{
 let results = await instagramdlv3(budy)
 for (const { url } of results) await aqua.sendMedia2(from, url, m, {caption: "*INSTAGRAM DOWNLOAD*"})
