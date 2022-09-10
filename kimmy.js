@@ -641,11 +641,8 @@ reply("Simi ga tau mau ngomong apa")
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
 
 if (isQuotedTag || isQuotedReply) {
-if (!isGroup && !isCmd && !isUrl) {
-if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined) return
-let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-let ghost = users 
-
+if (!isGroup && !isCmd && !isUrl && !isImage && !isSticker && !isAudio) {
+	
 aqua.sendPresenceUpdate('composing', from) 
 const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
  let yakuk = await parsePhoneNumber("+"+senderNumber)
@@ -656,8 +653,8 @@ let kataa = body.replace(`@${botNumber.split("@")[0]}`, "")
 let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${kataa}&lc=id`, {methods: "GET"})
 let sami = simi.success
 console.log(sami)
-reply(sami).catch(() => reply(`Simi Gatau mau ngomong apa`))
-//aqua.sendMessage(from,{text: sami},{quoted: m})  
+//reply(sami).catch(() => reply(`Simi Gatau mau ngomong apa`))
+aqua.sendMessage(from,{text: sami},{quoted: m}).catch(() => reply(`Simi Gatau mau ngomong apa`))
 //xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
 }  
 }
