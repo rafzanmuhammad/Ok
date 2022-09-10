@@ -1770,7 +1770,7 @@ const fek = asuu[Math.floor(Math.random() * asuu.length)]
 let options1 =
 { mentionedJid: [m.sender],
 externalAdReply: {
-title: `Jangan Lupa Masuk Ke Grub Bot ☟︎︎︎`, 
+title: `Klik Here`, 
 //body: `Klik Disini`,
 //description: 'Now Playing...',
 mediaType: 1,
