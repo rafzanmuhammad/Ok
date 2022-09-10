@@ -1781,6 +1781,10 @@ sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 }
 }
 aqua.sendButDoc(from, anu, `Ketika anda menemukan error silahkan ketik .report <kendala anda>, kami akan segera fix yang error tersebut, terimakasih telah menggunakan bot ini!!\nSupport by WhatsApp.com`, thumbdoc, mok, options1, {quoted:m})
+await sleep(200)
+reply(`Jangan Lupa Join Ke Grub Bot Official 😅
+
+1. ${global.grub1}`) 
  } else if (modelmenu == 'katalog') {
 aqua.sendKatalog(from, `${global.botnma}`, anu, thumbnya, {quoted: setQuoted})
 }else if (modelmenu == 'list') {
