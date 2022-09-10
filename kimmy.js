@@ -641,7 +641,7 @@ reply("Simi ga tau mau ngomong apa")
 //if (botNumber & isQuotedTag && isQuotedReply && command) {
 
 if (isQuotedTag || isQuotedReply) {
-if (!isGroup && !isCmd && !isUrl && !isImage && !isSticker && !isAudio) {
+if (!isGroup && !isCmd && !m.key.fromMe && !isImage && !isSticker && !isAudio) {
 	
 aqua.sendPresenceUpdate('composing', from) 
 const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
