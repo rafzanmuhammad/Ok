@@ -259,7 +259,7 @@ const ftoko = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat 
 const ftext = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {})},message: { "extendedTextMessage": {"text": `${global.botnma}`,"title": `Hmm`,'jpegThumbnail': fakee}}}
 const fsticker = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {})},"message": {"stickerMessage": {"url": "https://mmg.whatsapp.net/d/f/Am6FBfNf-E2f1VoGBXkPaNAy7L6Tw_HMavKrHEt48QM4.enc","fileSha256": "Yfj8SW7liSEnDakvyVlXVZQ1LJBC9idn09X7KHe8HTc=","fileEncSha256": "F854aUrzgAkBTOVULpne4oSIi6S04Jo56pjZEo+p+9U=","mediaKey": "Z3nA2asclAAwWHngNO/vJ81qxOE2/0gkEnXak+NxPV4=","mimetype": "image/webp","height": 64,"width": 64,"directPath": "/v/t62.15575-24/12097272_1193895144391295_8973688483514349023_n.enc?ccb=11-4&oh=5a9d7147627a8355569f1a641b9ebee3&oe=60C65E73","fileLength": "7186","mediaKeyTimestamp": "1622815545","isAnimated": false}}}
 const fvn = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {})},message: {"audioMessage": {"mimetype":"audio/ogg; codecs=opus","seconds": "9999999","ptt": "true"}}}
-const fbug = () => { return {         key: {             fromMe: false,             participant: `0@s.whatsapp.net`,             ...({ remoteJid: "" })         },         message: {             "imageMessage": {                 "mimetype": "image/jpeg",                 "caption": `kontol`,                 "jpegThumbnail": thumbnya            }         }     }    }
+const fbug = () => { return { key: { fromMe: false, participant: `0@s.whatsapp.net`,...({ remoteJid: "" })}, message: {"imageMessage": { "mimetype": "image/jpeg",                 "caption": `kontol`,                 "jpegThumbnail": thumbnya            }         }     }    }
 const floc = { key: {"fromMe": false,"participant": `0@s.whatsapp.net`},message: {"liveLocationMessage": {"title":`${global.botnma}`}}}
 //bug kontak
 const lep = { key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "@s.whatsapp.net" } : {}) },"message": {"contactMessage": {"displayName": "WhatsApp Support","vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Support;WhatsApp;;;\nFN:WhatsApp Support\nORG:WhatsApp Support\nTITLE:\nitem1.TEL;waid=6287721317870:+62 877-2131-7870\nitem1.X-ABLabel:Ponsel\nX-WA-BIZ-NAME:WhatsApp Support\nEND:VCARD"}}}
@@ -7691,20 +7691,37 @@ if (budy.includes('makasih') || budy.includes('mksih') || budy.includes('mksi') 
 reply (`*sama - sama kak ${pushname}*`)
 }
 
+
+
 //Auto Download Video Tiktok
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
 calip.downloader.tiktok(budy).then(res => {
-//console.log(res)
-aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
-
-• Autor: ${res.author}
-${res.title}`}, { quoted: m })          
+aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*\n\n• Autor: ${res.author}\n${res.title}`}, { quoted: m })          
 })}
 
+//Auto Download Video FB
+if(budy.includes('https://www.facebook.com/'){
+try{
+let res = await savefrom(budy)
+aqua.sendMessage(from, {caption: "*FACEBOOK DOWNLOAD*", video: {url: res.url[0].url}}, {quoted: m})
+} catch (err){ return
+}
+}
 
+//Auto Download Video IG
+if(budy.includes("https://www.instagram.com/reel/") || budy.includes('https://www.instagram.com/p/'){
+try{
+let results = await instagramdlv3(budy)
+for (const { url } of results) await aqua.sendMedia2(from, url, m, {caption: "*INSTAGRAM DOWNLOAD*"})
+} catch (err){ return
+}
+}
+
+
+	
 //Auto Sticker
 if (isImage) {
-	try{
+try{
 let WSF = require('wa-sticker-formatter')
 let wsf = false
 let mime = (m.msg || m).mimetype || ''
