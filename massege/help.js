@@ -654,7 +654,6 @@ akan langsung jadi sticker 🐥
 ├ ${prefix}culik
 ├ ${prefix}getcase
 ├ ${prefix}berkas 
-├ ${prefix}chat
 ├ ${prefix}join 
 ├ ${prefix}leave
 ├ ${prefix}block @user
@@ -697,11 +696,12 @@ akan langsung jadi sticker 🐥
 ├ ${prefix}bug5
 ├ ${prefix}bug6
 ├ ${prefix}bug7
-├ ${prefix}bugstik
-├ ${prefix}buglokasi1
-├ ${prefix}buglokasi2
 ├ ${prefix}buggc
 ├ ${prefix}bugpc
+├ ${prefix}bugstik
+├ ${prefix}buginvite
+├ ${prefix}buglokasi1
+├ ${prefix}buglokasi2
 ├ ${prefix}jadibug1
 ├ ${prefix}jadibug2
 ├ ${prefix}jadibug3
