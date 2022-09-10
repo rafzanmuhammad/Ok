@@ -278,7 +278,7 @@ let buttonMessage = {
     headerType: 4
 }
 
-await aqua.sendMessage(from, buttonMessage)
+await aqua.sendMessage(anu.id, buttonMessage)
 
 
 await fs.unlinkSync(foto)
