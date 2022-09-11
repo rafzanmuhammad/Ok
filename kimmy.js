@@ -3485,7 +3485,7 @@ if(!isUrl) return reply (`Masukan link tiktok dengan benar\nContoh: ${prefix + c
 if (args.length < 1) return reply(`Link?\nContoh: ${prefix + command} https://vm.tiktok.com/ZSRfArwXH/`)
 reply (mess.wait)
 calip.downloader.tiktok(args[0]).then(res => {
-await aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
+aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
 
 • Autor: ${res.author}
 ${res.title}`}, { quoted: m })          
@@ -7883,7 +7883,7 @@ reply (`*sama - sama kak ${pushname}*`)
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
 	try{
 calip.downloader.tiktok(budy).then(res => {
-await aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*\n\n• Autor: ${res.author}\n${res.title}`}, { quoted: m })          
+ aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*\n\n• Autor: ${res.author}\n${res.title}`}, { quoted: m })          
 })
 } catch (err){ return
 }
