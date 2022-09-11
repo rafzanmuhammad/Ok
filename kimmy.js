@@ -128,18 +128,21 @@ let tebaktebakan = db.game.tebakan = []
 let vote = db.others.vote = []
  
 
-module.exports = aqua = async (aqua, m, chatUpdate, store, baterai) => {
+module.exports = aqua = async (aqua, m, chatUpdate, store) => {
 try {
 let { menu, menu1, menu2, menu3, menu4, menu5, menu6, menu7, menu8, menu9, menu10, menu11, menu12, menu13 , menu14, menu15, menu16, menu17, menu18, menu19, menu20, menu21, menu22, menu23, menu24, menu25, menu26, menu27, menu28 } = require('./massege/help')
 
-var body = (m.mtype === 'conversation' && m.message.conversation) ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
+//var body = (m.mtype === 'conversation' && m.message.conversation) ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
 //const body = (m.type === 'conversation') ? m.message.conversation : (m.type == 'imageMessage') ? m.message.imageMessage.caption : (m.type == 'videoMessage') ? m.message.videoMessage.caption : (m.type == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.type == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.type == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.type == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.type === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId ) : ''
+var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
 
 var budy = (typeof m.text == 'string' ? m.text : '')
 //const budy = (m.type === 'conversation') ? m.message.conversation : (m.type === 'extendedTextMessage') ? m.message.extendedTextMessage.text : ''
 
+var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "."
 //var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
-var prefix = /^[#+,.=''!¦|/\\©^]/.test(body) ? body.match(/^[#+,.=''!¦|/\\©^]/gi) : '.'
+
+//var prefix = /^[#+,.=''!¦|/\\©^]/.test(body) ? body.match(/^[#+,.=''!¦|/\\©^]/gi) : '.'
 
 const { isBaileys } = m
 const sender = m.sender
@@ -147,8 +150,6 @@ const isCmd = body.startsWith(prefix)
 const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
 const args = body.trim().split(/ +/).slice(1)
 const pushname = m.pushName || "No Name"
-const lah = m.chat
-const ads = lah
 const getCase = (cases) => { return `'${cases}'`+fs.readFileSync("./kimmy.js").toString().split('case \''+cases+'\'')[1].split("break")[0]+"break"}
 const botNumber = await aqua.decodeJid(aqua.user.id)
 const isOwner = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(sender)
@@ -157,7 +158,6 @@ const pes = (m.type === 'conversation' && m.message.conversation) ? m.message.co
 const messagesC = pes.slice(0).trim()
 const text = q = args.join(" ")        
 const from = m.chat
-const grop = from.endsWith('@g.us')
 const isGroup = m.isGroup
 const senderNumber = sender.split("@")[0] 
 const isUser = user.includes(sender)
@@ -1616,7 +1616,7 @@ case 'setquoted':
 case 'playstore':
 if(!q) return reply ('lu nyari apa?')
 let play = await hx.playstore(q)
-let store = '❉─────────────────────❉\n'
+let storre = '❉─────────────────────❉\n'
 for (let i of play){
 store += `\n*「 _PLAY STORE_ 」*\n
 - *Nama* : ${i.name}
@@ -1624,7 +1624,7 @@ store += `\n*「 _PLAY STORE_ 」*\n
 - *Dev* : ${i.developer}
 - *Link Dev* : ${i.link_dev}\n❉─────────────────────❉`
 }
-reply (store)
+reply (storre)
 break
 
 
@@ -1742,9 +1742,8 @@ aqua.sendMessage(`628388024064@s.whatsapp.net`, {text: `${err}`})
 }
 }
 const ppUser = await getBuffer(ppuser)
-const ppGc = await getBuffer(ppgroup)  
 
-WelcomeType1(from, 'tes', `botwea`, ppUser, ppGc, mokk, { "mentionedJid": [sender]})
+WelcomeType1(from, 'tes', `botwea`, ppUser, mokk, { "mentionedJid": [sender]})
 }
 break
 
@@ -2131,10 +2130,6 @@ db.users[sender].limit -= 1 // -1 limit
 break
 
 		
-
-case 'bet':
-reply (`*Baterai :* ${baterai.baterai}% ${baterai.cas === 'true' ? 'Charging ✅⚡' : 'Not Charging ❌🔌'}`)
-break
 
 	case 'github': case 'gitdl': case 'gitclone': {
 	reply (mess.wait)
@@ -4225,6 +4220,8 @@ reply(tekteka)
 }
 break
 
+
+
 case 'developer':
 let developer = [
             { "nama": "T A K I M", "nomor": "628388024064" },
@@ -4259,7 +4256,7 @@ case 'masturbasi': case 'jahy': case 'glases':  case 'foot': case 'hentai':
 case 'orgy': case 'nekopoi': case 'manga': case 'ass': case 'ahegao':
 case 'bdsm': case 'cuckold': case 'cum': case 'femdom': case 'ero':{
 if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
-if(isStop) return ('khsus private chat bot')
+if(isStop) return reply ('khsus private chat bot')
 var but = [{buttonId: `${command}`, buttonText: { displayText: "Next" }, type: 1 }]
 aqua.sendMessage(from, { caption: `Random Anime ${q}`, image: { url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: m })
 //aqua.sendMessage(from, {image: {url: `https://sewa4yeye.herokuapp.com/api/nsfw/${command}?apikey=BetaBotz`}}, {quoted:m})
@@ -4269,7 +4266,7 @@ break
 case 'yuri': case 'kiss': case 'cum': case 'futanari': case 'hentai': 
 case 'eroyuri': case 'eron': case 'erok': case 'ero': case 'solo': 
 case 'erokemo':  case 'fox_girl': case 'feet': case 'les': case 'feed': case 'bj':{
-if(isStop) return ('khsus private chat bot')
+if(isStop) return reply ('khsus private chat bot')
 if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
               let waifu = await fetchJson(`https://nekos.life/api/v2/img/${command}`)
               aqua.sendMessage(m.chat, { image: waifu, caption: `${q}` }, { quoted: m})
@@ -5663,9 +5660,6 @@ case 'bcgc': case 'bcgroup': {
                 for (var i of anu) {
                     await sleep(9000)  
                     aqua.sendTextWithMentions(i, `${text}`, fbc, { contextInfo: { mentionedJid: [i] }})
-                     //aqua.sendText(i, `${text}`, floc)  
-                     //aqua.sendMessage(i, { text : q ?, mentions}, { quoted: floc })                                   
-                     //  aqua.sendText(i, `${text}`)
                     }
                 reply(`Sukses Mengirim Broadcast`)
             }
@@ -5687,7 +5681,7 @@ urlButton: {
             },
             {
 quickReplyButton: {
-    displayText: '📚 VITUR BOT',
+    displayText: 'Menu',
     id: 'menu'
 }
             }]
@@ -5757,28 +5751,29 @@ case 'q': case 'quoted': {
             
 
 case 'listpc': {
- let anu = await totalchat.filter(v => v.endsWith('.net'))
- let teks = `✅ *LIST PERSONAL CHAT*\n\nTotal Chat : ${anu.length} Chat\n\n`
+ let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
+ let teks = `⬣ *LIST PERSONAL CHAT*\n\nTotal Chat : ${anu.length} Chat\n\n`
  for (let i of anu) {
-     let nama = store.messages[i].array[0].pushName
-     teks += `⬡ *Nama :* ${nama}\n⬡ *User :* @${i.split('@')[0]}\n⬡ *Chat :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
+ let nama = store.messages[i].array[0].pushName
+ teks += `⬡ *Nama :* ${nama}\n⬡ *User :* @${i.split('@')[0]}\n⬡ *Chat :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
  }
  aqua.sendTextWithMentions(m.chat, teks, m)
-             }
-             break
+ }
+ break
 
 
 case 'listgc': {
- let anu = await totalchat.filter(v => v.endsWith('@g.us'))
- let teks = `✅ *LIST GROUP CHAT*\n\nTotal Group : ${anu.length} Group\n\n`
+if (isBan) throw sticBanLu(from)
+
+ let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
+ let teks = `⬣ *LIST GROUP CHAT*\n\nTotal Group : ${anu.length} Group\n\n`
  for (let i of anu) {
-     let metadata = await aqua.groupMetadata(i)
-     teks += `⬡ *Nama :* ${metadata.subject}\n⬡ *Owner :* @${metadata.owner.split('@')[0]}\n⬡ *ID :* ${metadata.id}\n⬡ *Dibuat :* ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Member :* ${metadata.participants.length}\n\n────────────────────────\n\n`
+ let metadata = await aqua.groupMetadata(i)
+ teks += `⬡ *Nama :* ${metadata.subject}\n⬡ *Owner :* ${metadata.owner !== undefined ? '@' + metadata.owner.split`@`[0] : 'Tidak diketahui'}\n⬡ *ID :* ${metadata.id}\n⬡ *Dibuat :* ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Member :* ${metadata.participants.length}\n\n────────────────────────\n\n`
  }
  aqua.sendTextWithMentions(m.chat, teks, m)
-             }
-             break
-             
+ }
+ break
 
 case 'listonline': case 'liston': {
     let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
@@ -7857,9 +7852,13 @@ reply (`*sama - sama kak ${pushname}*`)
 
 //Auto Download Video Tiktok
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
+	try{
 calip.downloader.tiktok(budy).then(res => {
 aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*\n\n• Autor: ${res.author}\n${res.title}`}, { quoted: m })          
-})}
+})
+} catch (err){ return
+}
+}
 
 //Auto Download Video FB
 if(budy.includes('https://www.facebook.com/')){
