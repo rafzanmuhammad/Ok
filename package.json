@@ -1,5 +1,5 @@
 {
-  "name": "kimtodd",
+  "name": "Aqua Bot Md",
   "version": "1.2.3",
   "description": "WhatsApp Using Lib Baileys Multi Device",
   "main": "index.js",
@@ -18,7 +18,7 @@
     "bot-md",
     "multi-device"
   ],
-  "author": "Dika Ardnt.",
+  "author": "Takim",
   "license": "MIT",
   "dependencies": {
     "@adiwajshing/baileys": "github:officialdittaz/BaileysFix",
