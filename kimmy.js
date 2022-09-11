@@ -3694,9 +3694,9 @@ break
 case 'twitterdl': {
 	if (!q) return reply ('Linknya?')
 reply (mess.wait)
-let res = await twitterdlv2(args[0])
-let lagh = await getBuffer (res.url)
-aqua.sendMessage(from, {video: lagh }, {quoted:m})
+let results = await twitterdlv2(q)
+for (const { url } of results) await aqua.sendMedia2(from, url, m, {caption: "*TWITTER DOWNLOAD*"})
+console.log(results)
 }
 break
 
