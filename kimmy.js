@@ -1739,6 +1739,83 @@ sourceUrl: `https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D`
 break
 */
 
+case 'wel':{
+const WelcomeType1 = async(id, text1, desc1, gam1, gam2, but = [], options = {}) => {	
+try{
+
+const canvacord = require("canvacord");
+const bg = "https://tinyurl.com/y23xrfhu"
+     // Get Pp Group And User
+    try {
+    ppuser = await aqua.profilePictureUrl(sender, 'image')
+    } catch {
+    ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+    }
+    try {
+    ppgroup = await aqua.profilePictureUrl(from, 'image')
+    } catch {
+    ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+    }
+        
+    let ppUser = await getBuffer(ppuser)
+    let ppGc = await getBuffer(ppgroup)  
+
+let oo = true
+
+if (oo){
+var image3 = await new canvacord.Welcomer()
+        .setUsername('takimtod')
+        .setDiscriminator('yah')
+        .setMemberCount('woh')
+        .setGuildName('Nama group')
+        .setAvatar(gam1)
+        .setBackground(bg)  
+        .setColor("border", "#000000")
+        .setColor("username-box", "#000000d")
+        .setColor("discriminator-box", "#000000")
+        .setColor("message-box", "#000000")
+        .setColor("title", "#eb26dd")
+        .setColor("avatar", "#000000")
+        .setColor("background", "#000000")
+        .setText("member-count", `+ 1 member!`)
+        .setText("title", "WELCOME")
+        .setText("message", `Welcome in`)
+
+} 
+let foto = await getRandom(".png")
+image3.build()
+    .then(async data => {
+       await canvacord.write(data,foto);
+          let gambar = await fs.readFileSync(foto)
+
+let buttonMessage = {
+    contextInfo:options,
+    image:gambar,
+    caption: text1,
+    footer: desc1,
+    buttons: but,
+    headerType: 4
+}
+
+await aqua.sendMessage(from, buttonMessage)
+
+
+await fs.unlinkSync(foto)
+});
+  
+} catch(err){
+console.log(err)
+aqua.sendMessage(`628388024064@s.whatsapp.net`, {text: `${err}`})
+//let autoButton = Remove? mokk : mokk
+//await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options)
+
+}
+}
+
+WelcomeType1(from, 'tes', `botwea`, ppUser, ppGc, mokk, { "mentionedJid": [sender]})
+}
+break
+
 case 'mennu': {
 var messa = await prepareWAMessageMedia({ image: fs.readFileSync('./media/thumb.jpg') }, { upload: aqua.waUploadToServer })
 var requestPaymentMessage = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
