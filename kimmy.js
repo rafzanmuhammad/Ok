@@ -298,7 +298,7 @@ try {
 }
 ppumser = await getBuffer(ppuser)
 if(replyType === "web"){
-aqua.sendMessage(from, { contextInfo: { externalAdReply:{showAdAttribution: true, title: `Hallo ${pushname} ${ucapanWaktu}`,body:`Jangan Lupa Sewa Bot :v `,previewType:"PHOTO",thumbnail: ppumser, sourceUrl:`${global.grub1}`}},showAdAttribution: true, text: teks }, { quoted: m })
+aqua.sendMessage(from, { contextInfo: { externalAdReply:{showAdAttribution: true, title: `Hallo ${pushname} ${ucapanWaktu}`,body:`Jangan Lupa Sewa Bot :v `,previewType:"PHOTO",thumbnail: ppumser, sourceUrl:`${global.web}`}},showAdAttribution: true, text: teks }, { quoted: m })
 
 //aqua.sendMessage(m.chat, { text: teks, contextInfo:{ "externalAdReply": { "title": `Hallo ${pushname} ${ucapanWaktu}`, "body": `Jangan Lupa Sewa Bot :v`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": ppumser,  "sourceUrl": `${global.web}`}}}, { quoted: m})
 } else if(replyType === "web2"){
