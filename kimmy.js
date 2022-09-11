@@ -2912,37 +2912,6 @@ break
 
 
 
-case 'nb': case 'snobg': case 'nobg':
-if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-    if ((isMedia || isQuotedImage && !isQuotedSticker)) {
-    const media = await aqua.downloadAndSaveMediaMessage(quoted)
-    ranw = getRandom('.webp')
-    ranp = getRandom('.png')
-    keyrmbg = `${global.apibg}`
-    await removeBackgroundFromImageFile({ path: media, apiKey: keyrmbg, size: 'auto', type: 'auto', ranp }).then(res => {
-        fs.unlinkSync(media)
-        let bufferir9vn5 = Buffer.from(res.base64img, 'base64')
-        fs.writeFileSync(ranp, bufferir9vn5, (err) => {
-  if (err) return reply ('Gagal, Terjadi kesalahan, silahkan coba beberapa saat lagi.')
-        })
-        exec(`ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ranw}`, (err) => {
-
-  exec(`webpmux -set exif ./src/data.exif ${ranw} -o ${ranw}`, async (error) => {
-let media = fs.readFileSync(ranw)
-aqua.sendMessage(from, {sticker:media}, m)
-/*
-  if (err) return reply(`emror bang ${err}`)
-  aqua.sendMessage(from, {sticker: fs.readFileSync(ranw)}, {quoted: m})
- */
-    fs.unlinkSync(ranw)
-    fs.unlinkSync(ranp)
-      
-       })
-       })
-        }) 
-        }
-        db.users[sender].limit -= 1 // -1 limit
-break
 
 
 case 'qrcode':
@@ -3512,13 +3481,11 @@ break
 case 'tt': case 'tiktok': case 'ttnowm': case 'tiktoknowm':    
 try{  
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis  
+if(!isUrl) return reply (`Masukan link tiktok dengan benar\nContoh: ${prefix + command} https://vm.tiktok.com/ZSRfArwXH/`)
 if (args.length < 1) return reply(`Link?\nContoh: ${prefix + command} https://vm.tiktok.com/ZSRfArwXH/`)
 reply (mess.wait)
 calip.downloader.tiktok(args[0]).then(res => {
-//console.log(res)
-//console.log('[ T I K T O K ] downloader')
-
-aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
+await aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
 
 • Autor: ${res.author}
 ${res.title}`}, { quoted: m })          
@@ -3532,6 +3499,7 @@ break
 case 'tiktokwm': case 'ttwm':
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis 
 try{   
+	
 if (args.length < 1) return reply('Link?')
 if (!args[0]) return reply (`linkny?`)
 reply (mess.wait)
@@ -3690,7 +3658,7 @@ case 'igdl': case 'instagram': case 'ig':{
 try{
  if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 reply (mess.wait)
-if (!q) return reply ('Linknya?')
+if (!q) return reply (`Linknya?\nContoh: ${prefix + command} https://www.instagram.com/reel/CiWiVlhpFwQ/?igshid=YmMyMTA2M2Y=`)
 let igreel = budy.includes("https://www.instagram.com/reel/")
 let igtv = budy.includes("https://www.instagram.com/tv/")
 let igstory = budy.includes("https://instagram.com/stories/")
@@ -3724,7 +3692,7 @@ return reply ('Maaf Sedang error coba lagi nanti')
 db.users[sender].limit -= 1 // -1 limit
 break
 
-case 'twitter': case 'twitterdl': {
+case 'twiter': case 'twitter': case 'twitterdl': {
 	if (!q) return reply (`Linknya?\nContoh: ${prefix + command} https://twitter.com/Ceice/status/1568760979332239363?t=Fu5RjUmQB1KELXt0Toj8FA&s=19`)
 reply (mess.wait)
 let results = await twitterdlv2(q)
@@ -3749,7 +3717,8 @@ break
 
 
 case 'stalkig': case 'igstalk':{
-if (!q) return reply ('namany?')
+	try{
+if (!q) return reply (`namanya?\nContoh: ${prefix + command} mark`)
 Download.insta_profile(q).then(async (data) => {
 	
 aqua.sendMessage(from, {caption: `───────────────────────
@@ -3764,6 +3733,9 @@ aqua.sendMessage(from, {caption: `───────────────�
 • Terkhir Update : ${data.avarage_post_time}`, image: {url: data.profile_pic } }, {quoted: m})
 console.log(data)
 })
+} catch(err){
+	return reply ("Erorr Akun di Private")
+	}
 }
 break
                                                          
@@ -7911,7 +7883,7 @@ reply (`*sama - sama kak ${pushname}*`)
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
 	try{
 calip.downloader.tiktok(budy).then(res => {
-aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*\n\n• Autor: ${res.author}\n${res.title}`}, { quoted: m })          
+await aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*\n\n• Autor: ${res.author}\n${res.title}`}, { quoted: m })          
 })
 } catch (err){ return
 }
