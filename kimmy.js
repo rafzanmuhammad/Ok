@@ -4,21 +4,28 @@
    * Follow https://github.com/DikaArdnt
 */
 
+ra-api
+ytdl-core
+fluent-ffmpeg
+string-similarity
+uglify-js
+js-beautify
+
 require('./config')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType, mentionedJid, ChatModification } = require('@adiwajshing/baileys')
 const fs = require('fs')
-const ra = require("ra-api");
+//const ra = require("ra-api");
 const util = require('util')
 const hx = require("hxz-api")
 const dbot = require('dbot-api');
 const xfar = require('xfarr-api');
-const hxz = require("hxz-api")
 const toMs = require('ms')
 const yts = require("yt-search");
+const gis = require('g-i-s')
 const fetch = require('node-fetch')
-const ytdl = require('ytdl-core');
+//const ytdl = require('ytdl-core');
 const imageToBase64 = require('image-to-base64');
-const ffmpeg = require("fluent-ffmpeg");
+//const ffmpeg = require("fluent-ffmpeg");
 const { EmojiAPI } = require("emoji-api")
 const emoji = new EmojiAPI()
 const chalk = require('chalk')
@@ -44,14 +51,12 @@ const primbon = new Primbon()
 const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews, TribunNews, DailyNews, DetikNews, OkezoneNews, CNBCNews, KompasNews, SindoNews, TempoNews, IndozoneNews, AntaraNews, RepublikaNews, VivaNews, KontanNews, MerdekaNews, KomikuSearch, AniPlanetSearch, KomikFoxSearch, KomikStationSearch, MangakuSearch, KiryuuSearch, KissMangaSearch, KlikMangaSearch, PalingMurah, LayarKaca21, AminoApps, Mangatoon, WAModsSearch, Emojis, CoronaInfo, JalanTikusMeme,  Cerpen, Quotes, Couples, Darkjokes } = require("dhn-api");
 const ameClient = require("amethyste-api")
 const { BitlyClient } = require('bitly');
-const more = String.fromCharCode(8206)
-const { readmore } = more.repeat(4001)
 const gcbt = ["120363041984430206@g.us"] //ID GC GRUB BOT "120363041984430206@g.us"  
 const ameApi = new ameClient("1f486b04b157f12adf0b1fe0bd83c92a28ce768683871d2a390e25614150d0c8fa404fd01b82a5ebf5b82cbfa22e365e611c8501225a93d5d1e87f9f420eb91b")
 const bitly = new BitlyClient('7d737131e678fc366699edead8bca146e69f6c78', {});
 const forward = { forwardingScore: 10000000, isForwarded: true, sendEphemeral: true}
 const { youtubeSearch, mediafiredl,  lyricsv2,  lyrics, facebookdl, facebookdlv2, tiktokdl, tiktokdlv2, twitterdl, twitterdlv2, getZodiac, liputan6, googleIt, wallpaperv2,  googleImage,  jadwalTVNow,  gempa,  stickerTelegram, stickerLine, latinToAksara, aksaraToLatin, asmaulhusna, asmaulhusnajson, alquran, jadwalsholat, listJadwalSholat, gempaNow, instagramdl, instagramdlv3, instagramdlv2, instagramStory, savefrom, snapsave } = require('@bochilteam/scraper')
-const stringSimilarity = require("string-similarity");
+//const stringSimilarity = require("string-similarity");
 
 //=======================[ LIB ]=======================//
 const { pShadow,pRomantic,pSmoke,pBurnPapper,pNaruto,pLoveMsg,pMsgGrass,pGlitch,pDoubleHeart,pCoffeCup,pLoveText,pButterfly } = require('./lib/photooxy')
@@ -588,58 +593,7 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 }
 }
 
-/*
- //AUTO RESPON SIMI VIA REPLY/TAG BOT
-
-//if (Input == botNumber && isGroup && !isCmd && !isAudio || mentionByReplySticker == botNumber && isSticker && !isCmd) {
-	if (Input == botNumber && command && !isAudio || mentionByReplySticker == botNumber && isSticker && !isCmd) {
-try{	
-await sleep(2000)
-aqua.sendPresenceUpdate('composing', from) 
-
-if(isQuotedReplySticker || isReplySticker ){
-await sleep(2000)
-let namastc = await pickRandom(setiker)
-console.log(namastc)
-let buffer = fs.readFileSync(`./temp/stick/${namastc}.webp`)
-aqua.sendMessage(from, {sticker: buffer}, {quoted:m })
-} else{
-
-let jawab = ["Afa iyah 🗿","Oh","Aku ga ngerti om 🐦","Boong","🗿","🐦","Oh gitu 🐦"]        
-let teks1 = pickRandom(jawab)
-let teks2 = body
-let hasil = [`${teks1}`,`${teks2}`]
-let random = pickRandom(hasil)
-  
-const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
- let yakuk = await parsePhoneNumber("+"+senderNumber)
- let idnya = yakuk.country
-  console.log(idnya)
-let kata = body.replace(`@${botNumber.split("@")[0]}`, "")
-
-let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${kata}&lc=${idnya.toLowerCase()}`, {methods: "GET"})
-let sami = simi.success  
-
- if(sami.startsWith("Aku tidak mengerti")){
-var teksnya = random
-} else {
-var teksnya = sami
-}
-   await sleep(2000)
-aqua.sendMessage(from,{text: teksnya},{quoted: m})  
-//setReply(`${teksnya}`)
-}
-} catch (err){
-console.log(err)
-reply("Simi ga tau mau ngomong apa")
-}
-}
-*/
-
-//AUTO RESPON SIMI BY DECODE DENPA 
-//if (chatBot === false && autorespon === true && !isGroup && !isCmd && !command && !dev.key.fromMe) { 
-//if (botNumber & isQuotedTag && isQuotedReply && command) {
-
+//AUTO RESPON SIMI  
 if (isQuotedTag || isQuotedReply) {
 if (!isGroup && !isCmd && !m.key.fromMe && !isImage && !isSticker) {
 	
@@ -1437,64 +1391,38 @@ break
 				if (q === 'help') {
 					return reply(`*❗Command:* ${command}\n*🧩Category:* Search\n*🛠️Usage:* ${prefix + command} back in black\n\n*📚Description:* Sends song in Whatsapp `)
 				}
-
 				if (!args.join(" ")) return reply (`Example : ${prefix + command} Back in black`)
-
 				let yts = require("yt-search")
-
 				let search = await yts(args.join(" "))
-
 				listSerch = []
-
 				teskd = `\n📂 Result From *${args.join(" ")}*.\n\n`
-
 				for (let i of search.all) {
-
 					listSerch.push({
-
 						title: i.title,
 						rowId: `${prefix}ytmp3 ${i.url}`,
 						description: `Author : ${i.author.name} / ${i.timestamp}`
 					})
-
 				}
-
 				const sections = [
-
 					{
-
 						title: "Total Search🔍" + search.all.length,
-
 						rows: listSerch
-
 					}
-
 				]
-
-				const listMessage = {
-
+			const listMessage = {
 					text: teskd,
-
 					footer: `${global.footer}`,
-
 					title: `*📂 YOUTUBE SEARCH*`,
-
 					buttonText: "Select Music",
-
-					//mentions: await aqua.parseMention(teskd),
-
 					sections
-
 				}
-
 				aqua.sendMessage(from, listMessage, {
 					quoted: m
 				})
-
 			}
-
 				break      
 
+/*
 case 'lllll':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 if(!q) return reply ("Teksnya mana")
@@ -1550,6 +1478,8 @@ aqua.sendButDoc(from, `*YOUTUBE DOWNLOADER*\n${toks}`, `${global.footer}`, fs.re
 }
 db.users[sender].limit -= 1 // -1 limit
 break
+*/
+
 
 case 'play': case 'playmusic': case 'playmusik':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
@@ -1757,8 +1687,7 @@ const bg = "https://tinyurl.com/y23xrfhu"
     ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
     }
         
-    const ppUser = await getBuffer(ppuser)
-    const ppGc = await getBuffer(ppgroup)  
+    
 
 const oo = true
 
@@ -1811,6 +1740,8 @@ aqua.sendMessage(`628388024064@s.whatsapp.net`, {text: `${err}`})
 
 }
 }
+const ppUser = await getBuffer(ppuser)
+const ppGc = await getBuffer(ppgroup)  
 
 WelcomeType1(from, 'tes', `botwea`, ppUser, ppGc, mokk, { "mentionedJid": [sender]})
 }
@@ -2157,7 +2088,7 @@ if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
 			if (!q) return reply(`masukkan teks`)
 			//await replylink(ind.wait(), "Character", `~> Request By ${pushName}`, msg)
 			try {
-				const getchar = await hxz.chara(q)
+				const getchar = await hx.chara(q)
 				for (let i = 0; i < 3; i++) {
 					sendFileFromUrl(from, getchar[i], `*${q}*`)
 				}
@@ -2727,37 +2658,6 @@ reply ("Reply Imagenya")
 }
 break
 
-case 'obsuf': case 'deobfus':{
-
-  function beautifyJavaScript (source) {
-    const beautify = require('js-beautify').js_beautify
-    return beautify(source, {indent_size: 2})
-   }
-   
-  if(q){
-    let teks = await beautifyJavaScript(q)
-    reply (teks)
-  } else if(isQuotedTeks){
-    let teks = await beautifyJavaScript(m.quoted.text)
-    reply (teks)
-  } else reply ("Masukan code java script")
-  }
-  break
-
-
-case 'packer':{
-var UglifyJS = require("uglify-js");
-if(q){
-let result  = await UglifyJS.minify(q)
- reply(result.code)
-} else if(isQuotedTeks){
-  console.log(isQuotedTeks)
-let result  = await UglifyJS.minify(m.quoted.text)
- reply(result.code)
-} else reply ("Masukan code java script atau reply file.js")
-}
-break
-
 
 case 'brainly':{
  const { Brainly } = require("brainly-scraper-v2");
@@ -3144,18 +3044,6 @@ Lirik:
 db.users[sender].limit -= 1 // -1 limit
 break
 
-
-case 'lirik':{
-	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-if (args.length < 0) return reply(`Kirim perintah ${command} judul lagu`)
-reply (mess.wait)
-ra.Musikmatch(q).then(async(data) => {
-var teks = `*${data.result.judul} - ${data.result.penyanyi}*\n\n${data.result.lirik}`
-aqua.sendMessage(from, { image: { url: data.result.thumb }, caption: teks }, { quoted: m })
-}).catch(() => reply(`Judul lagu tidak ditemukan`))
-}
-db.users[sender].limit -= 1 // -1 limit
-break
 
 
 
@@ -7436,6 +7324,15 @@ aqua.sendMessage(m.chat, buttonMessage, { quoted: m })
 }
 break
 
+case 'translate': case 'terjemahan': case 'tr': {
+
+if (!args.join(" ")) return reply("Text?")
+tes = await fetchJson (`https://megayaa.herokuapp.com/api/translate?to=en&kata=${args.join(" ")}`)
+Infoo = tes.info
+Detek = tes.translate
+reply(`🌐Translate : ${Detek}\n📘Results : ${Infoo}`)
+}
+break
 
 case 'translate': case 'tr':
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
@@ -8052,7 +7949,6 @@ if (budy.startsWith('$')) {
 
 if (budy.startsWith("x")) {
 	    if (!isOwner) return reply(mess.owner)
-	    console.log(color('[EVAL]'), color(moment(m.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`Dari Owner aowkaokwoak`))
 		 try {
 	       let evaled = await eval(budy.slice(2))
 		   if (typeof evaled !== 'string') evaled = require("util").inspect(evaled)
