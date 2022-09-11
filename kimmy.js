@@ -3691,6 +3691,13 @@ return reply ('Maaf Sedang error coba lagi nanti')
 db.users[sender].limit -= 1 // -1 limit
 break
 
+case 'twitterdl': {
+	if (!q) return reply ('Linknya?')
+reply (mess.wait)
+let res = await twitterdlv2(args[0])
+aqua.sendMessage(from, {video: {url: res.url}}, {quoted:m})})
+}
+break
 
 case 'facebook': case 'fbdl': case 'fb': {
 try{
@@ -7847,9 +7854,6 @@ ${res.content[0].content[0].content[0].content ? res.content[0].content[0].conte
   })
   }
   break
-
-
-
 
 
 
