@@ -4,13 +4,14 @@
    * Follow https://github.com/DikaArdnt
 */
 
+/*
 ra-api
 ytdl-core
 fluent-ffmpeg
 string-similarity
 uglify-js
 js-beautify
-
+*/
 require('./config')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType, mentionedJid, ChatModification } = require('@adiwajshing/baileys')
 const fs = require('fs')
