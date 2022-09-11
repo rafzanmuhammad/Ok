@@ -3695,7 +3695,7 @@ case 'twitterdl': {
 	if (!q) return reply ('Linknya?')
 reply (mess.wait)
 let res = await twitterdlv2(args[0])
-aqua.sendMessage(from, {video: {url: res.url}}, {quoted:m})})
+aqua.sendMessage(from, {video: {url: res.url}}, {quoted:m})
 }
 break
 
