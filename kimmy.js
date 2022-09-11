@@ -298,7 +298,9 @@ try {
 }
 ppumser = await getBuffer(ppuser)
 if(replyType === "web"){
-aqua.sendMessage(from, { text: teks, contextInfo: { externalAdReply: { title: `${pushname}`, body: `${ucapanWaktu}`, previewType:"PHOTO", thumbnail: ppumser, mediaUrl: `${global.grub1}`}}}, {quoted:m})
+//aqua.sendMessage(from, { contextInfo: {   forwardingScore: 10, isForwarded: true, externalAdReply:{showAdAttribution: true, title: `${pushName}`,body:`${ucapanWaktu} `,previewType:"PHOTO",thumbnail: ppumser, sourceUrl:`${global.web}`}},showAdAttribution: true, text: teks }, { quoted: m })
+
+aqua.sendMessage(from, { text: teks, contextInfo: { externalAdReply: { title: `${pushname}`, body: `${ucapanWaktu}`, previewType:"PHOTO", thumbnail: ppumser, mediaUrl: `${global.web}`}}}, {quoted:m})
 //aqua.sendMessageV2(from, { text: teks, contextInfo: { externalAdReply:{ title: `${pushname}`,body: `${ucapanWaktu}, previewType:"PHOTO",thumbnail: thumbnya, sourceUrl:`https://youtube.com/watch?v=TOmXzkWuCWk`}}},{quoted: })
 
 //aqua.sendMessage(m.chat, { text: teks, contextInfo:{ "externalAdReply": { "title": `Hallo ${pushname} ${ucapanWaktu}`, "body": `Jangan Lupa Sewa Bot :v`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": ppumser,  "sourceUrl": `${global.web}`}}}, { quoted: m})
@@ -3743,7 +3745,7 @@ break
 
 case 'emojiap':{
 	 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-if (!q) return reply('emojinya?')
+if (!q) return reply(`emojinya?\nContoh ${prefix + command} 😅`)
 reply("Converting to emoji Apple")
 emoji.get(`${args[0]}`).then(emoji => {
 let teks = `${emoji.images[0].url}`
@@ -3755,7 +3757,7 @@ break
 
   case 'emojigo':{
   if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-if (!q) return reply('emojinya?')
+if (!q) return reply(`emojinya?\nContoh ${prefix + command} 😅`)
 reply("Converting to emoji Google")
 emoji.get(`${args[0]}`).then(emoji => {
 let teks = `${emoji.images[1].url}`
@@ -3767,7 +3769,7 @@ break
 
 case 'emojisa':{
  if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-if (!q) return reply('emojinya?')
+if (!q) return reply(`emojinya?\nContoh ${prefix + command} 😅`)
 reply("Converting to emoji Samsung")
 emoji.get(`${args[0]}`).then(emoji => {
 let teks = `${emoji.images[2].url}`
@@ -3779,7 +3781,7 @@ break
 
 case 'emojims':{
  if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-if (!q) return reply('emojinya?')
+if (!q) return reply(`emojinya?\nContoh ${prefix + command} 😅`)
 reply("Converting to emoji Microsoft")
 emoji.get(`${args[0]}`).then(emoji => {
 let teks = `${emoji.images[3].url}`
@@ -3791,7 +3793,7 @@ break
 
 case 'emojiwa':{
  if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-if (!q) return reply('emojinya?')
+if (!q) return reply(`emojinya?\nContoh ${prefix + command} 😅`)
 reply("Converting to emoji WhatsApp")
 emoji.get(`${args[0]}`).then(emoji => {
 let teks = `${emoji.images[4].url}`
@@ -3803,7 +3805,7 @@ break
 
 case 'emojitw':{
  if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-if (!q) return reply('emojinya?')
+if (!q) return reply(`emojinya?\nContoh ${prefix + command} 😅`)
 reply("Converting to emoji Twitter")
 emoji.get(`${args[0]}`).then(emoji => {
 let teks = `${emoji.images[5].url}`
@@ -3815,7 +3817,7 @@ break
 
 case 'emojifb':{
  if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-if (!q) return reply('emojinya?')
+if (!q) return reply(`emojinya?\nContoh ${prefix + command} 😅`)
 reply("Converting to emoji Facebook")
 emoji.get(`${args[0]}`).then(emoji => {
 let teks = `${emoji.images[6].url}`
