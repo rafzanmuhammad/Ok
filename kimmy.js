@@ -399,7 +399,7 @@ let filess = namea
 let asw = names
 require('./lib/exif.js')
 exec(`ffmpeg -i ${filess} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${asw}`, (err) => {
-exec(`webpmux -set exif ./src/sticker/data.exif ${asw} -o ${asw}`, async (error) => {
+exec(`webpmux -set exif ./src/data.exif ${asw} -o ${asw}`, async (error) => {
 let media = fs.readFileSync(asw)
 aqua.sendMessage(to, {sticker:media}, m)
 console.log(chalk.black(chalk.bgWhite('[ Succes ]')))
@@ -3691,8 +3691,8 @@ return reply ('Maaf Sedang error coba lagi nanti')
 db.users[sender].limit -= 1 // -1 limit
 break
 
-case 'twitterdl': {
-	if (!q) return reply ('Linknya?')
+case 'twitter': case 'twitterdl': {
+	if (!q) return reply (`Linknya?\nContoh: ${prefix + command} https://twitter.com/Ceice/status/1568760979332239363?t=Fu5RjUmQB1KELXt0Toj8FA&s=19`)
 reply (mess.wait)
 let results = await twitterdlv2(q)
 for (const { url } of results) await aqua.sendMedia2(from, url, m, {caption: "*TWITTER DOWNLOAD*"})
