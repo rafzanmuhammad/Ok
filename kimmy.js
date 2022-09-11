@@ -593,7 +593,7 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 }
 
 //AUTO RESPON SIMI  
-if (isQuotedTag || isQuotedReply) {
+//if (isQuotedTag || isQuotedReply) {
 if (!isGroup && !isCmd && !m.key.fromMe && !isImage && !isSticker) {
 	
 aqua.sendPresenceUpdate('composing', from) 
@@ -603,14 +603,13 @@ const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
   console.log(idnya)
 let kataa = body.replace(`@${botNumber.split("@")[0]}`, "")
 
-let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${body}&lc=id`, {methods: "GET"})
+let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${body&lc=id`, {methods: "GET"})
 let sami = simi.success
 console.log(sami)
 //reply(sami).catch(() => reply(`Simi Gatau mau ngomong apa`))
-aqua.sendMessage(from,{text: sami},{quoted: m}).catch(() => reply(`Simi Gatau mau ngomong apa`))
+await aqua.sendMessage(from,{text: sami},{quoted: m}).catch(() => reply(`Simi Gatau mau ngomong apa`))
 //xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
-}  
-}
+ }
 
 
    
