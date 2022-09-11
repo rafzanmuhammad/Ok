@@ -1757,10 +1757,10 @@ const bg = "https://tinyurl.com/y23xrfhu"
     ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
     }
         
-    let ppUser = await getBuffer(ppuser)
-    let ppGc = await getBuffer(ppgroup)  
+    const ppUser = await getBuffer(ppuser)
+    const ppGc = await getBuffer(ppgroup)  
 
-let oo = true
+const oo = true
 
 if (oo){
 var image3 = await new canvacord.Welcomer()
