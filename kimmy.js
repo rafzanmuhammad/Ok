@@ -603,7 +603,7 @@ const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
   console.log(idnya)
 let kataa = body.replace(`@${botNumber.split("@")[0]}`, "")
 
-let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${body}&lc=id`, {methods: "GET"})
+let simi = await fetchJson(`https://api.simsimi.net/v2/?text=body&lc=id`, {methods: "GET"})
 let sami = simi.success
 console.log(sami)
 //reply(sami).catch(() => reply(`Simi Gatau mau ngomong apa`))
@@ -7406,7 +7406,23 @@ let LANGUAGES = `
 reply (LANGUAGES)
 break
 
-
+case 'speed':
+case 'speedtest': {
+let cp = require('child_process')
+let { promisify } = require('util')
+let exec = promisify(cp.exec).bind(cp)
+let o
+try {
+o = await exec('python speed.py')
+} catch (e) {
+o = e
+ } finally {
+let { stdout, stderr } = o
+if (stdout.trim()) reply(stdout)
+if (stderr.trim()) reply(stderr)
+}
+}
+break
 
             
 case 'ping': case 'botstatus': case 'statusbot': {
