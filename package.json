@@ -21,7 +21,7 @@
   "author": "Takim",
   "license": "MIT",
   "dependencies": {
-    "@adiwajshing/baileys": "github:officialdittaz/BaileysFix",
+    "@adiwajshing/baileys": "github:amiruldev20/baileys",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@bochilteam/scraper": "^2.0.0",
     "@phaticusthiccy/open-apis": "^1.4.0",
@@ -53,7 +53,6 @@
     "image-to-base64": "^2.2.0",
     "jimp": "^0.16.1",
     "jsdom": "^16.4.0",
-    "link-preview-js": "^2.1.15",
     "libphonenumber-js": "latest",
     "mathjs": "^10.5.3",
     "moment-timezone": "^0.5.34",
