@@ -45,6 +45,8 @@ const moment = require('moment-timezone')
 const { JSDOM } = require('jsdom')
 const maker = require('mumaker')
 const speed = require('performance-now')
+const timestampp = speed();
+const latensi = speed() - timestampp
 const { performance } = require('perf_hooks')
 const Download = require("@phaticusthiccy/open-apis");
 const { Primbon } = require('scrape-primbon')
@@ -7406,8 +7408,9 @@ let LANGUAGES = `
 reply (LANGUAGES)
 break
 
-case 'speed':
+
 case 'speedtest': {
+reply('_Testing Speed..._')
 let cp = require('child_process')
 let { promisify } = require('util')
 let exec = promisify(cp.exec).bind(cp)
@@ -7424,7 +7427,10 @@ if (stderr.trim()) reply(stderr)
 }
 break
 
-            
+ case 'speed':
+reply(`Speed: ${latensi.toFixed(4)} Second`)
+break       
+           
 case 'ping': case 'botstatus': case 'statusbot': {
 const used = process.memoryUsage()
 const cpus = os.cpus().map(cpu => {
