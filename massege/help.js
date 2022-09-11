@@ -48,6 +48,7 @@ akan langsung jadi sticker 🐥
 ├ ${prefix}tiktokmusik _erorr_
 ├ ${prefix}ytmp3  _linkyt_
 ├ ${prefix}ytmp4  _linkyt_ 
+├ ${prefix}twitterdl  _linktw_ 
 ├ ${prefix}instagram  _linkig_
 ├ ${prefix}play   _teks_
 ├ ${prefix}playmusik  _teks_
