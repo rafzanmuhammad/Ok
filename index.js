@@ -35,6 +35,7 @@ const PhoneNumber = require('awesome-phonenumber')
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, isUrl, getRandom, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep } = require('./lib/myfunc')
 const forward = { forwardingScore: 10000000, isForwarded: true, sendEphemeral: true}
+/*
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://kimtod:AKYQneA6S2DKuS@cluster0.p5h5oy6.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
@@ -43,12 +44,7 @@ client.connect(err => {
   // perform actions on the collection object
   client.close();
 });
-
-
-let baterai = {
-    baterai: 0,
-    cas: false
-};
+*/
 
 let d = new Date
 				let locale = 'id'
@@ -63,16 +59,16 @@ let d = new Date
 
 global.api = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
 
-const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
+const store = makeInMemoryStore({ logger: pino().child({ level: 'fatal', stream: 'store' }) })
 
 async function startAqua() {
     let { version, isLatest } = await fetchLatestBaileysVersion()
     const aqua = aquaConnect({
-        logger: pino({ level: 'silent' }),
+        logger: pino({ level: 'fatal' }),
         printQRInTerminal: true,
-       // browser: ["Kimtod", "Safari", "3.0"],        
-       // browser: ['Takim Tod Multi Device','Safari','1.0.0'],
-        browser: ['Takim Tod','IOS','4.1.0'],
+        browser: ["Kimtod", "Safari", "3.0"],        
+        //browser: ['Takim Tod Multi Device','Safari','1.0.0'],
+        //browser: ['Takim Tod','IOS','4.1.0'],
         auth: state,
         version
     })
@@ -111,14 +107,6 @@ async function startAqua() {
    
 
 
-
-    // Action Battery
-    aqua.ws.on('CB:action,,battery', async (json) => {
-        const a = json[2][0][1].value
-        const b = json[2][0][1].live
-        baterai.baterai = a
-        baterai.cas = b
-    })
 
     aqua.ev.on('messages.upsert', async chatUpdate => {
         //console.log(JSON.stringify(chatUpdate, undefined, 2))
