@@ -228,7 +228,7 @@ var image3 = await new canvacord.Welcomer()
         .setColor("avatar", "#000000")
         .setColor("background", "#000000")
         .setText("member-count", `+ 1 member!`)
-        .setText("title", "WELCOME")
+        .setText("title", "Welcome")
         .setText("message", `Welcome in ${metadata.subject}`)
 
 } else if (anu.action == 'leave') {  
@@ -247,7 +247,7 @@ var image3 = await new canvacord.Leaver()
         .setColor("avatar", "#000000")
         .setColor("background", "#000000")
         .setText("member-count", `- 1 member!`)
-        .setText("title", "GOOD BYE")
+        .setText("title", "GoodBye")
         .setText("message", `We will miss you friends`)
 }
 
