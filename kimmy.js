@@ -54,7 +54,6 @@ const primbon = new Primbon()
 const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews, TribunNews, DailyNews, DetikNews, OkezoneNews, CNBCNews, KompasNews, SindoNews, TempoNews, IndozoneNews, AntaraNews, RepublikaNews, VivaNews, KontanNews, MerdekaNews, KomikuSearch, AniPlanetSearch, KomikFoxSearch, KomikStationSearch, MangakuSearch, KiryuuSearch, KissMangaSearch, KlikMangaSearch, PalingMurah, LayarKaca21, AminoApps, Mangatoon, WAModsSearch, Emojis, CoronaInfo, JalanTikusMeme,  Cerpen, Quotes, Couples, Darkjokes } = require("dhn-api");
 const ameClient = require("amethyste-api")
 const { BitlyClient } = require('bitly');
-const gcbt = ["120363041984430206@g.us"] //ID GC GRUB BOT "120363041984430206@g.us"  
 const ameApi = new ameClient("1f486b04b157f12adf0b1fe0bd83c92a28ce768683871d2a390e25614150d0c8fa404fd01b82a5ebf5b82cbfa22e365e611c8501225a93d5d1e87f9f420eb91b")
 const bitly = new BitlyClient('7d737131e678fc366699edead8bca146e69f6c78', {});
 const forward = { forwardingScore: 10000000, isForwarded: true, sendEphemeral: true}
@@ -88,6 +87,8 @@ let thumbdoc = fs.readFileSync('./media/thumbnaildokumen.jpg')
 let fakee = fs.readFileSync('./media/fake.jpeg')
 betaapi = "BetaBotz"
 Respon = true
+const gcbt = ["120363041984430206@g.us"] //ID GC GRUB BOT "120363041984430206@g.us"  
+
 
 //=======================[ DATABASE ]=======================//
 const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
@@ -298,7 +299,7 @@ try {
 }
 ppumser = await getBuffer(ppuser)
 if(replyType === "web"){
-aqua.sendMessage(from, { contextInfo: { externalAdReply:{showAdAttribution: true, title: `Hallo ${pushname} ${ucapanWaktu}`,body:`Jangan Lupa Sewa Bot :v `,previewType:"PHOTO",thumbnail: ppumser, sourceUrl:`${global.web}`}},showAdAttribution: true, text: teks }, { quoted: m })
+aqua.sendMessage(from, { contextInfo: { externalAdReply:{showAdAttribution: true, title: `Hallo ${pushname} ${ucapanWaktu}`,body:`タキムトッド `,previewType:"PHOTO",thumbnail: ppumser, sourceUrl:`${global.web}`}},showAdAttribution: true, text: teks }, { quoted: m })
 
 //aqua.sendMessage(m.chat, { text: teks, contextInfo:{ "externalAdReply": { "title": `Hallo ${pushname} ${ucapanWaktu}`, "body": `Jangan Lupa Sewa Bot :v`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": ppumser,  "sourceUrl": `${global.web}`}}}, { quoted: m})
 } else if(replyType === "web2"){
@@ -2505,7 +2506,8 @@ case 'wallpaper': {
 					
 					
 case 'gimage': {
-	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
+	if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
+
         if (!text) return reply ( `Example : ${prefix + command} kaori cicak`)
         let gis = require('g-i-s')
         gis(text, async (error, result) => {
