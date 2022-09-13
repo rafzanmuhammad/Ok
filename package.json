@@ -83,10 +83,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DikaArdnt/Hisoka-Morou.git"
+    "url": "git+https://github.com/takimtod/iy.git"
   },
   "bugs": {
-    "url": "https://github.com/DikaArdnt/Hisoka-Morou/issues"
-  },
-  "homepage": "https://github.com/DikaArdnt/Hisoka-Morou#readme"
+    "url": "https://github.com/takimtod/iy/issues"
+  }
 }
