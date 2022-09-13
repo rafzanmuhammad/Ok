@@ -27,7 +27,6 @@
     "axios": "^0.24.0",
     "bitly": "^7.1.2",
     "brainly-scraper-v2": "^2.0.13",
-    "brainly-scraper": "latest",
     "caliph-api": "^0.8.4",
     "canvacord": "latest",
     "chalk": "^4.1.2",
