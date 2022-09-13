@@ -608,9 +608,10 @@ let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${body}&lc=id`, {me
 let sami = simi.success
 console.log(sami)
 //reply(sami).catch(() => reply(`Simi Gatau mau ngomong apa`))
-await aqua.sendMessage(from,{text: sami},{quoted: m}).catch(() => reply(`Simi Gatau mau ngomong apa`))
+ aqua.sendMessage(from,{text: sami},{quoted: m}).catch(() => reply(`Simi Gatau mau ngomong apa`))
 //xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
  }
+
 
 
    
@@ -2903,6 +2904,31 @@ if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit)
   fs.unlinkSync(ranp)
   if (err) return reply(`emror bang ${err}`)
   aqua.sendMessage(from, {sticker: fs.readFileSync(ranw)}, {quoted: m})
+      fs.unlinkSync(ranw)
+  })
+        }) 
+        }
+        db.users[sender].limit -= 1 // -1 limit
+break
+
+case 'snobg': case 'nobg': case 'nb':
+if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
+    if ((isMedia || isQuotedImage && !isQuotedSticker)) {
+    const media = await aqua.downloadAndSaveMediaMessage(quoted)
+    ranw = getRandom('.webp')
+    ranp = getRandom('.png')
+    keyrmbg = `${global.apibg}`
+    await removeBackgroundFromImageFile({ path: media, apiKey: keyrmbg, size: 'auto', type: 'auto', ranp }).then(res => {
+        fs.unlinkSync(media)
+        let bufferir9vn5 = Buffer.from(res.base64img, 'base64')
+        fs.writeFileSync(ranp, bufferir9vn5, (err) => {
+  if (err) return reply ('Gagal, Terjadi kesalahan, silahkan coba beberapa saat lagi.')
+        })
+        exec(`ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ranw}`, (err) => {
+  fs.unlinkSync(ranp)
+  if (err) return reply(`emror bang ${err}`)
+  aqua.sendMedia(from, fs.readFileSync(ranw), m)
+//  aqua.sendMessage(from, {sticker: fs.readFileSync(ranw)}, {quoted: m})
       fs.unlinkSync(ranw)
   })
         }) 
@@ -5353,7 +5379,7 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 
 *${prefix}hapusvote* - untuk menghapus vote`
             let buttonsDevote = [
-              {buttonId: `${prefix}upvote`, buttonText: {displayText: '𝚄𝙿𝚅??𝚃𝙴'}, type: 1},
+              {buttonId: `${prefix}upvote`, buttonText: {displayText: '??𝙿𝚅??𝚃𝙴'}, type: 1},
               {buttonId: `${prefix}devote`, buttonText: {displayText: '𝙳𝙴𝚅𝙾𝚃𝙴'}, type: 1}
             ]
 
