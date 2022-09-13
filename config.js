@@ -23,7 +23,7 @@ global.apikey = '280805'
 
 // Other
 
-global.owner = ['628388024064']
+global.owner = ['628388024064', '6289518534955']
 
 global.pemilik = ['628388024064']
 
