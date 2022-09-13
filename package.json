@@ -47,6 +47,7 @@
     "fs-extra": "^10.1.0",
     "g-i-s": "^2.1.6",
     "google-it": "^1.6.2",
+    "translate-google-api": "latest",
     "got": "^11.8.3",
     "human-readable": "^0.2.1",
     "hxz-api": "^1.0.1",
