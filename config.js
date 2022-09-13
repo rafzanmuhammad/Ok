@@ -42,7 +42,7 @@ global.melcanz = 'melcantik'
 
 global.footer = '© Bot WhatsApp⁰⁵⠀ ོ' //FooterText Biar Di Bawah Nya Ada Text 
 
-global.web = 'https://wa.me/628388024064?text=Bang+mo+sewa+bot' // Ubah Sama Lu Web Nya Bebas 
+global.web = 'https://wa.me/628388024064' // Ubah Sama Lu Web Nya Bebas 
 global.web2 = 'https://github.com/takimtod' //Ubah Jga Bebas Sama lu 
 global.ganti = 'WhatsApp' //Edit Terserah Lu Mau Apa
 global.ganti2 = 'Github'
