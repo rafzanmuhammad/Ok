@@ -7369,7 +7369,7 @@ if (!text && m.quoted && m.quoted.text) text = m.quoted.text
         })
         reply(err)
     } finally {
-        reply(result[0])
+        reply(result)
     }
 
 }
