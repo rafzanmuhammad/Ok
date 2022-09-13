@@ -24,6 +24,7 @@ const toMs = require('ms')
 const yts = require("yt-search");
 const gis = require('g-i-s')
 const fetch = require('node-fetch')
+const { brainly } = require('brainly-scraper');
 //const ytdl = require('ytdl-core');
 const imageToBase64 = require('image-to-base64');
 //const ffmpeg = require("fluent-ffmpeg");
@@ -258,7 +259,7 @@ const docx = "application/vnd.openxmlformats-officedocument.wordprocessingml.doc
 
 
 //=======================[ FAKE QUOTED ]=======================//
-const ftroli = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {})},message: {orderMessage: {itemCount : 2022, status: 1,surface : 2,message: ` Hii ${pushname}\n𝐶𝑟𝑒𝑎𝑡𝑒𝑑 𝐵𝑦 𝑡𝑎𝑘𝑖𝑚-𝑡𝑜𝑑`,orderTitle: `Hi kak`,thumbnail: thumbnya,sellerJid: `0@s.whatsapp.net`}}}
+const ftroli = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {})},message: {orderMessage: {itemCount : 2022, status: 1,surface : 2,message: ` Hii ${pushname}\n𝐶𝑟𝑒𝑎𝑡𝑒𝑑 𝐵𝑦 𝑡𝑎𝑘𝑖𝑚-𝑡𝑜??`,orderTitle: `Hi kak`,thumbnail: thumbnya,sellerJid: `0@s.whatsapp.net`}}}
 const fkontak = { key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? {} : {}) }, message: {'contactMessage': {'displayName': `${pushname}`,'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,'jpegThumbnail': thumbnya}}}
 const fgc = { key: {fromMe: false,participant: `0@s.whatsapp.net`, "remoteJid": "6282363250061-1627622544@g.us"},"message": {"groupInviteMessage": {"groupJid": "120363041984430206@g.us","inviteCode": "https://chat.whatsapp.com/DaBXFf82aqwHc03v22E09D","groupName": "P", "caption": `${ucapanWaktu}`, 'jpegThumbnail': thumbnya}}}
 const fbc = { key: {fromMe: false,participant: `0@s.whatsapp.net`, "remoteJid": "status@broadcast" },message: {"liveLocationMessage": {"title":`${global.botnma}`}}}
@@ -596,8 +597,7 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 //AUTO RESPON SIMI  
 //if (isQuotedTag || isQuotedReply) {
 if (!isGroup && !isMedias && !m.key.fromMe && !isImage && !isSticker) {
-	
-aqua.sendPresenceUpdate('composing', from) 
+//aqua.sendPresenceUpdate('composing', from) 
 const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
  let yakuk = await parsePhoneNumber("+"+senderNumber)
  let idnya = yakuk.country
