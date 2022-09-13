@@ -595,7 +595,7 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 
 //AUTO RESPON SIMI  
 //if (isQuotedTag || isQuotedReply) {
-if (!isGroup && !m.key.fromMe && !isImage && !isSticker) {
+if (!isGroup && !isMedias && !command && !m.key.fromMe && !isImage && !isSticker) {
 	
 aqua.sendPresenceUpdate('composing', from) 
 const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
@@ -2731,7 +2731,8 @@ let rano = getRandom('.webp')
 let anu4 = `https://some-random-api.ml/canvas/${command}?avatar=${anu}`
 exec(`wget ${anu4} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, async (err) => {
 if (err) return reply (`${err}`)
-await aqua.sendMessage(from, {sticker: fs.readFileSync(rano)}, {quoted: m})
+aqua.sendMedia(from, fs.readFileSync(rano), m)
+//await aqua.sendMessage(from, {sticker: fs.readFileSync(rano)}, {quoted: m})
 await fs.unlinkSync(owgi)
 await fs.unlinkSync(ranp)
 await fs.unlinkSync(rano)
@@ -2756,7 +2757,8 @@ let ranp = getRandom('.gif')
 let rano = getRandom('.webp')
 exec(`wget ${anu4} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, async (err) => {
 if (err) return reply (`${err}`)
-await aqua.sendMessage(from, {sticker: fs.readFileSync(rano)}, {quoted: m})
+aqua.sendMedia(from, fs.readFileSync(rano), m)
+//await aqua.sendMessage(from, {sticker: fs.readFileSync(rano)}, {quoted: m})
 await fs.unlinkSync(oppp)
 await fs.unlinkSync(ranp)
 await fs.unlinkSync(rano)
@@ -7335,32 +7337,43 @@ break
 
 case 'translate': case 'terjemahan': case 'tr': {
 
-if (!args.join(" ")) return reply("Text?")
-tes = await fetchJson (`https://megayaa.herokuapp.com/api/translate?to=en&kata=${args.join(" ")}`)
-Infoo = tes.info
-Detek = tes.translate
-reply(`🌐Translate : ${Detek}\n📘Results : ${Infoo}`)
+let translate = require('translate-google-api')
+let defaultLang = 'en'
+let tld = 'cn'
+let err = `
+Contoh:
+${prefix + command} <lang> [text]
+${prefix + command} id your messages
+
+Daftar bahasa yang didukung: https://cloud.google.com/translate/docs/languages
+`.trim()
+
+let lang = args[0]
+let text = args.slice(1).join(' ')
+if ((args[0] || '').length !== 2) {
+lang = defaultLang
+text = args.join(' ')
+}
+if (!text && m.quoted && m.quoted.text) text = m.quoted.text
+
+    let result
+    try {
+        result = await translate(`${text}`, {
+            tld,
+            to: lang,
+        })
+    } catch (e) {
+        result = await translate(`${text}`, {
+            tld,
+            to: defaultLang,
+        })
+        reply(err)
+    } finally {
+        reply(result[0])
+    }
+
 }
 break
-
-case 'translate': case 'tr':
-if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-					try {
-					if (args.length < 1)return reply (`Usage : #translate kode bahasa teks/reply pesan\nExample : #translate id why`)
-					if (m.message.extendedTextMessage === undefined || m.message.extendedTextMessage === null) {
-					translate(`${body.slice(10+args[0].length+1)}`, args[0])
-					.then((res) => { reply (`${res}`) })
-					} else {
-					tolang = args[0]
-					entah = m.message.extendedTextMessage.contextInfo.quotedMessage.conversation
-					translate(entah, tolang)
-					.then((res) => { reply (`${res}`) })
-					}
-					} catch (e) {
-					reply (`${e}`)
-					}
-					db.users[sender].limit -= 1 // -1 limit
-					break
 
 
 case 'kodebahasa':
