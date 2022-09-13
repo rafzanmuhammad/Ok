@@ -5,7 +5,7 @@
 */
 
 require('./config')
-const { default: makeWASocket, 
+const { default: aquaConnect, 
 useSingleFileAuthState,
  DisconnectReason,
  fetchLatestBaileysVersion,
