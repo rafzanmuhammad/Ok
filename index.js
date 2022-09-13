@@ -5,7 +5,7 @@
 */
 
 require('./config')
-const { default: aquaConnect, 
+const { default: makeWASocket, 
 useSingleFileAuthState,
  DisconnectReason,
  fetchLatestBaileysVersion,
@@ -76,13 +76,11 @@ async function startAqua() {
     })
 */
 async function startAqua() {
-   // let { version, isLatest } = await fetchLatestBaileysVersion()
-    const aqua = makeWASocket({
+    const aqua = aquaConnect({
         logger: pino({ level: 'fatal' }),
         printQRInTerminal: true,
         browser: ['Takim Tod','IOS','4.1.0'],
         auth: state,
-     //   version
     })
 
     console.log(chalk.bold.green(figlet.textSync('BOT MD', {
