@@ -595,7 +595,7 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 
 //AUTO RESPON SIMI  
 //if (isQuotedTag || isQuotedReply) {
-if (!isGroup && !isMedias && !command && !m.key.fromMe && !isImage && !isSticker) {
+if (!isGroup && !isMedias && !m.key.fromMe && !isImage && !isSticker) {
 	
 aqua.sendPresenceUpdate('composing', from) 
 const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
@@ -7335,46 +7335,24 @@ aqua.sendMessage(m.chat, buttonMessage, { quoted: m })
 }
 break
 
-case 'translate': case 'terjemahan': case 'tr': {
-
-let translate = require('translate-google-api')
-let defaultLang = 'en'
-let tld = 'cn'
-let err = `
-Contoh:
-${prefix + command} <lang> [text]
-${prefix + command} id your messages
-
-Daftar bahasa yang didukung: https://cloud.google.com/translate/docs/languages
-`.trim()
-
-let lang = args[0]
-let text = args.slice(1).join(' ')
-if ((args[0] || '').length !== 2) {
-lang = defaultLang
-text = args.join(' ')
-}
-if (!text && m.quoted && m.quoted.text) text = m.quoted.text
-
-    let result
-    try {
-        result = await translate(`${text}`, {
-            tld,
-            to: lang,
-        })
-    } catch (e) {
-        result = await translate(`${text}`, {
-            tld,
-            to: defaultLang,
-        })
-        reply(err)
-    } finally {
-        reply(result)
-    }
-
-}
-break
-
+case 'translate': case 'tr':
+if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
+					try {
+					if (args.length < 1)return reply (`Usage : #translate kode bahasa teks/reply pesan\nExample : #translate id why`)
+					if (m.message.extendedTextMessage === undefined || m.message.extendedTextMessage === null) {
+					translate(`${body.slice(10+args[0].length+1)}`, args[0])
+					.then((res) => { reply (`${res}`) })
+					} else {
+					tolang = args[0]
+					entah = m.message.extendedTextMessage.contextInfo.quotedMessage.conversation
+					translate(entah, tolang)
+					.then((res) => { reply (`${res}`) })
+					}
+					} catch (e) {
+					reply (`${e}`)
+					}
+					db.users[sender].limit -= 1 // -1 limit
+					break
 
 case 'kodebahasa':
 pref = 1
