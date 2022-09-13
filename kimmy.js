@@ -24,7 +24,6 @@ const toMs = require('ms')
 const yts = require("yt-search");
 const gis = require('g-i-s')
 const fetch = require('node-fetch')
-const { brainly } = require('brainly-scraper');
 //const ytdl = require('ytdl-core');
 const imageToBase64 = require('image-to-base64');
 //const ffmpeg = require("fluent-ffmpeg");
