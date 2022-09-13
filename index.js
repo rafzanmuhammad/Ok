@@ -19,6 +19,7 @@ downloadContentFromMessage,
 makeInMemoryStore, 
 jidDecode, 
 proto, 
+makeWASocket,
 relayMessage,
 mentionedJid } = require("@adiwajshing/baileys")
 const { state, saveState } = useSingleFileAuthState(`./${sessionName}.json`)
@@ -61,6 +62,7 @@ global.api = (name, path = '/', query = {}, apikeyqueryname) => (name in global.
 
 const store = makeInMemoryStore({ logger: pino().child({ level: 'fatal', stream: 'store' }) })
 
+/*
 async function startAqua() {
     let { version, isLatest } = await fetchLatestBaileysVersion()
     const aqua = aquaConnect({
@@ -72,6 +74,17 @@ async function startAqua() {
         auth: state,
         version
     })
+*/
+async function startAqua() {
+   // let { version, isLatest } = await fetchLatestBaileysVersion()
+    const aqua = makeWASocket({
+        logger: pino({ level: 'fatal' }),
+        printQRInTerminal: true,
+        browser: ['Takim Tod','IOS','4.1.0'],
+        auth: state,
+     //   version
+    })
+
     console.log(chalk.bold.green(figlet.textSync('BOT MD', {
 		font: 'Standard',
 		horizontalLayout: 'default',
