@@ -17,7 +17,7 @@
   "author": "Takim",
   "license": "MIT",
   "dependencies": {
-    "@adiwajshing/baileys": "^4.3.0",
+    "@adiwajshing/baileys": "latest",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@bochilteam/scraper": "^2.0.0",
     "@phaticusthiccy/open-apis": "^1.4.0",
@@ -50,6 +50,7 @@
     "jimp": "^0.16.1",
     "jsdom": "^16.4.0",
     "libphonenumber-js": "latest",
+    "link-preview-js": "^2.1.15",
     "mathjs": "^10.5.3",
     "moment-timezone": "^0.5.34",
     "ms": "^2.1.3",
