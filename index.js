@@ -89,17 +89,11 @@ async function startAqua() {
 		vertivalLayout: 'default',
 		width: 80,
 		whitespaceBreak: false
-	})))
+	}
+)
+)
+)
 
-        console.log(color('========================================>', 'cyan'))
-        console.log(color('CREATOR :', 'cyan'), color(`T A K I M`, 'red'))
-        console.log(color('INSTAGRAM :', 'cyan'), color(`https://instagram.com/zyee_ez`, 'yellow'))
-        console.log(color('GITHUB :', 'cyan'), color(`https://github.com/takimtod`, 'yellow'))
-        console.log(color('WHATSAPP :', 'cyan'), color(`https://wa.me/6282194424412`, 'yellow'))
-        console.log(color('========================================>', 'cyan'))
-        console.log(color('\n', 'cyan'))     
-
-	
     store.bind(aqua.ev)
 
 
@@ -108,8 +102,9 @@ async function startAqua() {
     //anti call+block
      aqua.ws.on('CB:call', async (json) => {
      const callerId = json.content[0].attrs['call-creator']
+     console.log(callerId)
     if (json.content[0].tag == 'offer') {
-    let pa7rick = await aqua.sendContact(callerId, global.owner)
+    let pa7rick = await aqua.sendContact(callerId, global.pemilik)
     aqua.sendMessage(callerId, { text: `Sistem Blokir Otomatis!\nJangan Telfon dan Vc Bot!\nSilakan Chat Kontak Ini Untuk Membuka Blokir Anda!\nKlo Mau Di Bukain Wokwokwokwok`}, { quoted : pa7rick })
     await sleep(4000)
     await aqua.updateBlockStatus(callerId, "block")
