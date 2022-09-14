@@ -103,7 +103,7 @@ async function startAqua() {
      aqua.ws.on('CB:call', async (json) => {
      const callerId = json.content[0].attrs['call-creator']
      console.log(json)
-    if (json.content[0].tag == 'reject') {
+    if (json.content[0].tag == 'offer') {
     let pa7rick = await aqua.sendContact(callerId, global.pemilik)
     aqua.sendMessage(callerId, { text: `Sistem Blokir Otomatis!\nJangan Telfon dan Vc Bot!\nSilakan Chat Kontak Ini Untuk Membuka Blokir Anda!\nKlo Mau Di Bukain Wokwokwokwok`}, { quoted : pa7rick })
     await sleep(4000)
