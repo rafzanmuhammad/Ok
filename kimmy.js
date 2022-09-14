@@ -536,11 +536,18 @@ fs.writeFileSync('./database/user.json', JSON.stringify(user))
         }
 
 
-//consol log        
+//consol log    
+if (m.message) {
+console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32m CMD \x1b[1;37m]', time, chalk.
+green(budy || m.mtype), 'from', chalk.green(pushname), 'in', chalk.green(groupName ? groupName : 'Private Chat' ), 'args :', chalk.green(text.length))
+ }
+
+/*    
 if (!isGroup && !isCmd ) console.log(color("[PRIVATE]", "greenyellow"), color(moment.tz('Asia/Jakarta').format('HH:mm'), "green"), color(budy, "cyan"), color('dari', 'gold'), color(`${pushname}`, 'orange'))
 if (isGroup && !isCmd ) console.log(color("[GRUP]", "gold"), color(moment.tz('Asia/Jakarta').format('HH:mm'), "green"), color(budy, "cyan"), color('dari', 'gold'), color(`${pushname}`, 'orange'), color('di gc', 'purple'), color(groupName, "deeppink"))
 if (!isGroup && isCmd ) console.log(color("[CMD]", "blue"), color(moment.tz('Asia/Jakarta').format('HH:mm'), "green"), color(`${command} [${args.length}]`, 'cyan'), color('dari', 'gold'), color(`${pushname}`, 'orange'))
 if (isGroup && isCmd ) console.log(color("[CMD]", "blue"), color(moment.tz('Asia/Jakarta').format('HH:mm'), "green"), color(`${command} [${args.length}]`, 'cyan'), color('dari', 'gold'), color(`${pushname}`, 'orange'), color('di gc', 'purple'), color(groupName, "deeppink"))
+*/
 
 
 // Detect User Banned
@@ -552,7 +559,8 @@ return
 if (sender.startsWith('212')) {
 return
 }
- 
+
+/* 
 
 const toFirstCase = (str) =>{
  let first = str.split(" ")              // Memenggal nama menggunakan spasi
@@ -564,6 +572,7 @@ nama.slice(1))                 // Ganti huruf besar kata-kata pertama
 return first
  }
 
+*/
 
 //AUTO RESPON VN
 for (let anju of audionye){
@@ -583,7 +592,7 @@ aqua.sendMessage(from, {sticker: buffer}, {quoted:m })
 }
 }
 
-
+/*
 	//Auto Reachh
  let regex =["ping","anj","kon","Anj","Kon","Lah","Oi","tes","Tes","bilek","Banh","cum","kntl","anjing","mmk","Bang","Wibu","Pantek","pepek","hentai"]
 for (let i of regex){
@@ -594,6 +603,7 @@ const emk = emot[Math.floor(Math.random() * emot.length)]
 aqua.sendMessage(from, { react: { text: emk, key: m.key } })	
 }
 }
+*/
 
 //AUTO RESPON SIMI  
 //if (isQuotedTag || isQuotedReply) {
@@ -2656,34 +2666,6 @@ reply ("Reply Imagenya")
 break
 
 
-case 'brainly':{
- const { Brainly } = require("brainly-scraper-v2");
-const brainly = new Brainly("id"); 
-if (!q) reply ( 'Soalnya apa kakk?')
-let nana =`https://www.logosvgpng.com/wp-content/uploads/2018/04/brainly-logo-vector.png`
-let foto = await getBuffer(nana)   
-let res = await brainly.searchWithMT(`${q}`, `id`)
-console.log(res)
-let teks =`_*BRAINLY*_\n\n`
-
-
-  teks += res.map(({ question, answers }, i) => `
-_*PERTANYAAN KE ${i + 1}*_
-${question.content}${answers.map((v, i) => `
-
-*JAWABAN KE ${i + 1}*${v.verification ? ' (Verified)' : ''}${v.isBest ? ' (Terpilih)' : ''}
-${v.content}`).join``}`).join(`
-═════════════════
-`)
- 
- teks +=`\n\n_Thanks for choosing Brainly_`
- 
-let mok = [{"buttonId": `makasih`,"buttonText": {"displayText": `Makasih`},"type": "RESPONSE"},
-                    {"buttonId": `${prefix}donasi`,"buttonText": {"displayText": `Donasi`},"type": "RESPONSE"}]
-aqua.sendButImage(from, teks, `${global.footer}`, foto, mok, {contextInfo: forward})             
-
-}
-break
 
 //Case By Irfan
 case 'tod':
@@ -7497,8 +7479,10 @@ aqua.sendContact(m.chat, global.creator, m)
             break
   
     
-
+case 'test':
+case 'bot':
 case 'tes':
+case 'Bot':
 reply(`Bot Aktif Kakk`)
 break
 
