@@ -87,7 +87,7 @@ let thumbdoc = fs.readFileSync('./media/thumbnaildokumen.jpg')
 let fakee = fs.readFileSync('./media/fake.jpeg')
 betaapi = "BetaBotz"
 Respon = true
-const gcbt = ["120363041984430206@g.us"] //ID GC GRUB BOT "120363041984430206@g.us"  
+const gcbt = ["120369343041984430206@g.us"] //ID GC GRUB BOT "120363041984430206@g.us"  
 
 
 //=======================[ DATABASE ]=======================//
