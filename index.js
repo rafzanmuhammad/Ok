@@ -1,5 +1,5 @@
 /**
-   * Create By Dika Ardnt.
+   * Create By Dika Ardnnt.
    * Contact Me on wa.me/6288292024190
    * Follow https://github.com/DikaArdnt
 */
