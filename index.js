@@ -82,7 +82,7 @@ async function startAqua() {
         browser: ['Takim Tod','IOS','4.1.0'],
         auth: state,
     })
-
+/*
     console.log(chalk.bold.green(figlet.textSync('BOT MD', {
 		font: 'Standard',
 		horizontalLayout: 'default',
@@ -90,6 +90,8 @@ async function startAqua() {
 		width: 80,
 		whitespaceBreak: false
 	}
+*/
+
 )
 )
 )
