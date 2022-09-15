@@ -3460,6 +3460,26 @@ aqua.sendMessage(m.chat, { image : { url : res }, caption: teks }, { quoted : m 
 db.users[sender].limit -= 1 // -1 limit
 break
 
+case 'tt': case 'tiktok': case 'ttnowm': case 'tiktoknowm':    
+try{  
+if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis  
+if(!isUrl) return reply (`Masukan link tiktok dengan benar\nContoh: ${prefix + command} https://vm.tiktok.com/ZSRfArwXH/`)
+if (args.length < 1) return reply(`Link?\nContoh: ${prefix + command} https://vm.tiktok.com/ZSRfArwXH/`)
+reply (mess.wait)
+tiktokdl(args[0]).then(res => {
+console.log(res)
+
+aqua.sendMessage(m.chat, { video: { url: res.video.no_watermark }, caption: `*------------[ TIKTOKNOWM ]------------*
+
+• Autor: ${res.author.nickname}
+${res.description}`}, { quoted: m })          
+})
+} catch (err){
+return reply ('Link Erorr, Video Tidak di Temukan!!')
+}
+db.users[sender].limit -= 1 // -1 limit
+break
+
 
 case 'tt': case 'tiktok': case 'ttnowm': case 'tiktoknowm':    
 try{  
@@ -3468,7 +3488,8 @@ if(!isUrl) return reply (`Masukan link tiktok dengan benar\nContoh: ${prefix + c
 if (args.length < 1) return reply(`Link?\nContoh: ${prefix + command} https://vm.tiktok.com/ZSRfArwXH/`)
 reply (mess.wait)
 calip.downloader.tiktok(args[0]).then(res => {
-	console.log(res)
+console.log(res)
+
 aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
 
 • Autor: ${res.author}
@@ -3479,6 +3500,8 @@ return reply ('Link Erorr, Video Tidak di Temukan!!')
 }
 db.users[sender].limit -= 1 // -1 limit
 break
+
+
 
 case 'tiktokwm': case 'ttwm':
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis 
