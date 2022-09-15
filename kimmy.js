@@ -3470,6 +3470,7 @@ if(!isUrl) return reply (`Masukan link tiktok dengan benar\nContoh: ${prefix + c
 if (args.length < 1) return reply(`Link?\nContoh: ${prefix + command} https://vm.tiktok.com/ZSRfArwXH/`)
 reply (mess.wait)
 calip.downloader.tiktok(args[0]).then(res => {
+	console.log(res)
 aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
 
 • Autor: ${res.author}
