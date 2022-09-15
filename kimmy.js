@@ -7881,7 +7881,7 @@ reply (`*sama - sama kak ${pushname}*`)
 //Auto Download Video Tiktok
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
 	try{
-tiktokdl(args[0]).then(res => {
+tiktokdl(budy).then(res => {
 console.log(res)
 
 aqua.sendMessage(m.chat, { video: { url: res.video.no_watermark }, caption: `*------------[ TIKTOKNOWM ]------------*
