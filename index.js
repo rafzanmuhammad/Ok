@@ -90,11 +90,10 @@ async function startAqua() {
 		width: 80,
 		whitespaceBreak: false
 	}
+)
+)
+)
 */
-
-)
-)
-)
 
     store.bind(aqua.ev)
 
