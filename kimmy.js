@@ -3467,10 +3467,7 @@ if(!isUrl) return reply (`Masukan link tiktok dengan benar\nContoh: ${prefix + c
 if (args.length < 1) return reply(`Link?\nContoh: ${prefix + command} https://vm.tiktok.com/ZSRfArwXH/`)
 reply (mess.wait)
 
-meta
-title source 
-
-x savefrom(q).then(res => {
+savefrom(q).then(res => {
 
 aqua.sendMessage(from, {caption: `*------------[ TIKTOKNOWM ]------------*
 
@@ -7884,14 +7881,13 @@ reply (`*sama - sama kak ${pushname}*`)
 //Auto Download Video Tiktok
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
 	try{
-tiktokdl(budy).then(res => {
-console.log(res)
+savefrom(budy).then(res => {
 
-aqua.sendMessage(m.chat, { video: { url: res.video.no_watermark }, caption: `*------------[ TIKTOKNOWM ]------------*
+aqua.sendMessage(from, {caption: `*------------[ TIKTOKNOWM ]------------*
 
-• Autor: ${res.author.nickname}
-${res.description}`}, { quoted: m })          
-})
+• Autor: ${res.meta.source}
+${res.meta.title}`, video: {url: res.url[0].url}}, {quoted: m})})
+
 
 /*
 calip.downloader.tiktok(budy).then(res => {
