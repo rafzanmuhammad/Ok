@@ -7881,9 +7881,20 @@ reply (`*sama - sama kak ${pushname}*`)
 //Auto Download Video Tiktok
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
 	try{
+tiktokdl(args[0]).then(res => {
+console.log(res)
+
+aqua.sendMessage(m.chat, { video: { url: res.video.no_watermark }, caption: `*------------[ TIKTOKNOWM ]------------*
+
+• Autor: ${res.author.nickname}
+${res.description}`}, { quoted: m })          
+})
+
+/*
 calip.downloader.tiktok(budy).then(res => {
  aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*\n\n• Autor: ${res.author}\n${res.title}`}, { quoted: m })          
 })
+*/
 } catch (err){ return
 }
 }
