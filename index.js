@@ -292,7 +292,7 @@ await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options)
       WelcomeType1(anu.id, intro, `Rules:\n${desc}`, ppUser, ppGc, btnwel, { "mentionedJid": [num]})
  //   aqua.sendButDoc(anu.id, intro, `Rules:\n${desc}`, kon, btnwel, options1)  
     //aqua.sendMessage(anu.id, { image: kon, contextInfo: { mentionedJid: [num] }, caption: intro, footer: `${desc}`, buttons: btnwel})
-    } else if (anu.action == 'leave') {  
+    } else if (anu.action == 'remove') {  
     	WelcomeType1(anu.id, outro, 'Bot Wea', ppUser, ppGc, btnbye, { "mentionedJid": [num]}) 
  //   aqua.sendButDoc(anu.id, outro, `Hm Kok Keluar ^_^`, tol, btnbye, options2)
     //aqua.sendMessage(anu.id, { image: tol, contextInfo: { mentionedJid: [num] }, caption: outro, footer: `Kok Out 🐦`, buttons: btnbye})
