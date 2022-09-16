@@ -605,7 +605,7 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 }
 */
 
-if(!isGroup && !isMedias && !isUrl && !isText && !isAllMedia && !m.key.fromMe && !isImage && isSticker){
+if(!isGroup && !isMedias && !isText && !isAllMedia && !m.key.fromMe && !isImage && isSticker){
 let namastc = await pickRandom(setiker)
 console.log(namastc)
 let buffer = fs.readFileSync(`./temp/stick/${namastc}.webp`)
@@ -614,7 +614,7 @@ aqua.sendMessage(from, {sticker: buffer}, {quoted:m })
 
 //AUTO RESPON SIMI  
 //if (isQuotedTag || isQuotedReply) {
-if (!isGroup && !isMedias && !isUrl && !m.key.fromMe && !isImage) {
+if (!isGroup && !isMedias && !m.key.fromMe && !isImage) {
 //aqua.sendPresenceUpdate('composing', from) 
 const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
  let yakuk = await parsePhoneNumber("+"+senderNumber)
