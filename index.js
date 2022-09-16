@@ -165,11 +165,7 @@ const bg = "https://tinyurl.com/y23xrfhu"
 const intro = `Halo @${num.split('@')[0]}
 Selamat Datang Di ${groupName} 
 
-*_JANGAN LUPA INTRO_*
-» Nama: 
-» Umur:
-» Askot:
-Semoga Betah Kak ><
+Semoga Betah Yahh
 `;
 
 
@@ -255,7 +251,7 @@ var image3 = await new canvacord.Leaver()
         .setColor("background", "#000000")
         .setText("member-count", `- 1 member!`)
         .setText("title", "GoodBye")
-        .setText("message", `We will miss you friends`)
+        .setText("message", `We will miss you friends 𝗖`)
 }
 
 let foto = await getRandom(".png")
