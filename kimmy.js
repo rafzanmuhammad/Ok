@@ -605,8 +605,8 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 
 //AUTO RESPON SIMI  
 //if (isQuotedTag || isQuotedReply) {
-if (!isGroup && !isMedias && !isUrl && !m.key.fromMe && !isImage) {
-if(isSticker){
+if (!isGroup && !isMedias && !isUrl && !m.key.fromMe && !isImage && isSticker) {
+try{
 let namastc = await pickRandom(setiker)
 console.log(namastc)
 let buffer = fs.readFileSync(`./temp/stick/${namastc}.webp`)
@@ -623,10 +623,10 @@ let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${body}&lc=id`, {me
 let sami = simi.success
 console.log(sami)
 //reply(sami).catch(() => reply(`Simi Gatau mau ngomong apa`))
- aqua.sendMessage(from,{text: sami},{quoted: m}).catch(() => reply(`Simi Gatau mau ngomong apa`))
+ aqua.sendMessage(from,{text: sami},{quoted: m}).catch(() => return )
 //xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
  }
- }
+}
 
 
 
