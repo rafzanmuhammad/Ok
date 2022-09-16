@@ -238,7 +238,7 @@ var image3 = await new canvacord.Welcomer()
         .setText("title", "Welcome")
         .setText("message", `Welcome in ${metadata.subject}`)
 
-} else if (anu.action == 'leave') {  
+} else if (anu.action == 'remove') {  
 var image3 = await new canvacord.Leaver()
         .setUsername(nama)
         .setDiscriminator(`${memb}`)
