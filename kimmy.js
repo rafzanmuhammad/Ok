@@ -8022,9 +8022,9 @@ aqua.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 
       
 } catch (err) {
-let e = util.format(err)
+let er = util.format(err)
 
-await reply (`*------------[ SYSTEM ERORR ]------------*\n\n${e}\n\n_Maaf terjadi kesalahan tak terduga, coba lagi nanti_`)    
+await reply (`*------------[ SYSTEM ERORR ]------------*\n\n${er}\n\n_Maaf terjadi kesalahan tak terduga, coba lagi nanti_`)    
 
 aqua.sendText(`628388024064@s.whatsapp.net`, util.format(err), m)
 
