@@ -626,7 +626,7 @@ let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${body}&lc=id`, {me
 let sami = simi.success
 console.log(sami)
 //reply(sami).catch(() => reply(`Simi Gatau mau ngomong apa`))
- aqua.sendMessage(from,{text: sami},{quoted: m}).catch(() => reply('simi gatau mau ngomong apa'))
+ aqua.sendMessage(from,{text: sami},{quoted: m}).catch(() => reply(`Simi Gatau mau ngomong apa`))
 //xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
  }
  
@@ -8034,7 +8034,7 @@ aqua.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 } catch (err) {
 let er = util.format(err)
 
-await reply (`*------------[ SYSTEM ERORR ]------------*\n\n${er}\n\n_Maaf terjadi kesalahan tak terduga, coba lagi nanti_`)    
+m.reply(`*------------[ SYSTEM ERORR ]------------*\n\n${er}\n\n_Maaf terjadi kesalahan tak terduga, coba lagi nanti_`)    
 
 aqua.sendText(`628388024064@s.whatsapp.net`, util.format(err), m)
 
