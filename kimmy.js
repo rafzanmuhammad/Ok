@@ -626,7 +626,7 @@ let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${body}&lc=id`, {me
 let sami = simi.success
 console.log(sami)
 //reply(sami).catch(() => reply(`Simi Gatau mau ngomong apa`))
- aqua.sendMessage(from,{text: sami},{quoted: m}).catch(() => return)
+ aqua.sendMessage(from,{text: sami},{quoted: m}).catch(() => reply('simi gatau mau ngomong apa'))
 //xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
  }
  
