@@ -226,7 +226,9 @@ let dateIslamic = Intl.DateTimeFormat(locale + '-TN-u-ca-islamic', {
 const content = JSON.stringify(m.message)
 const isImage = (m.mtype == 'imageMessage')
 const isVideo = (m.mtype == 'videoMessage')
+const isText = (m.type == 'conversation')
 const isSticker = (m.mtype == 'stickerMessage')
+const isAllMedia = (type === 'imageMessage' || type === 'videoMessage' || type === 'audioMessage' || type === 'contactMessage' || type === 'locationMessage')
 const isMedias = (m.mtype === 'imageMessage' || m.mtype === 'videoMessage')
 const isQuotedImage = m.mtype === 'extendedTextMessage' && content.includes('imageMessage')
 const isQuotedVideo = m.mtype === 'extendedTextMessage' && content.includes('videoMessage')
@@ -603,15 +605,16 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 }
 */
 
-//AUTO RESPON SIMI  
-//if (isQuotedTag || isQuotedReply) {
-if (!isGroup && !isMedias && !isUrl && !m.key.fromMe && !isImage && isSticker) {
-try{
+if(!isGroup && !isMedias && !isUrl && !isText && !isAllMedia && !m.key.fromMe && !isImage && isSticker){
 let namastc = await pickRandom(setiker)
 console.log(namastc)
 let buffer = fs.readFileSync(`./temp/stick/${namastc}.webp`)
 aqua.sendMessage(from, {sticker: buffer}, {quoted:m })
-} else {
+} 
+
+//AUTO RESPON SIMI  
+//if (isQuotedTag || isQuotedReply) {
+if (!isGroup && !isMedias && !isUrl && !m.key.fromMe && !isImage) {
 //aqua.sendPresenceUpdate('composing', from) 
 const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
  let yakuk = await parsePhoneNumber("+"+senderNumber)
@@ -623,10 +626,10 @@ let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${body}&lc=id`, {me
 let sami = simi.success
 console.log(sami)
 //reply(sami).catch(() => reply(`Simi Gatau mau ngomong apa`))
- aqua.sendMessage(from,{text: sami},{quoted: m}).catch(() => return )
+ aqua.sendMessage(from,{text: sami},{quoted: m}).catch(() => return)
 //xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
  }
-}
+ 
 
 
 
