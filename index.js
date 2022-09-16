@@ -100,15 +100,19 @@ async function startAqua() {
 
 
  
-    //anti call+block
-     aqua.ws.on('CB:call', async (json) => {
-     const callerId = json.content[0].attrs['call-creator']
-     console.log(json)
-    if (json.content[0].tag == 'offer') {
-    let pa7rick = await aqua.sendContact(callerId, global.pemilik)
-    aqua.sendMessage(callerId, { text: `Sistem Blokir Otomatis!\nJangan Telfon dan Vc Bot!\nSilakan Chat Kontak Ini Untuk Membuka Blokir Anda!\nKlo Mau Di Bukain Wokwokwokwok`}, { quoted : pa7rick })
-    await sleep(4000)
-    await aqua.updateBlockStatus(callerId, "block")
+        // Anti Call
+    aqua.ev.on('call', async (json) => {
+    let botNumber = await aqua.decodeJid(aqua.user.id)
+    console.log(json)
+    for (let kimd of json) {
+    if (kimd.isGroup == false) {
+    if (kimd.status == "offer") {
+    let pa7rick = await aqua.sendTextWithMentions(kimd.from, `*${aqua.user.name}* tidak bisa menerima panggilan ${kimd.isVideo ? `video` : `suara`}. Maaf @${kimd.from.split('@')[0]} kamu akan diblockir. Jika tidak sengaja silahkan hubungi Owner untuk dibuka !`)
+    aqua.sendContact(kimd.from, global.owner, pa7rick)
+    await sleep(8000)
+    await aqua.updateBlockStatus(kimd.from, "block")
+    }
+    }
     }
     })
    
