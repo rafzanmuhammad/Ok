@@ -33,44 +33,8 @@
     "tebakan": []
   },
   "settings": {
-    "6281365814200@s.whatsapp.net": {
-      "status": 1647503177358,
-      "autobio": true,
-      "autoread": true,
-      "autoketik": false,
-      "autorecord": true,
-      "autoonline": false,
-      "autooffline": false
-    },
-    "6285794545046@s.whatsapp.net": {
-      "status": 1652837329417,
-      "autobio": false,
-      "autoread": true,
-      "autoketik": false,
-      "autorecord": false,
-      "autoonline": false,
-      "autooffline": false
-    },
     "6283114031932@s.whatsapp.net": {
       "status": 1652122706509,
-      "autobio": false,
-      "autoread": true,
-      "autoketik": false,
-      "autorecord": false,
-      "autoonline": false,
-      "autooffline": false
-    },
-    "62857945450460@s.whatsapp.net": {
-      "status": 1655506993307,
-      "autobio": false,
-      "autoread": true,
-      "autoketik": false,
-      "autorecord": false,
-      "autoonline": false,
-      "autooffline": false
-    },
-    "6282194424412@s.whatsapp.net": {
-      "status": 0,
       "autobio": false,
       "autoread": false,
       "autoketik": false,
@@ -26514,7 +26478,7 @@
       "limit": 30
     },
     "628815648204@s.whatsapp.net": {
-      "afkTime": 1656153627387,
+      "afkTime": -1,
       "afkReason": "",
       "limit": 30
     },
