@@ -179,8 +179,8 @@ kon = await getBuffer(`https://sewa4yeye.herokuapp.com/api/canvas/welcome?nama=$
 tol = await getBuffer(`https://sewa4yeye.herokuapp.com/api/canvas/goodbye?nama=${encodeURIComponent(nama)}&namaGb=${encodeURIComponent(metadata.subject)}&pepeGb=${encodeURIComponent(ppgroup)}&totalMem=${encodeURIComponent(memb)}&pepeUser=${encodeURIComponent(ppuser)}&bege=https://telegra.ph/file/38dfc6649ab96b7dc7d41.jpg&apikey=BetaBotz`)
 
 //button
-let btnwel = [{buttonId: 'intro', buttonText: {displayText: 'Omkee'}, type: 1},]
-let btnbye = [{buttonId: 'lunga', buttonText: {displayText: 'Goodbye 👋'}, type: 1},]
+let btnwel = [{buttonId: 'inntro', buttonText: {displayText: 'Omkee'}, type: 1},]
+let btnbye = [{buttonId: 'lunga', buttonText: {displayText: 'Goodbye'}, type: 1},]
 
 let options1 =
 { mentionedJid: [num],
