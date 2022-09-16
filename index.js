@@ -108,7 +108,7 @@ async function startAqua() {
     if (kimd.isGroup == false) {
     if (kimd.status == "offer") {
     let pa7rick = await aqua.sendTextWithMentions(kimd.from, `*${aqua.user.name}* tidak bisa menerima panggilan ${kimd.isVideo ? `video` : `suara`}. Maaf @${kimd.from.split('@')[0]} kamu akan diblockir. Jika tidak sengaja silahkan hubungi Owner untuk dibuka !`)
-    aqua.sendContact(kimd.from, global.owner, pa7rick)
+    aqua.sendContact(kimd.from, global.pemilik, pa7rick)
     await sleep(8000)
     await aqua.updateBlockStatus(kimd.from, "block")
     }
