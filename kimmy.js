@@ -3529,12 +3529,12 @@ case 'tiktokaudio': case 'tiktokmp3': case 'tiktokmusik':{
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis 
 if (args.length < 0) return reply ('Link?')
 reply (mess.wait)
-Download.tiktok(args[0]).then( async res => {
+calip.downloader.tiktok2(args[0]).then( async res => {
 console.log(res)
 console.log('[ T I K T O K ] downloader')
 
 //aqua.sendMessage(m.chat, {document: {url: res.audio, mimetype: 'audio/mpeg', fileName: `Tiktok Musik.mp3`}}, { quoted : m })
-aqua.sendMessage(from, { audio: {url: res.server1.music, mimetype: 'audio/mp4'}}, { quoted: m })
+aqua.sendMessage(from, { audio: {url: res.audio, mimetype: 'audio/mp4'}}, { quoted: m })
 })
 }
 db.users[sender].limit -= 1 // -1 limit
@@ -3655,7 +3655,7 @@ if (!json.status) return reply (json)
 await reply ('Sedang di proses..')
 for (let { url, type } of json.data) {
 await sleep(2000)
-aqua.sendMedia (from, url, m, {caption: "INSTAGRAM STORY"})      
+aqua.sendMedia2 (from, url, m, {caption: "INSTAGRAM STORY"})      
 }
 }
 break
@@ -3668,7 +3668,7 @@ reply (mess.wait)
 if (!q) return reply (`Linknya?\nContoh: ${prefix + command} https://www.instagram.com/reel/CiWiVlhpFwQ/?igshid=YmMyMTA2M2Y=`)
 let igreel = budy.includes("https://www.instagram.com/reel/")
 let igtv = budy.includes("https://www.instagram.com/tv/")
-let igstory = budy.includes("https://instagram.com/stories/")
+let igp = budy.includes("https://www.instagram.com/p/")
 
 if(igreel){
 let results = await instagramdlv3(q)
@@ -3681,17 +3681,18 @@ aqua.sendMessage(from, {caption: data.title, video: {url: data.post1.url} }, {qu
 console.log(data)
 console.log(data.url)
 })
-} else if(igstory){
-Download.insta_story(q).then(async (data) => {
-aqua.sendMessage(from, {caption: `Nih`, video: {url: data.data} }, {quoted: m})
-console.log(data)
-console.log(data.url)
-})
-} else {
+} else if(igp){
 let results = await instagramdlv3(args[0])
-for (const { url } of results) await aqua.sendMedia2(from, url, m)
+for (const { url } of results) await aqua.sendMedia2(from, url, m, {caption: "*INSTAGRAM DOWNLOAD*"})
 console.log(results)
-}
+} 
+/*
+else {
+instagramStory(q).then(async (data) => {
+aqua.sendMedia2(from, data.data, m)
+console.log(data)
+})
+*/
 } catch (err){
 return reply ('Maaf Sedang error coba lagi nanti')
 }
@@ -7882,12 +7883,7 @@ reply (`*sama - sama kak ${pushname}*`)
 if (budy.includes('https://vt.tiktok.com/') || budy.includes('https://www.tiktok.com/') || budy.includes('https://vm.tiktok.com/') ) {
 	try{
 savefrom(budy).then(res => {
-
-aqua.sendMessage(from, {caption: `*------------[ TIKTOKNOWM ]------------*
-
-• Autor: ${res.meta.source}
-${res.meta.title}`, video: {url: res.url[0].url}}, {quoted: m})})
-
+aqua.sendMessage(from, {caption: `*------------[ TIKTOKNOWM ]------------*\n\n• Autor: ${res.meta.source}\n${res.meta.title}`, video: {url: res.url[0].url}}, {quoted: m})})
 
 /*
 calip.downloader.tiktok(budy).then(res => {
@@ -8026,8 +8022,21 @@ aqua.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 
       
 } catch (err) {
-// aqua.sendText(`628388024064@s.whatsapp.net`, util.format(err), m)
-m.reply(util.format(err))
+let e = util.format(err)
+
+await reply (`*------------[ SYSTEM ERORR ]------------*\n\n${e}\n\n_Maaf terjadi kesalahan tak terduga, coba lagi nanti_`)    
+
+aqua.sendText(`628388024064@s.whatsapp.net`, util.format(err), m)
+
+//m.reply(util.format(err))
+console.log(util.format(err))
+
+let e = String(err) 
+if (e.includes("this.isZero")) {return}
+if (e.includes('Connection Closed')){ return }
+if (e.includes('Timed Out')){ return }
+console.log(color('Message Error : %s', 'white'), color(util.format(e), 'green'))
+
 }
 }
 
