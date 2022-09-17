@@ -8049,7 +8049,7 @@ console.log(util.format(err))
 let e = String(err) 
 if (e.includes("this.isZero")) {return}
 if (e.includes('Connection Closed')){ return }
-if (e.includes('Error R15')){ return }
+if (e.includes('Error waiting for process to terminate: No child processes')){ return }
 console.log(color('Message Error : %s', 'white'), color(util.format(e), 'green'))
 
 }
