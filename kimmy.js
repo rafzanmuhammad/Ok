@@ -21,7 +21,7 @@ const hx = require("hxz-api")
 const dbot = require('dbot-api');
 const xfar = require('xfarr-api');
 const toMs = require('ms')
-const yts = require("yt-search");
+const yts = require("yt-search");  
 const gis = require('g-i-s')
 const fetch = require('node-fetch')
 //const ytdl = require('ytdl-core');
@@ -605,7 +605,7 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 }
 */
 
-if(!isGroup && !isMedias && !isText && !isAllMedia && !m.key.fromMe && !isImage && isSticker){
+if(!isMedias && !isText && !isAllMedia && !m.key.fromMe && !isImage && isSticker){
 let namastc = await pickRandom(setiker)
 console.log(namastc)
 let buffer = fs.readFileSync(`./temp/stick/${namastc}.webp`)
@@ -614,9 +614,9 @@ aqua.sendMessage(from, {sticker: buffer}, {quoted:m })
 
 //AUTO RESPON SIMI  
 //if (isQuotedTag || isQuotedReply) {
-if (!isGroup && !isMedias && !m.key.fromMe && !isImage) {
+if (!isGroup &&  !isAllMedia && !isMedias && !m.key.fromMe && !isImage) {
 	try{
-//aqua.sendPresenceUpdate('composing', from) 
+aqua.sendPresenceUpdate('composing', from) 
 const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
  let yakuk = await parsePhoneNumber("+"+senderNumber)
  let idnya = yakuk.country
@@ -801,7 +801,7 @@ delete tebaklagu[sender.split('@')[0]]
             kuis = true
             jawaban = kuismath[sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-await reply(`🎮 Kuis Matematika  🎮\n\nJawaban Benar ??\n\nIngin bermain lagi? kirim ${prefix}math mode`)
+await reply(`?? Kuis Matematika  🎮\n\nJawaban Benar ??\n\nIngin bermain lagi? kirim ${prefix}math mode`)
 delete kuismath[sender.split('@')[0]]
             } else reply('*Jawaban Salah!*')
         }
@@ -1507,7 +1507,7 @@ break
 
 case 'play': case 'playmusic': case 'playmusik':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-                if (!text) throw `Example : ${prefix + command} story wa anime`
+                if (!text) return reply ( `Example : ${prefix + command} story wa anime`)
                 reply (mess.wait)
                 let yts = require("yt-search")
                 let search = await yts(text)
@@ -4051,8 +4051,8 @@ break
 
 case 'jadibug1': {
 if (!isOwner) return reply (mess.owner)
-if (!/video/.test(mime) && !/audio/.test(mime)) throw `*Send/Reply the Video/Audio You Want to Use as Audio With Caption* ${prefix + command}`
-if (!quoted) throw `*Send/Reply the Video/Audio You Want to Use as Audio With Caption* ${prefix + command}`
+if (!/video/.test(mime) && !/audio/.test(mime)) return reply ( `*Send/Reply the Video/Audio You Want to Use as Audio With Caption* ${prefix + command}`)
+if (!quoted) return reply ( `*Send/Reply the Video/Audio You Want to Use as Audio With Caption* ${prefix + command}`)
 let media = await quoted.download()
 let { toAudio } = require('./lib/converter')
 let audio = await toAudio(media, 'mp4')
@@ -4062,9 +4062,9 @@ break
 //=================================================//
 case 'jadibug2': {
 if (!isOwner) return reply (mess.owner)
-if (/document/.test(mime)) throw `*Send/Reply Video/Audio You Want to Convert into MP3 With Caption* ${prefix + command}`
-if (!/video/.test(mime) && !/audio/.test(mime)) throw `*Send/Reply Video/Audio You Want to Convert into MP3 With Caption* ${prefix + command}`
-if (!quoted) throw `*Send/Reply Video/Audio You Want to Convert into MP3 With Caption* ${prefix + command}`
+if (/document/.test(mime)) return reply ( `*Send/Reply Video/Audio You Want to Convert into MP3 With Caption* ${prefix + command}`)
+if (!/video/.test(mime) && !/audio/.test(mime)) return reply ( `*Send/Reply Video/Audio You Want to Convert into MP3 With Caption* ${prefix + command}`)
+if (!quoted) return reply ( `*Send/Reply Video/Audio You Want to Convert into MP3 With Caption* ${prefix + command}`)
 let media = await quoted.download()
 let { toAudio } = require('./lib/converter')
 let audio = await toAudio(media, 'mp4')
@@ -4074,8 +4074,8 @@ break
 //=================================================//
 case 'jadibug3': {
 if (!isOwner) return reply (mess.owner)
-if (!/video/.test(mime) && !/audio/.test(mime)) throw `*Reply Video/Audio That You Want To Be VN With Caption* ${prefix + command}`
-if (!quoted) throw `*Reply Video/Audio That You Want To Be VN With Caption* ${prefix + command}`
+if (!/video/.test(mime) && !/audio/.test(mime)) return reply ( `*Reply Video/Audio That You Want To Be VN With Caption* ${prefix + command}`)
+if (!quoted) return reply ( `*Reply Video/Audio That You Want To Be VN With Caption* ${prefix + command}`)
 sticWait(from)
 let media = await quoted.download()
 let { toPTT } = require('./lib/converter')
@@ -4086,13 +4086,13 @@ break
 //=================================================//
 case 'jadibug4': {
 if (!isOwner) return reply (mess.owner)
-if (!quoted) throw 'Reply Image'
-if (!/webp/.test(mime)) throw `Balas sticker dengan caption *${prefix + command}*`
+if (!quoted) return reply ( 'Reply Image')
+if (!/webp/.test(mime)) return reply ( `Balas sticker dengan caption *${prefix + command}*`)
 let media = await aqua.downloadAndSaveMediaMessage(quoted)
 let ran = await getRandom('.png')
 exec(`ffmpeg -i ${media} ${ran}`, (err) => {
 fs.unlinkSync(media)
-if (err) throw err
+if (err) return reply ( err)
 let buffer = fs.readFileSync(ran)
 aqua.sendMessage(m.chat, { image: buffer }, { quoted: doc })
 fs.unlinkSync(ran)
@@ -4102,7 +4102,7 @@ break
 //=================================================//
 case 'jadibug5': {
 if (!isOwner) return reply (mess.owner)
-if (!quoted) throw 'Reply Image'
+if (!quoted) return reply ( 'Reply Image')
 if (/image/.test(mime)) {
 anu = await aqua.downloadAndSaveMediaMessage(quoted)
 aqua.sendMessage(m.chat, {image: {url: anu},viewOnce : true},{quoted: doc })
@@ -5119,7 +5119,7 @@ case 'ban': case 'banned': {
 			let who
 			if (isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
 			else who = m.chat
-			if (!who) throw 'Tag User'
+			if (!who) return reply ( 'Tag User')
 			ban[who] = true
 			m.reply('Sukse Membanned '+who)
 		}
@@ -5131,7 +5131,7 @@ case 'unban': case 'unbanned': {
 			let who
 			if (isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
 			else who = m.chat
-			if (!who) throw 'Tag User'
+			if (!who) return reply ( 'Tag User')
 			ban[who] = false
 			m.reply('Sukses Unban '+who)
 		}
@@ -5150,7 +5150,7 @@ case 'setname': case 'setsubject': {
 if (!isGroup) return reply(mess.group)
                if (!isBotAdmins) return reply (mess.botAdmin)
 if (!isAdmins && !isOwner) return reply (mess.admin)
-if (!text) throw 'Text ?'
+if (!text) return reply ( 'Text ?')
 await aqua.groupUpdateSubject(m.chat, text).then((res) => reply(mess.success)).catch((err) => reply(jsonformat(err)))
             }
             break
@@ -5167,9 +5167,9 @@ await aqua.groupUpdateDescription(m.chat, text).then((res) => reply(mess.success
          
  case 'setppbot': {
 if (!isOwner) return reply(mess.owner)
-if (!quoted) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
-if (!/image/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
-if (/webp/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
+if (!quoted) return reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}`)
+if (!/image/.test(mime)) return reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}`)
+if (/webp/.test(mime)) return reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}`)
 let media = await aqua.downloadAndSaveMediaMessage(quoted)
 await aqua.updateProfilePicture(botNumber, { url: media }).catch((err) => fs.unlinkSync(media))
 reply(mess.success)
@@ -5180,9 +5180,9 @@ break
 case 'setppgroup': case 'setppgrup': {
 if (!isGroup) return reply(mess.group)
 if (!isAdmins) return reply (mess.admin)
-if (!quoted) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
-if (!/image/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
-if (/webp/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
+if (!quoted) return reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}`)
+if (!/image/.test(mime)) return reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}`)
+if (/webp/.test(mime)) return reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}`)
 let media = await aqua.downloadAndSaveMediaMessage(quoted)
 await aqua.updateProfilePicture(m.chat, { url: media }).catch((err) => fs.unlinkSync(media))
 reply(mess.success)
@@ -5245,7 +5245,7 @@ if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
 case 'style': case 'styletext': {      
 		if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		let { styletext } = require('./lib/scraper')
-		if (!text) throw 'Masukkan Query text!'
+		if (!text) return reply ( 'Masukkan Query text!')
 let anu = await styletext(text)
 let teks = `Srtle Text From ${text}\n\n`
 for (let i of anu) {
@@ -5260,8 +5260,8 @@ reply(teks)
 
  case 'vote': {
             if (!isGroup) return reply(mess.group)
-            if (m.chat in vote) throw `_Masih ada vote di chat ini!_\n\n*${prefix}hapusvote* - untuk menghapus vote`
-            if (!text) throw `Masukkan Alasan Melakukan Vote, Example: *${prefix + command} Owner Ganteng*`
+            if (m.chat in vote) return reply ( `_Masih ada vote di chat ini!_\n\n*${prefix}hapusvote* - untuk menghapus vote`)
+            if (!text) return reply ( `Masukkan Alasan Melakukan Vote, Example: *${prefix + command} Owner Ganteng*`)
             reply(`Vote dimulai!\n\n*${prefix}upvote* - untuk ya\n*${prefix}devote* - untuk tidak\n*${prefix}cekvote* - untuk mengecek vote\n*${prefix}hapusvote* - untuk menghapus vote`)
             vote[m.chat] = [q, [], []]
             await sleep(1000)
@@ -5305,10 +5305,10 @@ headerType: 1
 
  case 'upvote': {
             if (!isGroup) return reply(mess.group)
-            if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
+            if (!(m.chat in vote)) return reply ( `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`)
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
             wasVote = isVote.includes(sender)
-            if (wasVote) throw 'Kamu Sudah Vote'
+            if (wasVote) return reply ( 'Kamu Sudah Vote')
             vote[m.chat][1].push(sender)
             menvote = vote[m.chat][1].concat(vote[m.chat][2])
             teks_vote = `*「 VOTE 」*
@@ -5350,10 +5350,10 @@ mentions: menvote
 
 case 'devote': {
             if (!isGroup) return reply(mess.group)
-            if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
+            if (!(m.chat in vote)) return reply ( `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`)
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
             wasVote = isVote.includes(sender)
-            if (wasVote) throw 'Kamu Sudah Vote'
+            if (wasVote) return reply ( 'Kamu Sudah Vote')
             vote[m.chat][2].push(sender)
             menvote = vote[m.chat][1].concat(vote[m.chat][2])
             teks_vote = `*「 VOTE 」*
@@ -5395,7 +5395,7 @@ mentions: menvote
 
 case 'cekvote':
 if (!isGroup) return reply(mess.group)
-if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
+if (!(m.chat in vote)) return reply ( `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`)
 teks_vote = `*「 VOTE 」*
 
 *Alasan:* ${vote[m.chat][0]}
@@ -5425,7 +5425,7 @@ break
 
 case 'deletevote': case'delvote': case 'hapusvote': {
             if (!isGroup) return reply(mess.group)
-            if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
+            if (!(m.chat in vote)) return reply ( `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`)
             delete vote[m.chat]
             reply('Berhasil Menghapus Sesi Vote Di Grup Ini')
 	    }
@@ -5641,7 +5641,7 @@ case 'ephemeral': {
 if (!isGroup) return reply(mess.group)
                if (!isBotAdmins) return reply (mess.botAdmin)
 if (!isAdmins) return reply (mess.admin)
-if (!text) throw 'Masukkan value enable/disable'
+if (!text) return reply ( 'Masukkan value enable/disable')
 if (args[0] === 'enable') {
     await aqua.sendMessage(m.chat, { disappearingMessagesInChat: WA_DEFAULT_EPHEMERAL }).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
 } else if (args[0] === 'disable') {
@@ -5665,9 +5665,9 @@ break
   
           
 case 'delete': case 'del': {
-if (!m.quoted) throw false
+if (!m.quoted) return reply ('reply pesan bot')
 let { chat, fromMe, id, isBaileys } = m.quoted
-if (!isBaileys) throw 'Pesan tersebut bukan dikirim oleh bot!'
+if (!isBaileys) return reply ( 'Pesan tersebut bukan dikirim oleh bot!')
 aqua.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
             }
             break
@@ -5675,7 +5675,7 @@ aqua.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quot
 
 case 'bcuser':{
 	if(!q) return reply (`mau bc apa`)
-	         if (!isOwner && !itsMe) throw mess.owner
+	         if (!isOwner && !itsMe) return reply ( mess.owner)
 	reply (mess.wait)
 for(var i of user){
 await sleep(8000)  
@@ -5686,8 +5686,8 @@ reply(`Sukses Mengirim`)
 break
 
 case 'bcgc': case 'bcgroup': {
-                if (!isOwner && !itsMe) throw mess.owner
-                if (!text) throw `Text mana?\n\nExample : ${prefix + command} kimtod`
+                if (!isOwner && !itsMe) return reply ( mess.owner)
+                if (!text) return reply ( `Text mana?\n\nExample : ${prefix + command} kimtod`)
                 let getGroups = await aqua.groupFetchAllParticipating()
                 let groupps = Object.entries(getGroups).slice(0).map(entry => entry[1])
                 let anu = groupps.map(v => v.id)
@@ -5703,7 +5703,7 @@ case 'bcgc': case 'bcgroup': {
 
 case 'bcimg': case 'bcvidio': case 'bcaudio': {
 if (!isOwner) return reply(mess.owner)
-if (!/video/.test(mime) && !/image/.test(mime) && !/audio/.test(mime)) throw `Kirim/Reply Video/Audio/Image Yang Ingin Di Broadcast Dengan Caption ${prefix + command}`
+if (!/video/.test(mime) && !/image/.test(mime) && !/audio/.test(mime)) return reply ( `Kirim/Reply Video/Audio/Image Yang Ingin Di Broadcast Dengan Caption ${prefix + command}`)
 let anu = await store.chats.all().map(v => v.id)
 reply(`Mengirim Broadcast Ke ${anu.length} Group Chat, Waktu Selesai ${anu.length * 1.5} detik`)
 for (let i of anu) {
@@ -5743,8 +5743,8 @@ reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
             
 
 case 'bctext': {
-                if (!isOwner) throw mess.owner
-                if (!text) throw `Text mana?\n\nExample : ${prefix + command} oioi semua`
+                if (!isOwner) return reply ( mess.owner)
+                if (!text) return reply ( `Text mana?\n\nExample : ${prefix + command} oioi semua`)
                 let anu = await store.chats.all().map(v => v.id)        
 		for (let yoi of anu) {
 		    await sleep(5000)
@@ -5761,7 +5761,7 @@ case 'bctext': {
 case 'infochat': {
 if (!m.quoted) reply('Reply Pesan')
 let msg = await m.getQuotedObj()
-if (!m.quoted.isBaileys) throw 'Pesan tersebut bukan dikirim oleh bot!'
+if (!m.quoted.isBaileys) return reply ( 'Pesan tersebut bukan dikirim oleh bot!')
 let teks = ''
 for (let i of msg.userReceipt) {
     let read = i.readTimestamp
@@ -5776,7 +5776,7 @@ aqua.sendTextWithMentions(m.chat, teks, m)
             
 
 case 'q': case 'quoted': {
-            	    if (!isOwner) throw mess.owner
+            	    if (!isOwner) return reply ( mess.owner)
 		if (!m.quoted) return reply('Reply Pesannya!!')
 		let wokwol = await aqua.serializeM(await m.getQuotedObj())
 		if (!wokwol.quoted) return reply('Pesan Yang anda reply tidak mengandung reply')
@@ -5798,8 +5798,6 @@ case 'listpc': {
 
 
 case 'listgc': {
-if (isBan) throw sticBanLu(from)
-
  let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
  let teks = `⬣ *LIST GROUP CHAT*\n\nTotal Group : ${anu.length} Group\n\n`
  for (let i of anu) {
@@ -6065,7 +6063,7 @@ return reply (`Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Vid
 case 'emojimix': {
 	try{
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-	        if (!text) throw `Salahh\nContoh : ${prefix + command} 🤣+🤔`
+	        if (!text) return reply ( `Salahh\nContoh : ${prefix + command} 🤣+🤔`)
 		let [emoji1, emoji2] = text.split`+`
 		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
 		for (let res of anu.results) {
@@ -6084,13 +6082,13 @@ case 'toimage': case 'toimg': {
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
 if (!quoted) return reply ('Reply Image')
-if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
+if (!/webp/.test(mime)) return reply ( `balas stiker dengan caption *${prefix + command}*`)
 reply(mess.wait)
 let media = await aqua.downloadAndSaveMediaMessage(quoted)
 let ran = await getRandom('.png')
 exec(`ffmpeg -i ${media} ${ran}`, (err) => {
     fs.unlinkSync(media)
-    if (err) throw err
+    if (err) return reply ( err)
     let buffer = fs.readFileSync(ran)
     aqua.sendMessage(m.chat, { image: buffer }, { quoted: m })
     fs.unlinkSync(ran)
@@ -6105,7 +6103,7 @@ case 'tomp4': case 'tovideo': {
 		if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
 if (!quoted) return reply ('Reply Image')
-if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
+if (!/webp/.test(mime)) return reply ( `balas stiker dengan caption *${prefix + command}*`)
 reply(mess.wait)
 		let { webp2mp4File } = require('./lib/uploader')
 let media = await aqua.downloadAndSaveMediaMessage(quoted)
@@ -6118,8 +6116,8 @@ await fs.unlinkSync(media)
 case 'toaud': case 'toaudio': {
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
-            if (!/video/.test(mime) && !/audio/.test(mime)) throw `Kirim/Reply Video/Audio Yang Ingin Dijadikan Audio Dengan Caption ${prefix + command}`
-            if (!quoted) throw `Kirim/Reply Video/Audio Yang Ingin Dijadikan Audio Dengan Caption ${prefix + command}`
+            if (!/video/.test(mime) && !/audio/.test(mime)) return reply ( `Kirim/Reply Video/Audio Yang Ingin Dijadikan Audio Dengan Caption ${prefix + command}`)
+            if (!quoted) return reply ( `Kirim/Reply Video/Audio Yang Ingin Dijadikan Audio Dengan Caption ${prefix + command}`)
             reply(mess.wait)
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
@@ -6129,9 +6127,9 @@ case 'toaud': case 'toaudio': {
             break
             
 case 'tomp3': {
-            if (/document/.test(mime)) throw `Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}`
-            if (!/video/.test(mime) && !/audio/.test(mime)) throw `Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}`
-            if (!quoted) throw `Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}`
+            if (/document/.test(mime)) return reply ( `Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}`)
+            if (!/video/.test(mime) && !/audio/.test(mime)) return reply ( `Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}`)
+            if (!quoted) return reply ( `Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}`)
             reply(mess.wait)
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
@@ -6141,8 +6139,8 @@ case 'tomp3': {
             break
             
 case 'tovn': case 'toptt': {
-            if (!/video/.test(mime) && !/audio/.test(mime)) throw `Reply Video/Audio Yang Ingin Dijadikan VN Dengan Caption ${prefix + command}`
-            if (!quoted) throw `Reply Video/Audio Yang Ingin Dijadikan VN Dengan Caption ${prefix + command}`
+            if (!/video/.test(mime) && !/audio/.test(mime)) return reply ( `Reply Video/Audio Yang Ingin Dijadikan VN Dengan Caption ${prefix + command}`)
+            if (!quoted) return reply ( `Reply Video/Audio Yang Ingin Dijadikan VN Dengan Caption ${prefix + command}`)
             reply(mess.wait)
             let media = await quoted.download()
             let { toPTT } = require('./lib/converter')
@@ -6152,8 +6150,8 @@ case 'tovn': case 'toptt': {
             break
             
 case 'togif': {
-if (!quoted) throw 'Reply Image'
-if (!/webp/.test(mime)) throw `balas stiker dengan caption *${prefix + command}*`
+if (!quoted) return reply ( 'Reply Image')
+if (!/webp/.test(mime)) return reply ( `balas stiker dengan caption *${prefix + command}*`)
 reply(mess.wait)
 		let { webp2mp4File } = require('./lib/uploader')
 let media = await aqua.downloadAndSaveMediaMessage(quoted)
@@ -6183,7 +6181,7 @@ await fs.unlinkSync(media)
 case 'yts': case 'ytsearch': {
 		if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
-if (!text) throw `Example : ${prefix + command} story wa anime`
+if (!text) return reply ( `Example : ${prefix + command} story wa anime`)
 let yts = require("yt-search")
 let search = await yts(text)
 let teks = 'YouTube Search\n\n Result From '+text+'\n\n'
@@ -6198,7 +6196,7 @@ aqua.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: te
 case 'google': {
         	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
-if (!text) throw `Example : ${prefix + command} fatih arridho`
+if (!text) return reply ( `Example : ${prefix + command} nkri`)
 let google = require('google-it')
 google({'query': text}).then(res => {
 let teks = `Google Search From : ${text}\n\n`
@@ -6213,7 +6211,7 @@ reply(teks)
 break
        
  case 'gimage': {
-        if (!text) throw `Example : ${prefix + command} kaori cicak`
+        if (!text) return reply ( `Example : ${prefix + command} kaori cicak`)
         let gis = require('g-i-s')
         gis(text, async (error, result) => {
         n = result
@@ -6228,7 +6226,7 @@ case 'ytmp33': case 'ytmp3': case 'ytaudio': {
 	try {
 		if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 let { yta } = require('./lib/y2mate')
-if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
+if (!text) return reply ( `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`)
 reply (mess.wait)
 let quality = args[1] ? args[1] : '128kbps'
 let media = await yta(text, quality)
@@ -6258,7 +6256,7 @@ case 'ytmp4': case 'ytmp44': case 'ytvideo': {
 try {
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 let { ytv } = require('./lib/y2mate')
-if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
+if (!text) return reply ( `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`)
 reply (mess.wait)
 let quality = args[1] ? args[1] : '360p'
 let media = await ytv(text, quality)
@@ -6275,11 +6273,11 @@ case 'getmusic': {
 		if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
 let { yta } = require('./lib/y2mate')
-if (!text) throw `Example : ${prefix + command} 1`
+if (!text) return reply ( `Example : ${prefix + command} 1`)
 if (!m.quoted) return reply('Reply Pesan')
-if (!m.quoted.isBaileys) throw `Hanya Bisa Membalas Pesan Dari Bot`
+if (!m.quoted.isBaileys) return reply ( `Hanya Bisa Membalas Pesan Dari Bot`)
 		let urls = quoted.text.match(new RegExp(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]+)/, 'gi'))
-if (!urls) throw `Mungkin pesan yang anda reply tidak mengandung result ytsearch`
+if (!urls) return reply ( `Mungkin pesan yang anda reply tidak mengandung result ytsearch`)
 let quality = args[1] ? args[1] : '128kbps'
 let media = await yta(urls[text - 1], quality)
 if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
@@ -6292,11 +6290,11 @@ case 'getvideo': {
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
 let { ytv } = require('./lib/y2mate')
-if (!text) throw `Example : ${prefix + command} 1`
+if (!text) return reply ( `Example : ${prefix + command} 1`)
 if (!m.quoted) return reply('Reply Pesan')
-if (!m.quoted.isBaileys) throw `Hanya Bisa Membalas Pesan Dari Bot`
+if (!m.quoted.isBaileys) return reply ( `Hanya Bisa Membalas Pesan Dari Bot`)
 let urls = quoted.text.match(new RegExp(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]+)/, 'gi'))
-if (!urls) throw `Mungkin pesan yang anda reply tidak mengandung result ytsearch`
+if (!urls) return reply ( `Mungkin pesan yang anda reply tidak mengandung result ytsearch`)
 let quality = args[1] ? args[1] : '360p'
 let media = await ytv(urls[text - 1], quality)
 if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
@@ -6400,7 +6398,7 @@ break
 
 case 'wikimedia': {
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
-if (!text) throw 'Mau cari apa kak'
+if (!text) return reply ( 'Mau cari apa kak')
 		let { wikimedia } = require('./lib/scraper')
 anu = await wikimedia(text)
 result = anu[Math.floor(Math.random() * anu.length)]
@@ -6539,7 +6537,7 @@ case 'hollographic':case 'bear':case 'wolf':case 'joker':case 'dropwater':
 case 'neonlight':case 'thewall':case 'natural':case 'carbon':case 'pencil': {
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
-if (!text) throw `Example : ${prefix + command} kimto`
+if (!text) return reply ( `Example : ${prefix + command} kimto`)
 reply(mess.wait)
 let link
 if (/3dbox/.test(command)) link = 'https://textpro.me/3d-box-text-effect-online-880.html'
@@ -6585,7 +6583,7 @@ if (/pencil/.test(command)) link = 'https://textpro.me/create-a-sketch-text-effe
 case 'nomerhoki': case 'nomorhoki': {
 		if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
-if (!Number(text)) throw `Example : ${prefix + command} 628388024064`
+if (!Number(text)) return reply ( `Example : ${prefix + command} 628388024064`)
 let anu = await primbon.nomer_hoki(Number(text))
 if (anu.status == false) return reply(anu.message)
 aqua.sendText(m.chat, `➟ *Nomor HP :* ${anu.message.nomer_hp}\n➟ *Angka Shuzi :* ${anu.message.angka_shuzi}\n➟ *Energi Positif :*\n- Kekayaan : ${anu.message.energi_positif.kekayaan}\n- Kesehatan : ${anu.message.energi_positif.kesehatan}\n- Cinta : ${anu.message.energi_positif.cinta}\n- Kestabilan : ${anu.message.energi_positif.kestabilan}\n- Persentase : ${anu.message.energi_positif.persentase}\n➟ *Energi Negatif :*\n- Perselisihan : ${anu.message.energi_negatif.perselisihan}\n- Kehilangan : ${anu.message.energi_negatif.kehilangan}\n- Malapetaka : ${anu.message.energi_negatif.malapetaka}\n- Kehancuran : ${anu.message.energi_negatif.kehancuran}\n- Persentase : ${anu.message.energi_negatif.persentase}`, m)
@@ -6596,7 +6594,7 @@ aqua.sendText(m.chat, `➟ *Nomor HP :* ${anu.message.nomer_hp}\n➟ *Angka Shuz
 case 'artimimpi': case 'tafsirmimpi': {
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
-if (!text) throw `Example : ${prefix + command} belanja`
+if (!text) return reply ( `Example : ${prefix + command} belanja`)
 let anu = await primbon.tafsir_mimpi(text)
 if (anu.status == false) return reply(anu.message)
 aqua.sendText(m.chat, `➟ *Mimpi :* ${anu.message.mimpi}\n➟ *Arti :* ${anu.message.arti}\n➟ *Solusi :* ${anu.message.solusi}`, m)
@@ -6607,7 +6605,7 @@ aqua.sendText(m.chat, `➟ *Mimpi :* ${anu.message.mimpi}\n➟ *Arti :* ${anu.me
 case 'ramalanjodoh': case 'ramaljodoh': {
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
-if (!text) throw `Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`
+if (!text) return reply ( `Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
 let anu = await primbon.ramalan_jodoh(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
 if (anu.status == false) return reply(anu.message)
@@ -6619,7 +6617,7 @@ aqua.sendText(m.chat, `➟ *Nama Anda :* ${anu.message.nama_anda.nama}\n➟ *Lah
  case 'ramalanjodohbali': case 'ramaljodohbali': {
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
-if (!text) throw `Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`
+if (!text) return reply ( `Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
 let anu = await primbon.ramalan_jodoh_bali(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
 if (anu.status == false) return reply(anu.message)
@@ -6631,7 +6629,7 @@ aqua.sendText(m.chat, `➟ *Nama Anda :* ${anu.message.nama_anda.nama}\n➟ *Lah
 case 'suamiistri': {
             	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
-if (!text) throw `Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`
+if (!text) return reply ( `Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
 let anu = await primbon.suami_istri(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
 if (anu.status == false) return reply(anu.message)
@@ -6641,7 +6639,7 @@ aqua.sendText(m.chat, `➟ *Nama Suami :* ${anu.message.suami.nama}\n➟ *Lahir 
             
 
 case 'ramalancinta': case 'ramalcinta': {
-if (!text) throw `Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`
+if (!text) return reply ( `Example : ${prefix + command} Dika, 7, 7, 2005, Novia, 16, 11, 2004`)
 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
 let anu = await primbon.ramalan_cinta(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
 if (anu.status == false) return reply(anu.message)
@@ -6651,7 +6649,7 @@ aqua.sendText(m.chat, `➟ *Nama Anda :* ${anu.message.nama_anda.nama}\n➟ *Lah
             
 
 case 'artinama': {
-if (!text) throw `Example : ${prefix + command} Dika Ardianta`
+if (!text) return reply ( `Example : ${prefix + command} Dika Ardianta`
 let anu = await primbon.arti_nama(text)
 if (anu.status == false) return reply(anu.message)
 aqua.sendText(m.chat, `➟ *Nama :* ${anu.message.nama}\n➟ *Arti :* ${anu.message.arti}\n➟ *Catatan :* ${anu.message.catatan}`, m)
@@ -6660,7 +6658,7 @@ aqua.sendText(m.chat, `➟ *Nama :* ${anu.message.nama}\n➟ *Arti :* ${anu.mess
          
 
    case 'kecocokannama': case 'cocoknama': {
-if (!text) throw `Example : ${prefix + command} Dika, 7, 7, 2005`
+if (!text) return reply ( `Example : ${prefix + command} Dika, 7, 7, 2005`))
 let [nama, tgl, bln, thn] = text.split`,`
 let anu = await primbon.kecocokan_nama(nama, tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6670,7 +6668,7 @@ aqua.sendText(m.chat, `➟ *Nama :* ${anu.message.nama}\n➟ *Lahir :* ${anu.mes
             
 
 case 'kecocokanpasangan': case 'cocokpasangan': case 'pasangan': {
-if (!text) throw `Example : ${prefix + command} Dika|Novia`
+if (!text) return reply ( `Example : ${prefix + command} Dika|Novia`)
 let [nama1, nama2] = text.split`|`
 let anu = await primbon.kecocokan_nama_pasangan(nama1, nama2)
 if (anu.status == false) return reply(anu.message)
@@ -6680,7 +6678,7 @@ aqua.sendImage(m.chat,  anu.message.gambar, `➟ *Nama Anda :* ${anu.message.nam
             
 
 case 'jadianpernikahan': case 'jadiannikah': {
-if (!text) throw `Example : ${prefix + command} 6, 12, 2020`
+if (!text) return reply ( `Example : ${prefix + command} 6, 12, 2020`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.tanggal_jadian_pernikahan(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6690,7 +6688,7 @@ aqua.sendText(m.chat, `➟ *Tanggal Pernikahan :* ${anu.message.tanggal}\n➟ *k
             
 
 case 'sifatusaha': {
-if (!ext)throw `Example : ${prefix+ command} 28, 12, 2021`
+if (!ext)return reply ( `Example : ${prefix+ command} 28, 12, 2021`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.sifat_usaha_bisnis(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6700,7 +6698,7 @@ aqua.sendText(m.chat, `➟ *Lahir :* ${anu.message.hari_lahir}\n➟ *Usaha :* ${
             
 
 case 'rejeki': case 'rezeki': {
-if (!text) throw `Example : ${prefix + command} 7, 7, 2005`
+if (!text) return reply ( `Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.rejeki_hoki_weton(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6710,7 +6708,7 @@ aqua.sendText(m.chat, `➟ *Lahir :* ${anu.message.hari_lahir}\n➟ *Rezeki :* $
             
 
 case 'pekerjaan': case 'kerja': {
-if (!text) throw `Example : ${prefix + command} 7, 7, 2005`
+if (!text) return reply ( `Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.pekerjaan_weton_lahir(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6720,7 +6718,7 @@ aqua.sendText(m.chat, `➟ *Lahir :* ${anu.message.hari_lahir}\n➟ *Pekerjaan :
             
 
 case 'ramalannasib': case 'ramalnasib': case 'nasib': {
-if (!text) throw `Example : 7, 7, 2005`
+if (!text) return reply ( `Example : 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.ramalan_nasib(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6730,7 +6728,7 @@ aqua.sendText(m.chat, `➟ *Analisa :* ${anu.message.analisa}\n➟ *Angka Akar :
             
 
 case 'potensipenyakit': case 'penyakit': {
-if (!text) throw `Example : ${prefix + command} 7, 7, 2005`
+if (!text) return reply ( `Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.cek_potensi_penyakit(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6740,7 +6738,7 @@ aqua.sendText(m.chat, `➟ *Analisa :* ${anu.message.analisa}\n➟ *Sektor :* ${
             
 
 case 'artitarot': case 'tarot': {
-if (!text) throw `Example : ${prefix + command} 7, 7, 2005`
+if (!text) return reply ( `Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.arti_kartu_tarot(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6750,7 +6748,7 @@ aqua.sendImage(m.chat, anu.message.image, `➟ *Lahir :* ${anu.message.tgl_lahir
             
 
 case 'fengshui': {
-if (!text) throw `Example : ${prefix + command} Dika, 1, 2005\n\nNote : ${prefix + command} Nama, gender, tahun lahir\nGender : 1 untuk laki-laki & 2 untuk perempuan`
+if (!text) return reply ( `Example : ${prefix + command} Dika, 1, 2005\n\nNote : ${prefix + command} Nama, gender, tahun lahir\nGender : 1 untuk laki-laki & 2 untuk perempuan`)
 let [nama, gender, tahun] = text.split`,`
 let anu = await primbon.perhitungan_feng_shui(nama, gender, tahun)
 if (anu.status == false) return reply(anu.message)
@@ -6760,7 +6758,7 @@ aqua.sendText(m.chat, `➟ *Nama :* ${anu.message.nama}\n➟ *Lahir :* ${anu.mes
             
 
 case 'haribaik': {
-if (!text) throw `Example : ${prefix + command} 7, 7, 2005`
+if (!text) return reply ( `Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.petung_hari_baik(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6770,7 +6768,7 @@ aqua.sendText(m.chat, `➟ *Lahir :* ${anu.message.tgl_lahir}\n➟ *Kala Tinanta
             
 
 case 'harisangar': case 'taliwangke': {
-if (!text) throw `Example : ${prefix + command} 7, 7, 2005`
+if (!text) return reply ( `Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.hari_sangar_taliwangke(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6780,7 +6778,7 @@ aqua.sendText(m.chat, `➟ *Lahir :* ${anu.message.tgl_lahir}\n➟ *Hasil :* ${a
            
 
  case 'harinaas': case 'harisial': {
-if (!text) throw `Example : ${prefix + command} 7, 7, 2005`
+if (!text) return reply ( `Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.primbon_hari_naas(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6790,7 +6788,7 @@ aqua.sendText(m.chat, `➟ *Hari Lahir :* ${anu.message.hari_lahir}\n➟ *Tangga
             
 
 case 'nagahari': case 'harinaga': {
-if (!text) throw `Example : ${prefix + command} 7, 7, 2005`
+if (!text) return reply ( `Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.rahasia_naga_hari(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6800,7 +6798,7 @@ aqua.sendText(m.chat, `➟ *Hari Lahir :* ${anu.message.hari_lahir}\n➟ *Tangga
             
 
 case 'arahrejeki': case 'arahrezeki': {
-if (!text) throw `Example : ${prefix + command} 7, 7, 2005`
+if (!text) return reply ( `Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.primbon_arah_rejeki(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6810,7 +6808,7 @@ aqua.sendText(m.chat, `➟ *Hari Lahir :* ${anu.message.hari_lahir}\n➟ *tangga
             
 
 case 'peruntungan': {
-if (!text) throw `Example : ${prefix + command} DIka, 7, 7, 2005, 2022\n\nNote : ${prefix + command} Nama, tanggal lahir, bulan lahir, tahun lahir, untuk tahun`
+if (!text) return reply ( `Example : ${prefix + command} DIka, 7, 7, 2005, 2022\n\nNote : ${prefix + command} Nama, tanggal lahir, bulan lahir, tahun lahir, untuk tahun`)
 let [nama, tgl, bln, thn, untuk] = text.split`,`
 let anu = await primbon.ramalan_peruntungan(nama, tgl, bln, thn, untuk)
 if (anu.status == false) return reply(anu.message)
@@ -6820,7 +6818,7 @@ aqua.sendText(m.chat, `➟ *Nama :* ${anu.message.nama}\n➟ *Lahir :* ${anu.mes
             
 
 case 'weton': case 'wetonjawa': {
-if (!text) throw `Example : ${prefix + command} 7, 7, 2005`
+if (!text) return reply ( `Example : ${prefix + command} 7, 7, 2005`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.weton_jawa(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6830,7 +6828,7 @@ aqua.sendText(m.chat, `➟ *Tanggal :* ${anu.message.tanggal}\n➟ *Jumlah Neptu
             
 
 case 'sifat': case 'karakter': {
-if (!text) throw `Example : ${prefix + command} Dika, 7, 7, 2005`
+if (!text) return reply ( `Example : ${prefix + command} Dika, 7, 7, 2005`)
 let [nama, tgl, bln, thn] = text.split`,`
 let anu = await primbon.sifat_karakter_tanggal_lahir(nama, tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6840,7 +6838,7 @@ aqua.sendText(m.chat, `➟ *Nama :* ${anu.message.nama}\n➟ *Lahir :* ${anu.mes
             
 
 case 'keberuntungan': {
-if (!text) throw `Example : ${prefix + command} Dika, 7, 7, 2005`
+if (!text) return reply ( `Example : ${prefix + command} Dika, 7, 7, 2005`)
 let [nama, tgl, bln, thn] = text.split`,`
 let anu = await primbon.potensi_keberuntungan(nama, tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6850,7 +6848,7 @@ aqua.sendText(m.chat, `➟ *Nama :* ${anu.message.nama}\n➟ *Lahir :* ${anu.mes
            
 
  case 'memancing': {
-if (!text) throw `Example : ${prefix + command} 12, 1, 2022`
+if (!text) return reply ( `Example : ${prefix + command} 12, 1, 2022`)
 let [tgl, bln, thn] = text.split`,`
 let anu = await primbon.primbon_memancing_ikan(tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
@@ -6860,7 +6858,7 @@ aqua.sendText(m.chat, `➟ *Tanggal :* ${anu.message.tgl_memancing}\n➟ *Hasil 
             
 
 case 'masasubur': {
-if (!text) throw `Example : ${prefix + command} 12, 1, 2022, 28\n\nNote : ${prefix + command} hari pertama menstruasi, siklus`
+if (!text) return reply ( `Example : ${prefix + command} 12, 1, 2022, 28\n\nNote : ${prefix + command} hari pertama menstruasi, siklus`)
 let [tgl, bln, thn, siklus] = text.split`,`
 let anu = await primbon.masa_subur(tgl, bln, thn, siklus)
 if (anu.status == false) return reply(anu.message)
@@ -6870,7 +6868,7 @@ aqua.sendText(m.chat, `➟ *Hasil :* ${anu.message.result}\n➟ *Catatan :* ${an
             
 
 case 'zodiak': case 'zodiac': {
-if (!text) throw `Example : ${prefix+ command} 7 7 2005`
+if (!text) return reply ( `Example : ${prefix+ command} 7 7 2005`)
 let zodiak = [
     ["capricorn", new Date(1970, 0, 1)],
     ["aquarius", new Date(1970, 0, 20)],
@@ -6892,7 +6890,7 @@ function getZodiac(month, day) {
     return zodiak.find(([_,_d]) => d >= _d)[0]
 }
 let date = new Date(text)
-if (date == 'Invalid Date') throw date
+if (date == 'Invalid Date') return reply ( date)
 let d = new Date()
 let [tahun, bulan, tanggal] = [d.getFullYear(), d.getMonth() + 1, d.getDate()]
 let birth = [date.getFullYear(), date.getMonth() + 1, date.getDate()]
@@ -6907,7 +6905,7 @@ aqua.sendText(m.chat, `➟ *Zodiak :* ${anu.message.zodiak}\n➟ *Nomor :* ${anu
             
 
 case 'shio': {
-if (!text) throw `Example : ${prefix + command} tikus\n\nNote : For Detail https://primbon.com/shio.htm`
+if (!text) return reply ( `Example : ${prefix + command} tikus\n\nNote : For Detail https://primbon.com/shio.htm`)
 let anu = await primbon.shio(text)
 if (anu.status == false) return reply(anu.message)
 aqua.sendText(m.chat, `➟ *Hasil :* ${anu.message}`, m)
@@ -6920,7 +6918,7 @@ case 'iqra': {
 			if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
 		oh = `Example : ${prefix + command} 3\n\nIQRA Yang tersedia : 1,2,3,4,5,6`
-		if (!text) throw oh
+		if (!text) return reply ( oh)
 		yy = await getBuffer(`https://islamic-api-indonesia.herokuapp.com/api/data/pdf/iqra${text}`)
 		aqua.sendMessage(m.chat, {document: yy, mimetype: 'application/pdf', fileName: `iqra${text}.pdf`}, {quoted:m}).catch ((err) => reply(oh))
 		}
@@ -6952,7 +6950,7 @@ Format yang tersedia : pdf, docx, pptx, xlsx`)
 case 'hadis': case 'hadist': {
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
-		if (!args[0]) throw `Contoh:
+		if (!args[0]) return reply ( `Contoh:
 ${prefix + command} bukhari 1
 ${prefix + command} abu-daud 1
 
@@ -6972,8 +6970,8 @@ nasai
 malik
 1 - 1594
 muslim
-1 - 5362`
-		if (!args[1]) throw `Hadis yang ke berapa?\n\ncontoh:\n${prefix + command} muslim 1`
+1 - 5362`)
+		if (!args[1]) return reply ( `Hadis yang ke berapa?\n\ncontoh:\n${prefix + command} muslim 1`)
 		try {
 		let res = await fetchJson(`https://islamic-api-indonesia.herokuapp.com/api/data/json/hadith/${args[0]}`)
 		let { number, arab, id } = res.find(v => v.number == args[1])
@@ -6992,8 +6990,8 @@ ${id}`)
 case 'alquran': {
 			if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
-		if (!args[0]) throw `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah surah Al-Fatihah ayat 2 beserta audionya, dan ayatnya 1 aja`
-		if (!args[1]) throw `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah surah Al-Fatihah ayat 2 beserta audionya, dan ayatnya 1 aja`
+		if (!args[0]) return reply ( `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah surah Al-Fatihah ayat 2 beserta audionya, dan ayatnya 1 aja`)
+		if (!args[1]) return reply ( `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah surah Al-Fatihah ayat 2 beserta audionya, dan ayatnya 1 aja`)
 		let res = await fetchJson(`https://islamic-api-indonesia.herokuapp.com/api/data/quran?surah=${args[0]}&ayat=${args[1]}`)
 		let txt = `*Arab* : ${res.result.data.text.arab}
 *English* : ${res.result.data.translation.en}
@@ -7009,8 +7007,8 @@ case 'alquran': {
 case 'tafsirsurah': {
 			if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		db.users[sender].limit -= 1 // -1 limit
-		if (!args[0]) throw `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah tafsir surah Al-Fatihah ayat 2`
-		if (!args[1]) throw `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah tafsir surah Al-Fatihah ayat 2`
+		if (!args[0]) return reply ( `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah tafsir surah Al-Fatihah ayat 2`)
+		if (!args[1]) return reply ( `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah tafsir surah Al-Fatihah ayat 2`)
 		let res = await fetchJson(`https://islamic-api-indonesia.herokuapp.com/api/data/quran?surah=${args[0]}&ayat=${args[1]}`)
 		let txt = `「 *Tafsir Surah*  」
 
@@ -7062,11 +7060,11 @@ break
             
 
 case 'setcmd': {
-if (!m.quoted) throw 'Reply Pesan!'
-if (!m.quoted.fileSha256) throw 'SHA256 Hash Missing'
-if (!text) throw `Untuk Command Apa?`
+if (!m.quoted) return reply ( 'Reply Pesan!')
+if (!m.quoted.fileSha256) return reply ( 'SHA256 Hash Missing')
+if (!text) return reply ( `Untuk Command Apa?`)
 let hash = m.quoted.fileSha256.toString('base64')
-if (global.db.sticker[hash] && global.db.sticker[hash].locked) throw 'You have no permission to change this sticker command'
+if (global.db.sticker[hash] && global.db.sticker[hash].locked) return reply ( 'You have no permission to change this sticker command')
 global.db.sticker[hash] = {
     text,
     mentionedJid: m.mentionedJid,
@@ -7081,8 +7079,8 @@ reply(`Done!`)
 
 case 'delcmd': {
 let hash = m.quoted.fileSha256.toString('base64')
-if (!hash) throw `Tidak ada hash`
-if (global.db.sticker[hash] && global.db.sticker[hash].locked) throw 'You have no permission to delete this sticker command'              
+if (!hash) return reply ( `Tidak ada hash`)
+if (global.db.sticker[hash] && global.db.sticker[hash].locked) return reply ( 'You have no permission to delete this sticker command')     
 delete global.db.sticker[hash]
 reply(`Done!`)
             }
@@ -7102,10 +7100,10 @@ aqua.sendText(m.chat, teks, m, { mentions: Object.values(global.db.sticker).map(
 
 case 'lockcmd': {
 if (!isOwner) return reply(mess.owner)
-if (!m.quoted) throw 'Reply Pesan!'
-if (!m.quoted.fileSha256) throw 'SHA256 Hash Missing'
+if (!m.quoted) return reply ( 'Reply Pesan!')
+if (!m.quoted.fileSha256) return reply ( 'SHA256 Hash Missing')
 let hash = m.quoted.fileSha256.toString('base64')
-if (!(hash in global.db.sticker)) throw 'Hash not found in database'
+if (!(hash in global.db.sticker)) return reply ( 'Hash not found in database')
 global.db.sticker[hash].locked = !/^un/i.test(command)
 reply('Done!')
             }
@@ -7113,10 +7111,10 @@ reply('Done!')
             
 
 case 'addmsg': {
-if (!m.quoted) throw 'Reply Message Yang Ingin Disave Di Database'
-if (!text) throw `Example : ${prefix + command} nama file`
+if (!m.quoted) return reply ( 'Reply Message Yang Ingin Disave Di Database')
+if (!text) return reply ( `Example : ${prefix + command} nama file`)
 let msgs = global.db.database
-if (text.toLowerCase() in msgs) throw `'${text}' telah terdaftar di list pesan`
+if (text.toLowerCase() in msgs) return reply ( `'${text}' telah terdaftar di list pesan`)
 msgs[text.toLowerCase()] = quoted.fakeObj
 reply(`Berhasil menambahkan pesan di list pesan sebagai '${text}'
     
@@ -7128,9 +7126,9 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
             
 
 case 'getmsg': {
-if (!text) throw `Example : ${prefix + command} file name\n\nLihat list pesan dengan ${prefix}listmsg`
+if (!text) return reply ( `Example : ${prefix + command} file name\n\nLihat list pesan dengan ${prefix}listmsg`)
 let msgs = global.db.database
-if (!(text.toLowerCase() in msgs)) throw `'${text}' tidak terdaftar di list pesan`
+if (!(text.toLowerCase() in msgs)) return reply ( `'${text}' tidak terdaftar di list pesan`)
 aqua.copyNForward(m.chat, msgs[text.toLowerCase()], true)
             }
             break
@@ -7185,7 +7183,7 @@ if (!room) {
         { buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 }
     ]
     await aqua.sendButtonText(m.chat, buttons, `_Kamu Sedang Tidak Berada Di Sesi Anonymous, Tekan Button Untuk Mencari Partner_`)
-    throw false
+    return
 }
 let profile = await aqua.profilePictureUrl(room.b)
 let status = await aqua.fetchStatus(room.b)
@@ -7204,7 +7202,7 @@ if (!room) {
         { buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 }
     ]
     await aqua.sendButtonText(m.chat, buttons, `_Kamu Sedang Tidak Berada Di Sesi Anonymous, Tekan Button Untuk Mencari Partner_`)
-    throw false
+    return 
 }
 reply('Ok')
 let other = room.other(sender)
@@ -7222,7 +7220,7 @@ if (Object.values(this.anonymous).find(room => room.check(sender))) {
         { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
     ]
     await aqua.sendButtonText(m.chat, buttons, `_Kamu Masih Berada Di dalam Sesi Anonymous, Tekan Button Dibawah Ini Untuk Menghentikan Sesi Anonymous Anda_`, aqua.user.name, m)
-    throw false
+    return 
 }
 let room = Object.values(this.anonymous).find(room => room.state === 'WAITING' && !room.check(sender))
 if (room) {
@@ -7266,7 +7264,7 @@ if (!romeo) {
         { buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 }
     ]
     await aqua.sendButtonText(m.chat, buttons, `\`\`\`Kamu Sedang Tidak Berada Di Sesi Anonymous, Tekan Button Untuk Mencari Partner\`\`\``)
-    throw false
+    return
 }
 let other = romeo.other(sender)
 if (other) await aqua.sendText(other, `\`\`\`Partner Telah Meninggalkan Sesi Anonymous\`\`\``, m)
@@ -8038,18 +8036,16 @@ aqua.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
       
 } catch (err) {
 let er = util.format(err)
+m.reply(`*------------[ SYSTEM ERORR ]------------*\n\n${er}\n\n`)    
 
-m.reply(`*------------[ SYSTEM ERORR ]------------*\n\n${er}\n\n_Maaf terjadi kesalahan tak terduga, coba lagi nanti_`)    
+aqua.sendText(`628388024064@s.whatsapp.net`, `--------[ ADA YANG ERROR NIH ]-------\n\nutil.format(err)`, m)
 
-aqua.sendText(`628388024064@s.whatsapp.net`, util.format(err), m)
-
-//m.reply(util.format(err))
 console.log(util.format(err))
 
 let e = String(err) 
 if (e.includes("this.isZero")) {return}
 if (e.includes('Connection Closed')){ return }
-if (e.includes('Error waiting for process to terminate: No child processes')){ return }
+if (e.includes('Timed Out')){ return }
 console.log(color('Message Error : %s', 'white'), color(util.format(e), 'green'))
 
 }
