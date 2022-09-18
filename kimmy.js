@@ -6649,7 +6649,7 @@ aqua.sendText(m.chat, `➟ *Nama Anda :* ${anu.message.nama_anda.nama}\n➟ *Lah
             
 
 case 'artinama': {
-if (!text) return reply ( `Example : ${prefix + command} Dika Ardianta`
+if (!text) return reply ( `Example : ${prefix + command} Dika Ardianta`)
 let anu = await primbon.arti_nama(text)
 if (anu.status == false) return reply(anu.message)
 aqua.sendText(m.chat, `➟ *Nama :* ${anu.message.nama}\n➟ *Arti :* ${anu.message.arti}\n➟ *Catatan :* ${anu.message.catatan}`, m)
@@ -6658,7 +6658,7 @@ aqua.sendText(m.chat, `➟ *Nama :* ${anu.message.nama}\n➟ *Arti :* ${anu.mess
          
 
    case 'kecocokannama': case 'cocoknama': {
-if (!text) return reply ( `Example : ${prefix + command} Dika, 7, 7, 2005`))
+if (!text) return reply ( `Example : ${prefix + command} Dika, 7, 7, 2005`)
 let [nama, tgl, bln, thn] = text.split`,`
 let anu = await primbon.kecocokan_nama(nama, tgl, bln, thn)
 if (anu.status == false) return reply(anu.message)
