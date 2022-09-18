@@ -6196,7 +6196,7 @@ let media = await aqua.downloadAndSaveMediaMessage(quoted)
 if (/image/.test(mime)) {
     let anu = await TelegraPh(media)
     reply(util.format(anu))
-} else if (!/image/.test(mime)) {
+} else if (isQuotedVideo || isQuotedAudio || isQuotedSticker) {
     let anu = await UploadFileUgu(media)
     reply(util.format(anu))
 }
