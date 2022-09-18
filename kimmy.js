@@ -607,7 +607,7 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 
 if(!isMedias && !isGroup && !isText && !isAllMedia && !m.key.fromMe && !isImage && isSticker){
 let namastc = await pickRandom(setiker)
-console.log(namastc)
+//console.log(namastc)
 let buffer = fs.readFileSync(`./temp/stick/${namastc}.webp`)
 aqua.sendMessage(from, {sticker: buffer}, {quoted:m })
 } 
@@ -620,17 +620,17 @@ aqua.sendPresenceUpdate('composing', from)
 const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
  let yakuk = await parsePhoneNumber("+"+senderNumber)
  let idnya = yakuk.country
-  console.log(idnya)
+//  console.log(idnya)
 let kataa = body.replace(`@${botNumber.split("@")[0]}`, "")
 
 let simi = await fetchJson(`https://api.simsimi.net/v2/?text=${body}&lc=id`, {methods: "GET"})
 let sami = simi.success
-console.log(sami)
+//console.log(sami)
 //reply(sami).catch(() => reply(`Simi Gatau mau ngomong apa`))
  aqua.sendMessage(from,{text: sami},{quoted: m})
 //xdev.sendMessage(from, `${sami}`, text, {thumbnail : fakethumbnail, quoted: dev})
 } catch (err) {
-console.log(err)
+//console.log(err)
 return
 } 
  }
