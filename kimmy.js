@@ -3549,7 +3549,7 @@ console.log(res)
 console.log('[ T I K T O K ] downloader')
 
 //aqua.sendMessage(m.chat, {document: {url: res.audio, mimetype: 'audio/mpeg', fileName: `Tiktok Musik.mp3`}}, { quoted : m })
-aqua.sendMessage(from, { audio: {url: res.audio, mimetype: 'audio/mp4'}}, { quoted: m })
+aqua.sendMessage(from, { audio: {url: res.audio_original, mimetype: 'audio/mp4'}}, { quoted: m })
 })
 }
 db.users[sender].limit -= 1 // -1 limit
