@@ -62,7 +62,7 @@ global.api = (name, path = '/', query = {}, apikeyqueryname) => (name in global.
 
 const store = makeInMemoryStore({ logger: pino().child({ level: 'fatal', stream: 'store' }) })
 
-/*
+
 async function startAqua() {
     let { version, isLatest } = await fetchLatestBaileysVersion()
     const aqua = aquaConnect({
@@ -74,7 +74,8 @@ async function startAqua() {
         auth: state,
         version
     })
-*/
+
+/*
 async function startAqua() {
     const aqua = aquaConnect({
         logger: pino({ level: 'fatal' }),
@@ -83,7 +84,8 @@ async function startAqua() {
         //browser: ['Takim Tod','IOS','4.1.0'],
         auth: state,
     })
-/*
+
+
     console.log(chalk.bold.green(figlet.textSync('BOT MD', {
 		font: 'Standard',
 		horizontalLayout: 'default',
