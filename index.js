@@ -120,8 +120,21 @@ async function startAqua() {
     })
    
 
+aqua.ev.on('messages.upsert', async chatUpdate => {
+try{
+if (!chatUpdate.messages) return;
+var m = chatUpdate.messages[0] || chatUpdate.messages[chatUpdate.messages.length - 1]
+if (!m.message) return
+if (m.key && m.key.remoteJid === 'status@broadcast') return
+if (m.key.id.startsWith('BAE5') && m.key.id.length === 16) return
+m = simple.smsg(aqua, m, store)
+require('./kimmy')(aqua, m, chatUpdate,store)
+}catch (err){
+console.log(err)
+}
+})
 
-
+/*
     aqua.ev.on('messages.upsert', async chatUpdate => {
         //console.log(JSON.stringify(chatUpdate, undefined, 2))
         try {
@@ -137,6 +150,8 @@ async function startAqua() {
             console.log(err)
         }
     })
+*/
+
 /*
     aqua.ev.on('group-participants.update', async (anu) => {
 require('./massege/group.js')(aqua, anu)       
