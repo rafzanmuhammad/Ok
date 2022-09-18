@@ -60,7 +60,7 @@ let d = new Date
 
 global.api = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
 
-const store = makeInMemoryStore({ logger: pino().child({ level: 'fatal', stream: 'store' }) })
+const store = makeInMemoryStore({ logger: pino().child({ level: 'client', stream: 'store' }) })
 
 /*
 async function startAqua() {
@@ -77,9 +77,10 @@ async function startAqua() {
 */
 async function startAqua() {
     const aqua = aquaConnect({
-        logger: pino({ level: 'fatal' }),
+        logger: pino({ level: 'client' }),
         printQRInTerminal: true,
-        browser: ['Takim Tod','IOS','4.1.0'],
+        browser: ['Takim Tod Multi Device','Safari','1.0.0'],     
+        //browser: ['Takim Tod','IOS','4.1.0'],
         auth: state,
     })
 /*
@@ -388,7 +389,7 @@ await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options)
         console.log('Connected...', update)
     })
 
-  //  aqua.ev.on('creds.update', saveState)
+    aqua.ev.on('creds.update', saveState)
 
     // Add Other
 
