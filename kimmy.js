@@ -8066,7 +8066,7 @@ aqua.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
 let er = util.format(err)
 m.reply(`*------------[ SYSTEM ERORR ]------------*\n\n${er}\n\n`)    
 
-aqua.sendText(`628388024064@s.whatsapp.net`, `--------[ ADA YANG ERROR NIH ]-------\n\nutil.format(err)`, m)
+aqua.sendText(`628388024064@s.whatsapp.net`, `--------[ ADA YANG ERROR NIH ]-------\n\n${er}`, m)
 
 console.log(util.format(err))
 
