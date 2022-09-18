@@ -388,7 +388,7 @@ await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options)
         console.log('Connected...', update)
     })
 
-    aqua.ev.on('creds.update', saveState)
+  //  aqua.ev.on('creds.update', saveState)
 
     // Add Other
 
