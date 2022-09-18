@@ -1,6 +1,6 @@
 {
   "name": "Aqua Bot Md",
-  "version": "3.0.0",
+  "version": "0.2.1",
   "description": "WhatsApp Using Lib Baileys Multi Device",
   "main": "index.js",
   "type": "commonjs",
