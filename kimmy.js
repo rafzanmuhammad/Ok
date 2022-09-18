@@ -387,7 +387,6 @@ sourceUrl: 'https://www.youtube.com/watch?v=JJwLesqqcmM'
      
 //Seend StickerUrl
 const sendStickerUrl = async(to, url) => {
-console.log(chalk.black(chalk.bgWhite('[ Otw Build ]')))
 var names = getRandom('.webp')
 var namea = getRandom('.png')
 var download = function (uri, filename, callback) {
@@ -403,7 +402,6 @@ exec(`ffmpeg -i ${filess} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop
 exec(`webpmux -set exif ./src/data.exif ${asw} -o ${asw}`, async (error) => {
 let media = fs.readFileSync(asw)
 aqua.sendMessage(to, {sticker:media}, m)
-console.log(chalk.black(chalk.bgWhite('[ Succes ]')))
 fs.unlinkSync(names)
     fs.unlinkSync(namea)
 });
@@ -725,7 +723,7 @@ cron.schedule('00 12 * * *', () => {
 let user = Object.keys(global.db.users)
 let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
 for (let jid of user) global.db.users[jid].limit = limitUser
-console.log('Reseted Limit')
+//console.log('Reseted Limit')
         }, {
             scheduled: true,
             timezone: "Asia/Jakarta"
@@ -734,7 +732,7 @@ cron.schedule('00 00 * * *', () => {
 let user = Object.keys(global.db.users)
 let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
 for (let jid of user) global.db.users[jid].limit = limitUser
- console.log('Reseted Limit')
+// console.log('Reseted Limit')
         }, {
             scheduled: true,
             timezone: "Asia/Jakarta"
@@ -1225,7 +1223,7 @@ break
 
 case 'getname':
 if(isGroup) {
-console.log(m.quoted.sender)
+//console.log(m.quoted.sender)
 const sname = await aqua.getName(m.quoted.sender)
 reply (sname)
 } else if(!isGroup) {
@@ -1251,7 +1249,7 @@ aqua.sendMessage(from,{ image: media,caption:'NIH' },{quoted:m})
 }
 )
 .catch((error) => {
-console.log(error); 
+//console.log(error); 
 }
 )
 });
@@ -1261,7 +1259,7 @@ break
 case 'kodepos':
 try{
 let nana = await kodepos(q)
-console.log(nana)
+////console.log(nana)
 let teks =`Berikut Daftar kode pos\nYang telah di temukan\n\n`
 for (let i of nana){
  teks +=`Provinsi: ${i.province}\nKota: ${i.city}\nKecamatan: ${i.subdistrict}\nKabupanten: ${i.urban}\nKode Pos: ${i.postalcode}\n\n═════════════════\n\n`
@@ -1269,7 +1267,7 @@ for (let i of nana){
 reply (teks)
 } catch (err){
 reply ("Kodepos tidak di temukan")
-console.log(err)
+//console.log(err)
 }
 break  
   
@@ -1757,7 +1755,7 @@ await fs.unlinkSync(foto)
 });
   
 } catch(err){
-console.log(err)
+//console.log(err)
 aqua.sendMessage(`628388024064@s.whatsapp.net`, {text: `${err}`})
 //let autoButton = Remove? mokk : mokk
 //await aqua.sendButImage(id, text1, desc1, gam1, autoButton, options)
@@ -2340,7 +2338,7 @@ case  'read': {
  case 'stalkff':{
 if (!args[0])  return reply ('id ff lu bang')
 i = await calip.search.freefireid(args[0])
-console.log(i)
+//console.log(i)
 let lajh = `*STALK FREE FIRE*
 
 • Nick : ${i.result}
@@ -2353,7 +2351,7 @@ break
 case 'cuaca':{
 if (!args[0])  return reply ('Nama wilayah nya kak mana')
 calip.search.cuaca(args[0]).then(res => {
-(console.log(res))
+//(console.log(res))
 reply(`*---------[ Data Berhasil Diperoleh ]---------*
 
 • Wilayah: ${args[0]}
@@ -2372,7 +2370,7 @@ break
 case 'mediafiredl': case 'mediafire':{
 if (!isPremium && !mek.key.fromMe && !isOwner) return reply(mess.prem)
 let nana = await mediafiredl(q)
-console.log(nana)
+//console.log(nana)
 let tuks =`*---------[ Data Berhasil Diperoleh ]---------*
 
 File Name : ${nana.filename}
@@ -2393,7 +2391,7 @@ case 'jadwalsholat':{
 		db.users[sender].limit -= 1 // -1 limit
     if (args.length == 0) return reply(`Example: ${prefix + command} Yogyakarta`) 
 i = await xfar.JadwalSholat(q)
-console.log(i)
+//console.log(i)
 let ini_txt = `*-------「 JADWAL SHOLAT 」-------*
 
 📅 Tanggal : ${i.tanggal}
@@ -2412,7 +2410,7 @@ case 'heppymod': case 'happymod':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 dataa = await calip.search.happymod(q)
 data = dataa.result
-console.log(data)
+//console.log(data)
 let ini_txt = '❉─────────────────────❉\n'
  for (var i of data) {
  ini_txt += `\n*------------「 Happy Mod 」-----------*\n
@@ -2433,7 +2431,7 @@ case 'por':{
         if (!q) return reply (`Example: ${prefix + command} jong`)
         data = await fetchJson(`https://sewa4yeye.herokuapp.com/api/search/pornhub?query=${q}&apikey=BetaBotz`)
         dataa = data.result.results
-        console.log(dataa)
+      //  console.log(dataa)
         let ini_txt = '❉─────────────────────❉\n'
         for(var i of dataa){
         ini_txt += `POR HUB\n
@@ -2496,7 +2494,7 @@ let ini_txt = '*========[ JADWAL TV NOW ]========*'
 					//aqua.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: dev, mimetype: 'audio/mp4', ptt:true})
 					fs.unlinkSync(ranm)
 					})   } catch (err){
-					console.log(err)
+					//console.log(err)
                	reply (`Kode bahasanya mana kak?\n Contoh: ${prefix}tts id saya suka tidur\n\nAtau ketik ${prefix}kodebahasa untuk mengetahui kode bahasa lainya `)
                  }
 					db.users[sender].limit -= 1 // -1 limit
@@ -2562,7 +2560,7 @@ if (!isGroup) return
 try {
 var ppimg = await aqua.profilePictureUrl(m.chat, 'image')
 } catch (err) {
-console.log(err)
+//console.log(err)
 var ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 }
 await aqua.sendMessage(m.chat, { image: { url: ppimg }}, { quoted: m })
@@ -2692,7 +2690,7 @@ let a = await aqua.sendMessage(from, { react: { text: "𝘿𝘿𝘿𝘿𝘿𝘿�
 aqua.sendMessage(Pe, { text: "Oii kimoyasaaa" }, { quoted: fbug()});
 reply(`Berhasil mengirim Bug ke Nomer ${Pe.split("@")[0]}`)
 } catch (err){
-console.log(err)
+//console.log(err)
 reply("Gagal mengirim bug, Terjadi Error")
 }
 break
@@ -2746,7 +2744,7 @@ await makeSticker(media,Sticker, StickerTypes)
 await fs.unlinkSync(olalah)
 
 } catch (err){  
-console.log(err)
+//console.log(err)
 let oppp = await aqua.profilePictureUrl(m.quoted.sender, 'image').catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png')
 let anu4 = `https://some-random-api.ml/canvas/${command}?avatar=${oppp}`
 let ranp = getRandom('.gif')
@@ -2862,7 +2860,7 @@ aqua.sendMessage(from, {image: gambar, caption: "Nih"  }, {quoted: m})
 fs.unlinkSync(ahah) 
 })
 }catch(err){
-console.log(err)
+//console.log(err)
 }
 } else if (isQuotedTag || isQuotedReply) {
 if (m.message.extendedTextMessage === null || m.message.extendedTextMessage === undefined) return reply ('Reply targetnya kak atau Tag')
@@ -2965,10 +2963,10 @@ break
 case 'ghstalk':{
 	if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 let nana = await ghstalk(q)
-console.log(nana)
+//console.log(nana)
 let foto = nana.avatar_url
 let gambar = await getBuffer(foto)
-console.log(foto)
+//console.log(foto)
 let toks =`
 Nama: ${nana.name}
 Bio: ${nana.bio}
@@ -2983,7 +2981,7 @@ Lokasi: ${nana.location}
 Website: ${nana.blog}
 Github url: ${nana.url}
 `
-console.log(toks)
+//console.log(toks)
 await aqua.sendMessage(from, {image:gambar, caption: toks},{quoted: m})
 //await xdev.sendMedia (from, foto, dev, {caption: toks})
 }
@@ -3151,7 +3149,7 @@ break
 case 'fajar-news':
 if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 FajarNews().then(async(res) => {
-console.log(res) 
+//console.log(res) 
 no = 0
 teks = ".•♫•♬.•♫••♬•♫•.•♬•♫•.•♫•♬.•♫••♬•♫•.•♬•♫•."
 for (let i of res) {
@@ -3503,7 +3501,7 @@ if(!isUrl) return reply (`Masukan link tiktok dengan benar\nContoh: ${prefix + c
 if (args.length < 1) return reply(`Link?\nContoh: ${prefix + command} https://vm.tiktok.com/ZSRfArwXH/`)
 reply (mess.wait)
 calip.downloader.tiktok(args[0]).then(res => {
-console.log(res)
+//console.log(res)
 
 aqua.sendMessage(m.chat, { video: { url: res.nowm }, caption: `*------------[ TIKTOKNOWM ]------------*
 
@@ -3526,7 +3524,7 @@ if (args.length < 1) return reply('Link?')
 if (!args[0]) return reply (`linkny?`)
 reply (mess.wait)
 calip.downloader.tiktok(args[0]).then(res => {
-console.log('[ T I K T O K ] downloader')
+//console.log('[ T I K T O K ] downloader')
 aqua.sendMessage(m.chat, { video: { url: res.watermak }, caption: `*------------[ TIKTOKNOWM ]------------*
 
 • Autor: ${res.author}
@@ -3545,8 +3543,8 @@ if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit)
 if (args.length < 0) return reply ('Link?')
 reply (mess.wait)
 calip.downloader.tiktok2(args[0]).then( async res => {
-console.log(res)
-console.log('[ T I K T O K ] downloader')
+//console.log(res)
+//console.log('[ T I K T O K ] downloader')
 
 //aqua.sendMessage(m.chat, {document: {url: res.audio, mimetype: 'audio/mpeg', fileName: `Tiktok Musik.mp3`}}, { quoted : m })
 aqua.sendMessage(from, { audio: {url: res.audio_original, mimetype: 'audio/mp4'}}, { quoted: m })
@@ -3589,7 +3587,7 @@ await aqua.sendMessage(from,{sticker: nah},{quoted: m})
 await fs.unlinkSync(stok)
 await fs.unlinkSync(media)
 } catch (err){
-console.log(err)
+//console.log(err)
 }
 }
 break
@@ -3647,12 +3645,12 @@ let fotony = budy.includes("https://pin.it/")
 
 if(fotony){
 calip.downloader.pindl(q).then(res => {
-(console.log(res))
+//console.log(res)
 aqua.sendMessage(from, {image:{url: res.result}}, {quoted:m})
 })
 } else {
 calip.downloader.pindl(q).then(res => {
-(console.log(res))
+//console.log(res)
 aqua.sendMessage(from, {video:{url: res.result}}, {quoted:m})
 })
 }
@@ -3663,7 +3661,7 @@ break
 case 'igstory': {
 if (!q) return reply ( `*Perintah ini untuk mengunduh postingan instagram story*\n\nContoh:\n${prefix + command} alinursetiawan24`)
 let res = await fetch(`https://megayaa.herokuapp.com/api/igstori?username=${q}`)
-console.log(res)
+//console.log(res)
 if (!res.ok) return reply ('Error')
 let json = await res.json()
 if (!json.status) return reply (json)
@@ -3688,24 +3686,24 @@ let igp = budy.includes("https://www.instagram.com/p/")
 if(igreel){
 let results = await instagramdlv3(q)
 for (const { url } of results) await aqua.sendMedia2(from, url, m, {caption: "*INSTAGRAM DOWNLOAD*"})
-console.log(results)
+//console.log(results)
 
 } else if(igtv){
 Download.insta_post(q).then(async (data) => {
 aqua.sendMessage(from, {caption: data.title, video: {url: data.post1.url} }, {quoted: m})
-console.log(data)
-console.log(data.url)
+//console.log(data)
+//console.log(data.url)
 })
 } else if(igp){
 let results = await instagramdlv3(args[0])
 for (const { url } of results) await aqua.sendMedia2(from, url, m, {caption: "*INSTAGRAM DOWNLOAD*"})
-console.log(results)
+//console.log(results)
 } 
 /*
 else {
 instagramStory(q).then(async (data) => {
 aqua.sendMedia2(from, data.data, m)
-console.log(data)
+//console.log(data)
 })
 */
 } catch (err){
@@ -3720,7 +3718,7 @@ case 'twiter': case 'twitter': case 'twitterdl': {
 reply (mess.wait)
 let results = await twitterdlv2(q)
 for (const { url } of results) await aqua.sendMedia2(from, url, m, {caption: "*TWITTER DOWNLOAD*"})
-console.log(results)
+//console.log(results)
 }
 break
 
@@ -3754,7 +3752,7 @@ aqua.sendMessage(from, {caption: `───────────────�
 • Like : ${data.avarage_likes}                                  
 • Komentar : ${data.avarage_comments}                                           
 • Terkhir Update : ${data.avarage_post_time}`, image: {url: data.profile_pic } }, {quoted: m})
-console.log(data)
+//console.log(data)
 })
 } catch(err){
 	return reply ("Erorr Akun di Private")
@@ -4916,7 +4914,7 @@ if (args[0] === "lagu") {
     })
     await sleep(60000)
     if (tebaklagu.hasOwnProperty(sender.split('@')[0])) {
-    console.log("Jawaban: " + result.jawaban)
+    //console.log("Jawaban: " + result.jawaban)
     aqua.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Tebak Lagu' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklagu[sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, aqua.user.name, m)
     delete tebaklagu[sender.split('@')[0]]
     
@@ -4930,7 +4928,7 @@ if (args[0] === "lagu") {
     })
     await sleep(60000)
     if (tebakgambar.hasOwnProperty(sender.split('@')[0])) {
-    console.log("Jawaban: " + result.jawaban)
+    //console.log("Jawaban: " + result.jawaban)
     aqua.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakgambar[sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, aqua.user.name, m)
     delete tebakgambar[sender.split('@')[0]]
     
@@ -4944,7 +4942,7 @@ if (args[0] === "lagu") {
     })
     await sleep(60000)
     if (tebakkata.hasOwnProperty(sender.split('@')[0])) {
-    console.log("Jawaban: " + result.jawaban)
+    //console.log("Jawaban: " + result.jawaban)
     aqua.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Tebak Kata' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkata[sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, aqua.user.name, m)
     delete tebakkata[sender.split('@')[0]]
     
@@ -4958,7 +4956,7 @@ if (args[0] === "lagu") {
     })
     await sleep(60000)
     if (tebakkalimat.hasOwnProperty(sender.split('@')[0])) {
-    console.log("Jawaban: " + result.jawaban)
+    //console.log("Jawaban: " + result.jawaban)
     aqua.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Tebak Kalimat' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkalimat[sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, aqua.user.name, m)
     delete tebakkalimat[sender.split('@')[0]]
     
@@ -4972,7 +4970,7 @@ if (args[0] === "lagu") {
     })
     await sleep(60000)
     if (tebaklirik.hasOwnProperty(sender.split('@')[0])) {
-    console.log("Jawaban: " + result.jawaban)
+    //console.log("Jawaban: " + result.jawaban)
     aqua.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Tebak Lirik' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklirik[sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, aqua.user.name, m)
     delete tebaklirik[sender.split('@')[0]]
     
@@ -4987,7 +4985,7 @@ if (args[0] === "lagu") {
     })
     await sleep(60000)
     if (caklontong.hasOwnProperty(sender.split('@')[0])) {
-    console.log("Jawaban: " + result.jawaban)
+    //console.log("Jawaban: " + result.jawaban)
     aqua.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Tebak Lontong' }, type: 1 }], `Waktu Habis\nJawaban:  ${caklontong[sender.split('@')[0]]}\nDeskripsi : ${caklontong_desk[sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, aqua.user.name, m)
     delete caklontong[sender.split('@')[0]]
 		    delete caklontong_desk[sender.split('@')[0]]
@@ -5010,7 +5008,7 @@ aqua.sendText(m.chat, `*Berapa hasil dari: ${result.soal.toLowerCase()}*?\n\nWak
 })
 await sleep(result.waktu)
 if (kuismath.hasOwnProperty(sender.split('@')[0])) {
-    console.log("Jawaban: " + result.jawaban)
+    //console.log("Jawaban: " + result.jawaban)
     reply("Waktu Habis\nJawaban: " + kuismath[sender.split('@')[0]])
     delete kuismath[sender.split('@')[0]]
 }
@@ -5776,12 +5774,12 @@ case 'bctext': {
                 let anu = await store.chats.all().map(v => v.id)        
 		for (let yoi of anu) {
 		    await sleep(5000)
-		console.log(chalk.black(chalk.bgWhite('[ Otw Kirim Broadcast ]')))    
+		//console.log(chalk.black(chalk.bgWhite('[ Otw Kirim Broadcast ]')))    
                       let txtt = `${text}`
                       aqua.sendMessage(yoi, { text : txtt }, { quoted: floc })                                                         
 		}
 		reply('Sukses Broadcast')
-		console.log(chalk.black(chalk.bgWhite('[ Succes ]')))
+		////console.log(chalk.black(chalk.bgWhite('[ Succes ]')))
             }
             break
            
@@ -6041,7 +6039,7 @@ let buffer = await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURI(q
 aqua.sendMedia(from, buffer, m)
 //await aqua.sendMessage(m.chat, {sticker: {url:`https://api.xteam.xyz/attp?file&text=${encodeURI(q)}` }}, { quoted: m }, { packname: global.packname, author: global.author })
 } catch (err) {
- console.log(err)
+ ////console.log(err)
  reply(`Maap sedang error coba lagi besok`)            
 }
 db.users[sender].limit -= 1 // -1 limit
@@ -6551,7 +6549,8 @@ if (!isPremium && global.db.users[sender].limit < 1) return reply(mess.endLimit)
 	textpro("https://textpro.me/pornhub-style-logo-online-generator-free-977.html", [
     `${teks1}`,`${teks2}`])
   .then((data) => aqua.sendMessage(m.chat, { image: { url: data }, caption: `Nih Hasil Dari: text` }, { quoted: m }))
-  .catch((err) => console.log(err));
+  .catch((err) => //console.log(err)
+  );
    break
 
 
@@ -7815,7 +7814,7 @@ fs.writeFileSync('./database/vn.json', JSON.stringify(audionye))
 fs.unlinkSync(`./temp/audio/${q}.mp3`)
 reply (`Sukses delete vn ${q}`)
 } catch (err){
-console.log(err)
+//console.log(err)
 reply ('eror kak')
 }
 }
@@ -7846,7 +7845,7 @@ fs.unlinkSync(`./temp/stick/${q}.webp`)
 fs.writeFileSync('./audio/stick.json', JSON.stringify(setiker))
 reply (`Succes delete sticker ${q}!`)
 } catch (err) {
-console.log(err)
+//console.log(err)
 reply (`Gagal delete sticker ${q}!`)
 }
 }
@@ -8068,13 +8067,13 @@ m.reply(`*------------[ SYSTEM ERORR ]------------*\n\n${er}\n\n`)
 
 aqua.sendText(`628388024064@s.whatsapp.net`, `--------[ ADA YANG ERROR NIH ]-------\n\n${er}`, m)
 
-console.log(util.format(err))
+//console.log(util.format(err))
 
 let e = String(err) 
 if (e.includes("this.isZero")) {return}
 if (e.includes('Connection Closed')){ return }
 if (e.includes('Timed Out')){ return }
-console.log(color('Message Error : %s', 'white'), color(util.format(e), 'green'))
+//console.log(color('Message Error : %s', 'white'), color(util.format(e), 'green'))
 
 }
 }
