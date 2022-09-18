@@ -4524,6 +4524,33 @@ aqua.sendMessage(m.chat, {audio: ini_buffer, mimetype:'audio/mpeg', ptt:true }, 
 break
 */                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
  
+ case 'setppbot':
+ case 'setpp':
+if(!isOwner) return reply (mess.owner)
+if(isImage || isQuotedImage){
+const media = await aqua.downloadAndSaveMediaMessage(quoted)
+const { img } = await exports.generateProfilePicture(media)
+ await aqua.query({ tag: 'iq',  attrs: { to: botNumber, type:'set', xmlns: 'w:profile:picture'}, content: [{ tag: 'picture', attrs: { type: 'image' }, content: img }]})       
+ reply ("Sukses")    
+ } else reply (`Kirim/balas gambar dengan caption ${command} untuk mengubah foto profil bot`)
+ break
+
+
+case 'setppgc':
+case 'setppgb':
+case 'setppgroup':
+if (!isAdmins && !isOwner) return reply (mess.admin)
+if (!isGroup) return reply(mess.group)
+ if (!isBotAdmins) return reply (mess.botAdmin)
+  if(isImage || isQuotedImage){
+  const media = await aqua.downloadAndSaveMediaMessage(quoted)
+  const { img } = await exports.generateProfilePicture(media)
+ await aqua.query({ tag: 'iq',  attrs: { to: from, type:'set', xmlns: 'w:profile:picture'}, content: [{ tag: 'picture', attrs: { type: 'image' }, content: img }]})       
+ reply ("Sukses")    
+ } else reply (`Kirim/balas gambar dengan caption ${command} untuk mengubah foto profil`)
+ break
+
+/*
 case 'setpp':
 if (!isOwner) return reply (mess.owner)
 if (!quoted) reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}` )               
@@ -4557,6 +4584,7 @@ if (!quoted) reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}` )
                      reply (`Kirim/balas gambar dengan caption ${command} untuk mengubah foto profil bot`)
                    }
 break
+
 
 case 'setppgb':
 case 'setppgc':
@@ -4594,7 +4622,7 @@ if (!quoted) reply ( `Kirim/Reply Image Dengan Caption ${prefix + command}` )
                      reply (`Kirim/balas gambar dengan caption ${command} untuk mengubah foto profil grub`)
                    }
 break
-
+*/
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
  case 'bisakah':
 					bisakah = body.slice(1)
