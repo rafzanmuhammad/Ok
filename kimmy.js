@@ -5167,7 +5167,7 @@ case 'unban': case 'unbanned': {
 case 'unblock': {
 		if (!isOwner) return reply(mess.owner)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await aqua.updateBlockStatus(users, 'unblock').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+		await aqua.updateBlockStatus(users, 'unblock').then((res) => reply('Sukses Membuka Blokir'))
 	}
 	break
 	    
