@@ -6197,7 +6197,7 @@ if (/image/.test(mime)) {
     let anu = await TelegraPh(media)
     reply(util.format(anu))
 } else if (isQuotedVideo || isQuotedAudio || isQuotedSticker) {
-    let anu = await UploadFileUgu(media)
+    let anu = await TelegraPh(media)
     reply(util.format(anu))
 }
 await fs.unlinkSync(media)
