@@ -60,7 +60,7 @@ let d = new Date
 
 global.api = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
 
-const store = makeInMemoryStore({ logger: pino().child({ level: 'client', stream: 'store' }) })
+const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 
 /*
 async function startAqua() {
@@ -77,7 +77,7 @@ async function startAqua() {
 */
 async function startAqua() {
     const aqua = aquaConnect({
-        logger: pino({ level: 'client' }),
+        logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
         browser: ['Takim Tod Multi Device','Safari','1.0.0'],     
         //browser: ['Takim Tod','IOS','4.1.0'],
