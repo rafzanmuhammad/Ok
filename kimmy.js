@@ -496,7 +496,7 @@ let setting = global.db.settings[botNumber]
 		if (!('autoread' in setting)) setting.autoread = false
 		if (!('autoketik' in setting)) setting.autoketik = false
 		if (!('autorecord' in setting)) setting.autoketik = false
-		if (!('autoonline' in setting)) setting.autoonline = true
+		if (!('autoonline' in setting)) setting.autoonline = false
 		if (!('autooffline' in setting)) setting.autooffline = false
 	    } else global.db.settings[botNumber] = {
 		status: 0,
@@ -504,7 +504,7 @@ let setting = global.db.settings[botNumber]
 		autoread: false,
 		autoketik: false,
 		autorecord: false,
-		autoonline: true,
+		autoonline: false,
 		autooffline: false,
 	    }
         } catch (err) {
@@ -515,7 +515,7 @@ let setting = global.db.settings[botNumber]
 
 //Auto Ketik
 if (isAutoKetik) {
-aqua.sendPresenceUpdate('composing', m.chat)
+aqua.sendPresenceUpdate('composing', from)
 }
 	
 //Auto Read
@@ -605,7 +605,7 @@ aqua.sendMessage(from, { react: { text: emk, key: m.key } })
 }
 */
 
-if(!isMedias && !isText && !isAllMedia && !m.key.fromMe && !isImage && isSticker){
+if(!isMedias && !isGroup && !isText && !isAllMedia && !m.key.fromMe && !isImage && isSticker){
 let namastc = await pickRandom(setiker)
 console.log(namastc)
 let buffer = fs.readFileSync(`./temp/stick/${namastc}.webp`)
@@ -614,7 +614,7 @@ aqua.sendMessage(from, {sticker: buffer}, {quoted:m })
 
 //AUTO RESPON SIMI  
 //if (isQuotedTag || isQuotedReply) {
-if (!isGroup &&  !isAllMedia && !isMedias && !m.key.fromMe && !isImage) {
+if (!isGroup && !isAllMedia && !isMedias && !m.key.fromMe && !isImage) {
 	try{
 aqua.sendPresenceUpdate('composing', from) 
 const { findPhoneNumbersInText, parsePhoneNumber }= require('libphonenumber-js')
