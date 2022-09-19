@@ -5,23 +5,7 @@
 */
 
 require('./config')
-const { default: aquaConnect, 
-useSingleFileAuthState,
- DisconnectReason,
- fetchLatestBaileysVersion,
- generateWAMessage, 
-getContentType, 
-generateForwardMessageContent, 
-prepareWAMessageMedia,
- generateWAMessageFromContent,
- generateMessageID, 
-downloadContentFromMessage, 
-makeInMemoryStore, 
-jidDecode, 
-proto, 
-makeWASocket,
-relayMessage,
-mentionedJid } = require("@adiwajshing/baileys")
+const { default: aquaConnect, useSingleFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
 const { state, saveState } = useSingleFileAuthState(`./${sessionName}.json`)
 const pino = require('pino')
 const fs = require('fs')
