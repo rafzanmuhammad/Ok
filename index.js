@@ -103,7 +103,7 @@ async function startAqua() {
     }
     })
    
-
+/*
 aqua.ev.on('messages.upsert', async chatUpdate => {
 try{
 if (!chatUpdate.messages) return;
@@ -117,8 +117,9 @@ require('./kimmy')(aqua, mek, chatUpdate,store)
 console.log(err)
 }
 })
+*/
 
-/*
+
     aqua.ev.on('messages.upsert', async chatUpdate => {
         //console.log(JSON.stringify(chatUpdate, undefined, 2))
         try {
@@ -134,7 +135,7 @@ console.log(err)
             console.log(err)
         }
     })
-*/
+
 
 /*
     aqua.ev.on('group-participants.update', async (anu) => {
