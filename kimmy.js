@@ -4168,7 +4168,8 @@ reply(`Success Send Bug To: ${num}\nAmount Spam: ${jumlah}`)
 break
 
 case 'bugstik':{
-if (!isOwner) return reply ('khsus owner')
+	case 'stik':
+if (!isOwner) return 
 if (args.length == 0) return reply(`Penggunaan ${prefix+command} jumlah\nContoh ${prefix+command} 5`)
 jumlah = `${encodeURI(q)}`
 ydd = `Hallo Aku bot wea`
