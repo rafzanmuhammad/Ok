@@ -123,12 +123,12 @@ async function startAqua() {
 aqua.ev.on('messages.upsert', async chatUpdate => {
 try{
 if (!chatUpdate.messages) return;
-var m = chatUpdate.messages[0] || chatUpdate.messages[chatUpdate.messages.length - 1]
-if (!m.message) return
-if (m.key && m.key.remoteJid === 'status@broadcast') return
-if (m.key.id.startsWith('BAE5') && m.key.id.length === 16) return
-m = smsg(aqua, m, store)
-require('./kimmy')(aqua, m, chatUpdate,store)
+var mek = chatUpdate.messages[0] || chatUpdate.messages[chatUpdate.messages.length - 1]
+if (!mek.message) return
+if (mek.key && mek.key.remoteJid === 'status@broadcast') return
+if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
+m = smsg(aqua, mek, store)
+require('./kimmy')(aqua, mek, chatUpdate,store)
 }catch (err){
 console.log(err)
 }
